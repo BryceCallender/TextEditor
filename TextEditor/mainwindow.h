@@ -3,6 +3,14 @@
 
 #include <QMainWindow>
 
+#include <QTextEdit>
+#include <QFile>
+#include <QFileDialog>                  //to select files
+#include <QTextStream>                  //reading text from files
+#include <QMessageBox>                  //for user errors
+#include <QtPrintSupport/QPrinter>      //print to printer
+#include <QtPrintSupport/QPrintDialog>  //to select printer
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -15,7 +23,19 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+private slots:
+    void on_actionNew_triggered();
+
+    void on_actionOpen_triggered();
+
+    void on_actionSave_as_triggered();
+
+    void on_actionPrint_triggered();
+
+    void on_actionExit_triggered();
+
 private:
     Ui::MainWindow *ui;
+    QString currentFile = "";
 };
 #endif // MAINWINDOW_H
