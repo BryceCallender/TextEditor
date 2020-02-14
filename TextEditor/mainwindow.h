@@ -10,6 +10,9 @@
 #include <QMessageBox>                  //for user errors
 #include <QtPrintSupport/QPrinter>      //print to printer
 #include <QtPrintSupport/QPrintDialog>  //to select printer
+#include <QClipboard>
+#include <QMimeData>
+#include <QTextStream>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -34,8 +37,18 @@ private slots:
 
     void on_actionExit_triggered();
 
+    void on_actionCopy_triggered();
+    void on_actionCut_triggered();
+    void on_actionPaste_2_triggered();
+    void on_actionUndo_triggered();
+    void on_actionRedo_triggered();
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
+    static const qint8 numCopies = 3;
+    QString savedCopy[numCopies] = {"", "", ""};
+    int track;
+    QMenu *pasteMenu;
 };
 #endif // MAINWINDOW_H

@@ -8,6 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     menuBar()->setNativeMenuBar(false);
+    track = 0;
 
     //ui->tabWidget->removeTab(1);
     //ui->tabWidget->setDocumentMode(true);
@@ -80,3 +81,49 @@ void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
 }
+
+void MainWindow::on_actionCopy_triggered()
+{
+    ui->textEdit->copy();
+    /*
+    QString text = ui->textEdit->textCursor().selectedText();
+
+    savedCopy[track] = text;
+    if(track >= 2)
+        track = 0;
+    else
+        track++;
+
+    pasteMenu->addAction(text);
+    QTextStream out(stdout);
+    out << text << endl;*/
+
+}
+void MainWindow::on_actionCut_triggered()
+{
+    ui->textEdit->cut();
+    /*
+    QString text = ui->textEdit->textCursor().selectedText();
+
+    savedCopy[track] = text;
+    if(track >= 2)
+        track = 0;
+    else
+        track++;
+    ui->textEdit->textCursor().removeSelectedText();*/
+}
+void MainWindow::on_actionPaste_2_triggered()
+{
+    ui->textEdit->paste();
+    //ui->textEdit->textCursor().insertText(savedCopy[0]);
+    //pasteMenu->popup(ui->textEdit->textCursor().position());
+}
+void MainWindow::on_actionUndo_triggered()
+{
+    ui->textEdit->undo();
+}
+void MainWindow::on_actionRedo_triggered()
+{
+    ui->textEdit->redo();
+}
+
