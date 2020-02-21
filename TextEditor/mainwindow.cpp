@@ -8,7 +8,15 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     menuBar()->setNativeMenuBar(false);
-    track = 0;
+    track = 1;
+    ui->textEdit->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(ui->textEdit, SIGNAL(customContextMenuRequested(const QPoint&)),
+        this, SLOT(ShowContextMenu(const QPoint&)));
+
+    savedCopy[0] = QApplication::clipboard()->text();
+
+    QObject::connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &MainWindow::clipboard_changed);
+
 
     //ui->tabWidget->removeTab(1);
     //ui->tabWidget->setDocumentMode(true);
@@ -82,41 +90,80 @@ void MainWindow::on_actionExit_triggered()
     QApplication::quit();
 }
 
+
 void MainWindow::on_actionCopy_triggered()
 {
-    ui->textEdit->copy();
-    /*
-    QString text = ui->textEdit->textCursor().selectedText();
+    if(ui->textEdit->textCursor().hasSelection())
+    {
+        QString text = ui->textEdit->textCursor().selectedText();
 
-    savedCopy[track] = text;
-    if(track >= 2)
-        track = 0;
-    else
-        track++;
+        savedCopy[track] = text;
+        if(track >= 2)
+            track = 0;
+        else
+            track++;
 
-    pasteMenu->addAction(text);
-    QTextStream out(stdout);
-    out << text << endl;*/
-
+   }
+   ui->textEdit->copy();
 }
 void MainWindow::on_actionCut_triggered()
 {
-    ui->textEdit->cut();
-    /*
-    QString text = ui->textEdit->textCursor().selectedText();
 
-    savedCopy[track] = text;
+    if(ui->textEdit->textCursor().hasSelection())
+    {
+        QString text = ui->textEdit->textCursor().selectedText();
+
+        savedCopy[track] = text;
+        if(track >= 2)
+            track = 0;
+        else
+            track++;
+
+   }
+   ui->textEdit->cut();
+
+}
+
+void MainWindow::clipboard_changed()
+{
+    savedCopy[track] = QApplication::clipboard()->text();
     if(track >= 2)
         track = 0;
     else
         track++;
-    ui->textEdit->textCursor().removeSelectedText();*/
+}
+void MainWindow::ShowContextPasteMenu(const QPoint& pos)
+{
+    QPoint globalPos = ui->textEdit->mapToGlobal(pos);
+
+    QMenu *pasteMenu = new QMenu(this);
+    pasteMenu->addAction(QString(savedCopy[0]), this, SLOT(on_actionPaste_2_triggered()));
+
+    if(savedCopy[1] != "")
+        pasteMenu->addAction(QString(savedCopy[1]), this, SLOT(on_actionPaste_3_triggered()));
+    if(savedCopy[2] != "")
+        pasteMenu->addAction(QString(savedCopy[2]), this, SLOT(on_actionPaste_4_triggered()));
+
+    pasteMenu->exec(globalPos);
+
+}
+void MainWindow::on_actionPaste_triggered()
+{
+    ShowContextPasteMenu(cursor().hotSpot());
+    //ui->textEdit->textCursor().insertText(savedCopy[0]);
+    //pasteMenu->popup(ui->textEdit->textCursor().position());
 }
 void MainWindow::on_actionPaste_2_triggered()
 {
-    ui->textEdit->paste();
-    //ui->textEdit->textCursor().insertText(savedCopy[0]);
-    //pasteMenu->popup(ui->textEdit->textCursor().position());
+    ui->textEdit->textCursor().insertText(savedCopy[0]);
+}
+void MainWindow::on_actionPaste_3_triggered()
+{
+    ui->textEdit->textCursor().insertText(savedCopy[1]);
+}
+void MainWindow::on_actionPaste_4_triggered()
+{
+    ui->textEdit->textCursor().insertText(savedCopy[2]);
 }
 void MainWindow::on_actionUndo_triggered()
 {
@@ -125,5 +172,30 @@ void MainWindow::on_actionUndo_triggered()
 void MainWindow::on_actionRedo_triggered()
 {
     ui->textEdit->redo();
+}
+void MainWindow::ShowContextMenu(const QPoint& pos)
+{
+    QPoint globalPos = ui->textEdit->mapToGlobal(pos);
+
+    QMenu *pasteMenu = new QMenu(), *rightClick = new QMenu(this);
+
+    rightClick->addAction(QString("Undo"), this, SLOT(on_actionUndo_triggered()));
+    rightClick->addAction(QString("Redo"), this, SLOT(on_actionRedo_triggered()));
+    rightClick->addSeparator();
+    rightClick->addAction(QString("Cut"), this, SLOT(on_actionCut_triggered()));
+    rightClick->addAction(QString("Copy"), this, SLOT(on_actionCopy_triggered()));
+
+    pasteMenu->setTitle(QString("Paste"));
+    pasteMenu->addAction(QString(savedCopy[0]), this, SLOT(on_actionPaste_2_triggered()));
+
+    if(savedCopy[1] != "")
+        pasteMenu->addAction(QString(savedCopy[1]), this, SLOT(on_actionPaste_3_triggered()));
+    if(savedCopy[2] != "")
+        pasteMenu->addAction(QString(savedCopy[2]), this, SLOT(on_actionPaste_4_triggered()));
+
+    rightClick->addMenu(pasteMenu);
+
+    rightClick->exec(globalPos);
+
 }
 
