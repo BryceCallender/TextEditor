@@ -13,6 +13,11 @@
 #include <QClipboard>
 #include <QMimeData>
 #include <QTextStream>
+#include <QFont>
+#include <QFontDialog>
+#include <QtGui>
+#include <QFontComboBox>
+#include <QComboBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -42,6 +47,20 @@ private slots:
     void on_actionPaste_2_triggered();
     void on_actionUndo_triggered();
     void on_actionRedo_triggered();
+
+    void on_actionFormat_Text_triggered();
+
+    void on_actionBold_triggered();
+
+    void on_actionItalic_triggered();
+
+    void on_actionUnderline_triggered();
+
+    void on_fontComboBox_currentFontChanged(const QFont &f);
+
+    void on_fontSizeComboBox_currentIndexChanged(int index);
+
+    void on_fontSizeComboBox_activated(const QString &arg1);
 
 private:
     Ui::MainWindow *ui;
