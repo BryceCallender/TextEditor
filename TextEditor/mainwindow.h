@@ -13,6 +13,7 @@
 #include <QClipboard>
 #include <QMimeData>
 #include <QTextStream>
+#include <QShortcut>
 
 #include <QSplitter>
 
@@ -43,11 +44,17 @@ private slots:
 
     void on_actionCut_triggered();
 
+    void clipboard_changed();
+    void ShowContextPasteMenu(const QPoint& pos);
+    void on_actionPaste_triggered();
     void on_actionPaste_2_triggered();
+    void on_actionPaste_3_triggered();
+    void on_actionPaste_4_triggered();
 
     void on_actionUndo_triggered();
 
     void on_actionRedo_triggered();
+    void ShowContextMenu(const QPoint&);
 
     void on_actionSplit_Dock_Horizontally_triggered();
 

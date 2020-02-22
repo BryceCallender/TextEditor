@@ -87,7 +87,7 @@
     </property>
     <addaction name="actionCut"/>
     <addaction name="actionCopy"/>
-    <addaction name="actionPaste_2"/>
+    <addaction name="actionPaste"/>
     <addaction name="separator"/>
     <addaction name="actionUndo"/>
     <addaction name="actionRedo"/>
@@ -151,9 +151,6 @@
    <property name="text">
     <string>Copy</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+C</string>
-   </property>
   </action>
   <action name="actionUndo">
    <property name="text">
@@ -169,14 +166,6 @@
    <property name="text">
     <string>Cut</string>
    </property>
-   <property name="shortcut">
-    <string>Ctrl+X</string>
-   </property>
-  </action>
-  <action name="actionCopy1">
-   <property name="text">
-    <string>Copy1</string>
-   </property>
   </action>
   <action name="actionCopy2">
    <property name="text">
@@ -188,12 +177,14 @@
     <string>Copy3</string>
    </property>
   </action>
-  <action name="actionPaste_2">
+  <action name="actionCopy1">
+   <property name="text">
+    <string>Copy1</string>
+   </property>
+  </action>
+  <action name="actionPaste">
    <property name="text">
     <string>Paste</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+V</string>
    </property>
   </action>
   <action name="actionSplit_Dock_Vertically">
