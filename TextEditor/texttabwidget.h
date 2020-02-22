@@ -21,6 +21,8 @@ public:
     void setTabsFileName(QString name);
     QString getTabFileName();
 
+    QTextEdit* getTextEdit();
+
     void revealSearchBox();
     void revealReplaceBox();
 

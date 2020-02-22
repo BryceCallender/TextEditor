@@ -97,5 +97,9 @@ void TextTabWidget::setTabNameText(int index, const QString &text)
     qDebug() << text;
 }
 
+QTextEdit* TextTabWidget::getTextEdit()
+{
+    return textEditArea;
+}
 
 

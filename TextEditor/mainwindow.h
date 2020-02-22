@@ -16,6 +16,13 @@
 #include <QShortcut>
 
 #include <QSplitter>
+#include <QFont>
+#include <QFontDialog>
+#include <QtGui>
+#include <QFontComboBox>
+#include <QComboBox>
+
+#include "texttabwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -67,6 +74,22 @@ private slots:
     void on_actionSave_triggered();
 
     void setWindowToFileName(int index);
+
+    void on_actionFormat_Text_triggered();
+
+    void on_actionBold_triggered();
+
+    void on_actionItalic_triggered();
+
+    void on_actionUnderline_triggered();
+
+    void on_fontComboBox_currentFontChanged(const QFont &f);
+
+    void on_fontSizeComboBox_currentIndexChanged(int index);
+
+    void on_fontSizeComboBox_activated(const QString &arg1);
+
+    TextTabWidget* getCurrentTabWidget();
 
 private:
     Ui::MainWindow *ui;

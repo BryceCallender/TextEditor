@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     menuBar()->setNativeMenuBar(false);
+    ui->tabWidget->setMovable(false);
 
     splitter = new QSplitter();
     splitter->addWidget(ui->tabWidget);
@@ -31,20 +32,21 @@ MainWindow::MainWindow(QWidget *parent)
 //    splitter->setSizes(QList<int>({INT_MAX, 0}));
 
     setCentralWidget(splitter);
+    ui->tabWidget->setCurrentIndex(0);
+
+    TextTabWidget* textTabWidget = getCurrentTabWidget();
 
     track = 1;
-    ui->textEdit->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(ui->textEdit, SIGNAL(customContextMenuRequested(const QPoint&)),
+    textTabWidget->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
+
+    connect(textTabWidget->getTextEdit(), SIGNAL(customContextMenuRequested(const QPoint&)),
         this, SLOT(ShowContextMenu(const QPoint&)));
 
     savedCopy[0] = QApplication::clipboard()->text();
 
     QObject::connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &MainWindow::clipboard_changed);
 
-
     ui->tabWidget->setTabText(1, "+");
-
-    ui->tabWidget->setCurrentIndex(0);
 
     QTabBar* tabBar = ui->tabWidget->tabBar();
 
@@ -60,8 +62,8 @@ MainWindow::~MainWindow()
 void MainWindow::on_actionNew_triggered()
 {
     currentFile.clear();
-    ui->textEdit->setText(QString());
     ui->tabWidget->addTab(new TextTabWidget(), "New Tab");
+    getCurrentTabWidget()->getTextEdit()->setText(QString());
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -76,7 +78,7 @@ void MainWindow::on_actionOpen_triggered()
     }
 
     int tabIndex = ui->tabWidget->currentIndex();
-    TextTabWidget* textTabWidget = (TextTabWidget*) ui->tabWidget->widget(tabIndex);
+    TextTabWidget* textTabWidget = getCurrentTabWidget();
 
     textTabWidget->setTabsFileName(fileName);
 
@@ -106,7 +108,7 @@ void MainWindow::on_actionSave_as_triggered()
     currentFile = fileName;
     setWindowTitle(fileName);
     QTextStream out(&file);
-    QString text = ui->textEdit->toPlainText();
+    QString text = getCurrentTabWidget()->getTextEdit()->toPlainText();
     out << text;
     file.close();
 }
@@ -121,7 +123,7 @@ void MainWindow::on_actionPrint_triggered()
         QMessageBox::warning(this, "Warning", "Cannot Access Printer");
         return;
     }
-    ui->textEdit->print(&printer);
+    getCurrentTabWidget()->getTextEdit()->print(&printer);
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -132,9 +134,11 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::on_actionCopy_triggered()
 {
-    if(ui->textEdit->textCursor().hasSelection())
+    TextTabWidget* textTabWidget = getCurrentTabWidget();
+
+    if(textTabWidget->getTextEdit()->textCursor().hasSelection())
     {
-        QString text = ui->textEdit->textCursor().selectedText();
+        QString text = textTabWidget->getTextEdit()->textCursor().selectedText();
 
         savedCopy[track] = text;
         if(track >= 2)
@@ -143,15 +147,16 @@ void MainWindow::on_actionCopy_triggered()
             track++;
 
    }
-   ui->textEdit->copy();
+   textTabWidget->getTextEdit()->copy();
 }
 
 void MainWindow::on_actionCut_triggered()
 {
+    TextTabWidget* textTabWidget = getCurrentTabWidget();
 
-    if(ui->textEdit->textCursor().hasSelection())
+    if(textTabWidget->getTextEdit()->textCursor().hasSelection())
     {
-        QString text = ui->textEdit->textCursor().selectedText();
+        QString text = textTabWidget->getTextEdit()->textCursor().selectedText();
 
         savedCopy[track] = text;
         if(track >= 2)
@@ -160,8 +165,8 @@ void MainWindow::on_actionCut_triggered()
             track++;
 
    }
-   ui->textEdit->cut();
 
+   textTabWidget->getTextEdit()->cut();
 }
 
 void MainWindow::clipboard_changed()
@@ -176,7 +181,7 @@ void MainWindow::clipboard_changed()
 
 void MainWindow::ShowContextPasteMenu(const QPoint& pos)
 {
-    QPoint globalPos = ui->textEdit->mapToGlobal(pos);
+    QPoint globalPos = getCurrentTabWidget()->getTextEdit()->mapToGlobal(pos);
 
     QMenu *pasteMenu = new QMenu(this);
     pasteMenu->addAction(QString(savedCopy[0]), this, SLOT(on_actionPaste_2_triggered()));
@@ -199,31 +204,32 @@ void MainWindow::on_actionPaste_triggered()
 
 void MainWindow::on_actionPaste_2_triggered()
 {
-    ui->textEdit->textCursor().insertText(savedCopy[0]);
+    getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[0]);
 }
 
 void MainWindow::on_actionPaste_3_triggered()
 {
-    ui->textEdit->textCursor().insertText(savedCopy[1]);
+    getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[1]);
 }
 
 void MainWindow::on_actionPaste_4_triggered()
 {
-    ui->textEdit->textCursor().insertText(savedCopy[2]);
+    getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[2]);
 }
 
 void MainWindow::on_actionUndo_triggered()
 {
-    ui->textEdit->undo();
+    getCurrentTabWidget()->getTextEdit()->undo();
 }
 
 void MainWindow::on_actionRedo_triggered()
 {
-    ui->textEdit->redo();
+    getCurrentTabWidget()->getTextEdit()->redo();
 }
+
 void MainWindow::ShowContextMenu(const QPoint& pos)
 {
-    QPoint globalPos = ui->textEdit->mapToGlobal(pos);
+    QPoint globalPos = getCurrentTabWidget()->getTextEdit()->mapToGlobal(pos);
 
     QMenu *pasteMenu = new QMenu(), *rightClick = new QMenu(this);
 
@@ -252,6 +258,7 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
     ui->tabWidget->removeTab(index);
 }
 
+
 void MainWindow::on_tabWidget_tabBarClicked(int index)
 {
     //This will make sure to insert where the last tab is and they cannot move it or itll make a new tab
@@ -265,7 +272,7 @@ void MainWindow::on_actionView_Rendered_HTML_triggered()
 {
     QWebEngineView *view = new QWebEngineView();
 
-    view->load(QUrl::fromLocalFile(windowTitle()));
+    view->load(QUrl::fromLocalFile(getCurrentTabWidget()->getTabFileName()));
     view->show();
 }
 
@@ -276,14 +283,13 @@ void MainWindow::on_actionSplit_Dock_Horizontally_triggered()
 
 void MainWindow::on_actionSave_triggered()
 {
-    int tabIndex = ui->tabWidget->currentIndex();
-    TextTabWidget* textTabWidget = (TextTabWidget*) ui->tabWidget->widget(tabIndex);
+    TextTabWidget* textTabWidget = getCurrentTabWidget();
 
     QFile file(textTabWidget->getTabFileName());
     if(file.exists())
     {
         QTextStream out(&file);
-        QString text = ui->textEdit->toPlainText();
+        QString text = textTabWidget->getTextEdit()->toPlainText();
         out << text;
         file.close();
     }
@@ -296,7 +302,100 @@ void MainWindow::on_actionSave_triggered()
 
 void MainWindow::setWindowToFileName(int index)
 {
-    TextTabWidget* textTabWidget = (TextTabWidget*) ui->tabWidget->widget(index);
+    setWindowTitle(getCurrentTabWidget()->getTabFileName());
+}
 
-    setWindowTitle(textTabWidget->getTabFileName());
+void MainWindow::on_actionFormat_Text_triggered()
+{
+    bool ok;
+    QFont font = QFontDialog::getFont(&ok, this);
+
+    if(ok)
+    {
+        getCurrentTabWidget()->getTextEdit()->setFont(font);
+    }
+    else
+        return;
+}
+
+void MainWindow::on_actionBold_triggered()
+{
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    QTextCharFormat format;
+
+    if(cursor.charFormat().fontWeight() == QFont::Bold)
+    {
+        format.setFontWeight(QFont::Normal);
+    }
+    else
+        format.setFontWeight(QFont::Bold);
+
+    cursor.mergeCharFormat(format);//do the text as Bold
+}
+
+void MainWindow::on_actionItalic_triggered()
+{
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    QTextCharFormat format;
+
+    if(cursor.charFormat().fontItalic())
+    {
+        format.setFontItalic(false);
+    }
+    else
+        format.setFontItalic(true);
+
+    cursor.mergeCharFormat(format);//do the text as italic
+}
+
+void MainWindow::on_actionUnderline_triggered()
+{
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    QTextCharFormat format;
+
+    if(cursor.charFormat().fontUnderline())
+    {
+        format.setFontUnderline(false);
+    }
+    else
+        format.setFontUnderline(true);
+
+    cursor.mergeCharFormat(format);//do the text as underline
+}
+
+void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
+{
+    //QFont font = ui->fontComboBox->currentFont();
+
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    QTextCharFormat format;
+    format.setFont(f);
+
+    cursor.mergeCharFormat(format);//Change font-family
+}
+
+void MainWindow::on_fontSizeComboBox_activated(const QString &arg1)
+{
+    QString size = ui->fontSizeComboBox->currentText();
+    QFont font;
+    font.setPointSize(size.toInt());
+
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    QTextCharFormat format;
+    format.setFont(font);
+
+    cursor.mergeCharFormat(format);//change font size
+}
+
+void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
+{
+
+}
+
+TextTabWidget* MainWindow::getCurrentTabWidget()
+{
+    int tabIndex = ui->tabWidget->currentIndex();
+    TextTabWidget* textTabWidget = (TextTabWidget*) ui->tabWidget->widget(tabIndex);
+
+    return textTabWidget;
 }
