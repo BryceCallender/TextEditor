@@ -14,6 +14,8 @@
 #include <QMimeData>
 #include <QTextStream>
 
+#include <QSplitter>
+
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
@@ -38,10 +40,26 @@ private slots:
     void on_actionExit_triggered();
 
     void on_actionCopy_triggered();
+
     void on_actionCut_triggered();
+
     void on_actionPaste_2_triggered();
+
     void on_actionUndo_triggered();
+
     void on_actionRedo_triggered();
+
+    void on_actionSplit_Dock_Horizontally_triggered();
+
+    void on_tabWidget_tabCloseRequested(int index);
+
+    void on_tabWidget_tabBarClicked(int index);
+
+    void on_actionView_Rendered_HTML_triggered();
+
+    void on_actionSave_triggered();
+
+    void setWindowToFileName(int index);
 
 private:
     Ui::MainWindow *ui;
@@ -50,5 +68,7 @@ private:
     QString savedCopy[numCopies] = {"", "", ""};
     int track;
     QMenu *pasteMenu;
+
+    QSplitter *splitter;
 };
 #endif // MAINWINDOW_H
