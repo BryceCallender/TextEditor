@@ -15,12 +15,18 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
 
     //The whole group box layout that the thing will encompass.
     QVBoxLayout* groupBoxLayout = new QVBoxLayout();
+
+    QHBoxLayout* findLayout = new QHBoxLayout();
     findText = new QLineEdit();
     findText->setPlaceholderText("Find");
 
-    //Add the find line edit
-    groupBoxLayout->addWidget(findText);
+    resultsLabel = new QLabel("No results");
 
+    findLayout->addWidget(findText);
+    findLayout->addWidget(resultsLabel);
+
+    //Add the find line edit
+    groupBoxLayout->addLayout(findLayout);
 
 
     //Begin of replace layout
@@ -129,6 +135,7 @@ void TextTabWidget::searchTextForQuery(const QString& query)
 {
     highlighter->searchText(query);
     replacer->populateAllExpressionMatchesAndMoveToFirst(textEditArea, query);
+    resultsLabel->setText(replacer->setResultsText());
 }
 
 void TextTabWidget::sendFindDataToReplacerAndReplaceCurrent()
@@ -139,6 +146,11 @@ void TextTabWidget::sendFindDataToReplacerAndReplaceCurrent()
 void TextTabWidget::sendFindDataToReplacerAndReplaceAll()
 {
     replacer->replaceAll(findText->text(), replaceText->text());
+}
+
+void TextTabWidget::setResultsText(const QString &text)
+{
+    resultsLabel->setText(text);
 }
 
 void TextTabWidget::setTextEditText(const QString &text)

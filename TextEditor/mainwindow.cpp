@@ -21,10 +21,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tabWidget->removeTab(0);
     ui->tabWidget->insertTab(0, new TextTabWidget(), "New Tab");
 
-    connect(ui->tabWidget->tabBar(), &QTabBar::tabBarClicked, this, &MainWindow::setWindowToFileName);
+    connect(ui->tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
 
     ui->tabWidget->setCurrentIndex(0);
-
     TextTabWidget* textTabWidget = getCurrentTabWidget();
 
     //Make sure text edit is in focus incase they just start typing right away
@@ -173,7 +172,7 @@ void MainWindow::clipboard_changed()
 }
 
 
-void MainWindow::ShowContextPasteMenu(const QPoint& pos)
+void MainWindow::showContextPasteMenu(const QPoint& pos)
 {
     QPoint globalPos = getCurrentTabWidget()->getTextEdit()->mapToGlobal(pos);
 
@@ -191,7 +190,7 @@ void MainWindow::ShowContextPasteMenu(const QPoint& pos)
 
 void MainWindow::on_actionPaste_triggered()
 {
-    ShowContextPasteMenu(cursor().hotSpot());
+    showContextPasteMenu(cursor().hotSpot());
     //ui->textEdit->textCursor().insertText(savedCopy[0]);
     //pasteMenu->popup(ui->textEdit->textCursor().position());
 }
@@ -221,7 +220,7 @@ void MainWindow::on_actionRedo_triggered()
     getCurrentTabWidget()->getTextEdit()->redo();
 }
 
-void MainWindow::ShowContextMenu(const QPoint& pos)
+void MainWindow::showContextMenu(const QPoint& pos)
 {
     QPoint globalPos = getCurrentTabWidget()->getTextEdit()->mapToGlobal(pos);
 
@@ -297,7 +296,7 @@ void MainWindow::on_actionSave_triggered()
 void MainWindow::setWindowToFileName(int index)
 {
     qDebug() << "Clicked on tab " + QString::number(index);
-//    getCurrentTabWidget()->setCurrentIndex(index);
+
     setWindowTitle(getCurrentTabWidget()->getTabFileName());
 }
 

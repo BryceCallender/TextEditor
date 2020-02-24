@@ -43,6 +43,7 @@ void SearcherAndReplacer::moveToNextOccurence()
     if(textMatches.size() > 0)
     {
         currentIndex = ++currentIndex % textMatches.size();
+        setResultsText();
         moveCursorToOccurence(textMatches[currentIndex]);
     }
 }
@@ -98,4 +99,14 @@ int SearcherAndReplacer::getNumberOfMatches()
 int SearcherAndReplacer::getCurrentIndex()
 {
     return currentIndex;
+}
+
+QString SearcherAndReplacer::setResultsText()
+{
+    if(textMatches.size() == 0)
+    {
+        return "No results";
+    }
+
+    return QString::number(currentIndex + 1) + " of " + QString::number(textMatches.size());
 }

@@ -10,6 +10,8 @@
 #include <QShortcut>
 #include <QtDebug>
 #include <QPushButton>
+#include <QLabel>
+//#include <QFileSystemWatcher>
 
 #include "searchhighlighter.h"
 #include "searcherandreplacer.h"
@@ -35,6 +37,8 @@ public:
 
     void sendFindDataToReplacerAndReplaceCurrent();
     void sendFindDataToReplacerAndReplaceAll();
+
+    void setResultsText(const QString& text);
 private:
     QString fileName;
 
@@ -42,6 +46,7 @@ private:
     QGroupBox *groupBox;
     QLineEdit *findText;
     QLineEdit *replaceText;
+    QLabel* resultsLabel;
 
     QPushButton *replaceCurrentButton;
     QPushButton *replaceAllButton;

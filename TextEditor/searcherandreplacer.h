@@ -22,6 +22,8 @@ public:
 
     int getNumberOfMatches();
     int getCurrentIndex();
+
+    QString setResultsText();
 private:
     void moveCursorToOccurence(QRegularExpressionMatch& match);
 
