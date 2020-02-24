@@ -5,7 +5,10 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     textEditArea = new QTextEdit();
 
     highlighter = new SearchHighlighter(textEditArea->document());
-    replacer = new SearcherAndReplacer(textEditArea);
+
+    resultsLabel = new QLabel("No results");
+     //Takes in the current area it owns and the results label to give feedback to the user on found querys
+    replacer = new SearcherAndReplacer(textEditArea, resultsLabel);
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
 
@@ -19,8 +22,6 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     QHBoxLayout* findLayout = new QHBoxLayout();
     findText = new QLineEdit();
     findText->setPlaceholderText("Find");
-
-    resultsLabel = new QLabel("No results");
 
     findLayout->addWidget(findText);
     findLayout->addWidget(resultsLabel);
@@ -101,8 +102,13 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
                      this,
                      &TextTabWidget::sendFindDataToReplacerAndReplaceAll);
 
-
     fileName = "New File.txt";
+    fileWatcher = new QFileSystemWatcher();
+
+    QObject::connect(fileWatcher,
+                     &QFileSystemWatcher::fileChanged,
+                     this,
+                     &TextTabWidget::markTextTabAsDirty);
 }
 
 QString TextTabWidget::getTabFileName()
@@ -110,8 +116,16 @@ QString TextTabWidget::getTabFileName()
     return fileName;
 }
 
-void TextTabWidget::setTabsFileName(QString name)
+void TextTabWidget::setTabsFileName(const QString& name)
 {
+    //Reset the fileWatcher since its responsible for its own tab and the file name changed
+    if(!fileWatcher->files().isEmpty())
+    {
+        fileWatcher->removePaths(fileWatcher->files());
+    }
+
+    fileWatcher->addPath(name);
+
     fileName = name;
 }
 
@@ -135,7 +149,7 @@ void TextTabWidget::searchTextForQuery(const QString& query)
 {
     highlighter->searchText(query);
     replacer->populateAllExpressionMatchesAndMoveToFirst(textEditArea, query);
-    resultsLabel->setText(replacer->setResultsText());
+    replacer->setResultsText();
 }
 
 void TextTabWidget::sendFindDataToReplacerAndReplaceCurrent()
@@ -151,6 +165,11 @@ void TextTabWidget::sendFindDataToReplacerAndReplaceAll()
 void TextTabWidget::setResultsText(const QString &text)
 {
     resultsLabel->setText(text);
+}
+
+void TextTabWidget::markTextTabAsDirty(const QString &newPath)
+{
+    qDebug() << "file changed"; //file saved take away the * showing it saved
 }
 
 void TextTabWidget::setTextEditText(const QString &text)

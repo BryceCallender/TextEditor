@@ -1,8 +1,9 @@
 #include "searcherandreplacer.h"
 
-SearcherAndReplacer::SearcherAndReplacer(QTextEdit* textEdit): QWidget(textEdit)
+SearcherAndReplacer::SearcherAndReplacer(QTextEdit* textEdit, QLabel *label): QWidget(textEdit)
 {
     this->textEdit = textEdit;
+    this->resultsLabel = label;
 }
 
 void SearcherAndReplacer::populateAllExpressionMatchesAndMoveToFirst(QTextEdit *currentTextEdit, const QString &text)
@@ -69,7 +70,7 @@ void SearcherAndReplacer::replaceCurrent(const QString& findText, const QString&
 {
     if(textMatches.size() > 0)
     {
-        QRegularExpressionMatch match = textMatches.front();
+        QRegularExpressionMatch match = textMatches.at(currentIndex);
 
         moveCursorToOccurence(match);
 
@@ -101,12 +102,14 @@ int SearcherAndReplacer::getCurrentIndex()
     return currentIndex;
 }
 
-QString SearcherAndReplacer::setResultsText()
+void SearcherAndReplacer::setResultsText()
 {
     if(textMatches.size() == 0)
     {
-        return "No results";
+        resultsLabel->setText("No results");
     }
-
-    return QString::number(currentIndex + 1) + " of " + QString::number(textMatches.size());
+    else
+    {
+        resultsLabel->setText(QString::number(currentIndex + 1) + " of " + QString::number(textMatches.size()));
+    }
 }

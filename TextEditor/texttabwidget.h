@@ -11,7 +11,7 @@
 #include <QtDebug>
 #include <QPushButton>
 #include <QLabel>
-//#include <QFileSystemWatcher>
+#include <QFileSystemWatcher>
 
 #include "searchhighlighter.h"
 #include "searcherandreplacer.h"
@@ -22,7 +22,7 @@ class TextTabWidget : public QTabBar
 public:
     explicit TextTabWidget(QWidget *parent = nullptr);
 
-    void setTabsFileName(QString name);
+    void setTabsFileName(const QString &name);
     QString getTabFileName();
 
     QTextEdit* getTextEdit();
@@ -39,14 +39,18 @@ public:
     void sendFindDataToReplacerAndReplaceAll();
 
     void setResultsText(const QString& text);
+
+    void markTextTabAsDirty(const QString& newPath);
 private:
     QString fileName;
+
+    QFileSystemWatcher *fileWatcher;
 
     QTextEdit *textEditArea;
     QGroupBox *groupBox;
     QLineEdit *findText;
     QLineEdit *replaceText;
-    QLabel* resultsLabel;
+    QLabel *resultsLabel;
 
     QPushButton *replaceCurrentButton;
     QPushButton *replaceAllButton;

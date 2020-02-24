@@ -33,7 +33,7 @@ MainWindow::MainWindow(QWidget *parent)
     textTabWidget->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
 
     connect(textTabWidget->getTextEdit(), SIGNAL(customContextMenuRequested(const QPoint&)),
-        this, SLOT(ShowContextMenu(const QPoint&)));
+        this, SLOT(showContextMenu(const QPoint&)));
 
     savedCopy[0] = QApplication::clipboard()->text();
 
@@ -72,6 +72,14 @@ void MainWindow::on_actionOpen_triggered()
 
     int tabIndex = ui->tabWidget->currentIndex();
     TextTabWidget* textTabWidget = getCurrentTabWidget();
+
+    //Current Tab is occupied so make a new tab, set its name, and then then carry on with setting the text
+    if(textTabWidget->getTabFileName() != "New File.txt")
+    {
+        on_actionNew_triggered();
+        textTabWidget = getCurrentTabWidget();
+        tabIndex = ui->tabWidget->currentIndex();
+    }
 
     textTabWidget->setTabsFileName(fileName);
 

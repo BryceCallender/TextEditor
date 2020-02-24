@@ -5,12 +5,13 @@
 #include <QRegularExpression>
 #include <QDebug>
 #include <QShortcut>
+#include <QLabel>
 
 class SearcherAndReplacer: public QWidget
 {
     Q_OBJECT
 public:
-    explicit SearcherAndReplacer(QTextEdit* textEdit);
+    explicit SearcherAndReplacer(QTextEdit* textEdit, QLabel* label);
 
     void populateAllExpressionMatchesAndMoveToFirst(QTextEdit* currentTextEdit, const QString& text);
 
@@ -23,12 +24,14 @@ public:
     int getNumberOfMatches();
     int getCurrentIndex();
 
-    QString setResultsText();
+    void setResultsText();
 private:
     void moveCursorToOccurence(QRegularExpressionMatch& match);
 
     int currentIndex;
     QTextEdit* textEdit;
+    QLabel* resultsLabel;
+
     QRegularExpression pattern;
     QVector<QRegularExpressionMatch> textMatches;
 };
