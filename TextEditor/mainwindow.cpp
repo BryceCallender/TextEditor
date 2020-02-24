@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     menuBar()->setNativeMenuBar(false);
     ui->tabWidget->setMovable(false);
+    ui->tabWidget->setTabsClosable(true);
 
     splitter = new QSplitter();
 
@@ -57,6 +58,10 @@ void MainWindow::on_actionNew_triggered()
     ui->tabWidget->insertTab(ui->tabWidget->count() - 1, new TextTabWidget() , "New Tab");
     ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 2);
     getCurrentTabWidget()->getTextEdit()->setText(QString());
+    getCurrentTabWidget()->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
+
+    connect(getCurrentTabWidget()->getTextEdit(), SIGNAL(customContextMenuRequested(const QPoint&)),
+        this, SLOT(showContextMenu(const QPoint&)));
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -262,11 +267,18 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 
 void MainWindow::on_tabWidget_tabBarClicked(int index)
 {
+    qDebug() << index;
     //This will make sure to insert where the last tab is and they cannot move it or itll make a new tab
     if(index == ui->tabWidget->count() - 1)
     {
         ui->tabWidget->insertTab(index, new TextTabWidget(), "New tab");
+        ui->tabWidget->setCurrentIndex(index);
     }
+
+    getCurrentTabWidget()->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
+
+    connect(getCurrentTabWidget()->getTextEdit(), SIGNAL(customContextMenuRequested(const QPoint&)),
+        this, SLOT(showContextMenu(const QPoint&)));
 }
 
 void MainWindow::on_actionView_Rendered_HTML_triggered()

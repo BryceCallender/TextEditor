@@ -57,6 +57,7 @@ private:
 
     SearchHighlighter* highlighter;
     SearcherAndReplacer* replacer;
+
 };
 
 #endif // TEXTTABWIDGET_H

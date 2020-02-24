@@ -1,0 +1,11 @@
+main.o
+mainwindow.o
+searcherandreplacer.o
+searchhighlighter.o
+specialcontextmenu.o
+texttabwidget.o
+moc_mainwindow.o
+moc_searcherandreplacer.o
+moc_searchhighlighter.o
+moc_specialcontextmenu.o
+moc_texttabwidget.o

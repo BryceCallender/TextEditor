@@ -21,14 +21,12 @@ SOURCES += \
     mainwindow.cpp \
     searcherandreplacer.cpp \
     searchhighlighter.cpp \
-    specialcontextmenu.cpp \
     texttabwidget.cpp
 
 HEADERS += \
     mainwindow.h \
     searcherandreplacer.h \
     searchhighlighter.h \
-    specialcontextmenu.h \
     texttabwidget.h
 
 FORMS += \

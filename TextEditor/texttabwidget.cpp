@@ -30,6 +30,7 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     groupBoxLayout->addLayout(findLayout);
 
 
+
     //Begin of replace layout
     QHBoxLayout* replaceLayout = new QHBoxLayout();
     replaceText = new QLineEdit();

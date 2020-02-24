@@ -23,7 +23,6 @@
 #include <QComboBox>
 
 #include "texttabwidget.h"
-#include "specialcontextmenu.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -53,15 +52,21 @@ private slots:
     void on_actionCut_triggered();
 
     void clipboard_changed();
+
     void showContextPasteMenu(const QPoint& pos);
+
     void on_actionPaste_triggered();
+
     void on_actionPaste_2_triggered();
+
     void on_actionPaste_3_triggered();
+
     void on_actionPaste_4_triggered();
 
     void on_actionUndo_triggered();
 
     void on_actionRedo_triggered();
+
     void showContextMenu(const QPoint&);
 
     void on_actionSplit_Dock_Horizontally_triggered();
@@ -100,7 +105,7 @@ private:
     int track;
     QMenu *pasteMenu;
 
-    SpecialContextMenu* pasteContextMenu;
+
 
     QSplitter* splitter;
 };
