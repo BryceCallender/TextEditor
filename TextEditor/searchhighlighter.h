@@ -4,6 +4,8 @@
 #include <QSyntaxHighlighter>
 #include <QTextCharFormat>
 #include <QRegularExpression>
+#include <QDebug>
+#include <QTextEdit>
 
 class SearchHighlighter: public QSyntaxHighlighter
 {

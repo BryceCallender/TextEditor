@@ -10,8 +10,8 @@ void SearchHighlighter::highlightBlock(const QString& text)
     QRegularExpressionMatchIterator i = pattern.globalMatch(text);
     while (i.hasNext())
     {
-      QRegularExpressionMatch match = i.next();
-      setFormat(match.capturedStart(), match.capturedLength(), format);
+        QRegularExpressionMatch match = i.next();
+        setFormat(match.capturedStart(), match.capturedLength(), format);
     }
 }
 

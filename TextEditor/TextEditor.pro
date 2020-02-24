@@ -1,4 +1,5 @@
-QT       += core gui printsupport webenginewidgets
+QT       += core gui printsupport
+# webenginewidgets
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,11 +19,13 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     main.cpp \
     mainwindow.cpp \
+    searcherandreplacer.cpp \
     searchhighlighter.cpp \
     texttabwidget.cpp
 
 HEADERS += \
     mainwindow.h \
+    searcherandreplacer.h \
     searchhighlighter.h \
     texttabwidget.h
 

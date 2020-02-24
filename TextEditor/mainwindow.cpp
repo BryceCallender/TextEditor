@@ -5,7 +5,7 @@
 #include <QTabBar>
 #include <QDockWidget>
 #include <QDebug>
-#include <QWebEngineView>
+//#include <QWebEngineView>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -17,24 +17,18 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tabWidget->setMovable(false);
 
     splitter = new QSplitter();
-    splitter->addWidget(ui->tabWidget);
 
     ui->tabWidget->removeTab(0);
     ui->tabWidget->insertTab(0, new TextTabWidget(), "New Tab");
 
     connect(ui->tabWidget->tabBar(), &QTabBar::tabBarClicked, this, &MainWindow::setWindowToFileName);
 
-//    QTabWidget *tabWidget = new QTabWidget();
-//    tabWidget->addTab(new TextTabWidget(), "Tab");
-
-//    splitter->addWidget(tabWidget);
-
-//    splitter->setSizes(QList<int>({INT_MAX, 0}));
-
-    setCentralWidget(splitter);
     ui->tabWidget->setCurrentIndex(0);
 
     TextTabWidget* textTabWidget = getCurrentTabWidget();
+
+    //Make sure text edit is in focus incase they just start typing right away
+    textTabWidget->getTextEdit()->setFocus();
 
     track = 1;
     textTabWidget->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -61,8 +55,8 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionNew_triggered()
 {
-    currentFile.clear();
-    ui->tabWidget->addTab(new TextTabWidget(), "New Tab");
+    ui->tabWidget->insertTab(ui->tabWidget->count() - 1, new TextTabWidget() , "New Tab");
+    ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 2);
     getCurrentTabWidget()->getTextEdit()->setText(QString());
 }
 
@@ -270,10 +264,10 @@ void MainWindow::on_tabWidget_tabBarClicked(int index)
 
 void MainWindow::on_actionView_Rendered_HTML_triggered()
 {
-    QWebEngineView *view = new QWebEngineView();
+//    QWebEngineView *view = new QWebEngineView();
 
-    view->load(QUrl::fromLocalFile(getCurrentTabWidget()->getTabFileName()));
-    view->show();
+//    view->load(QUrl::fromLocalFile(getCurrentTabWidget()->getTabFileName()));
+//    view->show();
 }
 
 void MainWindow::on_actionSplit_Dock_Horizontally_triggered()
@@ -286,7 +280,7 @@ void MainWindow::on_actionSave_triggered()
     TextTabWidget* textTabWidget = getCurrentTabWidget();
 
     QFile file(textTabWidget->getTabFileName());
-    if(file.exists())
+    if(file.open(QFile::ReadWrite) && file.exists())
     {
         QTextStream out(&file);
         QString text = textTabWidget->getTextEdit()->toPlainText();
@@ -302,6 +296,8 @@ void MainWindow::on_actionSave_triggered()
 
 void MainWindow::setWindowToFileName(int index)
 {
+    qDebug() << "Clicked on tab " + QString::number(index);
+//    getCurrentTabWidget()->setCurrentIndex(index);
     setWindowTitle(getCurrentTabWidget()->getTabFileName());
 }
 
@@ -389,7 +385,17 @@ void MainWindow::on_fontSizeComboBox_activated(const QString &arg1)
 
 void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
 {
+    int size = ui->fontSizeComboBox->currentText().toInt();
 
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    QTextCharFormat format;
+
+    QFont font;
+    font.setPointSize(size);
+
+    format.setFont(font);
+
+    cursor.mergeCharFormat(format);
 }
 
 TextTabWidget* MainWindow::getCurrentTabWidget()

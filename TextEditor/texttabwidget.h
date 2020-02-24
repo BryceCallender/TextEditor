@@ -9,8 +9,10 @@
 #include <QLineEdit>
 #include <QShortcut>
 #include <QtDebug>
+#include <QPushButton>
 
 #include "searchhighlighter.h"
+#include "searcherandreplacer.h"
 
 class TextTabWidget : public QTabBar
 {
@@ -27,9 +29,12 @@ public:
     void revealReplaceBox();
 
     void setTextEditText(const QString& text);
-    void setTabNameText( int index, const QString& text);
+    void setTabNameText(int index, const QString& text);
 
     void searchTextForQuery(const QString& query);
+
+    void sendFindDataToReplacerAndReplaceCurrent();
+    void sendFindDataToReplacerAndReplaceAll();
 private:
     QString fileName;
 
@@ -38,7 +43,11 @@ private:
     QLineEdit *findText;
     QLineEdit *replaceText;
 
+    QPushButton *replaceCurrentButton;
+    QPushButton *replaceAllButton;
+
     SearchHighlighter* highlighter;
+    SearcherAndReplacer* replacer;
 };
 
 #endif // TEXTTABWIDGET_H

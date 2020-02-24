@@ -3,24 +3,47 @@
 TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
 {
     textEditArea = new QTextEdit();
+
+    highlighter = new SearchHighlighter(textEditArea->document());
+    replacer = new SearcherAndReplacer(textEditArea);
+
     QVBoxLayout* mainLayout = new QVBoxLayout();
 
     groupBox = new QGroupBox();
 
     groupBox->setTitle("Search");
 
+    //The whole group box layout that the thing will encompass.
     QVBoxLayout* groupBoxLayout = new QVBoxLayout();
-
     findText = new QLineEdit();
-    replaceText = new QLineEdit();
-
     findText->setPlaceholderText("Find");
+
+    //Add the find line edit
+    groupBoxLayout->addWidget(findText);
+
+
+
+    //Begin of replace layout
+    QHBoxLayout* replaceLayout = new QHBoxLayout();
+    replaceText = new QLineEdit();
     replaceText->setPlaceholderText("Replace");
 
-    groupBoxLayout->addWidget(findText);
-    groupBoxLayout->addWidget(replaceText);
+    replaceCurrentButton = new QPushButton("Current");
+    replaceAllButton = new QPushButton("All");
+
+    replaceLayout->addWidget(replaceText);
+    replaceLayout->addWidget(replaceCurrentButton);
+    replaceLayout->addWidget(replaceAllButton);
+    //End of replace layout
+
+
+
+    //Add this layout to the group so that we have a line edit and 2 buttons in this layout
+    groupBoxLayout->addLayout(replaceLayout);
 
     replaceText->hide();
+    replaceCurrentButton->hide();
+    replaceAllButton->hide();
 
     groupBox->setLayout(groupBoxLayout);
 
@@ -52,7 +75,26 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
                      this,
                      &TextTabWidget::searchTextForQuery);
 
-    highlighter = new SearchHighlighter(textEditArea->document());
+    QObject::connect(findText,
+                     &QLineEdit::returnPressed,
+                     replacer,
+                     &SearcherAndReplacer::moveToNextOccurence);
+
+    QObject::connect(replaceText,
+                     &QLineEdit::returnPressed,
+                     this,
+                     &TextTabWidget::sendFindDataToReplacerAndReplaceCurrent);
+
+    QObject::connect(replaceCurrentButton,
+                     &QPushButton::pressed,
+                     this,
+                     &TextTabWidget::sendFindDataToReplacerAndReplaceCurrent);
+
+    QObject::connect(replaceAllButton,
+                     &QPushButton::pressed,
+                     this,
+                     &TextTabWidget::sendFindDataToReplacerAndReplaceAll);
+
 
     fileName = "New File.txt";
 }
@@ -77,12 +119,26 @@ void TextTabWidget::revealReplaceBox()
 {
     groupBox->setTitle("Search/Replace");
     replaceText->show();
+    replaceCurrentButton->show();
+    replaceAllButton->show();
+
     replaceText->setFocus();
 }
 
 void TextTabWidget::searchTextForQuery(const QString& query)
 {
     highlighter->searchText(query);
+    replacer->populateAllExpressionMatchesAndMoveToFirst(textEditArea, query);
+}
+
+void TextTabWidget::sendFindDataToReplacerAndReplaceCurrent()
+{
+    replacer->replaceCurrent(findText->text(), replaceText->text());
+}
+
+void TextTabWidget::sendFindDataToReplacerAndReplaceAll()
+{
+    replacer->replaceAll(findText->text(), replaceText->text());
 }
 
 void TextTabWidget::setTextEditText(const QString &text)
@@ -93,8 +149,6 @@ void TextTabWidget::setTextEditText(const QString &text)
 void TextTabWidget::setTabNameText(int index, const QString &text)
 {
     setTabText(index, text);
-
-    qDebug() << text;
 }
 
 QTextEdit* TextTabWidget::getTextEdit()
