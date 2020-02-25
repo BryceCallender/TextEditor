@@ -191,12 +191,12 @@ void MainWindow::showContextPasteMenu(const QPoint& pos)
     QPoint globalPos = getCurrentTabWidget()->getTextEdit()->mapToGlobal(pos);
 
     QMenu *pasteMenu = new QMenu(this);
-    pasteMenu->addAction(QString(savedCopy[0]), this, SLOT(on_actionPaste_2_triggered()));
+    pasteMenu->addAction(QString(savedCopy[0].left(20) + ((savedCopy[0].size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
 
     if(savedCopy[1] != "")
-        pasteMenu->addAction(QString(savedCopy[1]), this, SLOT(on_actionPaste_3_triggered()));
+        pasteMenu->addAction(QString(savedCopy[1].left(20) + ((savedCopy[1].size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_3_triggered()));
     if(savedCopy[2] != "")
-        pasteMenu->addAction(QString(savedCopy[2]), this, SLOT(on_actionPaste_4_triggered()));
+        pasteMenu->addAction(QString(savedCopy[2].left(20) + ((savedCopy[2].size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_4_triggered()));
 
     pasteMenu->exec(globalPos);
 
@@ -247,12 +247,12 @@ void MainWindow::showContextMenu(const QPoint& pos)
     rightClick->addAction(QString("Copy"), this, SLOT(on_actionCopy_triggered()));
 
     pasteMenu->setTitle(QString("Paste"));
-    pasteMenu->addAction(QString(savedCopy[0]), this, SLOT(on_actionPaste_2_triggered()));
+    pasteMenu->addAction(QString(savedCopy[0].left(20) + ((savedCopy[0].size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
 
     if(savedCopy[1] != "")
-        pasteMenu->addAction(QString(savedCopy[1]), this, SLOT(on_actionPaste_3_triggered()));
+        pasteMenu->addAction(QString(savedCopy[1].left(20) + ((savedCopy[1].size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_3_triggered()));
     if(savedCopy[2] != "")
-        pasteMenu->addAction(QString(savedCopy[2]), this, SLOT(on_actionPaste_4_triggered()));
+        pasteMenu->addAction(QString(savedCopy[2].left(20) + ((savedCopy[2].size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_4_triggered()));
 
     rightClick->addMenu(pasteMenu);
 
