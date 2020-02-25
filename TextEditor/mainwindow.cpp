@@ -14,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     menuBar()->setNativeMenuBar(false);
+
     ui->tabWidget->setMovable(false);
     ui->tabWidget->setTabsClosable(true);
 
@@ -44,8 +45,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     QTabBar* tabBar = ui->tabWidget->tabBar();
 
-    tabBar->tabButton(1, QTabBar::LeftSide)->deleteLater();
-    tabBar->setTabButton(1, QTabBar::LeftSide, 0);
+    tabBar->tabButton(1, QTabBar::RightSide)->deleteLater();
+    tabBar->setTabButton(1, QTabBar::RightSide, 0);
 }
 
 MainWindow::~MainWindow()
@@ -261,6 +262,7 @@ void MainWindow::showContextMenu(const QPoint& pos)
 
 void MainWindow::on_tabWidget_tabCloseRequested(int index)
 {
+    qDebug() << "Closing " + QString::number(index);
     ui->tabWidget->removeTab(index);
 }
 

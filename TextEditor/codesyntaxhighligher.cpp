@@ -4,3 +4,8 @@ CodeSyntaxHighligher::CodeSyntaxHighligher(QTextDocument* parent): QSyntaxHighli
 {
 
 }
+
+void CodeSyntaxHighligher::highlightBlock(const QString &text)
+{
+
+}

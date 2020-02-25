@@ -45,6 +45,9 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     //End of replace layout
 
 
+    replaceCurrentButton->setDisabled(true);
+    replaceAllButton->setDisabled(true);
+
 
     //Add this layout to the group so that we have a line edit and 2 buttons in this layout
     groupBoxLayout->addLayout(replaceLayout);
@@ -139,6 +142,7 @@ void TextTabWidget::revealSearchBox()
 void TextTabWidget::revealReplaceBox()
 {
     groupBox->setTitle("Search/Replace");
+    groupBox->show();
     replaceText->show();
     replaceCurrentButton->show();
     replaceAllButton->show();
@@ -151,15 +155,24 @@ void TextTabWidget::searchTextForQuery(const QString& query)
     highlighter->searchText(query);
     replacer->populateAllExpressionMatchesAndMoveToFirst(textEditArea, query);
     replacer->setResultsText();
+
+    replaceCurrentButton->setDisabled(findText->text().isEmpty());
+    replaceAllButton->setDisabled(findText->text().isEmpty());
 }
 
 void TextTabWidget::sendFindDataToReplacerAndReplaceCurrent()
 {
+    if(findText->text().isEmpty())
+        return;
+
     replacer->replaceCurrent(findText->text(), replaceText->text());
 }
 
 void TextTabWidget::sendFindDataToReplacerAndReplaceAll()
 {
+    if(findText->text().isEmpty())
+        return;
+
     replacer->replaceAll(findText->text(), replaceText->text());
 }
 

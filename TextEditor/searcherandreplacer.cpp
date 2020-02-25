@@ -14,23 +14,26 @@ void SearcherAndReplacer::populateAllExpressionMatchesAndMoveToFirst(QTextEdit *
     textMatches.clear();
     currentIndex = 0;
 
-    //Set the pattern and match the pattern globally against the whole document text
-    pattern = QRegularExpression(text);
-    QRegularExpressionMatchIterator iterator = pattern.globalMatch(textEdit->toPlainText());
-
-    while (iterator.hasNext())
+    if(!text.isEmpty())
     {
-        QRegularExpressionMatch match = iterator.next();
-        if(match.hasMatch())
+        //Set the pattern and match the pattern globally against the whole document text
+        pattern = QRegularExpression(text);
+        QRegularExpressionMatchIterator iterator = pattern.globalMatch(textEdit->toPlainText());
+
+        while (iterator.hasNext())
         {
-            textMatches.push_back(match);
+            QRegularExpressionMatch match = iterator.next();
+            if(match.hasMatch())
+            {
+                textMatches.push_back(match);
+            }
         }
-    }
 
-    //Pass the first match (if we have one) to the cursor in order for it to find it and select it
-    if(textMatches.size() > 0)
-    {
-        moveToFirstOccurence(textMatches.front());
+        //Pass the first match (if we have one) to the cursor in order for it to find it and select it
+        if(textMatches.size() > 0)
+        {
+            moveToFirstOccurence(textMatches.front());
+        }
     }
 }
 
@@ -78,6 +81,8 @@ void SearcherAndReplacer::replaceCurrent(const QString& findText, const QString&
         cursor.insertText(replacementText);
 
         populateAllExpressionMatchesAndMoveToFirst(textEdit, findText); //Update the matches since the match start and end is no longer valid
+
+        setResultsText();
     }
 }
 
