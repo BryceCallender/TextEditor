@@ -1,6 +1,6 @@
 #include "codesyntaxhighligher.h"
 
-CodeSyntaxHighligher::CodeSyntaxHighligher()
+CodeSyntaxHighligher::CodeSyntaxHighligher(QTextDocument* parent): QSyntaxHighlighter(parent)
 {
 
 }

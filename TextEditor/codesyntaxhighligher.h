@@ -1,12 +1,14 @@
 #ifndef CODESYNTAXHIGHLIGHER_H
 #define CODESYNTAXHIGHLIGHER_H
 
+#include <QSyntaxHighlighter>
+#include <QTextDocument>
 
-class CodeSyntaxHighligher
+class CodeSyntaxHighligher : public QSyntaxHighlighter
 {
     Q_OBJECT
 public:
-    CodeSyntaxHighligher();
+    explicit CodeSyntaxHighligher(QTextDocument* parent);
 };
 
 #endif // CODESYNTAXHIGHLIGHER_H
