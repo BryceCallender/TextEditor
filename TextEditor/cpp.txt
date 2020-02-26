@@ -1,0 +1,103 @@
+alignas
+array
+auto
+bool
+break
+case
+catch
+char
+char16_t
+char32_t
+class
+const
+const_cast
+constexpr
+continue
+decltype
+default
+delegate
+delete
+deprecated
+dllexport
+dllimport
+do
+double
+dynamic_cast
+else
+enum
+enum class
+enum struct
+event
+explicit
+extern
+false
+finally
+float
+for
+for each in
+friend
+friend_as
+gcnew
+generic
+goto
+if
+initonly
+inline
+int
+interface class
+interface struct
+interior_ptr
+literal
+long
+mutable
+naked
+namespace
+new
+noexcept
+noinline
+noreturn
+nothrow
+novtable
+nullptr
+operator
+private
+property
+protected
+public
+ref class
+ref struct
+register
+reinterpret_cast
+return
+safecast
+sealed
+selectany
+short
+signed
+sizeof
+static
+static_assert
+static_cast
+struct
+switch
+template
+this
+thread
+throw
+true
+try
+typedef
+typeid
+typeid
+typename
+union
+unsigned
+using declaration
+using directive
+uuid
+value class
+value struct
+virtual
+void
+volatile
+while
