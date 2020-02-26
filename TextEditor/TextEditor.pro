@@ -17,7 +17,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    codesyntaxhighligher.cpp \
+    codesyntaxhighlighter.cpp \
+    javasyntaxhighlighter.cpp \
     main.cpp \
     mainwindow.cpp \
     searcherandreplacer.cpp \
@@ -25,7 +26,8 @@ SOURCES += \
     texttabwidget.cpp
 
 HEADERS += \
-    codesyntaxhighligher.h \
+    codesyntaxhighlighter.h \
+    javasyntaxhighlighter.h \
     mainwindow.h \
     searcherandreplacer.h \
     searchhighlighter.h \
@@ -43,6 +45,6 @@ RESOURCES += \
     resources.qrc
 
 DISTFILES += \
-    cpp.txt \
+    cpp_keywords.txt \
     java_keywords.txt \
-    python.txt
+    python_keywords.txt

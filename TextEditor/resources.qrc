@@ -1,2 +1,7 @@
-<!DOCTYPE RCC>
-<RCC version="1.0"/>
+<RCC>
+    <qresource prefix="/">
+        <file>cpp_keywords.txt</file>
+        <file>java_keywords.txt</file>
+        <file>python_keywords.txt</file>
+    </qresource>
+</RCC>

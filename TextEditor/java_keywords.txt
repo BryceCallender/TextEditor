@@ -5,7 +5,7 @@ new
 switch
 assert
 default
-goto*
+goto
 package
 synchronized
 boolean

@@ -15,6 +15,7 @@
 
 #include "searchhighlighter.h"
 #include "searcherandreplacer.h"
+#include "javasyntaxhighlighter.h"
 
 class TextTabWidget : public QTabBar
 {
@@ -55,9 +56,9 @@ private:
     QPushButton *replaceCurrentButton;
     QPushButton *replaceAllButton;
 
-    SearchHighlighter* highlighter;
-    SearcherAndReplacer* replacer;
-
+    SearchHighlighter *highlighter;
+    SearcherAndReplacer *replacer;
+    CodeSyntaxHighlighter *codeHighlighter;
 };
 
 #endif // TEXTTABWIDGET_H

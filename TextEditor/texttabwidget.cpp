@@ -5,6 +5,7 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     textEditArea = new QTextEdit();
 
     highlighter = new SearchHighlighter(textEditArea->document());
+    codeHighlighter = new JavaSyntaxHighlighter(textEditArea->document());
 
     resultsLabel = new QLabel("No results");
      //Takes in the current area it owns and the results label to give feedback to the user on found querys
