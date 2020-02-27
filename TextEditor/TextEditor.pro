@@ -18,17 +18,21 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     codesyntaxhighlighter.cpp \
+    cppsyntaxhighlighter.cpp \
     javasyntaxhighlighter.cpp \
     main.cpp \
     mainwindow.cpp \
+    pythonsyntaxhighlighter.cpp \
     searcherandreplacer.cpp \
     searchhighlighter.cpp \
     texttabwidget.cpp
 
 HEADERS += \
     codesyntaxhighlighter.h \
+    cppsyntaxhighlighter.h \
     javasyntaxhighlighter.h \
     mainwindow.h \
+    pythonsyntaxhighlighter.h \
     searcherandreplacer.h \
     searchhighlighter.h \
     texttabwidget.h

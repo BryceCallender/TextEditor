@@ -11,11 +11,14 @@
 #include <QtDebug>
 #include <QPushButton>
 #include <QLabel>
+#include <QFileInfo>
 #include <QFileSystemWatcher>
 
 #include "searchhighlighter.h"
 #include "searcherandreplacer.h"
 #include "javasyntaxhighlighter.h"
+#include "cppsyntaxhighlighter.h"
+#include "pythonsyntaxhighlighter.h"
 
 class TextTabWidget : public QTabBar
 {

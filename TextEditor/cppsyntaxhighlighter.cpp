@@ -1,13 +1,13 @@
-#include "javasyntaxhighlighter.h"
+#include "cppsyntaxhighlighter.h"
 
-JavaSyntaxHighlighter::JavaSyntaxHighlighter(QTextDocument* parent) : CodeSyntaxHighlighter(parent)
+CPPSyntaxHighlighter::CPPSyntaxHighlighter(QTextDocument *parent) : CodeSyntaxHighlighter(parent)
 {
     readKeywordFileAndPopulateList();
 }
 
-void JavaSyntaxHighlighter::readKeywordFileAndPopulateList()
+void CPPSyntaxHighlighter::readKeywordFileAndPopulateList()
 {
-    QFile file(":/java_keywords.txt");
+    QFile file(":/cpp_keywords.txt");
 
     QVector<QString> keywordPatterns;
 
@@ -46,11 +46,12 @@ void JavaSyntaxHighlighter::readKeywordFileAndPopulateList()
     rule.format = singleLineCommentFormat;
     highlightingRules.append(rule);
 
-    //class definition
-    classFormat.setForeground(QColor(255,127,80));
+    //new and delete get a special color (plan is to make it super obvious they're using it
+    newAndDeleteFormat.setForeground(Qt::red);
 
-    rule.pattern = QRegularExpression("(public|abstract|final)?");
-    rule.format = classFormat;
+    rule.pattern = QRegularExpression(QStringLiteral("\\bnew|delete\\b"));
+    rule.format = newAndDeleteFormat;
     highlightingRules.append(rule);
-
 }
+
+

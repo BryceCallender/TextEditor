@@ -96,11 +96,30 @@ void MainWindow::on_actionOpen_triggered()
     textTabWidget->setTextEditText(text);
 
     QFileInfo fileInfo(fileName);
-    QString name(fileInfo.fileName());
-
-    ui->tabWidget->setTabText(tabIndex, name); //calls setTabText(index of tab => int, name of file => QString);
+    ui->tabWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
 
     file.close();
+}
+
+void MainWindow::on_actionSave_triggered()
+{
+    TextTabWidget* textTabWidget = getCurrentTabWidget();
+
+    //If the tabwidget has an actual path thats not just New File.txt (default name) then actually save it using that name
+    if(textTabWidget->getTabFileName() != "New File.txt")
+    {
+        QFile file(textTabWidget->getTabFileName());
+
+        QTextStream out(&file);
+        QString text = textTabWidget->getTextEdit()->toPlainText();
+        out << text;
+        file.close();
+    }
+    else //File hasnt been made yet so ask them for a name!
+    {
+        on_actionSave_as_triggered();
+    }
+
 }
 
 void MainWindow::on_actionSave_as_triggered()
@@ -114,6 +133,13 @@ void MainWindow::on_actionSave_as_triggered()
     }
     currentFile = fileName;
     setWindowTitle(fileName);
+
+    getCurrentTabWidget()->setTabsFileName(fileName);
+    QFileInfo fileInfo(fileName);
+
+    int tabIndex = ui->tabWidget->currentIndex();
+    ui->tabWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
+
     QTextStream out(&file);
     QString text = getCurrentTabWidget()->getTextEdit()->toPlainText();
     out << text;
@@ -294,25 +320,6 @@ void MainWindow::on_actionView_Rendered_HTML_triggered()
 void MainWindow::on_actionSplit_Dock_Horizontally_triggered()
 {
     splitter->setSizes(QList<int>({INT_MAX, INT_MAX}));
-}
-
-void MainWindow::on_actionSave_triggered()
-{
-    TextTabWidget* textTabWidget = getCurrentTabWidget();
-
-    QFile file(textTabWidget->getTabFileName());
-    if(file.open(QFile::ReadWrite) && file.exists())
-    {
-        QTextStream out(&file);
-        QString text = textTabWidget->getTextEdit()->toPlainText();
-        out << text;
-        file.close();
-    }
-    else
-    {
-        on_actionSave_as_triggered();
-    }
-
 }
 
 void MainWindow::setWindowToFileName(int index)

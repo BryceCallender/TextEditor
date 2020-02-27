@@ -4,6 +4,7 @@
 #include <QSyntaxHighlighter>
 #include <QTextDocument>
 #include <QRegularExpression>
+#include <QStringLiteral>
 #include <QDebug>
 
 class CodeSyntaxHighlighter : public QSyntaxHighlighter

@@ -1,13 +1,13 @@
-#include "javasyntaxhighlighter.h"
+#include "pythonsyntaxhighlighter.h"
 
-JavaSyntaxHighlighter::JavaSyntaxHighlighter(QTextDocument* parent) : CodeSyntaxHighlighter(parent)
+PythonSyntaxHighlighter::PythonSyntaxHighlighter(QTextDocument *parent) : CodeSyntaxHighlighter(parent)
 {
     readKeywordFileAndPopulateList();
 }
 
-void JavaSyntaxHighlighter::readKeywordFileAndPopulateList()
+void PythonSyntaxHighlighter::readKeywordFileAndPopulateList()
 {
-    QFile file(":/java_keywords.txt");
+    QFile file(":/python_keywords.txt");
 
     QVector<QString> keywordPatterns;
 
@@ -35,14 +35,14 @@ void JavaSyntaxHighlighter::readKeywordFileAndPopulateList()
     //""
     quotationFormat.setForeground(Qt::darkGreen);
 
-    rule.pattern = QRegularExpression(QStringLiteral("\".*\""));
+    rule.pattern = QRegularExpression(QStringLiteral("\".*\"|\'.*\'")); //Python uses both " and ' for strings
     rule.format = quotationFormat;
     highlightingRules.append(rule);
 
     ////
     singleLineCommentFormat.setForeground(Qt::blue);
 
-    rule.pattern = QRegularExpression("//.*");
+    rule.pattern = QRegularExpression("#.*");
     rule.format = singleLineCommentFormat;
     highlightingRules.append(rule);
 
@@ -52,5 +52,4 @@ void JavaSyntaxHighlighter::readKeywordFileAndPopulateList()
     rule.pattern = QRegularExpression("(public|abstract|final)?");
     rule.format = classFormat;
     highlightingRules.append(rule);
-
 }

@@ -5,7 +5,6 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     textEditArea = new QTextEdit();
 
     highlighter = new SearchHighlighter(textEditArea->document());
-    codeHighlighter = new JavaSyntaxHighlighter(textEditArea->document());
 
     resultsLabel = new QLabel("No results");
      //Takes in the current area it owns and the results label to give feedback to the user on found querys
@@ -130,6 +129,17 @@ void TextTabWidget::setTabsFileName(const QString& name)
     }
 
     fileWatcher->addPath(name);
+
+    QFileInfo fileInfo(name);
+
+    QString suffix = fileInfo.suffix();
+    if(suffix == "java") {
+        codeHighlighter = new JavaSyntaxHighlighter(textEditArea->document());
+    }else if(suffix == "cpp" || suffix == "h") {
+        codeHighlighter = new CPPSyntaxHighlighter(textEditArea->document());
+    }else if(suffix == "py") {
+        codeHighlighter = new PythonSyntaxHighlighter(textEditArea->document());
+    }
 
     fileName = name;
 }
