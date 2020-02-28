@@ -139,6 +139,13 @@ void MainWindow::on_actionSave_as_triggered()
     }
     currentFile = fileName;
     setWindowTitle(fileName);
+
+    getCurrentTabWidget()->setTabsFileName(fileName);
+    QFileInfo fileInfo(fileName);
+
+    int tabIndex = ui->tabWidget->currentIndex();
+    ui->tabWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
+
     QTextStream out(&file);
     QString text = getCurrentTabWidget()->getTextEdit()->toPlainText();
     out << text;
@@ -381,12 +388,16 @@ void MainWindow::on_actionSplit_Dock_Horizontally_triggered()
 
 void MainWindow::on_actionSave_triggered()
 {
+    int index = ui->tabWidget->currentIndex();
     TextTabWidget* textTabWidget = getCurrentTabWidget();
+    qDebug() << textTabWidget->getTabFileName();
 
     //If the tabwidget has an actual path thats not just New File.txt (default name) then actually save it using that name
     if(textTabWidget->getTabFileName() != "New File.txt")
     {
         QFile file(textTabWidget->getTabFileName());
+        if(ui->tabWidget->tabText(index).back() == '*')
+            ui->tabWidget->setTabText(index, ui->tabWidget->tabText(index).left(ui->tabWidget->tabText(index).size() - 1));
 
         if(file.open(QFile::WriteOnly))
         {
