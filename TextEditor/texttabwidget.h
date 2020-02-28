@@ -39,12 +39,9 @@ public:
     void sendFindDataToReplacerAndReplaceAll();
 
     void setResultsText(const QString& text);
-
-    void markTextTabAsDirty(const QString& newPath);
 private:
     QString fileName;
-
-    QFileSystemWatcher *fileWatcher;
+    QString tabName;
 
     QTextEdit *textEditArea;
     QGroupBox *groupBox;

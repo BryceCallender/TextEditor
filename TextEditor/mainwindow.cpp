@@ -39,7 +39,24 @@ MainWindow::MainWindow(QWidget *parent)
 
     savedCopy[0] = QApplication::clipboard()->text();
 
+    zoom = 0;
+    QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
+
     QObject::connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &MainWindow::clipboard_changed);
+
+    QShortcut *zoomIn = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Plus), this);
+
+    QObject::connect(zoomIn,
+                     &QShortcut::activated,
+                     this,
+                     &MainWindow::on_actionZoom_in_triggered);
+    QShortcut *zoomOut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Minus), this);
+
+    QObject::connect(zoomOut,
+                     &QShortcut::activated,
+                     this,
+                     &MainWindow::on_actionZoom_Out_triggered);
+
 
     ui->tabWidget->setTabText(1, "+");
 
@@ -47,6 +64,13 @@ MainWindow::MainWindow(QWidget *parent)
 
     tabBar->tabButton(1, QTabBar::RightSide)->deleteLater();
     tabBar->setTabButton(1, QTabBar::RightSide, 0);
+
+    fileWatcher = new QFileSystemWatcher();
+
+    QObject::connect(fileWatcher,
+                     &QFileSystemWatcher::fileChanged,
+                     this,
+                     &MainWindow::markTextTabAsClean);
 }
 
 MainWindow::~MainWindow()
@@ -63,6 +87,7 @@ void MainWindow::on_actionNew_triggered()
 
     connect(getCurrentTabWidget()->getTextEdit(), SIGNAL(customContextMenuRequested(const QPoint&)),
         this, SLOT(showContextMenu(const QPoint&)));
+    QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
 }
 
 void MainWindow::on_actionOpen_triggered()
@@ -138,6 +163,13 @@ void MainWindow::on_actionExit_triggered()
     QApplication::quit();
 }
 
+void MainWindow::fileChanged()
+{
+    QTabWidget* tab = ui->tabWidget;
+    int index = tab->currentIndex();
+    if(tab->tabText(index).back() != '*')
+        tab->setTabText(index, tab->tabText(index) + "*");
+}
 
 void MainWindow::on_actionCopy_triggered()
 {
@@ -256,14 +288,64 @@ void MainWindow::showContextMenu(const QPoint& pos)
 
     rightClick->addMenu(pasteMenu);
 
+    rightClick->addSeparator();
+    rightClick->addAction(QString("Zoom In"), this, SLOT(on_actionZoom_in_triggered()));
+    rightClick->addAction(QString("Zoom Out"), this, SLOT(on_actionZoom_Out_triggered()));
+    rightClick->addAction(QString("Zoom Standard"), this, SLOT(on_actionZoom_Standard_triggered()));
+
     rightClick->exec(globalPos);
 
 }
 
+void MainWindow::on_actionZoom_in_triggered()
+{
+    QTextEdit* textEdit = getCurrentTabWidget()->getTextEdit();
+    zoom++;
+
+    textEdit->zoomIn();
+}
+
+void MainWindow::on_actionZoom_Out_triggered()
+{
+    QTextEdit* textEdit = getCurrentTabWidget()->getTextEdit();
+    zoom--;
+
+    textEdit->zoomOut();
+}
+
+void MainWindow::on_actionZoom_Standard_triggered()
+{
+    QTextEdit* textEdit = getCurrentTabWidget()->getTextEdit();
+    zoom = -zoom;
+
+    textEdit->zoomIn(zoom);
+
+    zoom = 0;
+}
+
 void MainWindow::on_tabWidget_tabCloseRequested(int index)
 {
-    qDebug() << "Closing " + QString::number(index);
-    ui->tabWidget->removeTab(index);
+    if(ui->tabWidget->tabText(index).back() == '*')
+    {
+        int clicked = QMessageBox::warning(this, "Save?", "Would you like to save the file?", QMessageBox::Ok, QMessageBox::Cancel, QMessageBox::Close);
+        if(clicked == QMessageBox::Ok)
+        {
+            on_actionSave_triggered();
+            qDebug() << "Closing " + QString::number(index);
+            ui->tabWidget->removeTab(index);
+        }
+        else if(clicked == QMessageBox::Close)
+        {
+            qDebug() << "Closing " + QString::number(index);
+            ui->tabWidget->removeTab(index);
+        }
+    }
+    else
+    {
+        qDebug() << "Closing " + QString::number(index);
+        ui->tabWidget->removeTab(index);
+    }
+
 }
 
 
@@ -281,6 +363,7 @@ void MainWindow::on_tabWidget_tabBarClicked(int index)
 
     connect(getCurrentTabWidget()->getTextEdit(), SIGNAL(customContextMenuRequested(const QPoint&)),
         this, SLOT(showContextMenu(const QPoint&)));
+    QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
 }
 
 void MainWindow::on_actionView_Rendered_HTML_triggered()
@@ -300,18 +383,35 @@ void MainWindow::on_actionSave_triggered()
 {
     TextTabWidget* textTabWidget = getCurrentTabWidget();
 
-    QFile file(textTabWidget->getTabFileName());
-    if(file.open(QFile::ReadWrite) && file.exists())
+    //If the tabwidget has an actual path thats not just New File.txt (default name) then actually save it using that name
+    if(textTabWidget->getTabFileName() != "New File.txt")
     {
+        QFile file(textTabWidget->getTabFileName());
+
+        if(file.open(QFile::WriteOnly))
+        {
         QTextStream out(&file);
         QString text = textTabWidget->getTextEdit()->toPlainText();
         out << text;
+        }
         file.close();
+
     }
-    else
+    else //File hasnt been made yet so ask them for a name!
     {
         on_actionSave_as_triggered();
     }
+
+}
+
+void MainWindow::markTextTabAsClean(const QString &newPath)
+{
+    int index = ui->tabWidget->currentIndex();
+    if(!fileWatcher->files().contains(newPath))
+        fileWatcher->addPath(newPath);
+    if(ui->tabWidget->tabText(index).back() == '*')
+        ui->tabWidget->setTabText(index, ui->tabWidget->tabText(index).left(ui->tabWidget->tabText(index).size() - 1));
+    qDebug() << "file changed"; //file saved take away the * showing it saved
 
 }
 

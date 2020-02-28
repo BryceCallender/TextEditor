@@ -53,6 +53,8 @@ private slots:
 
     void clipboard_changed();
 
+    void fileChanged();
+
     void showContextPasteMenu(const QPoint& pos);
 
     void on_actionPaste_triggered();
@@ -68,6 +70,12 @@ private slots:
     void on_actionRedo_triggered();
 
     void showContextMenu(const QPoint&);
+
+    void on_actionZoom_in_triggered();
+
+    void on_actionZoom_Out_triggered();
+
+    void on_actionZoom_Standard_triggered();
 
     void on_actionSplit_Dock_Horizontally_triggered();
 
@@ -97,6 +105,8 @@ private slots:
 
     TextTabWidget* getCurrentTabWidget();
 
+    void markTextTabAsClean(const QString& newPath);
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
@@ -104,7 +114,9 @@ private:
     QString savedCopy[numCopies] = {"", "", ""};
     int track;
     QMenu *pasteMenu;
+    int zoom;
 
+    QFileSystemWatcher *fileWatcher;
 
 
     QSplitter* splitter;
