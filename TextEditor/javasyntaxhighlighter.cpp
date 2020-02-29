@@ -26,6 +26,23 @@ void JavaSyntaxHighlighter::readKeywordFileAndPopulateList()
         }
     }
 
+    //Method definitions
+    functionFormat.setForeground(QColor("#f35588"));
+
+    rule.pattern = QRegularExpression("\\s*(((public|protected|private|static|abstract|final|synchronized|native)\\s*)*?)"
+                                      "\\s+(void|((byte|short|int|long|char|float|double|boolean|\\w+)\\s*(\[\\s*\])*?))"
+                                      "\\s+\\w+\(\\s*((byte|short|int|long|char|float|double|boolean|\\w+"
+                                      "((\[\\s*\])*?)\\s*\\w+)(,\\s*)*?)*?\\s*\)");
+    rule.format = functionFormat;
+    highlightingRules.append(rule);
+
+    //Class definition
+    classFormat.setForeground(QColor(255,127,80));
+
+    rule.pattern = QRegularExpression("\\s*(public|abstract|final)+\\s+\\bclass\\b\\s+\\w+\\s*(extends\\s+\\w+)?(\\s+)?(implements\\s+\\w+(,\\s*\\w+)*)?");
+    rule.format = classFormat;
+    highlightingRules.append(rule);
+
     for (const QString &pattern : keywordPatterns) {
         rule.pattern = QRegularExpression(pattern);
         rule.format = keywordFormat;
@@ -45,12 +62,4 @@ void JavaSyntaxHighlighter::readKeywordFileAndPopulateList()
     rule.pattern = QRegularExpression("//.*");
     rule.format = singleLineCommentFormat;
     highlightingRules.append(rule);
-
-    //class definition
-    classFormat.setForeground(QColor(255,127,80));
-
-    rule.pattern = QRegularExpression("(public|abstract|final)?");
-    rule.format = classFormat;
-    highlightingRules.append(rule);
-
 }

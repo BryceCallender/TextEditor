@@ -20,7 +20,7 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     QVBoxLayout* groupBoxLayout = new QVBoxLayout();
 
     QHBoxLayout* findLayout = new QHBoxLayout();
-    findText = new QLineEdit();
+    findText = new SpecialLineEdit();
     findText->setPlaceholderText("Find");
 
     findLayout->addWidget(findText);
@@ -113,6 +113,11 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
                      &QFileSystemWatcher::fileChanged,
                      this,
                      &TextTabWidget::markTextTabAsDirty);
+
+
+    QPalette p = textEditArea->palette();
+    p.setColor(QPalette::Highlight, QColor(53,65,98));
+    textEditArea->setPalette(p);
 }
 
 QString TextTabWidget::getTabFileName()

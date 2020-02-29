@@ -12,6 +12,7 @@
 #include <QPushButton>
 #include <QLabel>
 #include <QFileInfo>
+#include <QPalette>
 #include <QFileSystemWatcher>
 
 #include "searchhighlighter.h"
@@ -19,6 +20,7 @@
 #include "javasyntaxhighlighter.h"
 #include "cppsyntaxhighlighter.h"
 #include "pythonsyntaxhighlighter.h"
+#include "speciallineedit.h"
 
 class TextTabWidget : public QTabBar
 {
@@ -52,7 +54,7 @@ private:
 
     QTextEdit *textEditArea;
     QGroupBox *groupBox;
-    QLineEdit *findText;
+    SpecialLineEdit *findText;
     QLineEdit *replaceText;
     QLabel *resultsLabel;
 
