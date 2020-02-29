@@ -113,7 +113,7 @@
        <enum>QTabWidget::Triangular</enum>
       </property>
       <property name="currentIndex">
-       <number>1</number>
+       <number>0</number>
       </property>
       <property name="movable">
        <bool>true</bool>
@@ -185,6 +185,10 @@
     <addaction name="actionSplit_Dock_Vertically"/>
     <addaction name="actionSplit_Dock_Horizontally"/>
     <addaction name="actionView_Rendered_HTML"/>
+    <addaction name="separator"/>
+    <addaction name="actionZoom_in"/>
+    <addaction name="actionZoom_Out"/>
+    <addaction name="actionZoom_Standard"/>
    </widget>
    <widget class="QMenu" name="menuFormat">
     <property name="title">
@@ -346,6 +350,21 @@
   <action name="actionUnderline">
    <property name="text">
     <string>Underline</string>
+   </property>
+  </action>
+  <action name="actionZoom_in">
+   <property name="text">
+    <string>Zoom In</string>
+   </property>
+  </action>
+  <action name="actionZoom_Out">
+   <property name="text">
+    <string>Zoom Out</string>
+   </property>
+  </action>
+  <action name="actionZoom_Standard">
+   <property name="text">
+    <string>Zoom Standard</string>
    </property>
   </action>
  </widget>

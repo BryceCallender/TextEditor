@@ -107,13 +107,6 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
                      &TextTabWidget::sendFindDataToReplacerAndReplaceAll);
 
     fileName = "New File.txt";
-    fileWatcher = new QFileSystemWatcher();
-
-    QObject::connect(fileWatcher,
-                     &QFileSystemWatcher::fileChanged,
-                     this,
-                     &TextTabWidget::markTextTabAsDirty);
-
 
     QPalette p = textEditArea->palette();
     p.setColor(QPalette::Highlight, QColor(53,65,98));
@@ -127,14 +120,6 @@ QString TextTabWidget::getTabFileName()
 
 void TextTabWidget::setTabsFileName(const QString& name)
 {
-    //Reset the fileWatcher since its responsible for its own tab and the file name changed
-    if(!fileWatcher->files().isEmpty())
-    {
-        fileWatcher->removePaths(fileWatcher->files());
-    }
-
-    fileWatcher->addPath(name);
-
     QFileInfo fileInfo(name);
 
     QString suffix = fileInfo.suffix();
@@ -195,11 +180,6 @@ void TextTabWidget::sendFindDataToReplacerAndReplaceAll()
 void TextTabWidget::setResultsText(const QString &text)
 {
     resultsLabel->setText(text);
-}
-
-void TextTabWidget::markTextTabAsDirty(const QString &newPath)
-{
-    qDebug() << "file changed"; //file saved take away the * showing it saved
 }
 
 void TextTabWidget::setTextEditText(const QString &text)
