@@ -26,9 +26,16 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     findLayout->addWidget(findText);
     findLayout->addWidget(resultsLabel);
 
+    exitButton = new QPushButton();
+    exitButton->setIcon(QIcon(":/images/close.png"));
+
+    exitButton->setStyleSheet("QPushButton {background-color: rgba(255, 255, 255, 0);}"
+                              "QPushButton:hover {background-color: lightgrey; }");
+
+    findLayout->addWidget(exitButton);
+
     //Add the find line edit
     groupBoxLayout->addLayout(findLayout);
-
 
 
     //Begin of replace layout
@@ -106,10 +113,15 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
                      this,
                      &TextTabWidget::sendFindDataToReplacerAndReplaceAll);
 
+    QObject::connect(exitButton,
+                     &QPushButton::pressed,
+                     this,
+                     &TextTabWidget::handleCloseEvent);
+
     fileName = "New File.txt";
 
     QPalette p = textEditArea->palette();
-    p.setColor(QPalette::Highlight, QColor(53,65,98));
+    p.setColor(QPalette::Highlight, QColor(64, 148, 255));
     textEditArea->setPalette(p);
 }
 
@@ -180,6 +192,18 @@ void TextTabWidget::sendFindDataToReplacerAndReplaceAll()
 void TextTabWidget::setResultsText(const QString &text)
 {
     resultsLabel->setText(text);
+}
+
+void TextTabWidget::handleCloseEvent()
+{
+    groupBox->hide();
+    replaceText->hide();
+
+    //Do we want to clear
+    //replaceText->setText("");
+
+    replaceCurrentButton->hide();
+    replaceAllButton->hide();
 }
 
 void TextTabWidget::setTextEditText(const QString &text)

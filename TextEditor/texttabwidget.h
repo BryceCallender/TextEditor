@@ -45,6 +45,8 @@ public:
     void sendFindDataToReplacerAndReplaceAll();
 
     void setResultsText(const QString& text);
+
+    void handleCloseEvent();
 private:
     QString fileName;
     QString tabName;
@@ -57,6 +59,8 @@ private:
 
     QPushButton *replaceCurrentButton;
     QPushButton *replaceAllButton;
+
+    QPushButton *exitButton;
 
     SearchHighlighter *highlighter;
     SearcherAndReplacer *replacer;

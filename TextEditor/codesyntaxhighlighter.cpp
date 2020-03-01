@@ -7,9 +7,11 @@ CodeSyntaxHighlighter::CodeSyntaxHighlighter(QTextDocument *parent): QSyntaxHigh
 
 void CodeSyntaxHighlighter::highlightBlock(const QString &text)
 {
-    for (const HighlightingRule &rule : qAsConst(highlightingRules)) {
+    for (const HighlightingRule &rule : qAsConst(highlightingRules))
+    {
         QRegularExpressionMatchIterator matchIterator = rule.pattern.globalMatch(text);
-        while (matchIterator.hasNext()) {
+        while (matchIterator.hasNext())
+        {
             QRegularExpressionMatch match = matchIterator.next();
             setFormat(match.capturedStart(), match.capturedLength(), rule.format);
         }

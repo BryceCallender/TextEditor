@@ -4,4 +4,7 @@
         <file>java_keywords.txt</file>
         <file>python_keywords.txt</file>
     </qresource>
+    <qresource prefix="/images">
+        <file>close.png</file>
+    </qresource>
 </RCC>

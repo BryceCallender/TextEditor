@@ -50,6 +50,7 @@ MainWindow::MainWindow(QWidget *parent)
                      &QShortcut::activated,
                      this,
                      &MainWindow::on_actionZoom_in_triggered);
+
     QShortcut *zoomOut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_Minus), this);
 
     QObject::connect(zoomOut,
