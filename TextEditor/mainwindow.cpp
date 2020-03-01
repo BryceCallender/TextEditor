@@ -460,47 +460,107 @@ void MainWindow::on_actionFormat_Text_triggered()
 
 void MainWindow::on_actionBold_triggered()
 {
-    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
     QTextCharFormat format;
-
-    if(cursor.charFormat().fontWeight() == QFont::Bold)
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    if(ui->actionBold->isChecked())
     {
-        format.setFontWeight(QFont::Normal);
+        if(cursor.hasSelection())
+        {
+
+            format.setFontWeight(QFont::Bold);
+            cursor.mergeCharFormat(format);//do the text as Bold
+        }
+        getCurrentTabWidget()->getTextEdit()->setFontWeight(QFont::Bold);
+
     }
     else
-        format.setFontWeight(QFont::Bold);
+    {
+        QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+        if(cursor.hasSelection())
+        {
+            QTextCharFormat format;
+            format.setFontWeight(QFont::Normal);
+            cursor.mergeCharFormat(format);//do the text as Bold
+        }
+        getCurrentTabWidget()->getTextEdit()->setFontWeight(QFont::Normal);
+    }
 
-    cursor.mergeCharFormat(format);//do the text as Bold
 }
 
 void MainWindow::on_actionItalic_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
     QTextCharFormat format;
-
-    if(cursor.charFormat().fontItalic())
+    if(ui->actionItalic->isChecked())
     {
-        format.setFontItalic(false);
+        QTextCharFormat format;
+        if(cursor.hasSelection())
+        {
+
+            format.setFontItalic(true);
+            cursor.mergeCharFormat(format);//do the text as Bold
+        }
+        getCurrentTabWidget()->getTextEdit()->setFontItalic(true);
+
     }
     else
-        format.setFontItalic(true);
+    {
+        if(cursor.hasSelection())
+        {
+            QTextCharFormat format;
+            format.setFontItalic(false);
+            cursor.mergeCharFormat(format);//do the text as Bold
+        }
+        getCurrentTabWidget()->getTextEdit()->setFontItalic(false);
+    }
 
-    cursor.mergeCharFormat(format);//do the text as italic
+//    if(cursor.charFormat().fontItalic())
+//    {
+//        format.setFontItalic(false);
+//    }
+//    else
+//        format.setFontItalic(true);
+
+//    cursor.mergeCharFormat(format);//do the text as italic
 }
 
 void MainWindow::on_actionUnderline_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
     QTextCharFormat format;
-
-    if(cursor.charFormat().fontUnderline())
+    if(ui->actionUnderline->isChecked())
     {
-        format.setFontUnderline(false);
+        QTextCharFormat format;
+        if(cursor.hasSelection())
+        {
+
+            format.setFontUnderline(true);
+            cursor.mergeCharFormat(format);//do the text as Bold
+        }
+        getCurrentTabWidget()->getTextEdit()->setFontItalic(true);
+
     }
     else
-        format.setFontUnderline(true);
+    {
+        if(cursor.hasSelection())
+        {
+            QTextCharFormat format;
+            format.setFontUnderline(false);
+            cursor.mergeCharFormat(format);//do the text as Bold
+        }
+        getCurrentTabWidget()->getTextEdit()->setFontItalic(false);
+    }
+//    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+//    QTextCharFormat format;
 
-    cursor.mergeCharFormat(format);//do the text as underline
+//    if(cursor.charFormat().fontUnderline())
+//    {
+//        format.setFontUnderline(false);
+//    }
+//    else
+//        format.setFontUnderline(true);
+
+//    cursor.mergeCharFormat(format);//do the text as underline
 }
 
 void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
@@ -508,10 +568,22 @@ void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
     //QFont font = ui->fontComboBox->currentFont();
 
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
-    QTextCharFormat format;
-    format.setFont(f);
 
-    cursor.mergeCharFormat(format);//Change font-family
+
+    if(cursor.hasSelection())
+    {
+        QTextCharFormat format = cursor.charFormat();
+        format.setFontFamily(f.family());
+        cursor.mergeCharFormat(format);//Change font-family
+    }else
+    {
+        QString size = ui->fontSizeComboBox->currentText();
+        QTextCharFormat format;
+        format.setFont(f);
+        format.setFontPointSize(size.toInt());
+        getCurrentTabWidget()->getTextEdit()->mergeCurrentCharFormat(format);
+    }
+
 }
 
 void MainWindow::on_fontSizeComboBox_activated(const QString &arg1)
@@ -519,12 +591,20 @@ void MainWindow::on_fontSizeComboBox_activated(const QString &arg1)
     QString size = ui->fontSizeComboBox->currentText();
     QFont font;
     font.setPointSize(size.toInt());
+    font.setFamily(getCurrentTabWidget()->getTextEdit()->fontFamily());
 
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
     QTextCharFormat format;
     format.setFont(font);
 
-    cursor.mergeCharFormat(format);//change font size
+    if(cursor.hasSelection())
+    {
+        cursor.mergeCharFormat(format);//change font size
+    }else
+    {
+        getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
+    }
+
 }
 
 void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
@@ -536,10 +616,18 @@ void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
 
     QFont font;
     font.setPointSize(size);
-
+    font.setFamily(getCurrentTabWidget()->getTextEdit()->fontFamily());
     format.setFont(font);
 
-    cursor.mergeCharFormat(format);
+    if(cursor.hasSelection())
+    {
+        cursor.mergeCharFormat(format);
+    }else
+    {
+        getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
+    }
+
+
 }
 
 TextTabWidget* MainWindow::getCurrentTabWidget()

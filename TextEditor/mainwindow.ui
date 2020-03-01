@@ -467,6 +467,9 @@
    </property>
   </action>
   <action name="actionBold">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/imgs/icon/boldIcon.png</normaloff>:/imgs/icon/boldIcon.png</iconset>
@@ -476,6 +479,9 @@
    </property>
   </action>
   <action name="actionItalic">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/imgs/icon/italicIcon.png</normaloff>:/imgs/icon/italicIcon.png</iconset>
@@ -485,6 +491,9 @@
    </property>
   </action>
   <action name="actionUnderline">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/imgs/icon/underlineIcon.png</normaloff>:/imgs/icon/underlineIcon.png</iconset>
