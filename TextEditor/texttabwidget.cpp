@@ -200,6 +200,7 @@ void TextTabWidget::handleCloseEvent()
     replaceText->hide();
 
     //Do we want to clear
+    findText->setText("");
     //replaceText->setText("");
 
     replaceCurrentButton->hide();

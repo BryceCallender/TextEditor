@@ -73,7 +73,6 @@ MainWindow::MainWindow(QWidget *parent)
                      this,
                      &MainWindow::markTextTabAsClean);
 
-    track = 0;
     QComboBox* fontFamily = ui->fontComboBox;
     QComboBox* fontSize = ui->fontSizeComboBox;
     ui->toolBar->addWidget(fontSize);
