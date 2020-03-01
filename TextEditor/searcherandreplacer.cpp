@@ -4,6 +4,7 @@ SearcherAndReplacer::SearcherAndReplacer(QTextEdit* textEdit, QLabel *label): QW
 {
     this->textEdit = textEdit;
     this->resultsLabel = label;
+    currentIndex = 0;
 }
 
 void SearcherAndReplacer::populateAllExpressionMatchesAndMoveToFirst(QTextEdit *currentTextEdit, const QString &text)
