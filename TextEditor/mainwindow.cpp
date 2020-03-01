@@ -72,6 +72,15 @@ MainWindow::MainWindow(QWidget *parent)
                      &QFileSystemWatcher::fileChanged,
                      this,
                      &MainWindow::markTextTabAsClean);
+
+    track = 0;
+    QComboBox* fontFamily = ui->fontComboBox;
+    QComboBox* fontSize = ui->fontSizeComboBox;
+    ui->toolBar->addWidget(fontSize);
+    ui->toolBar->setStyleSheet("QToolBar{spacing:3px;}");
+    ui->toolBar->addWidget(fontFamily);
+    //ui->tabWidget->removeTab(1);
+    //ui->tabWidget->setDocumentMode(true);
 }
 
 MainWindow::~MainWindow()
