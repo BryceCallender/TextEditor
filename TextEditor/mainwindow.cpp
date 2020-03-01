@@ -188,7 +188,7 @@ void MainWindow::fileChanged()
 void MainWindow::on_actionCopy_triggered()
 {
     TextTabWidget* textTabWidget = getCurrentTabWidget();
-
+/*
     if(textTabWidget->getTextEdit()->textCursor().hasSelection())
     {
         QString text = textTabWidget->getTextEdit()->textCursor().selectedText();
@@ -199,14 +199,14 @@ void MainWindow::on_actionCopy_triggered()
         else
             track++;
 
-   }
+   }*/
    textTabWidget->getTextEdit()->copy();
 }
 
 void MainWindow::on_actionCut_triggered()
 {
     TextTabWidget* textTabWidget = getCurrentTabWidget();
-
+/*
     if(textTabWidget->getTextEdit()->textCursor().hasSelection())
     {
         QString text = textTabWidget->getTextEdit()->textCursor().selectedText();
@@ -218,7 +218,7 @@ void MainWindow::on_actionCut_triggered()
             track++;
 
    }
-
+*/
    textTabWidget->getTextEdit()->cut();
 }
 
@@ -268,6 +268,11 @@ void MainWindow::on_actionPaste_3_triggered()
 void MainWindow::on_actionPaste_4_triggered()
 {
     getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[2]);
+}
+
+void MainWindow::on_actionPaste_5_triggered()
+{
+    on_actionPaste_triggered();
 }
 
 void MainWindow::on_actionUndo_triggered()

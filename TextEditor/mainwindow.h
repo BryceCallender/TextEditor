@@ -65,6 +65,8 @@ private slots:
 
     void on_actionPaste_4_triggered();
 
+    void on_actionPaste_5_triggered();
+
     void on_actionUndo_triggered();
 
     void on_actionRedo_triggered();
