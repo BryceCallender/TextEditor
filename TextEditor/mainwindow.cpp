@@ -101,38 +101,42 @@ void MainWindow::on_actionNew_triggered()
 
 void MainWindow::on_actionOpen_triggered()
 {
-    QString fileName = QFileDialog::getOpenFileName(this, "Open the file");
-    QFile file(fileName);
-    currentFile = fileName;
-    if(!file.open(QIODevice::ReadOnly | QFile::Text))
+    QStringList fileNames = QFileDialog::getOpenFileNames(this, "Open the file");
+
+    foreach (QString fileName, fileNames)
     {
-        QMessageBox::warning(this, "Warning", "Cannot open file : " + file.errorString());
-        return;
+        QFile file(fileName);
+        currentFile = fileName;
+        if(!file.open(QIODevice::ReadOnly | QFile::Text))
+        {
+            QMessageBox::warning(this, "Warning", "Cannot open file : " + file.errorString());
+            return;
+        }
+
+        int tabIndex = ui->tabWidget->currentIndex();
+        TextTabWidget* textTabWidget = getCurrentTabWidget();
+
+        //Current Tab is occupied so make a new tab, set its name, and then then carry on with setting the text
+        if(textTabWidget->getTabFileName() != "New File.txt")
+        {
+            on_actionNew_triggered();
+            textTabWidget = getCurrentTabWidget();
+            tabIndex = ui->tabWidget->currentIndex();
+        }
+
+        textTabWidget->setTabsFileName(fileName);
+
+        setWindowTitle(fileName);
+        QTextStream in(&file);
+        QString text = in.readAll();
+
+        textTabWidget->setTextEditText(text);
+
+        QFileInfo fileInfo(fileName);
+        ui->tabWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
+
+        file.close();
     }
-
-    int tabIndex = ui->tabWidget->currentIndex();
-    TextTabWidget* textTabWidget = getCurrentTabWidget();
-
-    //Current Tab is occupied so make a new tab, set its name, and then then carry on with setting the text
-    if(textTabWidget->getTabFileName() != "New File.txt")
-    {
-        on_actionNew_triggered();
-        textTabWidget = getCurrentTabWidget();
-        tabIndex = ui->tabWidget->currentIndex();
-    }
-
-    textTabWidget->setTabsFileName(fileName);
-
-    setWindowTitle(fileName);
-    QTextStream in(&file);
-    QString text = in.readAll();
-
-    textTabWidget->setTextEditText(text);
-
-    QFileInfo fileInfo(fileName);
-    ui->tabWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
-
-    file.close();
 }
 
 void MainWindow::on_actionSave_as_triggered()
