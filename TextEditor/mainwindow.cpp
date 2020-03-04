@@ -63,8 +63,14 @@ MainWindow::MainWindow(QWidget *parent)
 
     QTabBar* tabBar = ui->tabWidget->tabBar();
 
-    tabBar->tabButton(1, QTabBar::RightSide)->deleteLater();
-    tabBar->setTabButton(1, QTabBar::RightSide, 0);
+    #if defined(Q_OS_WIN) || defined(Q_OS_UNIX)
+        tabBar->tabButton(1, QTabBar::RightSide)->deleteLater();
+        tabBar->setTabButton(1, QTabBar::RightSide, 0);
+    #endif
+    #ifdef Q_OS_MACOS
+        tabBar->tabButton(1, QTabBar::LeftSide)->deleteLater();
+        tabBar->setTabButton(1, QTabBar::LeftSide, 0);
+    #endif
 
     fileWatcher = new QFileSystemWatcher();
 
@@ -75,9 +81,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     QComboBox* fontFamily = ui->fontComboBox;
     QComboBox* fontSize = ui->fontSizeComboBox;
+
     ui->toolBar->addWidget(fontSize);
     ui->toolBar->setStyleSheet("QToolBar{spacing:3px;}");
     ui->toolBar->addWidget(fontFamily);
+
     //ui->tabWidget->removeTab(1);
     //ui->tabWidget->setDocumentMode(true);
 }
