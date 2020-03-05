@@ -31,8 +31,9 @@ void JavaSyntaxHighlighter::readKeywordFileAndPopulateList()
 
     //https://regex101.com/r/cHbJr0/1
 //    rule.pattern = QRegularExpression("(((public|protected|private|static|abstract|final|synchronized|native)\\s+)*(void|byte|short|int|long|char|float|double|boolean|\\w+)(\[\\s*\])*\\s*\\w+\\s*(\\s*\(\\s*(((void|byte|short|int|long|char|float|double|boolean|\\w+)(\[\\s*\])*)\\s+\\w+\\s*)*\\s*\)\\s*))");
-//    rule.format = functionFormat;
-//    highlightingRules.append(rule);
+    rule.pattern = QRegularExpression("((\\b(public|protected|private|static|abstract|final|synchronized|native)(\\s+(public|protected|private|static|abstract|final|synchronized|native))*)*)\\b((void|byte|short|int|long|char|float|double|boolean|\\w+)(\[\\s*\])*\\s*\\w+\\s*(\\s*\(\\s*(((void|byte|short|int|long|char|float|double|boolean|\\w+)(\[\\s*\])*)\\s+\\w+\\s*)*\\s*\)\\s*))*");
+    rule.format = functionFormat;
+    highlightingRules.append(rule);
 
     //Class definition
     classFormat.setForeground(QColor(255,127,80));

@@ -23,6 +23,7 @@
 #include <QComboBox>
 
 #include "texttabwidget.h"
+#include "optionswindow.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -109,6 +110,8 @@ private slots:
 
     void markTextTabAsClean(const QString& newPath);
 
+    void on_actionOptions_triggered();
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
@@ -119,7 +122,7 @@ private:
     int zoom;
 
     QFileSystemWatcher *fileWatcher;
-
+    OptionsWindow* optionsWindow;
 
     QSplitter* splitter;
 };

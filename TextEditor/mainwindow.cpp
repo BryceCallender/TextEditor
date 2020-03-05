@@ -649,3 +649,10 @@ TextTabWidget* MainWindow::getCurrentTabWidget()
 
     return textTabWidget;
 }
+
+void MainWindow::on_actionOptions_triggered()
+{
+    optionsWindow = new OptionsWindow();
+
+    optionsWindow->show();
+}

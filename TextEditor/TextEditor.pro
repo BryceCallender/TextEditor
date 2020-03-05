@@ -22,6 +22,7 @@ SOURCES += \
     javasyntaxhighlighter.cpp \
     main.cpp \
     mainwindow.cpp \
+    optionswindow.cpp \
     pythonsyntaxhighlighter.cpp \
     searcherandreplacer.cpp \
     searchhighlighter.cpp \
@@ -33,6 +34,7 @@ HEADERS += \
     cppsyntaxhighlighter.h \
     javasyntaxhighlighter.h \
     mainwindow.h \
+    optionswindow.h \
     pythonsyntaxhighlighter.h \
     searcherandreplacer.h \
     searchhighlighter.h \
@@ -40,7 +42,8 @@ HEADERS += \
     texttabwidget.h
 
 FORMS += \
-    mainwindow.ui
+    mainwindow.ui \
+    optionswindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

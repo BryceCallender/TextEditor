@@ -166,6 +166,8 @@
     <addaction name="actionSave_as"/>
     <addaction name="actionPrint"/>
     <addaction name="actionExit"/>
+    <addaction name="separator"/>
+    <addaction name="actionOptions"/>
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
@@ -442,6 +444,11 @@
    </property>
    <property name="text">
     <string>Paste</string>
+   </property>
+  </action>
+  <action name="actionOptions">
+   <property name="text">
+    <string>Settings</string>
    </property>
   </action>
  </widget>
