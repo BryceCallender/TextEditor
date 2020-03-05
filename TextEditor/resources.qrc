@@ -1,4 +1,12 @@
 <RCC>
+    <qresource prefix="/">
+        <file>cpp_keywords.txt</file>
+        <file>java_keywords.txt</file>
+        <file>python_keywords.txt</file>
+    </qresource>
+    <qresource prefix="/images">
+        <file>close.png</file>
+    </qresource>
     <qresource prefix="/imgs">
         <file>icon/boldIcon.png</file>
         <file>icon/italicIcon.png</file>
@@ -12,4 +20,5 @@
         <file>icon/saveIcon.png</file>
         <file>icon/printIcon.png</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

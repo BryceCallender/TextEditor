@@ -123,6 +123,14 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     QPalette p = textEditArea->palette();
     p.setColor(QPalette::Highlight, QColor(64, 148, 255));
     textEditArea->setPalette(p);
+
+
+    //Default code tab count is 4 space units, some have 2, and then for basic essay writing it is going to be 8 units
+    //Qt has a tab set as a stop distance of 80 pixels where the width of ' ' is 3 pixels. The stop distance is in terms of pixels as a qreal
+    //Reference: https://doc.qt.io/qt-5/qtextedit.html#tabStopDistance-prop
+    QFontMetrics metrics(textEditArea->font());
+    int tabSpaceCount = 4;
+    textEditArea->setTabStopDistance(tabSpaceCount * metrics.width(' '));
 }
 
 QString TextTabWidget::getTabFileName()
