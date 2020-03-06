@@ -157,7 +157,7 @@
      <x>0</x>
      <y>0</y>
      <width>800</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -299,7 +299,13 @@
      <normaloff>:/imgs/icon/saveIcon.png</normaloff>:/imgs/icon/saveIcon.png</iconset>
    </property>
    <property name="text">
-    <string>Save as</string>
+    <string>Save</string>
+   </property>
+   <property name="iconText">
+    <string>Save</string>
+   </property>
+   <property name="toolTip">
+    <string>Save</string>
    </property>
   </action>
   <action name="actionPrint">

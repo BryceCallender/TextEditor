@@ -20,7 +20,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     splitter = new QSplitter();
 
-    ui->tabWidget->removeTab(0);
+    ui->tabWidget->clear();
+
     ui->tabWidget->insertTab(0, new TextTabWidget(), "New Tab");
 
     connect(ui->tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
@@ -59,7 +60,7 @@ MainWindow::MainWindow(QWidget *parent)
                      &MainWindow::on_actionZoom_Out_triggered);
 
 
-    ui->tabWidget->setTabText(1, "+");
+    ui->tabWidget->addTab(new TextTabWidget(), "+");
 
     QTabBar* tabBar = ui->tabWidget->tabBar();
 
@@ -376,6 +377,8 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
         qDebug() << "Closing " + QString::number(index);
         ui->tabWidget->removeTab(index);
     }
+
+    ui->tabWidget->setCurrentIndex(index - 1);
 }
 
 

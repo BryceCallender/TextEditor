@@ -26,6 +26,7 @@ SOURCES += \
     pythonsyntaxhighlighter.cpp \
     searcherandreplacer.cpp \
     searchhighlighter.cpp \
+    settingsmanager.cpp \
     speciallineedit.cpp \
     texttabwidget.cpp
 
@@ -38,6 +39,7 @@ HEADERS += \
     pythonsyntaxhighlighter.h \
     searcherandreplacer.h \
     searchhighlighter.h \
+    settingsmanager.h \
     speciallineedit.h \
     texttabwidget.h
 
