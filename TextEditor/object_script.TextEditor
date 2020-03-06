@@ -3,6 +3,7 @@ cppsyntaxhighlighter.o
 javasyntaxhighlighter.o
 main.o
 mainwindow.o
+optionswindow.o
 pythonsyntaxhighlighter.o
 searcherandreplacer.o
 searchhighlighter.o
@@ -11,6 +12,7 @@ texttabwidget.o
 qrc_resources.o
 moc_codesyntaxhighlighter.o
 moc_mainwindow.o
+moc_optionswindow.o
 moc_searcherandreplacer.o
 moc_searchhighlighter.o
 moc_speciallineedit.o

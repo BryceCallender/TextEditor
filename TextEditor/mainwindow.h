@@ -112,6 +112,12 @@ private slots:
 
     void on_actionOptions_triggered();
 
+    void on_actionCenter_triggered();
+
+    void on_actionAlign_Left_triggered();
+
+    void on_actionAlign_Right_triggered();
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
