@@ -19,6 +19,8 @@
         <file>icon/save_Icon.png</file>
         <file>icon/saveIcon.png</file>
         <file>icon/printIcon.png</file>
+        <file>icon/alignCenterIcon.png</file>
+        <file>icon/alignLeftIcon.png</file>
+        <file>icon/alignRightIcon.png</file>
     </qresource>
-    <qresource prefix="/"/>
 </RCC>

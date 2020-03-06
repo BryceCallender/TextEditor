@@ -656,3 +656,38 @@ void MainWindow::on_actionOptions_triggered()
 
     optionsWindow->show();
 }
+
+void MainWindow::on_actionAlign_Left_triggered()
+{
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    QTextBlockFormat textBlockFormat = cursor.blockFormat();
+
+    textBlockFormat.setAlignment(Qt::AlignLeft);
+    cursor.mergeBlockFormat(textBlockFormat);
+
+    getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
+}
+
+void MainWindow::on_actionCenter_triggered()
+{
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    QTextBlockFormat textBlockFormat = cursor.blockFormat();
+
+    textBlockFormat.setAlignment(Qt::AlignCenter);
+    cursor.mergeBlockFormat(textBlockFormat);
+
+    getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
+}
+
+
+
+void MainWindow::on_actionAlign_Right_triggered()
+{
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    QTextBlockFormat textBlockFormat = cursor.blockFormat();
+
+    textBlockFormat.setAlignment(Qt::AlignRight);
+    cursor.mergeBlockFormat(textBlockFormat);
+
+    getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
+}
