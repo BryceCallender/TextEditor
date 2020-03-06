@@ -27,7 +27,7 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     findLayout->addWidget(resultsLabel);
 
     exitButton = new QPushButton();
-    exitButton->setIcon(QIcon(":/images/close.png"));
+    exitButton->setIcon(QIcon(":/imgs/close.png"));
 
     exitButton->setStyleSheet("QPushButton {background-color: rgba(255, 255, 255, 0);}"
                               "QPushButton:hover {background-color: lightgrey; }");
@@ -117,6 +117,11 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
                      &QPushButton::pressed,
                      this,
                      &TextTabWidget::handleCloseEvent);
+
+    QObject::connect(textEditArea,
+                     &QTextEdit::textChanged,
+                     this,
+                     &TextTabWidget::handleBracketAndParenthesisMatch);
 
     fileName = "New File.txt";
 
@@ -213,6 +218,19 @@ void TextTabWidget::handleCloseEvent()
 
     replaceCurrentButton->hide();
     replaceAllButton->hide();
+}
+
+void TextTabWidget::handleBracketAndParenthesisMatch()
+{
+    QFileInfo fileInfo(fileName);
+
+    QString suffix = fileInfo.suffix();
+    if(suffix == "cpp" || suffix == "h" || suffix == "java") {
+        if(textEditArea->toPlainText().endsWith("{")) {
+            textEditArea->textCursor().insertText("}");
+            textEditArea->textCursor().movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, 1);
+        }
+    }
 }
 
 void TextTabWidget::setTextEditText(const QString &text)

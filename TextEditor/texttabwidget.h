@@ -13,6 +13,7 @@
 #include <QLabel>
 #include <QFileInfo>
 #include <QPalette>
+#include <QTextCursor>
 #include <QFileSystemWatcher>
 
 #include "searchhighlighter.h"
@@ -47,6 +48,8 @@ public:
     void setResultsText(const QString& text);
 
     void handleCloseEvent();
+
+    void handleBracketAndParenthesisMatch();
 private:
     QString fileName;
     QString tabName;
