@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     savedCopy[0] = QApplication::clipboard()->text();
 
-    zoom = 0;
+    zoom = 8;
     QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
 
     QObject::connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &MainWindow::clipboard_changed);
@@ -331,28 +331,62 @@ void MainWindow::showContextMenu(const QPoint& pos)
 
 void MainWindow::on_actionZoom_in_triggered()
 {
-    QTextEdit* textEdit = getCurrentTabWidget()->getTextEdit();
-    zoom++;
+    QFont font = getCurrentTabWidget()->getTextEdit()->currentFont();
 
-    textEdit->zoomIn();
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    QTextCharFormat format;
+
+    font.setPointSize(font.pointSize() + 1);
+    font.setFamily(getCurrentTabWidget()->getTextEdit()->fontFamily());
+    format.setFont(font);
+    QTextDocumentFragment selection = cursor.selection();
+
+    getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
+
+    cursor.select(QTextCursor::Document);
+    cursor.mergeCharFormat(format);
+    cursor.clearSelection();
+
+
 }
 
 void MainWindow::on_actionZoom_Out_triggered()
 {
-    QTextEdit* textEdit = getCurrentTabWidget()->getTextEdit();
-    zoom--;
+    QFont font = getCurrentTabWidget()->getTextEdit()->currentFont();
 
-    textEdit->zoomOut();
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    QTextCharFormat format;
+
+    font.setPointSize(font.pointSize() - 1);
+    font.setFamily(getCurrentTabWidget()->getTextEdit()->fontFamily());
+    format.setFont(font);
+    QTextDocumentFragment selection = cursor.selection();
+
+    getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
+
+    cursor.select(QTextCursor::Document);
+    cursor.mergeCharFormat(format);
+    cursor.clearSelection();
+
 }
 
 void MainWindow::on_actionZoom_Standard_triggered()
 {
-    QTextEdit* textEdit = getCurrentTabWidget()->getTextEdit();
-    zoom = -zoom;
+    QFont font = getCurrentTabWidget()->getTextEdit()->currentFont();
 
-    textEdit->zoomIn(zoom);
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+    QTextCharFormat format;
 
-    zoom = 0;
+    font.setPointSize(zoom);
+    font.setFamily(getCurrentTabWidget()->getTextEdit()->fontFamily());
+    format.setFont(font);
+    QTextDocumentFragment selection = cursor.selection();
+
+    getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
+
+    cursor.select(QTextCursor::Document);
+    cursor.mergeCharFormat(format);
+    cursor.clearSelection();
 }
 
 void MainWindow::on_tabWidget_tabCloseRequested(int index)
@@ -440,6 +474,11 @@ void MainWindow::on_actionSave_triggered()
     }
 
 }
+
+ void MainWindow::on_actionSave_2_trigered()
+ {
+     on_actionSave_triggered();
+ }
 
 void MainWindow::markTextTabAsClean(const QString &newPath)
 {
@@ -607,6 +646,8 @@ void MainWindow::on_fontSizeComboBox_activated(const QString &arg1)
     font.setPointSize(size.toInt());
     font.setFamily(getCurrentTabWidget()->getTextEdit()->fontFamily());
 
+    zoom = size.toInt();
+
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
     QTextCharFormat format;
     format.setFont(font);
@@ -627,6 +668,8 @@ void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
 
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
     QTextCharFormat format;
+
+    zoom = size;
 
     QFont font;
     font.setPointSize(size);

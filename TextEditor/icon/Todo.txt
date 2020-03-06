@@ -1,7 +1,6 @@
 Todo:
-Multi file open
-Multi file paste
+Multi file paste?
+
 
 Fix cursor bug
-Fix zoom in/out bug
 Make sure line wrapping is consistent
