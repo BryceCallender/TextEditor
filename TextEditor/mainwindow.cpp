@@ -760,5 +760,22 @@ void MainWindow::closeEvent(QCloseEvent *event)
     qDebug() << "Saved window geometry";
 
     settings->saveValue("ui", "geometry", this->geometry());
-    QWidget::closeEvent(event);
+
+    for(int i = 0; i < ui->tabWidget->count(); i++)
+    {
+        if(ui->tabWidget->tabText(i).back() == '*')
+        {
+            int clicked = QMessageBox::warning(this, "Save?", "Would you like to save " + ui->tabWidget->tabText(i).left(ui->tabWidget->tabText(i).size() - 1) + "?", QMessageBox::Ok, QMessageBox::Cancel, QMessageBox::Close);
+            if(clicked == QMessageBox::Ok)
+            {
+                on_actionSave_triggered();
+                qDebug() << "Closing " + QString::number(i);
+            }
+            else if(clicked == QMessageBox::Close)
+            {
+                qDebug() << "Closing " + QString::number(i);
+            }
+        }
+    }
+        QWidget::closeEvent(event);
 }
