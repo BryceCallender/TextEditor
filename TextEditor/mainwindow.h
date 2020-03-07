@@ -24,6 +24,7 @@
 
 #include "texttabwidget.h"
 #include "optionswindow.h"
+#include "settingsmanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,6 +38,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void closeEvent(QCloseEvent *event);
 private slots:
     void on_actionNew_triggered();
 
@@ -131,5 +133,7 @@ private:
     OptionsWindow* optionsWindow;
 
     QSplitter* splitter;
+
+    SettingsManager* settings;
 };
 #endif // MAINWINDOW_H

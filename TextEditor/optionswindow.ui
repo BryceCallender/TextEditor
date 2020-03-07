@@ -6,13 +6,84 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>626</width>
-    <height>494</height>
+    <width>642</width>
+    <height>508</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
+  <layout class="QHBoxLayout" name="horizontalLayout">
+   <item>
+    <widget class="QTreeWidget" name="treeWidget">
+     <column>
+      <property name="text">
+       <string>Settings</string>
+      </property>
+     </column>
+     <item>
+      <property name="text">
+       <string>Text Editor</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Font Style</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Font Size</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Tab Length</string>
+       </property>
+      </item>
+     </item>
+     <item>
+      <property name="text">
+       <string>Code Editor</string>
+      </property>
+      <item>
+       <property name="text">
+        <string>Syntax Highlighting</string>
+       </property>
+       <item>
+        <property name="text">
+         <string>Java</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>C++</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Python</string>
+        </property>
+       </item>
+      </item>
+      <item>
+       <property name="text">
+        <string>Tab Length</string>
+       </property>
+      </item>
+     </item>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="codeSettingsWidget" native="true">
+     <layout class="QVBoxLayout" name="codeContext"/>
+    </widget>
+   </item>
+   <item>
+    <widget class="QWidget" name="textSettingsWidget" native="true">
+     <layout class="QVBoxLayout" name="textContext"/>
+    </widget>
+   </item>
+  </layout>
  </widget>
  <resources/>
  <connections/>
