@@ -193,6 +193,7 @@ void MainWindow::on_actionPrint_triggered()
                 this, &MainWindow::printPreview);
     if(preview.exec() == QDialog::Rejected)
     {
+        printer.abort();
         QMessageBox::warning(this, "Warning", "Cannot Access Printer");
         return;
     }
