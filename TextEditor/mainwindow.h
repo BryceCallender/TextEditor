@@ -10,6 +10,7 @@
 #include <QMessageBox>                  //for user errors
 #include <QtPrintSupport/QPrinter>      //print to printer
 #include <QtPrintSupport/QPrintDialog>  //to select printer
+#include <QPrintPreviewDialog>
 #include <QClipboard>
 #include <QMimeData>
 #include <QTextStream>
@@ -24,6 +25,7 @@
 
 #include "texttabwidget.h"
 #include "optionswindow.h"
+#include "settingsmanager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -37,6 +39,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void closeEvent(QCloseEvent *event);
 private slots:
     void on_actionNew_triggered();
 
@@ -120,6 +123,8 @@ private slots:
 
     void on_actionAlign_Right_triggered();
 
+    void printPreview(QPrinter *printer);
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
@@ -133,5 +138,7 @@ private:
     OptionsWindow* optionsWindow;
 
     QSplitter* splitter;
+
+    SettingsManager* settings;
 };
 #endif // MAINWINDOW_H

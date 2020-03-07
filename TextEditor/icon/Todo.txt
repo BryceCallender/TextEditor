@@ -1,6 +1,6 @@
 Todo:
 Multi file paste?
 
-
-Fix cursor bug
 Make sure line wrapping is consistent
+
+Tab dragging?

@@ -1,7 +1,8 @@
 #include "searcherandreplacer.h"
 
-SearcherAndReplacer::SearcherAndReplacer(QTextEdit* textEdit, QLabel *label): QWidget(textEdit)
+SearcherAndReplacer::SearcherAndReplacer(QTextEdit* textEdit, QLabel *label) : QWidget(textEdit)
 {
+    this->resize(0,0);
     this->textEdit = textEdit;
     this->resultsLabel = label;
     currentIndex = 0;

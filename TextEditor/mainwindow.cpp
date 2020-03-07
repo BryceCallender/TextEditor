@@ -87,6 +87,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->toolBar->setStyleSheet("QToolBar{spacing:3px;}");
     ui->toolBar->addWidget(fontFamily);
 
+    settings = new SettingsManager();
+    setGeometry(settings->getValue("ui/geometry").toRect());
+
     //ui->tabWidget->removeTab(1);
     //ui->tabWidget->setDocumentMode(true);
 }
@@ -94,6 +97,7 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+    delete settings;
 }
 
 void MainWindow::on_actionNew_triggered()
@@ -174,17 +178,31 @@ void MainWindow::on_actionSave_as_triggered()
 
 void MainWindow::on_actionPrint_triggered()
 {
-    QPrinter printer;
+    QPrinter printer(QPrinter::HighResolution);
     printer.setPrinterName("Printer Name");
-    QPrintDialog pDialog(&printer, this);
-    if(pDialog.exec() == QDialog::Rejected)
+
+//    QPrintDialog pDialog(&printer, this);
+//    if(pDialog.exec() == QDialog::Rejected)
+//    {
+//        QMessageBox::warning(this, "Warning", "Cannot Access Printer");
+//        return;
+//    }
+
+    QPrintPreviewDialog preview(&printer, this);
+    connect(&preview, &QPrintPreviewDialog::paintRequested,
+                this, &MainWindow::printPreview);
+    if(preview.exec() == QDialog::Rejected)
     {
+        printer.abort();
         QMessageBox::warning(this, "Warning", "Cannot Access Printer");
         return;
     }
-    getCurrentTabWidget()->getTextEdit()->print(&printer);
+    //preview.exec();
 }
 
+void MainWindow::printPreview(QPrinter *printer){
+    getCurrentTabWidget()->getTextEdit()->print(printer);
+}
 void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
@@ -735,4 +753,12 @@ void MainWindow::on_actionAlign_Right_triggered()
     cursor.mergeBlockFormat(textBlockFormat);
 
     getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    qDebug() << "Saved window geometry";
+
+    settings->saveValue("ui", "geometry", this->geometry());
+    QWidget::closeEvent(event);
 }
