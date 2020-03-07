@@ -10,6 +10,7 @@
 #include <QMessageBox>                  //for user errors
 #include <QtPrintSupport/QPrinter>      //print to printer
 #include <QtPrintSupport/QPrintDialog>  //to select printer
+#include <QPrintPreviewDialog>
 #include <QClipboard>
 #include <QMimeData>
 #include <QTextStream>
@@ -119,6 +120,8 @@ private slots:
     void on_actionAlign_Left_triggered();
 
     void on_actionAlign_Right_triggered();
+
+    void printPreview(QPrinter *printer);
 
 private:
     Ui::MainWindow *ui;

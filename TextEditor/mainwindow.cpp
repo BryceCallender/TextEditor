@@ -178,17 +178,30 @@ void MainWindow::on_actionSave_as_triggered()
 
 void MainWindow::on_actionPrint_triggered()
 {
-    QPrinter printer;
+    QPrinter printer(QPrinter::HighResolution);
     printer.setPrinterName("Printer Name");
-    QPrintDialog pDialog(&printer, this);
-    if(pDialog.exec() == QDialog::Rejected)
+
+//    QPrintDialog pDialog(&printer, this);
+//    if(pDialog.exec() == QDialog::Rejected)
+//    {
+//        QMessageBox::warning(this, "Warning", "Cannot Access Printer");
+//        return;
+//    }
+
+    QPrintPreviewDialog preview(&printer, this);
+    connect(&preview, &QPrintPreviewDialog::paintRequested,
+                this, &MainWindow::printPreview);
+    if(preview.exec() == QDialog::Rejected)
     {
         QMessageBox::warning(this, "Warning", "Cannot Access Printer");
         return;
     }
-    getCurrentTabWidget()->getTextEdit()->print(&printer);
+    //preview.exec();
 }
 
+void MainWindow::printPreview(QPrinter *printer){
+    getCurrentTabWidget()->getTextEdit()->print(printer);
+}
 void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
