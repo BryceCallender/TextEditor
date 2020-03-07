@@ -9,8 +9,8 @@ OptionsWindow::OptionsWindow(QWidget *parent) :
 
     setWindowTitle("Settings");
 
-    QVBoxLayout* textSettingsLayout = new QVBoxLayout();
-    QVBoxLayout* codeSettingsLayout = new QVBoxLayout();
+    textSettingsLayout = new QVBoxLayout();
+    codeSettingsLayout = new QVBoxLayout();
 
     textSettingsLayout->addWidget(new QLabel("Text Editor Specific Settings"));
     textSettingsLayout->addWidget(new QLabel("Editor: Font\nControls the default Font style for files."));
@@ -31,9 +31,39 @@ OptionsWindow::OptionsWindow(QWidget *parent) :
     tabLengthSpinbox->setRange(2, 16);
     textSettingsLayout->addWidget(tabLengthSpinbox);
 
-    ui->textSettingsWidget->setLayout(textSettingsLayout);
+    //ui->textSettingsWidget->setLayout(textSettingsLayout);
+
+    ui->context->addLayout(textSettingsLayout);
 
     //Code settings window
+    codeSettingsLayout->addWidget(new QLabel("Code Editor Specific Settings"));
+    codeSettingsLayout->addWidget(new QLabel("Syntax Highlighter:\nControls the highlighting of language specific keywords."));
+
+    codeSettingsLayout->addWidget(new QLabel("Java Syntax Color:\nControls the color of java keywords."));
+    QColorDialog* javaColorPicker = new QColorDialog();
+    javaColorPicker->setOption(QColorDialog::NoButtons);
+    javaColorPicker->setCurrentColor(javaKeywordColor);
+    codeSettingsLayout->addWidget(javaColorPicker);
+
+    codeSettingsLayout->addWidget(new QLabel("C++ Syntax Color:\nControls the color of c++ keywords."));
+    QColorDialog* cppColorPicker = new QColorDialog();
+    cppColorPicker->setOption(QColorDialog::NoButtons);
+    cppColorPicker->setCurrentColor(cppKeywordColor);
+    codeSettingsLayout->addWidget(cppColorPicker);
+
+    codeSettingsLayout->addWidget(new QLabel("Python Syntax Color:\nControls the color of python keywords."));
+    QColorDialog* pythonColorPicker = new QColorDialog();
+    pythonColorPicker->setOption(QColorDialog::NoButtons);
+    pythonColorPicker->setCurrentColor(pythonKeywordColor);
+    codeSettingsLayout->addWidget(pythonColorPicker);
+
+    codeSettingsLayout->addWidget(new QLabel("Code: Tab Length\nControls the tab length of code tabs. This is different than the tab length for the text editor."));
+    tabLengthSpinbox = new QSpinBox();
+    tabLengthSpinbox->setValue(defaultCodeTabLength);
+    tabLengthSpinbox->setRange(2, 16);
+    codeSettingsLayout->addWidget(tabLengthSpinbox);
+
+    ui->context->addLayout(codeSettingsLayout);
 
 }
 
@@ -49,12 +79,15 @@ void OptionsWindow::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column)
 
     if(item->text(column) == "Text Editor" || item->parent()->text(column) == "Text Editor")
     {
-        ui->textSettingsWidget->show();
-        ui->codeSettingsWidget->hide();
+
     }
     else if(item->text(column) == "Code Editor" || item->parent()->text(column) == "Code Editor")
     {
-        ui->textSettingsWidget->hide();
-        ui->codeSettingsWidget->show();
+
     }
+}
+
+void OptionsWindow::on_OptionsWindow_rejected()
+{
+    qDebug() << "Closed";
 }

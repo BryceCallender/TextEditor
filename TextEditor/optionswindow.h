@@ -26,6 +26,8 @@ public:
 private slots:
     void on_treeWidget_itemClicked(QTreeWidgetItem *item, int column);
 
+    void on_OptionsWindow_rejected();
+
 private:
     Ui::OptionsWindow *ui;
     QSettings settings;
@@ -38,6 +40,9 @@ private:
     QColor cppKeywordColor = Qt::darkBlue;
     QColor pythonKeywordColor = Qt::darkBlue;
     int defaultCodeTabLength = 4;
+
+    QVBoxLayout* textSettingsLayout;
+    QVBoxLayout* codeSettingsLayout;
 };
 
 #endif // OPTIONSWINDOW_H
