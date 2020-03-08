@@ -7,6 +7,8 @@
 #include <QStringLiteral>
 #include <QDebug>
 
+#include "settingsmanager.h"
+
 class CodeSyntaxHighlighter : public QSyntaxHighlighter
 {
     Q_OBJECT
@@ -14,6 +16,8 @@ public:
     explicit CodeSyntaxHighlighter(QTextDocument* parent);
 
     virtual void readKeywordFileAndPopulateList() = 0;
+
+    void updateKeywordColor(const QColor& color);
 
 protected:
     virtual void highlightBlock(const QString &text) override;

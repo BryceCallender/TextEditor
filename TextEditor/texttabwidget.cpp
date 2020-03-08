@@ -233,6 +233,11 @@ void TextTabWidget::handleBracketAndParenthesisMatch()
     }
 }
 
+CodeSyntaxHighlighter *TextTabWidget::getSyntaxHighlighter()
+{
+    return codeHighlighter;
+}
+
 void TextTabWidget::setTextEditText(const QString &text)
 {
     textEditArea->setPlainText(text);

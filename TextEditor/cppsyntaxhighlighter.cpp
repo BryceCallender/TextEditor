@@ -2,6 +2,9 @@
 
 CPPSyntaxHighlighter::CPPSyntaxHighlighter(QTextDocument *parent) : CodeSyntaxHighlighter(parent)
 {
+    keywordFormat.setForeground(SettingsManager::getInstance()->getValue("code/cppKeywordColor").value<QColor>());
+    keywordFormat.setFontWeight(QFont::Bold);
+
     readKeywordFileAndPopulateList();
 }
 
@@ -12,9 +15,6 @@ void CPPSyntaxHighlighter::readKeywordFileAndPopulateList()
     QVector<QString> keywordPatterns;
 
     HighlightingRule rule;
-
-    keywordFormat.setForeground(Qt::darkBlue);
-    keywordFormat.setFontWeight(QFont::Bold);
 
     if(file.open(QFile::ReadOnly))
     {

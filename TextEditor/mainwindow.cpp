@@ -87,17 +87,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->toolBar->setStyleSheet("QToolBar{spacing:3px;}");
     ui->toolBar->addWidget(fontFamily);
 
-    settings = new SettingsManager();
+    settings = SettingsManager::getInstance();
     setGeometry(settings->getValue("ui/geometry").toRect());
-
-    //ui->tabWidget->removeTab(1);
-    //ui->tabWidget->setDocumentMode(true);
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete settings;
 }
 
 void MainWindow::on_actionNew_triggered()
@@ -130,7 +126,7 @@ void MainWindow::on_actionOpen_triggered()
         TextTabWidget* textTabWidget = getCurrentTabWidget();
 
         //Current Tab is occupied so make a new tab, set its name, and then then carry on with setting the text
-        if(textTabWidget->getTabFileName() != "New File.txt")
+        if(textTabWidget->getTabFileName() != "New File.txt" || ui->tabWidget->count() == 1)
         {
             on_actionNew_triggered();
             textTabWidget = getCurrentTabWidget();
@@ -657,8 +653,6 @@ void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
     {
         getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
     }
-
-
 }
 
 TextTabWidget* MainWindow::getCurrentTabWidget()
@@ -671,7 +665,7 @@ TextTabWidget* MainWindow::getCurrentTabWidget()
 
 void MainWindow::on_actionOptions_triggered()
 {
-    optionsWindow = new OptionsWindow();
+    optionsWindow = new OptionsWindow(ui->tabWidget);
 
     optionsWindow->show();
 }
@@ -697,8 +691,6 @@ void MainWindow::on_actionCenter_triggered()
 
     getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
 }
-
-
 
 void MainWindow::on_actionAlign_Right_triggered()
 {

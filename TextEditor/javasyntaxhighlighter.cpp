@@ -2,6 +2,10 @@
 
 JavaSyntaxHighlighter::JavaSyntaxHighlighter(QTextDocument* parent) : CodeSyntaxHighlighter(parent)
 {
+    keywordFormat.setForeground(SettingsManager::getInstance()->getValue("code/javaKeywordColor").value<QColor>());
+    qDebug() << SettingsManager::getInstance()->getValue("code/javaKeywordColor").value<QColor>();
+    keywordFormat.setFontWeight(QFont::Bold);
+
     readKeywordFileAndPopulateList();
 }
 
@@ -12,9 +16,6 @@ void JavaSyntaxHighlighter::readKeywordFileAndPopulateList()
     QVector<QString> keywordPatterns;
 
     HighlightingRule rule;
-
-    keywordFormat.setForeground(Qt::darkBlue);
-    keywordFormat.setFontWeight(QFont::Bold);
 
     if(file.open(QFile::ReadOnly))
     {

@@ -50,6 +50,8 @@ public:
     void handleCloseEvent();
 
     void handleBracketAndParenthesisMatch();
+
+    CodeSyntaxHighlighter* getSyntaxHighlighter();
 private:
     QString fileName;
     QString tabName;

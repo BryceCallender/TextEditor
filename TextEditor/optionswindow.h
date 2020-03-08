@@ -11,6 +11,9 @@
 #include <QSpinBox>
 #include <QFontComboBox>
 
+#include "settingsmanager.h"
+#include "texttabwidget.h"
+
 namespace Ui {
 class OptionsWindow;
 }
@@ -20,7 +23,7 @@ class OptionsWindow : public QDialog
     Q_OBJECT
 
 public:
-    explicit OptionsWindow(QWidget *parent = nullptr);
+    explicit OptionsWindow(QTabWidget* tabWidget, QWidget *parent = nullptr);
     ~OptionsWindow();
 
 private slots:
@@ -30,19 +33,22 @@ private slots:
 
 private:
     Ui::OptionsWindow *ui;
-    QSettings settings;
 
-    QFont defaultTextFont = QFont("Times New Roman");
-    int defaultFontSize = 12;
-    int defaultTextTabLength = 8;
+    QFont defaultTextFont;
+    int defaultFontSize;
+    int defaultTextTabLength;
 
-    QColor javaKeywordColor = Qt::darkBlue;
-    QColor cppKeywordColor = Qt::darkBlue;
-    QColor pythonKeywordColor = Qt::darkBlue;
-    int defaultCodeTabLength = 4;
+    QColor javaKeywordColor;
+    QColor cppKeywordColor;
+    QColor pythonKeywordColor;
+    int defaultCodeTabLength;
 
     QVBoxLayout* textSettingsLayout;
     QVBoxLayout* codeSettingsLayout;
+
+    QTabWidget* tabs;
+
+    SettingsManager* settings;
 };
 
 #endif // OPTIONSWINDOW_H
