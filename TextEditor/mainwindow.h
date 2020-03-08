@@ -93,6 +93,8 @@ private slots:
 
     void on_actionSave_triggered();
 
+    void on_actionSave_2_trigered();
+
     void setWindowToFileName(int index);
 
     void on_actionFormat_Text_triggered();

@@ -7,7 +7,7 @@
 #include <QShortcut>
 #include <QLabel>
 
-class SearcherAndReplacer: public QWidget
+class SearcherAndReplacer : public QWidget
 {
     Q_OBJECT
 public:

@@ -167,7 +167,7 @@
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
     <addaction name="actionSave"/>
-    <addaction name="actionSave_as"/>
+    <addaction name="actionSave_2"/>
     <addaction name="actionPrint"/>
     <addaction name="actionExit"/>
     <addaction name="separator"/>
@@ -252,7 +252,7 @@
    </attribute>
    <addaction name="actionNew"/>
    <addaction name="actionOpen"/>
-   <addaction name="actionSave_as"/>
+   <addaction name="actionSave_2"/>
    <addaction name="separator"/>
    <addaction name="actionPaste_5"/>
    <addaction name="actionCut"/>
@@ -293,7 +293,7 @@
     <string>Open</string>
    </property>
   </action>
-  <action name="actionSave_as">
+  <action name="actionSave_2">
    <property name="icon">
     <iconset resource="resources.qrc">
      <normaloff>:/imgs/icon/saveIcon.png</normaloff>:/imgs/icon/saveIcon.png</iconset>
