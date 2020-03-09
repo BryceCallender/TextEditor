@@ -52,8 +52,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     codeSettingsLayout->addWidget(new QLabel("<h3>Java Syntax Color:</h3>"));
     codeSettingsLayout->addWidget(new QLabel("Controls the color of java keywords."));
 
-    QColorDialog* javaColorPicker = new QColorDialog();
-    javaColorPicker->setOption(QColorDialog::NoButtons);
+    QColorDialog* javaColorPicker = new QColorDialog(this);
+    javaColorPicker->setOptions(QColorDialog::NoButtons | QColorDialog::DontUseNativeDialog);
     javaColorPicker->setCurrentColor(settings->getValue("code/javaKeywordColor").value<QColor>());
     codeSettingsLayout->addWidget(javaColorPicker);
 
@@ -68,8 +68,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     codeSettingsLayout->addWidget(new QLabel("<h3>C++ Syntax Color:</h3>"));
     codeSettingsLayout->addWidget(new QLabel("Controls the color of c++ keywords."));
 
-    QColorDialog* cppColorPicker = new QColorDialog();
-    cppColorPicker->setOption(QColorDialog::NoButtons);
+    QColorDialog* cppColorPicker = new QColorDialog(this);
+    cppColorPicker->setOptions(QColorDialog::NoButtons | QColorDialog::DontUseNativeDialog);
     cppColorPicker->setCurrentColor(settings->getValue("code/cppKeywordColor").value<QColor>());
     codeSettingsLayout->addWidget(cppColorPicker);
 
@@ -84,8 +84,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     codeSettingsLayout->addWidget(new QLabel("<h3>Python Syntax Color:</h3>"));
     codeSettingsLayout->addWidget(new QLabel("Controls the color of python keywords."));
 
-    QColorDialog* pythonColorPicker = new QColorDialog();
-    pythonColorPicker->setOption(QColorDialog::NoButtons);
+    QColorDialog* pythonColorPicker = new QColorDialog(this);
+    pythonColorPicker->setOptions(QColorDialog::NoButtons | QColorDialog::DontUseNativeDialog);
     pythonColorPicker->setCurrentColor(settings->getValue("code/pythonKeywordColor").value<QColor>());
     codeSettingsLayout->addWidget(pythonColorPicker);
 

@@ -1,4 +1,9 @@
 <RCC>
+    <qresource prefix="/">
+        <file>cpp_keywords.txt</file>
+        <file>java_keywords.txt</file>
+        <file>python_keywords.txt</file>
+    </qresource>
     <qresource prefix="/imgs">
         <file>icon/boldIcon.png</file>
         <file>icon/italicIcon.png</file>
@@ -11,5 +16,9 @@
         <file>icon/save_Icon.png</file>
         <file>icon/saveIcon.png</file>
         <file>icon/printIcon.png</file>
+        <file>close.png</file>
+        <file>icon/alignCenterIcon.png</file>
+        <file>icon/alignLeftIcon.png</file>
+        <file>icon/alignRightIcon.png</file>
     </qresource>
 </RCC>
