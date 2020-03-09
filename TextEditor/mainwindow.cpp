@@ -771,3 +771,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
     }
         QWidget::closeEvent(event);
 }
+
+void MainWindow::on_actionSave_2_triggered()
+{
+    on_actionSave_triggered();
+}

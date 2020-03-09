@@ -143,7 +143,6 @@ void OptionsWindow::on_OptionsWindow_rejected()
         //The tab has a highlighter object defined
         if(highlighter != nullptr)
         {
-
             if((highlighterType = dynamic_cast<JavaSyntaxHighlighter*>(highlighter)) != nullptr)
             {
                 highlighterType->updateKeywordColor(settings->getValue("code/javaKeywordColor").value<QColor>());

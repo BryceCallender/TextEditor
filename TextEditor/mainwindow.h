@@ -125,6 +125,8 @@ private slots:
 
     void printPreview(QPrinter *printer);
 
+    void on_actionSave_2_triggered();
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
