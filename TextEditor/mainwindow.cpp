@@ -89,6 +89,34 @@ MainWindow::MainWindow(QWidget *parent)
 
     settings = SettingsManager::getInstance();
     setGeometry(settings->getValue("ui/geometry").toRect());
+
+    //Sets values to the saved settings
+    ui->fontComboBox->setCurrentFont(settings->getValue("text/fontFamily").value<QFont>());
+    ui->fontSizeComboBox->setCurrentText(settings->getValue("text/fontSize").toString());
+
+    // create shortcut
+    QShortcut *saveShortcut = new QShortcut(QKeySequence::Save, this);
+
+    QObject::connect(saveShortcut,
+                     &QShortcut::activated,
+                     this,
+                     &MainWindow::on_actionSave_triggered);
+
+    // create shortcut
+    QShortcut *saveAsShortcut = new QShortcut(QKeySequence::SaveAs, this);
+
+    QObject::connect(saveAsShortcut,
+                     &QShortcut::activated,
+                     this,
+                     &MainWindow::on_actionSave_as_triggered);
+
+    // create shortcut
+    QShortcut *printShortcut = new QShortcut(QKeySequence::Print, this);
+
+    QObject::connect(printShortcut,
+                     &QShortcut::activated,
+                     this,
+                     &MainWindow::on_actionPrint_triggered);
 }
 
 MainWindow::~MainWindow()
@@ -489,7 +517,7 @@ void MainWindow::on_actionSave_triggered()
 
 }
 
- void MainWindow::on_actionSave_2_trigered()
+ void MainWindow::on_actionSave_2_triggered()
  {
      on_actionSave_triggered();
  }
@@ -770,9 +798,4 @@ void MainWindow::closeEvent(QCloseEvent *event)
         }
     }
         QWidget::closeEvent(event);
-}
-
-void MainWindow::on_actionSave_2_triggered()
-{
-    on_actionSave_triggered();
 }

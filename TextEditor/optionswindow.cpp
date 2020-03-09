@@ -17,18 +17,35 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     codeSettingsLayout = new QVBoxLayout();
 
     textSettingsLayout->addWidget(new QLabel("<h1>Text Editor Specific Settings</h1>"));
-    textSettingsLayout->addWidget(new QLabel("<h3>Editor: Font</h3>"));
-    textSettingsLayout->addWidget(new QLabel("Controls the default Font style for files."));
+    textSettingsLayout->addWidget(new QLabel("<h3>Editor: Font Family</h3>"));
+    textSettingsLayout->addWidget(new QLabel("Controls the default Font family for files."));
 
-    QFontComboBox* comboBox = new QFontComboBox();
-    comboBox->setCurrentFont(settings->getValue("text/font").value<QFont>());
-    textSettingsLayout->addWidget(comboBox);
+    QFontComboBox* fontComboBox = new QFontComboBox();
+    fontComboBox->setCurrentFont(settings->getValue("text/fontFamily").value<QFont>());
+    textSettingsLayout->addWidget(fontComboBox);
+
+    connect(fontComboBox,
+            &QFontComboBox::currentFontChanged,
+            this,
+            [=](const QFont& value) {
+                SettingsManager::getInstance()->saveValue("text", "fontSize", value);
+            }
+    );
 
     textSettingsLayout->addWidget(new QLabel("<h3>Editor: Font Size</h3>"));
     textSettingsLayout->addWidget(new QLabel("Controls the default Font size."));
     QSpinBox* fontSizeSpinbox = new QSpinBox();
     fontSizeSpinbox->setValue(settings->getValue("text/fontSize").toInt());
     fontSizeSpinbox->setRange(8, 48);
+
+    connect(fontSizeSpinbox,
+            QOverload<int>::of(&QSpinBox::valueChanged),
+            this,
+            [=](int value) {
+                SettingsManager::getInstance()->saveValue("text", "fontSize", value);
+            }
+    );
+
     textSettingsLayout->addWidget(fontSizeSpinbox);
 
     textSettingsLayout->addWidget(new QLabel("<h3>Editor: Tab Length</h3>"));
@@ -39,7 +56,13 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     tabLengthSpinbox->setRange(2, 16);
     textSettingsLayout->addWidget(tabLengthSpinbox);
 
-    //ui->textSettingsWidget->setLayout(textSettingsLayout);
+    connect(tabLengthSpinbox,
+            QOverload<int>::of(&QSpinBox::valueChanged),
+            this,
+            [=](int value) {
+                SettingsManager::getInstance()->saveValue("text", "tabLength", value);
+            }
+    );
 
     ui->context->addLayout(textSettingsLayout);
 
@@ -101,9 +124,18 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     codeSettingsLayout->addWidget(new QLabel("Controls the tab length of code tabs. This is different than the tab length for the text editor."));
 
     tabLengthSpinbox = new QSpinBox();
-    tabLengthSpinbox->setValue(defaultCodeTabLength);
+    tabLengthSpinbox->setValue(settings->getValue("code/tabLength").toInt());
     tabLengthSpinbox->setRange(2, 16);
     codeSettingsLayout->addWidget(tabLengthSpinbox);
+
+    connect(tabLengthSpinbox,
+            QOverload<int>::of(&QSpinBox::valueChanged),
+            this,
+            [=](int value) {
+                SettingsManager::getInstance()->saveValue("code", "tabLength", value);
+            }
+    );
+
 
     ui->context->addLayout(codeSettingsLayout);
 
@@ -134,6 +166,8 @@ void OptionsWindow::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column)
 void OptionsWindow::on_OptionsWindow_rejected()
 {
     qDebug() << "Closed";
+
+    //Update the code color per tab based on which code syntax highlighter each one has
     for(int i = 0; i < tabs->count() - 1; i++)
     {
         TextTabWidget* tab = dynamic_cast<TextTabWidget*>(tabs->widget(i));

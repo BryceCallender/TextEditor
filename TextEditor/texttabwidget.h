@@ -52,6 +52,8 @@ public:
     void handleBracketAndParenthesisMatch();
 
     CodeSyntaxHighlighter* getSyntaxHighlighter();
+
+    void setTabStopDistance(unsigned int length);
 private:
     QString fileName;
     QString tabName;

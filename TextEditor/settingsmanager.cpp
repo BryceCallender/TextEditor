@@ -47,7 +47,7 @@ QVariant SettingsManager::getValue(const QString &key)
     {
         return settings->value(key, 12);
     }
-    else if(key.contains("font"))
+    else if(key.contains("fontFamily"))
     {
         return settings->value(key, QFont("Times New Roman"));
     }

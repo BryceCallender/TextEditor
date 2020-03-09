@@ -16,9 +16,11 @@
         <file>icon/save_Icon.png</file>
         <file>icon/saveIcon.png</file>
         <file>icon/printIcon.png</file>
-        <file>close.png</file>
+        <file>icon/close.png</file>
         <file>icon/alignCenterIcon.png</file>
         <file>icon/alignLeftIcon.png</file>
         <file>icon/alignRightIcon.png</file>
+        <file>icon/up-arrow.svg</file>
+        <file>icon/down-arrow.svg</file>
     </qresource>
 </RCC>

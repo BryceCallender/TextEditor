@@ -92,8 +92,7 @@ typeid
 typename
 union
 unsigned
-using declaration
-using directive
+using
 uuid
 value class
 value struct
