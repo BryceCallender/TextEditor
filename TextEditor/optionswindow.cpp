@@ -139,20 +139,26 @@ void OptionsWindow::on_OptionsWindow_rejected()
         TextTabWidget* tab = dynamic_cast<TextTabWidget*>(tabs->widget(i));
         CodeSyntaxHighlighter* highlighter = tab->getSyntaxHighlighter();
         CodeSyntaxHighlighter* highlighterType = tab->getSyntaxHighlighter();
-        if((highlighterType = dynamic_cast<JavaSyntaxHighlighter*>(highlighter)) != nullptr)
+
+        //The tab has a highlighter object defined
+        if(highlighter != nullptr)
         {
-            highlighterType->updateKeywordColor(settings->getValue("code/javaKeywordColor").value<QColor>());
-            qDebug() << "Java updated!";
-        }
-        else if((highlighterType = dynamic_cast<CPPSyntaxHighlighter*>(highlighter)) != nullptr)
-        {
-            highlighterType->updateKeywordColor(settings->getValue("code/cppKeywordColor").value<QColor>());
-            qDebug() << "C++ updated!";
-        }
-        else if((highlighterType = dynamic_cast<PythonSyntaxHighlighter*>(highlighter)) != nullptr)
-        {
-            highlighterType->updateKeywordColor(settings->getValue("code/pythonKeywordColor").value<QColor>());
-            qDebug() << "Python updated!";
+
+            if((highlighterType = dynamic_cast<JavaSyntaxHighlighter*>(highlighter)) != nullptr)
+            {
+                highlighterType->updateKeywordColor(settings->getValue("code/javaKeywordColor").value<QColor>());
+                qDebug() << "Java updated!";
+            }
+            else if((highlighterType = dynamic_cast<CPPSyntaxHighlighter*>(highlighter)) != nullptr)
+            {
+                highlighterType->updateKeywordColor(settings->getValue("code/cppKeywordColor").value<QColor>());
+                qDebug() << "C++ updated!";
+            }
+            else if((highlighterType = dynamic_cast<PythonSyntaxHighlighter*>(highlighter)) != nullptr)
+            {
+                highlighterType->updateKeywordColor(settings->getValue("code/pythonKeywordColor").value<QColor>());
+                qDebug() << "Python updated!";
+            }
         }
     }
 }
