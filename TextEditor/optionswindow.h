@@ -34,17 +34,18 @@ private slots:
 private:
     Ui::OptionsWindow *ui;
 
-    QFont defaultTextFont;
-    int defaultFontSize;
-    int defaultTextTabLength;
-
-    QColor javaKeywordColor;
-    QColor cppKeywordColor;
-    QColor pythonKeywordColor;
-    int defaultCodeTabLength;
-
     QVBoxLayout* textSettingsLayout;
     QVBoxLayout* codeSettingsLayout;
+
+    QFontComboBox* fontFamilyComboBox;
+    QSpinBox* fontSizeSpinbox;
+    QSpinBox* textTabLengthSpinbox;
+
+    QColorDialog* javaColorPicker;
+    QColorDialog* cppColorPicker;
+    QColorDialog* pythonColorPicker;
+
+    QSpinBox* codeTabLengthSpinBox;
 
     QTabWidget* tabs;
 

@@ -2,7 +2,7 @@
 
 TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
 {
-    textEditArea = new QTextEdit();
+    textEditArea = new QTextEdit(this);
 
     highlighter = new SearchHighlighter(textEditArea->document());
     codeHighlighter = nullptr;
@@ -13,7 +13,7 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
 
-    groupBox = new QGroupBox();
+    groupBox = new QGroupBox(this);
 
     groupBox->setTitle("Search");
 
@@ -21,13 +21,13 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     QVBoxLayout* groupBoxLayout = new QVBoxLayout();
 
     QHBoxLayout* findLayout = new QHBoxLayout();
-    findText = new SpecialLineEdit();
+    findText = new SpecialLineEdit(this);
     findText->setPlaceholderText("Find");
 
     findLayout->addWidget(findText);
     findLayout->addWidget(resultsLabel);
 
-    QPushButton* upArrow = new QPushButton();
+    QPushButton* upArrow = new QPushButton(this);
     upArrow->setIcon(QPixmap(":/imgs/icon/up-arrow.svg"));
 
     connect(upArrow,
@@ -35,7 +35,7 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
             replacer,
             &SearcherAndReplacer::moveToNextOccurence);
 
-    QPushButton* downArrow = new QPushButton();
+    QPushButton* downArrow = new QPushButton(this);
     downArrow->setIcon(QPixmap(":/imgs/icon/down-arrow.svg"));
 
     connect(downArrow,
@@ -43,14 +43,14 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
             replacer,
             &SearcherAndReplacer::moveBackOneOccurence);
 
-    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    QHBoxLayout *buttonLayout = new QHBoxLayout();
     buttonLayout->addWidget(downArrow);
     buttonLayout->addWidget(upArrow);
     buttonLayout->setSpacing(0);
 
     findLayout->addLayout(buttonLayout);
 
-    exitButton = new QPushButton();
+    exitButton = new QPushButton(this);
     exitButton->setIcon(QIcon(":/imgs/icon/close.png"));
 
     exitButton->setStyleSheet("QPushButton {background-color: rgba(255, 255, 255, 0);}"
@@ -64,11 +64,11 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
 
     //Begin of replace layout
     QHBoxLayout* replaceLayout = new QHBoxLayout();
-    replaceText = new QLineEdit();
+    replaceText = new QLineEdit(this);
     replaceText->setPlaceholderText("Replace");
 
-    replaceCurrentButton = new QPushButton("Current");
-    replaceAllButton = new QPushButton("All");
+    replaceCurrentButton = new QPushButton("Current", this);
+    replaceAllButton = new QPushButton("All", this);
 
     replaceLayout->addWidget(replaceText);
     replaceLayout->addWidget(replaceCurrentButton);

@@ -7,7 +7,7 @@ class SpecialLineEdit : public QLineEdit
 {
     Q_OBJECT
 public:
-    SpecialLineEdit();
+    SpecialLineEdit(QWidget *parent = nullptr);
 
     void focusInEvent(QFocusEvent *) override;
 };
