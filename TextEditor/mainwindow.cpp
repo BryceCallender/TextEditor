@@ -820,7 +820,7 @@ void MainWindow::on_actionBullets_triggered()
         }
         else
         {
-            listFmt.setIndent(blockFmt.indent() + 1);
+            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
             blockFmt.setIndent(0);
             cursor.setBlockFormat(blockFmt);
         }
@@ -858,7 +858,7 @@ void MainWindow::on_actionNumbering_triggered()
         }
         else
         {
-            listFmt.setIndent(blockFmt.indent() + 1);
+            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
             blockFmt.setIndent(0);
             cursor.setBlockFormat(blockFmt);
         }
