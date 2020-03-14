@@ -22,5 +22,7 @@
         <file>icon/alignRightIcon.png</file>
         <file>icon/up-arrow.svg</file>
         <file>icon/down-arrow.svg</file>
+        <file>icon/bulletListIcon.png</file>
+        <file>icon/numberListIcon.png</file>
     </qresource>
 </RCC>

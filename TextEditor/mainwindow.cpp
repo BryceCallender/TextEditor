@@ -799,3 +799,78 @@ void MainWindow::closeEvent(QCloseEvent *event)
     }
         QWidget::closeEvent(event);
 }
+
+void MainWindow::on_actionBullets_triggered()
+{
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+
+    if(ui->actionBullets->isChecked())
+    {
+        if(ui->actionNumbering->isChecked())
+        {
+            ui->actionNumbering->setChecked(false);
+        }
+        cursor.beginEditBlock();
+        QTextBlockFormat blockFmt = cursor.blockFormat();
+        QTextListFormat listFmt;
+
+        if (cursor.currentList())
+        {
+            listFmt = cursor.currentList()->format();
+        }
+        else
+        {
+            listFmt.setIndent(blockFmt.indent() + 1);
+            blockFmt.setIndent(0);
+            cursor.setBlockFormat(blockFmt);
+        }
+
+        listFmt.setStyle(QTextListFormat::ListDisc);
+        cursor.createList(listFmt);
+        cursor.endEditBlock();
+    }
+    else
+    {
+        QTextBlockFormat bfmt;
+        bfmt.setObjectIndex(0);
+        cursor.mergeBlockFormat(bfmt);
+    }
+
+}
+
+void MainWindow::on_actionNumbering_triggered()
+{
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+
+    if(ui->actionNumbering->isChecked())
+    {
+        if(ui->actionBullets->isChecked())
+        {
+            ui->actionBullets->setChecked(false);
+        }
+        cursor.beginEditBlock();
+        QTextBlockFormat blockFmt = cursor.blockFormat();
+        QTextListFormat listFmt;
+
+        if (cursor.currentList())
+        {
+            listFmt = cursor.currentList()->format();
+        }
+        else
+        {
+            listFmt.setIndent(blockFmt.indent() + 1);
+            blockFmt.setIndent(0);
+            cursor.setBlockFormat(blockFmt);
+        }
+
+        listFmt.setStyle(QTextListFormat::ListDecimal);
+        cursor.createList(listFmt);
+        cursor.endEditBlock();
+    }
+    else
+    {
+        QTextBlockFormat bfmt;
+        bfmt.setObjectIndex(0);
+        cursor.mergeBlockFormat(bfmt);
+    }
+}

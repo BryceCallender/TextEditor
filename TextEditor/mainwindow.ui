@@ -221,12 +221,21 @@
      <addaction name="actionCenter"/>
      <addaction name="actionAlign_Right"/>
     </widget>
+    <widget class="QMenu" name="menuInsert">
+     <property name="title">
+      <string>Insert</string>
+     </property>
+     <addaction name="actionBullets"/>
+     <addaction name="actionNumbering"/>
+    </widget>
     <addaction name="actionFormat_Text"/>
     <addaction name="separator"/>
     <addaction name="menuFont_Type"/>
     <addaction name="actionFont_Style"/>
     <addaction name="menuFont_Size"/>
     <addaction name="menuAlignment"/>
+    <addaction name="separator"/>
+    <addaction name="menuInsert"/>
    </widget>
    <widget class="QMenu" name="menuHelp">
     <property name="title">
@@ -266,6 +275,8 @@
    <addaction name="actionItalic"/>
    <addaction name="actionUnderline"/>
    <addaction name="separator"/>
+   <addaction name="actionBullets"/>
+   <addaction name="actionNumbering"/>
   </widget>
   <action name="actionFormat">
    <property name="text">
@@ -499,6 +510,31 @@
    </property>
    <property name="text">
     <string>Align Right</string>
+   </property>
+  </action>
+  <action name="actionBullets">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset>
+     <normalon>:/imgs/icon/bulletListIcon.png</normalon>
+    </iconset>
+   </property>
+   <property name="text">
+    <string>Bullets</string>
+   </property>
+  </action>
+  <action name="actionNumbering">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/imgs/icon/numberListIcon.png</normaloff>:/imgs/icon/numberListIcon.png</iconset>
+   </property>
+   <property name="text">
+    <string>Numbering</string>
    </property>
   </action>
  </widget>
