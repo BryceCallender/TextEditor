@@ -155,19 +155,38 @@ void OptionsWindow::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column)
 
     if(clickedText == "Font Family")
     {
+        ui->scrollArea->ensureWidgetVisible(fontFamilyComboBox);
         fontFamilyComboBox->setFocus();
     }
     else if(clickedText == "Font Size")
     {
+        ui->scrollArea->ensureWidgetVisible(fontSizeSpinbox);
         fontSizeSpinbox->setFocus();
     }
     else if(item->parent() != nullptr && item->parent()->text(column) == "Text Editor" && clickedText == "Tab Length")
     {
+        ui->scrollArea->ensureWidgetVisible(textTabLengthSpinbox);
         textTabLengthSpinbox->setFocus();
     }
     else if(clickedText == "Java")
     {
+        ui->scrollArea->ensureWidgetVisible(javaColorPicker);
         javaColorPicker->setFocus();
+    }
+    else if(clickedText == "C++")
+    {
+        ui->scrollArea->ensureWidgetVisible(cppColorPicker);
+        cppColorPicker->setFocus();
+    }
+    else if(clickedText == "Python")
+    {
+        ui->scrollArea->ensureWidgetVisible(pythonColorPicker);
+        pythonColorPicker->setFocus();
+    }
+    else if(item->parent() != nullptr && item->parent()->text(column) == "Code Editor" && clickedText == "Tab Length")
+    {
+        ui->scrollArea->ensureWidgetVisible(codeTabLengthSpinBox);
+        codeTabLengthSpinBox->setFocus();
     }
 }
 

@@ -19,6 +19,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     codesyntaxhighlighter.cpp \
     cppsyntaxhighlighter.cpp \
+    customtabbar.cpp \
+    customtabwidget.cpp \
     javasyntaxhighlighter.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -33,6 +35,8 @@ SOURCES += \
 HEADERS += \
     codesyntaxhighlighter.h \
     cppsyntaxhighlighter.h \
+    customtabbar.h \
+    customtabwidget.h \
     javasyntaxhighlighter.h \
     mainwindow.h \
     optionswindow.h \

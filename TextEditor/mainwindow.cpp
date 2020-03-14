@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     menuBar()->setNativeMenuBar(false);
 
-    ui->tabWidget->setMovable(false);
+    ui->tabWidget->setMovable(true);
     ui->tabWidget->setTabsClosable(true);
 
     splitter = new QSplitter();
@@ -117,6 +117,8 @@ MainWindow::MainWindow(QWidget *parent)
                      &QShortcut::activated,
                      this,
                      &MainWindow::on_actionPrint_triggered);
+
+    qDebug() << size();
 }
 
 MainWindow::~MainWindow()
@@ -460,7 +462,6 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 
 void MainWindow::on_tabWidget_tabBarClicked(int index)
 {
-    qDebug() << index;
     //This will make sure to insert where the last tab is and they cannot move it or itll make a new tab
     if(index == ui->tabWidget->count() - 1)
     {

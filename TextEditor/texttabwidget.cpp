@@ -1,6 +1,6 @@
 #include "texttabwidget.h"
 
-TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
+TextTabWidget::TextTabWidget(QWidget *parent)
 {
     textEditArea = new QTextEdit(this);
 
@@ -73,9 +73,8 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     replaceLayout->addWidget(replaceText);
     replaceLayout->addWidget(replaceCurrentButton);
     replaceLayout->addWidget(replaceAllButton);
+
     //End of replace layout
-
-
     replaceCurrentButton->setDisabled(true);
     replaceAllButton->setDisabled(true);
 
@@ -285,11 +284,6 @@ void TextTabWidget::setTabStopDistance(unsigned int length)
 void TextTabWidget::setTextEditText(const QString &text)
 {
     textEditArea->setPlainText(text);
-}
-
-void TextTabWidget::setTabNameText(int index, const QString &text)
-{
-    setTabText(index, text);
 }
 
 QTextEdit* TextTabWidget::getTextEdit()
