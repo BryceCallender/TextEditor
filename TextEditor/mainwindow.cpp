@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "texttabwidget.h"
 
 #include <QTabBar>
 #include <QDockWidget>
@@ -18,13 +17,13 @@ MainWindow::MainWindow(QWidget *parent)
     ui->tabWidget->setMovable(true);
     ui->tabWidget->setTabsClosable(true);
 
-    splitter = new QSplitter();
+    setAcceptDrops(true);
 
-    ui->tabWidget->clear();
-
-    ui->tabWidget->insertTab(0, new TextTabWidget(), "New Tab");
+    tabWidgets.push_back(ui->tabWidget);
 
     connect(ui->tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
+
+    setCentralWidget(ui->tabWidget);
 
     ui->tabWidget->setCurrentIndex(0);
     TextTabWidget* textTabWidget = getCurrentTabWidget();
@@ -59,19 +58,6 @@ MainWindow::MainWindow(QWidget *parent)
                      this,
                      &MainWindow::on_actionZoom_Out_triggered);
 
-
-    ui->tabWidget->addTab(new TextTabWidget(), "+");
-
-    QTabBar* tabBar = ui->tabWidget->tabBar();
-
-    #if defined(Q_OS_WIN) || defined(Q_OS_UNIX)
-        tabBar->tabButton(1, QTabBar::RightSide)->deleteLater();
-        tabBar->setTabButton(1, QTabBar::RightSide, 0);
-    #endif
-    #ifdef Q_OS_MACOS
-        tabBar->tabButton(1, QTabBar::LeftSide)->deleteLater();
-        tabBar->setTabButton(1, QTabBar::LeftSide, 0);
-    #endif
 
     fileWatcher = new QFileSystemWatcher();
 
@@ -874,4 +860,42 @@ void MainWindow::on_actionNumbering_triggered()
         bfmt.setObjectIndex(0);
         cursor.mergeBlockFormat(bfmt);
     }
+}
+
+void MainWindow::dragEnterEvent(QDragEnterEvent *event)
+{
+    qDebug() << "MainWindow drag enter event";
+    QPoint contactPosition = mapFromGlobal(mapToGlobal(event->pos()));
+
+    //If the contact point is showing some sort of desire to detach
+    if(contactPosition.x() > (size().width() * 0.75))
+    {
+        qDebug() << "New Tab window location";
+        event->acceptProposedAction();
+    }
+}
+
+void MainWindow::dropEvent(QDropEvent *event)
+{
+    dock = new QDockWidget("", this);
+
+    CustomTabWidget* tabWidget = new CustomTabWidget();
+
+    QByteArray data = event->mimeData()->data("application/tab");
+    QDataStream ds(&data, QIODevice::ReadWrite);
+    TabTransferData testTabData;
+
+    ds >> testTabData;
+
+    tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
+    tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
+    tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
+    tabWidgets.at(CustomTabWidget::tabParent)->removeTab(CustomTabWidget::tabRemoving);
+
+    connect(tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
+
+    dock->setWidget(tabWidget);
+
+    tabWidgets.push_back(tabWidget);
+    addDockWidget(Qt::RightDockWidgetArea, dock);
 }

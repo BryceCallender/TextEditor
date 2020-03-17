@@ -26,6 +26,7 @@
 #include "texttabwidget.h"
 #include "optionswindow.h"
 #include "settingsmanager.h"
+#include "customtabwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -40,6 +41,9 @@ public:
     ~MainWindow();
 
     void closeEvent(QCloseEvent *event);
+protected:
+    void dragEnterEvent(QDragEnterEvent *event);
+    void dropEvent(QDropEvent *event);
 private slots:
     void on_actionNew_triggered();
 
@@ -144,5 +148,9 @@ private:
     QSplitter* splitter;
 
     SettingsManager* settings;
+
+    QDockWidget* dock;
+
+    QVector<CustomTabWidget*> tabWidgets;
 };
 #endif // MAINWINDOW_H

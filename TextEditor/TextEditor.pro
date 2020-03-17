@@ -19,6 +19,7 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     codesyntaxhighlighter.cpp \
     cppsyntaxhighlighter.cpp \
+    customdockwidget.cpp \
     customtabbar.cpp \
     customtabwidget.cpp \
     javasyntaxhighlighter.cpp \
@@ -33,8 +34,10 @@ SOURCES += \
     texttabwidget.cpp
 
 HEADERS += \
+    TabTransferData.h \
     codesyntaxhighlighter.h \
     cppsyntaxhighlighter.h \
+    customdockwidget.h \
     customtabbar.h \
     customtabwidget.h \
     javasyntaxhighlighter.h \

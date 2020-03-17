@@ -6,15 +6,22 @@
 #include <QDrag>
 #include <QPainter>
 
+#include "TabTransferData.h"
 #include "customtabbar.h"
+#include "texttabwidget.h"
 
 class CustomTabWidget: public QTabWidget
 {
 public:
     explicit CustomTabWidget(QWidget *parent = nullptr);
-protected:
-    void dragEnterEvent(QDragEnterEvent *event);
-    void dropEvent(QDropEvent *event);
+
+    void mousePressEvent(QMouseEvent *event) override;
+    TextTabWidget* getCurrentTabWidget();
+
+    static int tabParent;
+    static int tabRemoving;
+    static int tabIndex;
+    int tabWidgetIndex;
 };
 
 #endif // CUSTOMTABWIDGET_H

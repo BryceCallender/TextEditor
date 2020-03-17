@@ -167,6 +167,11 @@ QString TextTabWidget::getTabFileName()
     return fileName;
 }
 
+QString TextTabWidget::getTabName()
+{
+    return tabName;
+}
+
 void TextTabWidget::setTabsFileName(const QString& name)
 {
     QFileInfo fileInfo(name);

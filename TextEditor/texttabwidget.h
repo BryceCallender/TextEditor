@@ -31,6 +31,7 @@ public:
 
     void setTabsFileName(const QString &name);
     QString getTabFileName();
+    QString getTabName();
 
     QTextEdit* getTextEdit();
 

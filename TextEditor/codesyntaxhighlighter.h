@@ -19,6 +19,36 @@ public:
 
     void updateKeywordColor(const QColor& color);
 
+    friend QDataStream& operator>>(QDataStream &in, CodeSyntaxHighlighter& highlighterData)
+    {
+        QVector<HighlightingRule> highlightingRules;
+
+        QRegularExpression commentStartExpression;
+        QRegularExpression commentEndExpression;
+
+        QTextCharFormat keywordFormat;
+        QTextCharFormat classFormat;
+        QTextCharFormat singleLineCommentFormat;
+        QTextCharFormat multiLineCommentFormat;
+        QTextCharFormat quotationFormat;
+        QTextCharFormat functionFormat;
+
+        in >> highlightingRules >> commentStartExpression >> commentEndExpression >> keywordFormat >> classFormat
+           >> singleLineCommentFormat >> multiLineCommentFormat >>  quotationFormat >> functionFormat;
+
+        highlighterData.highlightingRules = highlightingRules;
+        highlighterData.commentStartExpression = commentStartExpression;
+        highlighterData.commentEndExpression = commentEndExpression;
+        highlighterData.keywordFormat = keywordFormat;
+        highlighterData.classFormat = classFormat;
+        highlighterData.singleLineCommentFormat = singleLineCommentFormat;
+        highlighterData.multiLineCommentFormat = multiLineCommentFormat;
+        highlighterData.quotationFormat = quotationFormat;
+        highlighterData.functionFormat = functionFormat;
+
+        return in;
+    }
+
 protected:
     virtual void highlightBlock(const QString &text) override;
 
@@ -27,6 +57,18 @@ protected:
         QRegularExpression pattern;
         QTextCharFormat format;
     };
+
+    friend QDataStream& operator>>(QDataStream &in, HighlightingRule& rule) {
+        QRegularExpression pattern;
+        QTextCharFormat format;
+
+        in >> pattern >> format;
+
+        rule.pattern = pattern;
+        rule.format = format;
+
+        return in;
+    }
 
     QVector<HighlightingRule> highlightingRules;
 

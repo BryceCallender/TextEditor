@@ -1,4 +1,5 @@
 #include "customtabbar.h"
+#include "texttabwidget.h"
 
 CustomTabBar::CustomTabBar(QWidget *parent): QTabBar(parent)
 {
@@ -6,59 +7,79 @@ CustomTabBar::CustomTabBar(QWidget *parent): QTabBar(parent)
             &QTabBar::tabMoved,
             this,
             &CustomTabBar::handleTabMovement);
+
+    setAcceptDrops(true);
 }
 
 void CustomTabBar::handleTabMovement(int from, int to)
 {
-    qDebug() << "Tab moved";
     if(from == count() - 1)
     {
-        qDebug() << "Moved the +";
         moveTab(from-1, from);
     }
 }
 
-void CustomTabBar::mousePressEvent(QMouseEvent *event)
-{
-    if(event->button() == Qt::RightButton)
-    {
-        qDebug() << "Left clicked";
-        QPoint positionInTab = mapFromGlobal(mapToGlobal(event->pos()));
+//void CustomTabBar::mousePressEvent(QMouseEvent *event)
+//{
+//    if(event->button() == Qt::RightButton)
+//    {
+//        qDebug() << "Left clicked";
+//        QPoint positionInTab = mapFromGlobal(mapToGlobal(event->pos()));
 
-        int tab = tabAt(event->pos());
-        QRect tabRect = this->tabRect(tab);
+//        //Getting the tab that was currently clicked
+//        int tab = tabAt(event->pos());
+//        QRect tabRect = this->tabRect(tab);
 
-        QPixmap pixmap = QPixmap(tabRect.size());
-        QPoint point;
-        QRegion region(tabRect);
-        this->render(&pixmap, point, region);
+//        //Drawing the tab icon
+//        QPixmap pixmap = QPixmap(tabRect.size());
+//        QPoint point;
+//        QRegion region(tabRect);
+//        this->render(&pixmap, point, region);
 
-        QMimeData* mimeData = new QMimeData();
+//        //Data going to be transferred
+//        TextTabWidget* data = tabData(tab).value<TextTabWidget*>();
 
-        QDrag* drag = new QDrag(this);
+//        QByteArray tabAsByte;
+//        QDataStream dataStream(&tabAsByte, QIODevice::ReadWrite);
 
-        drag->setMimeData(mimeData);
-        drag->setPixmap(pixmap);
-        //this->setCursor(Qt::OpenHandCursor);
-        drag->setHotSpot(event->pos() - positionInTab);
-        drag->exec();
-    }
+//        dataStream << tabAsByte;
 
-    QTabBar::mousePressEvent(event);
-}
 
-void CustomTabBar::mouseMoveEvent(QMouseEvent *event)
-{
-    //qDebug() << "Mouse moving";
-    this->setCursor(Qt::ClosedHandCursor);
+//        QMimeData* mimeData = new QMimeData();
+//        mimeData->setData("", tabAsByte);
 
-    QTabBar::mouseMoveEvent(event);
-}
+//        //Start the drag event
+//        QDrag* drag = new QDrag(this);
 
-void CustomTabBar::mouseReleaseEvent(QMouseEvent *event)
-{
-    //qDebug() << "Mouse released";
-    this->setCursor(Qt::ArrowCursor);
+//        drag->setMimeData(mimeData);
+//        drag->setPixmap(pixmap);
+//        //this->setCursor(Qt::OpenHandCursor);
+//        drag->setHotSpot(event->pos() - positionInTab);
+//        Qt::DropAction dropAction = drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::MoveAction);
 
-    QTabBar::mouseReleaseEvent(event);
-}
+//        qDebug() << dropAction;
+//    }
+
+//    QTabBar::mousePressEvent(event);
+//}
+
+//void CustomTabBar::mouseMoveEvent(QMouseEvent *event)
+//{
+//    qDebug() << "Mouse moving";
+//    this->setCursor(Qt::ClosedHandCursor);
+
+//    QTabBar::mouseMoveEvent(event);
+//}
+
+//void CustomTabBar::mouseReleaseEvent(QMouseEvent *event)
+//{
+//    //qDebug() << "Mouse released";
+//    this->setCursor(Qt::ArrowCursor);
+
+//    QTabBar::mouseReleaseEvent(event);
+//}
+
+//void CustomTabBar::dropEvent(QDropEvent *event)
+//{
+//    qDebug() << "Dropped";
+//}
