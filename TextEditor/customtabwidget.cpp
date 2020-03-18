@@ -1,6 +1,8 @@
 #include "customtabwidget.h"
 #include "texttabwidget.h"
 
+#include <QMessageBox>
+
 int CustomTabWidget::tabParent = 0;
 int CustomTabWidget::tabRemoving = 0;
 int CustomTabWidget::tabIndex = 0;
@@ -32,6 +34,9 @@ CustomTabWidget::CustomTabWidget(QWidget *parent)
     tabBar()->tabButton(1, QTabBar::LeftSide)->deleteLater();
     tabBar()->setTabButton(1, QTabBar::LeftSide, 0);
 #endif
+
+//    QObject::connect(this, &CustomTabWidget::tabCloseRequested, this, &CustomTabWidget::tabCloseRequest);
+//    QObject::connect(this, &CustomTabWidget::tabBarClicked, this, )
 }
 
 void CustomTabWidget::mousePressEvent(QMouseEvent *event)
@@ -96,4 +101,33 @@ TextTabWidget *CustomTabWidget::getCurrentTabWidget()
     TextTabWidget* textTabWidget = (TextTabWidget*) widget(tabIndex);
 
     return textTabWidget;
+}
+
+void CustomTabWidget::tabCloseRequest(int index)
+{
+    if(tabText(index).back() == '*')
+    {
+        int clicked = QMessageBox::warning(this, "Save?", "Would you like to save the file?", QMessageBox::Ok, QMessageBox::Cancel, QMessageBox::Close);
+        if(clicked == QMessageBox::Ok)
+        {
+            //on_actionSave_triggered();
+            qDebug() << "Closing " + QString::number(index);
+            removeTab(index);
+        }
+        else if(clicked == QMessageBox::Close)
+        {
+            qDebug() << "Closing " + QString::number(index);
+            removeTab(index);
+        }
+    }
+    else
+    {
+        qDebug() << "Closing " + QString::number(index);
+        removeTab(index);
+    }
+
+    if(index > 0)
+    {
+        setCurrentIndex(index - 1);
+    }
 }
