@@ -1,0 +1,61 @@
+\hypertarget{class_custom_tab_bar}{}\doxysection{Custom\+Tab\+Bar Class Reference}
+\label{class_custom_tab_bar}\index{CustomTabBar@{CustomTabBar}}
+
+
+Tab bar with custom functionality.  
+
+
+
+
+{\ttfamily \#include $<$customtabbar.\+h$>$}
+
+Inheritance diagram for Custom\+Tab\+Bar\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_custom_tab_bar}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_custom_tab_bar_a3f05726c1206f84cae21e175d53f4f90}{Custom\+Tab\+Bar}} (Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}{handle\+Tab\+Movement}} (int from, int to)
+\begin{DoxyCompactList}\small\item\em Tab movement. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tab bar with custom functionality. 
+
+Custom functionality to handle application specific needs that default class does not support. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_custom_tab_bar_a3f05726c1206f84cae21e175d53f4f90}\label{class_custom_tab_bar_a3f05726c1206f84cae21e175d53f4f90}} 
+\index{CustomTabBar@{CustomTabBar}!CustomTabBar@{CustomTabBar}}
+\index{CustomTabBar@{CustomTabBar}!CustomTabBar@{CustomTabBar}}
+\doxysubsubsection{\texorpdfstring{CustomTabBar()}{CustomTabBar()}}
+{\footnotesize\ttfamily Custom\+Tab\+Bar\+::\+Custom\+Tab\+Bar (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor. 
+
+Connects the {\itshape handle\+Tab\+Movement} to the Q\+Tab\+Bar moved signal and allows the tab bar to accept drops when a tab is attempted to be dropped here. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}\label{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}} 
+\index{CustomTabBar@{CustomTabBar}!handleTabMovement@{handleTabMovement}}
+\index{handleTabMovement@{handleTabMovement}!CustomTabBar@{CustomTabBar}}
+\doxysubsubsection{\texorpdfstring{handleTabMovement()}{handleTabMovement()}}
+{\footnotesize\ttfamily void Custom\+Tab\+Bar\+::handle\+Tab\+Movement (\begin{DoxyParamCaption}\item[{int}]{from,  }\item[{int}]{to }\end{DoxyParamCaption})}
+
+
+
+Tab movement. 
+
+Handles cases for when the current tab is moved beyond the \textquotesingle{}+\textquotesingle{} tab so that the \textquotesingle{}+\textquotesingle{} will always be at the end. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/bryce/\+Desktop/\+Text\+Editor/\+Text\+Editor/customtabbar.\+h\item 
+C\+:/\+Users/bryce/\+Desktop/\+Text\+Editor/\+Text\+Editor/customtabbar.\+cpp\end{DoxyCompactItemize}

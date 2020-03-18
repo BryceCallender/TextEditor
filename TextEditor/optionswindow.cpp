@@ -27,7 +27,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     connect(fontFamilyComboBox,
             &QFontComboBox::currentFontChanged,
             this,
-            [=](const QFont& value) {
+            [=](const QFont& value)
+            {
                 SettingsManager::getInstance()->saveValue("text", "fontSize", value);
             }
     );
@@ -41,7 +42,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     connect(fontSizeSpinbox,
             QOverload<int>::of(&QSpinBox::valueChanged),
             this,
-            [=](int value) {
+            [=](int value)
+            {
                 SettingsManager::getInstance()->saveValue("text", "fontSize", value);
             }
     );
@@ -59,7 +61,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     connect(textTabLengthSpinbox,
             QOverload<int>::of(&QSpinBox::valueChanged),
             this,
-            [=](int value) {
+            [=](int value)
+            {
                 SettingsManager::getInstance()->saveValue("text", "tabLength", value);
             }
     );
@@ -83,7 +86,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     connect(javaColorPicker,
             &QColorDialog::currentColorChanged,
             this,
-            [=](const QColor &color) {
+            [=](const QColor &color)
+            {
                 SettingsManager::getInstance()->saveValue("code", "javaKeywordColor", color);
             }
     );
@@ -99,7 +103,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     connect(cppColorPicker,
             &QColorDialog::currentColorChanged,
             this,
-            [=](const QColor &color) {
+            [=](const QColor &color)
+            {
                 SettingsManager::getInstance()->saveValue("code", "cppKeywordColor", color);
             }
     );
@@ -115,7 +120,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     connect(pythonColorPicker,
             &QColorDialog::currentColorChanged,
             this,
-            [=](const QColor &color) {
+            [=](const QColor &color)
+            {
                 SettingsManager::getInstance()->saveValue("code", "pythonKeywordColor", color);
             }
     );
@@ -131,7 +137,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     connect(codeTabLengthSpinBox,
             QOverload<int>::of(&QSpinBox::valueChanged),
             this,
-            [=](int value) {
+            [=](int value)
+            {
                 SettingsManager::getInstance()->saveValue("code", "tabLength", value);
             }
     );

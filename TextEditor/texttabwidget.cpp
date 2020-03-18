@@ -1,6 +1,6 @@
 #include "texttabwidget.h"
 
-TextTabWidget::TextTabWidget(QWidget *parent)
+TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
 {
     textEditArea = new QTextEdit(this);
 

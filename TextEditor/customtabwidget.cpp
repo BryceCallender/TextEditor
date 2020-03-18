@@ -7,7 +7,7 @@ int CustomTabWidget::tabIndex = 0;
 
 CustomTabWidget::CustomTabWidget(QWidget *parent)
 {
-    setTabBar(new CustomTabBar());
+    setTabBar(new CustomTabBar(this));
 
     setMovable(true);
     setTabsClosable(true);
@@ -43,6 +43,12 @@ void CustomTabWidget::mousePressEvent(QMouseEvent *event)
 
         //Getting the tab that was currently clicked
         int tab = tabBar()->tabAt(event->pos());
+
+        if(tab == -1)
+        {
+            return;
+        }
+
         QRect tabRect = tabBar()->tabRect(tab);
         tabParent = tabWidgetIndex;
         tabRemoving = tab;

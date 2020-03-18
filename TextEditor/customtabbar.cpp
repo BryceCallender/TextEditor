@@ -1,3 +1,4 @@
+#include "TabTransferData.h"
 #include "customtabbar.h"
 #include "texttabwidget.h"
 
@@ -9,6 +10,8 @@ CustomTabBar::CustomTabBar(QWidget *parent): QTabBar(parent)
             &CustomTabBar::handleTabMovement);
 
     setAcceptDrops(true);
+
+    this->parent = reinterpret_cast<CustomTabWidget*>(parent);
 }
 
 void CustomTabBar::handleTabMovement(int from, int to)
@@ -19,67 +22,28 @@ void CustomTabBar::handleTabMovement(int from, int to)
     }
 }
 
-//void CustomTabBar::mousePressEvent(QMouseEvent *event)
-//{
-//    if(event->button() == Qt::RightButton)
-//    {
-//        qDebug() << "Left clicked";
-//        QPoint positionInTab = mapFromGlobal(mapToGlobal(event->pos()));
+void CustomTabBar::dragEnterEvent(QDragEnterEvent *event)
+{
+    event->acceptProposedAction();
+}
 
-//        //Getting the tab that was currently clicked
-//        int tab = tabAt(event->pos());
-//        QRect tabRect = this->tabRect(tab);
+void CustomTabBar::dropEvent(QDropEvent *event)
+{
+    //Get data from the clipboard with this mime data tag and then read the bytes to convert it to TabTransferData
+    QByteArray data = event->mimeData()->data("application/tab");
+    QDataStream ds(&data, QIODevice::ReadWrite);
+    TabTransferData testTabData;
 
-//        //Drawing the tab icon
-//        QPixmap pixmap = QPixmap(tabRect.size());
-//        QPoint point;
-//        QRegion region(tabRect);
-//        this->render(&pixmap, point, region);
+    ds >> testTabData;
 
-//        //Data going to be transferred
-//        TextTabWidget* data = tabData(tab).value<TextTabWidget*>();
+    TextTabWidget* newTab = new TextTabWidget();
 
-//        QByteArray tabAsByte;
-//        QDataStream dataStream(&tabAsByte, QIODevice::ReadWrite);
+    //Set the widget
+    newTab->setTabsFileName(testTabData.filePath);
+    newTab->getTextEdit()->setText(testTabData.text);
+    setCurrentIndex(count() - 1);
 
-//        dataStream << tabAsByte;
+    parent->insertTab(currentIndex(), newTab, "New Tab");
 
-
-//        QMimeData* mimeData = new QMimeData();
-//        mimeData->setData("", tabAsByte);
-
-//        //Start the drag event
-//        QDrag* drag = new QDrag(this);
-
-//        drag->setMimeData(mimeData);
-//        drag->setPixmap(pixmap);
-//        //this->setCursor(Qt::OpenHandCursor);
-//        drag->setHotSpot(event->pos() - positionInTab);
-//        Qt::DropAction dropAction = drag->exec(Qt::CopyAction | Qt::MoveAction, Qt::MoveAction);
-
-//        qDebug() << dropAction;
-//    }
-
-//    QTabBar::mousePressEvent(event);
-//}
-
-//void CustomTabBar::mouseMoveEvent(QMouseEvent *event)
-//{
-//    qDebug() << "Mouse moving";
-//    this->setCursor(Qt::ClosedHandCursor);
-
-//    QTabBar::mouseMoveEvent(event);
-//}
-
-//void CustomTabBar::mouseReleaseEvent(QMouseEvent *event)
-//{
-//    //qDebug() << "Mouse released";
-//    this->setCursor(Qt::ArrowCursor);
-
-//    QTabBar::mouseReleaseEvent(event);
-//}
-
-//void CustomTabBar::dropEvent(QDropEvent *event)
-//{
-//    qDebug() << "Dropped";
-//}
+    setTabText(currentIndex(), testTabData.tabName);
+}

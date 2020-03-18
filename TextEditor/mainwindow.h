@@ -40,6 +40,10 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    TextTabWidget* getCurrentTabWidget();
+    void setWindowToFileName(int index);
+    void markTextTabAsClean(const QString& newPath);
+    void printPreview(QPrinter *printer);
     void closeEvent(QCloseEvent *event);
 protected:
     void dragEnterEvent(QDragEnterEvent *event);
@@ -97,8 +101,6 @@ private slots:
 
     void on_actionSave_triggered();
 
-    void setWindowToFileName(int index);
-
     void on_actionFormat_Text_triggered();
 
     void on_actionBold_triggered();
@@ -113,10 +115,6 @@ private slots:
 
     void on_fontSizeComboBox_activated(const QString &arg1);
 
-    TextTabWidget* getCurrentTabWidget();
-
-    void markTextTabAsClean(const QString& newPath);
-
     void on_actionOptions_triggered();
 
     void on_actionCenter_triggered();
@@ -124,8 +122,6 @@ private slots:
     void on_actionAlign_Left_triggered();
 
     void on_actionAlign_Right_triggered();
-
-    void printPreview(QPrinter *printer);
 
     void on_actionSave_2_triggered();
 

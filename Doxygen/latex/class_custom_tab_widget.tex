@@ -1,0 +1,114 @@
+\hypertarget{class_custom_tab_widget}{}\doxysection{Custom\+Tab\+Widget Class Reference}
+\label{class_custom_tab_widget}\index{CustomTabWidget@{CustomTabWidget}}
+
+
+Tab Widget with custom functionality.  
+
+
+
+
+{\ttfamily \#include $<$customtabwidget.\+h$>$}
+
+Inheritance diagram for Custom\+Tab\+Widget\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_custom_tab_widget}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_custom_tab_widget_a7ca934336f03a4f94a327ab490dbb8ab}{Custom\+Tab\+Widget}} (Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_tab_widget_a80eeae2a9ad3eb878bce886a2c3b074a}{mouse\+Press\+Event}} (Q\+Mouse\+Event $\ast$event) override
+\begin{DoxyCompactList}\small\item\em Mouse Event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_text_tab_widget}{Text\+Tab\+Widget}} $\ast$ \mbox{\hyperlink{class_custom_tab_widget_a30a285f721103527e638173a2eb9c9c1}{get\+Current\+Tab\+Widget}} ()
+\begin{DoxyCompactList}\small\item\em Getter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_custom_tab_widget_adef5a047b4cea79cf495d8b252ee66c4}{tab\+Widget\+Index}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static int \mbox{\hyperlink{class_custom_tab_widget_a04abe786a0231330923b2cba70459cc1}{tab\+Parent}} = 0
+\item 
+static int \mbox{\hyperlink{class_custom_tab_widget_abf53960945eee52f3e623945a959578f}{tab\+Removing}} = 0
+\item 
+static int \mbox{\hyperlink{class_custom_tab_widget_afa68bc7dd5e8705960f0e67e980ef7b0}{tab\+Index}} = 0
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Tab Widget with custom functionality. 
+
+This Custom tab widget is responsible for taking the behavior of the parent while also adding additional functionality such as supporting multiple tab widgets on one screen. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_custom_tab_widget_a7ca934336f03a4f94a327ab490dbb8ab}\label{class_custom_tab_widget_a7ca934336f03a4f94a327ab490dbb8ab}} 
+\index{CustomTabWidget@{CustomTabWidget}!CustomTabWidget@{CustomTabWidget}}
+\index{CustomTabWidget@{CustomTabWidget}!CustomTabWidget@{CustomTabWidget}}
+\doxysubsubsection{\texorpdfstring{CustomTabWidget()}{CustomTabWidget()}}
+{\footnotesize\ttfamily Custom\+Tab\+Widget\+::\+Custom\+Tab\+Widget (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor. 
+
+This constructor will set up the needed elements like custom tab bar, allowing tabs to be closable and move, and allowing the widget to accept tab drop events. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_custom_tab_widget_a30a285f721103527e638173a2eb9c9c1}\label{class_custom_tab_widget_a30a285f721103527e638173a2eb9c9c1}} 
+\index{CustomTabWidget@{CustomTabWidget}!getCurrentTabWidget@{getCurrentTabWidget}}
+\index{getCurrentTabWidget@{getCurrentTabWidget}!CustomTabWidget@{CustomTabWidget}}
+\doxysubsubsection{\texorpdfstring{getCurrentTabWidget()}{getCurrentTabWidget()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_text_tab_widget}{Text\+Tab\+Widget}} $\ast$ Custom\+Tab\+Widget\+::get\+Current\+Tab\+Widget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter. 
+
+This will get the \mbox{\hyperlink{class_text_tab_widget}{Text\+Tab\+Widget}} that is associated with the current active tab in the widget. The \mbox{\hyperlink{class_text_tab_widget}{Text\+Tab\+Widget}} will have all the information necessary for other functionality. \mbox{\Hypertarget{class_custom_tab_widget_a80eeae2a9ad3eb878bce886a2c3b074a}\label{class_custom_tab_widget_a80eeae2a9ad3eb878bce886a2c3b074a}} 
+\index{CustomTabWidget@{CustomTabWidget}!mousePressEvent@{mousePressEvent}}
+\index{mousePressEvent@{mousePressEvent}!CustomTabWidget@{CustomTabWidget}}
+\doxysubsubsection{\texorpdfstring{mousePressEvent()}{mousePressEvent()}}
+{\footnotesize\ttfamily void Custom\+Tab\+Widget\+::mouse\+Press\+Event (\begin{DoxyParamCaption}\item[{Q\+Mouse\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}}
+
+
+
+Mouse Event. 
+
+This handles the mouse press event. It is responsible for showing the tab move with the cursor if the user decides to move the tab to another widget. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_custom_tab_widget_afa68bc7dd5e8705960f0e67e980ef7b0}\label{class_custom_tab_widget_afa68bc7dd5e8705960f0e67e980ef7b0}} 
+\index{CustomTabWidget@{CustomTabWidget}!tabIndex@{tabIndex}}
+\index{tabIndex@{tabIndex}!CustomTabWidget@{CustomTabWidget}}
+\doxysubsubsection{\texorpdfstring{tabIndex}{tabIndex}}
+{\footnotesize\ttfamily int Custom\+Tab\+Widget\+::tab\+Index = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+The counter of how many tab widgets exist. \mbox{\Hypertarget{class_custom_tab_widget_a04abe786a0231330923b2cba70459cc1}\label{class_custom_tab_widget_a04abe786a0231330923b2cba70459cc1}} 
+\index{CustomTabWidget@{CustomTabWidget}!tabParent@{tabParent}}
+\index{tabParent@{tabParent}!CustomTabWidget@{CustomTabWidget}}
+\doxysubsubsection{\texorpdfstring{tabParent}{tabParent}}
+{\footnotesize\ttfamily int Custom\+Tab\+Widget\+::tab\+Parent = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+The parent index of the tab being ripped off. \mbox{\Hypertarget{class_custom_tab_widget_abf53960945eee52f3e623945a959578f}\label{class_custom_tab_widget_abf53960945eee52f3e623945a959578f}} 
+\index{CustomTabWidget@{CustomTabWidget}!tabRemoving@{tabRemoving}}
+\index{tabRemoving@{tabRemoving}!CustomTabWidget@{CustomTabWidget}}
+\doxysubsubsection{\texorpdfstring{tabRemoving}{tabRemoving}}
+{\footnotesize\ttfamily int Custom\+Tab\+Widget\+::tab\+Removing = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+The index of the tab being ripped off. \mbox{\Hypertarget{class_custom_tab_widget_adef5a047b4cea79cf495d8b252ee66c4}\label{class_custom_tab_widget_adef5a047b4cea79cf495d8b252ee66c4}} 
+\index{CustomTabWidget@{CustomTabWidget}!tabWidgetIndex@{tabWidgetIndex}}
+\index{tabWidgetIndex@{tabWidgetIndex}!CustomTabWidget@{CustomTabWidget}}
+\doxysubsubsection{\texorpdfstring{tabWidgetIndex}{tabWidgetIndex}}
+{\footnotesize\ttfamily int Custom\+Tab\+Widget\+::tab\+Widget\+Index}
+
+The unqiue index of the current tab widget. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/bryce/\+Desktop/\+Text\+Editor/\+Text\+Editor/customtabwidget.\+h\item 
+C\+:/\+Users/bryce/\+Desktop/\+Text\+Editor/\+Text\+Editor/customtabwidget.\+cpp\end{DoxyCompactItemize}

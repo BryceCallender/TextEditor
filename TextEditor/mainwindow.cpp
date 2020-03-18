@@ -40,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
     savedCopy[0] = QApplication::clipboard()->text();
 
     zoom = 8;
-    QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
+    QObject::connect(textTabWidget->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
 
     QObject::connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &MainWindow::clipboard_changed);
 
@@ -212,9 +212,11 @@ void MainWindow::on_actionPrint_triggered()
     //preview.exec();
 }
 
-void MainWindow::printPreview(QPrinter *printer){
+void MainWindow::printPreview(QPrinter *printer)
+{
     getCurrentTabWidget()->getTextEdit()->print(printer);
 }
+
 void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
@@ -784,7 +786,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
             }
         }
     }
-        QWidget::closeEvent(event);
+
+    QWidget::closeEvent(event);
 }
 
 void MainWindow::on_actionBullets_triggered()
@@ -867,35 +870,113 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
     qDebug() << "MainWindow drag enter event";
     QPoint contactPosition = mapFromGlobal(mapToGlobal(event->pos()));
 
-    //If the contact point is showing some sort of desire to detach
+    //If the contact point is showing some sort of desire to detach and is on the right side of the window
     if(contactPosition.x() > (size().width() * 0.75))
     {
-        qDebug() << "New Tab window location";
+        qDebug() << "Right tab location";
+        event->acceptProposedAction();
+    }
+
+    //If the tab is currently on the bottom side of the window
+    if(contactPosition.y() > (size().height() * 0.75))
+    {
+        qDebug() << "Bottom tab location";
         event->acceptProposedAction();
     }
 }
 
 void MainWindow::dropEvent(QDropEvent *event)
 {
+    //Get the current docking widgets in the mainwindow
+    QList<QDockWidget*> dockWidgets = findChildren<QDockWidget*>();
+
+    //Get position of the event occuring
+    QPoint dropPosition = mapFromGlobal(mapToGlobal(event->pos()));
+
     dock = new QDockWidget("", this);
 
+    //Make a new custom tab widget incase it is needed
     CustomTabWidget* tabWidget = new CustomTabWidget();
 
+    //Get data from the clipboard with this mime data tag and then read the bytes to convert it to TabTransferData
     QByteArray data = event->mimeData()->data("application/tab");
     QDataStream ds(&data, QIODevice::ReadWrite);
     TabTransferData testTabData;
 
     ds >> testTabData;
 
+    //Set the widget
     tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
     tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
     tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
     tabWidgets.at(CustomTabWidget::tabParent)->removeTab(CustomTabWidget::tabRemoving);
 
+    //connect signal
     connect(tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
 
+    //set the dock widget incase it does get added
     dock->setWidget(tabWidget);
 
-    tabWidgets.push_back(tabWidget);
-    addDockWidget(Qt::RightDockWidgetArea, dock);
+    if(dropPosition.x() > (size().width() * 0.75))
+    {
+        bool isOccupingRight = false;
+        QDockWidget* offender;
+        for(QDockWidget* dock: dockWidgets)
+        {
+            isOccupingRight |= dockWidgetArea(dock) == Qt::RightDockWidgetArea;
+            if(isOccupingRight)
+            {
+                offender = dock;
+            }
+        }
+
+        //There was no dock widget occuping the right dock widget area
+        if(!isOccupingRight)
+        {
+            addDockWidget(Qt::RightDockWidgetArea, dock);
+            tabWidgets.push_back(tabWidget);
+        }
+        else //Add to right dock widget since one is already there
+        {
+            qDebug() << "Adding tab to the dock widget";
+            CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
+
+            tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(), "New Tab");
+            tabWidget->setCurrentIndex(tabWidget->count() - 2);
+            tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
+            tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
+            tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
+        }
+    }
+    else if(dropPosition.y() > (size().height() * 0.75))
+    {
+        bool isOccupingBottom = false;
+        QDockWidget* offender;
+        for(QDockWidget* dock: dockWidgets)
+        {
+            isOccupingBottom |= dockWidgetArea(dock) == Qt::BottomDockWidgetArea;
+            if(isOccupingBottom)
+            {
+                offender = dock;
+            }
+        }
+
+        //There was no dock widget occuping the right dock widget area
+        if(!isOccupingBottom)
+        {
+            addDockWidget(Qt::BottomDockWidgetArea, dock);
+            tabWidgets.push_back(tabWidget);
+        }
+        else //Add to right dock widget since one is already there
+        {
+            qDebug() << "Adding tab to the dock widget";
+            CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
+
+            tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(), "New Tab");
+            tabWidget->setCurrentIndex(tabWidget->count() - 2);
+            tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
+            tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
+            tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
+        }
+    }
 }
