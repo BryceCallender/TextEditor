@@ -131,7 +131,8 @@ private:
     Ui::MainWindow *ui;
     QString currentFile = "";
     static const qint8 numCopies = 3;
-    QString savedCopy[numCopies] = {"", "", ""};
+    QMimeData savedCopy[numCopies];
+
     int track;
     QMenu *pasteMenu;
     int zoom;

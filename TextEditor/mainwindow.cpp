@@ -32,13 +32,13 @@ MainWindow::MainWindow(QWidget *parent)
     //Make sure text edit is in focus incase they just start typing right away
     textTabWidget->getTextEdit()->setFocus();
 
-    track = 1;
+    track = 0;
     textTabWidget->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
 
     connect(textTabWidget->getTextEdit(), SIGNAL(customContextMenuRequested(const QPoint&)),
         this, SLOT(showContextMenu(const QPoint&)));
 
-    savedCopy[0] = QApplication::clipboard()->text();
+    clipboard_changed();
 
     zoom = 8;
     QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
@@ -251,11 +251,22 @@ void MainWindow::on_actionCut_triggered()
 
 void MainWindow::clipboard_changed()
 {
-    savedCopy[track] = QApplication::clipboard()->text();
-    if(track >= 2)
-        track = 0;
-    else
-        track++;
+    if(!QApplication::clipboard()->image().isNull())
+    {
+        savedCopy[track].setImageData(QApplication::clipboard()->image());
+        if(track >= 2)
+            track = 0;
+        else
+            track++;
+    }
+    else if(QApplication::clipboard()->text() != "")
+    {
+        savedCopy[track].setText(QApplication::clipboard()->text());
+        if(track >= 2)
+            track = 0;
+        else
+            track++;
+    }
 }
 
 
@@ -264,12 +275,18 @@ void MainWindow::showContextPasteMenu(const QPoint& pos)
     QPoint globalPos = getCurrentTabWidget()->getTextEdit()->mapToGlobal(pos);
 
     QMenu *pasteMenu = new QMenu(this);
-    pasteMenu->addAction(QString(savedCopy[0].left(20) + ((savedCopy[0].size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
-
-    if(savedCopy[1] != "")
-        pasteMenu->addAction(QString(savedCopy[1].left(20) + ((savedCopy[1].size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_3_triggered()));
-    if(savedCopy[2] != "")
-        pasteMenu->addAction(QString(savedCopy[2].left(20) + ((savedCopy[2].size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_4_triggered()));
+    if(savedCopy[0].hasText())
+        pasteMenu->addAction(QString(savedCopy[0].text().left(20) + ((savedCopy[0].text().size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+    else if(savedCopy[0].hasImage())
+        pasteMenu->addAction("Copied Image 0", this, SLOT(on_actionPaste_2_triggered()));
+    if(savedCopy[1].hasText())
+        pasteMenu->addAction(QString(savedCopy[1].text().left(20) + ((savedCopy[1].text().size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_3_triggered()));
+    else if(savedCopy[1].hasImage())
+        pasteMenu->addAction("Copied Image 1", this, SLOT(on_actionPaste_3_triggered()));
+    if(savedCopy[2].hasText())
+        pasteMenu->addAction(QString(savedCopy[2].text().left(20) + ((savedCopy[2].text().size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_4_triggered()));
+    else if(savedCopy[2].hasImage())
+        pasteMenu->addAction("Copied Image 2", this, SLOT(on_actionPaste_4_triggered()));
 
     pasteMenu->exec(globalPos);
 
@@ -284,17 +301,26 @@ void MainWindow::on_actionPaste_triggered()
 
 void MainWindow::on_actionPaste_2_triggered()
 {
-    getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[0]);
+    if(savedCopy[0].hasText())
+        getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[0].text());
+    else if(savedCopy[0].hasImage())
+            getCurrentTabWidget()->getTextEdit()->textCursor().insertImage(savedCopy[0].imageData().value<QImage>());
 }
 
 void MainWindow::on_actionPaste_3_triggered()
 {
-    getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[1]);
+    if(savedCopy[1].hasText())
+        getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[1].text());
+    else if(savedCopy[1].hasImage())
+            getCurrentTabWidget()->getTextEdit()->textCursor().insertImage(savedCopy[1].imageData().value<QImage>());
 }
 
 void MainWindow::on_actionPaste_4_triggered()
 {
-    getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[2]);
+    if(savedCopy[2].hasText())
+        getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[2].text());
+    else if(savedCopy[2].hasImage())
+            getCurrentTabWidget()->getTextEdit()->textCursor().insertImage(savedCopy[2].imageData().value<QImage>());
 }
 
 void MainWindow::on_actionPaste_5_triggered()
@@ -325,13 +351,19 @@ void MainWindow::showContextMenu(const QPoint& pos)
     rightClick->addAction(QString("Copy"), this, SLOT(on_actionCopy_triggered()));
 
     pasteMenu->setTitle(QString("Paste"));
-    pasteMenu->addAction(QString(savedCopy[0].left(20) + ((savedCopy[0].size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
 
-    if(savedCopy[1] != "")
-        pasteMenu->addAction(QString(savedCopy[1].left(20) + ((savedCopy[1].size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_3_triggered()));
-    if(savedCopy[2] != "")
-        pasteMenu->addAction(QString(savedCopy[2].left(20) + ((savedCopy[2].size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_4_triggered()));
-
+    if(savedCopy[0].hasText())
+        pasteMenu->addAction(QString(savedCopy[0].text().left(20) + ((savedCopy[0].text().size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+    else if(savedCopy[0].hasImage())
+        pasteMenu->addAction("Copied Image 0", this, SLOT(on_actionPaste_2_triggered()));
+    if(savedCopy[1].hasText())
+        pasteMenu->addAction(QString(savedCopy[1].text().left(20) + ((savedCopy[1].text().size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_3_triggered()));
+    else if(savedCopy[1].hasImage())
+        pasteMenu->addAction("Copied Image 1", this, SLOT(on_actionPaste_3_triggered()));
+    if(savedCopy[2].hasText())
+        pasteMenu->addAction(QString(savedCopy[2].text().left(20) + ((savedCopy[2].text().size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_4_triggered()));
+    else if(savedCopy[2].hasImage())
+        pasteMenu->addAction("Copied Image 2", this, SLOT(on_actionPaste_4_triggered()));
     rightClick->addMenu(pasteMenu);
 
     rightClick->addSeparator();
@@ -407,14 +439,14 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 {
     if(ui->tabWidget->tabText(index).back() == '*')
     {
-        int clicked = QMessageBox::warning(this, "Save?", "Would you like to save the file?", QMessageBox::Ok, QMessageBox::Cancel, QMessageBox::Close);
+        int clicked = QMessageBox::warning(this, "Save?", "Would you like to save the file?", QMessageBox::Ok, QMessageBox::Cancel, QMessageBox::No);
         if(clicked == QMessageBox::Ok)
         {
             on_actionSave_triggered();
             qDebug() << "Closing " + QString::number(index);
             ui->tabWidget->removeTab(index);
         }
-        else if(clicked == QMessageBox::Close)
+        else if(clicked == QMessageBox::No)
         {
             qDebug() << "Closing " + QString::number(index);
             ui->tabWidget->removeTab(index);
@@ -436,7 +468,7 @@ void MainWindow::on_tabWidget_tabBarClicked(int index)
     //This will make sure to insert where the last tab is and they cannot move it or itll make a new tab
     if(index == ui->tabWidget->count() - 1)
     {
-        ui->tabWidget->insertTab(index, new TextTabWidget(), "New tab");
+        ui->tabWidget->insertTab(index, new TextTabWidget(), "New Tab");
         ui->tabWidget->setCurrentIndex(index);
     }
 
@@ -757,13 +789,23 @@ void MainWindow::closeEvent(QCloseEvent *event)
     {
         if(ui->tabWidget->tabText(i).back() == '*')
         {
-            int clicked = QMessageBox::warning(this, "Save?", "Would you like to save " + ui->tabWidget->tabText(i).left(ui->tabWidget->tabText(i).size() - 1) + "?", QMessageBox::Ok, QMessageBox::Cancel, QMessageBox::Close);
+            QString message;
+            if(ui->tabWidget->tabText(i).left(ui->tabWidget->tabText(i).size() - 1) == "New Tab")
+            {
+                message.setNum(i + 1);
+                message = "New Tab " + message;
+            }
+            else
+            {
+                message = ui->tabWidget->tabText(i).left(ui->tabWidget->tabText(i).size() - 1);
+            }
+            int clicked = QMessageBox::warning(this, "Save?", "Would you like to save " + message + "?", QMessageBox::Ok ,QMessageBox::No);
             if(clicked == QMessageBox::Ok)
             {
                 on_actionSave_triggered();
                 qDebug() << "Closing " + QString::number(i);
             }
-            else if(clicked == QMessageBox::Close)
+            else if(clicked == QMessageBox::No)
             {
                 qDebug() << "Closing " + QString::number(i);
             }
