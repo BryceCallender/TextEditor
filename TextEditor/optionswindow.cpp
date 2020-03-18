@@ -17,29 +17,55 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     codeSettingsLayout = new QVBoxLayout();
 
     textSettingsLayout->addWidget(new QLabel("<h1>Text Editor Specific Settings</h1>"));
-    textSettingsLayout->addWidget(new QLabel("<h3>Editor: Font</h3>"));
-    textSettingsLayout->addWidget(new QLabel("Controls the default Font style for files."));
+    textSettingsLayout->addWidget(new QLabel("<h3>Editor: Font Family</h3>"));
+    textSettingsLayout->addWidget(new QLabel("Controls the default Font family for files."));
 
-    QFontComboBox* comboBox = new QFontComboBox();
-    comboBox->setCurrentFont(settings->getValue("text/font").value<QFont>());
-    textSettingsLayout->addWidget(comboBox);
+    fontFamilyComboBox = new QFontComboBox();
+    fontFamilyComboBox->setCurrentFont(settings->getValue("text/fontFamily").value<QFont>());
+    textSettingsLayout->addWidget(fontFamilyComboBox);
+
+    connect(fontFamilyComboBox,
+            &QFontComboBox::currentFontChanged,
+            this,
+            [=](const QFont& value)
+            {
+                SettingsManager::getInstance()->saveValue("text", "fontSize", value);
+            }
+    );
 
     textSettingsLayout->addWidget(new QLabel("<h3>Editor: Font Size</h3>"));
     textSettingsLayout->addWidget(new QLabel("Controls the default Font size."));
-    QSpinBox* fontSizeSpinbox = new QSpinBox();
+    fontSizeSpinbox = new QSpinBox();
     fontSizeSpinbox->setValue(settings->getValue("text/fontSize").toInt());
     fontSizeSpinbox->setRange(8, 48);
+
+    connect(fontSizeSpinbox,
+            QOverload<int>::of(&QSpinBox::valueChanged),
+            this,
+            [=](int value)
+            {
+                SettingsManager::getInstance()->saveValue("text", "fontSize", value);
+            }
+    );
+
     textSettingsLayout->addWidget(fontSizeSpinbox);
 
     textSettingsLayout->addWidget(new QLabel("<h3>Editor: Tab Length</h3>"));
     textSettingsLayout->addWidget(new QLabel("Controls the tab length of word documents. This is different than the tab length for the code editor."));
 
-    QSpinBox* tabLengthSpinbox = new QSpinBox();
-    tabLengthSpinbox->setValue(settings->getValue("text/tabLength").toInt());
-    tabLengthSpinbox->setRange(2, 16);
-    textSettingsLayout->addWidget(tabLengthSpinbox);
+    textTabLengthSpinbox = new QSpinBox();
+    textTabLengthSpinbox->setValue(settings->getValue("text/tabLength").toInt());
+    textTabLengthSpinbox->setRange(2, 16);
+    textSettingsLayout->addWidget(textTabLengthSpinbox);
 
-    //ui->textSettingsWidget->setLayout(textSettingsLayout);
+    connect(textTabLengthSpinbox,
+            QOverload<int>::of(&QSpinBox::valueChanged),
+            this,
+            [=](int value)
+            {
+                SettingsManager::getInstance()->saveValue("text", "tabLength", value);
+            }
+    );
 
     ui->context->addLayout(textSettingsLayout);
 
@@ -52,7 +78,7 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     codeSettingsLayout->addWidget(new QLabel("<h3>Java Syntax Color:</h3>"));
     codeSettingsLayout->addWidget(new QLabel("Controls the color of java keywords."));
 
-    QColorDialog* javaColorPicker = new QColorDialog(this);
+    javaColorPicker = new QColorDialog(this);
     javaColorPicker->setOptions(QColorDialog::NoButtons | QColorDialog::DontUseNativeDialog);
     javaColorPicker->setCurrentColor(settings->getValue("code/javaKeywordColor").value<QColor>());
     codeSettingsLayout->addWidget(javaColorPicker);
@@ -60,7 +86,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     connect(javaColorPicker,
             &QColorDialog::currentColorChanged,
             this,
-            [=](const QColor &color) {
+            [=](const QColor &color)
+            {
                 SettingsManager::getInstance()->saveValue("code", "javaKeywordColor", color);
             }
     );
@@ -68,7 +95,7 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     codeSettingsLayout->addWidget(new QLabel("<h3>C++ Syntax Color:</h3>"));
     codeSettingsLayout->addWidget(new QLabel("Controls the color of c++ keywords."));
 
-    QColorDialog* cppColorPicker = new QColorDialog(this);
+    cppColorPicker = new QColorDialog(this);
     cppColorPicker->setOptions(QColorDialog::NoButtons | QColorDialog::DontUseNativeDialog);
     cppColorPicker->setCurrentColor(settings->getValue("code/cppKeywordColor").value<QColor>());
     codeSettingsLayout->addWidget(cppColorPicker);
@@ -76,7 +103,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     connect(cppColorPicker,
             &QColorDialog::currentColorChanged,
             this,
-            [=](const QColor &color) {
+            [=](const QColor &color)
+            {
                 SettingsManager::getInstance()->saveValue("code", "cppKeywordColor", color);
             }
     );
@@ -84,7 +112,7 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     codeSettingsLayout->addWidget(new QLabel("<h3>Python Syntax Color:</h3>"));
     codeSettingsLayout->addWidget(new QLabel("Controls the color of python keywords."));
 
-    QColorDialog* pythonColorPicker = new QColorDialog(this);
+    pythonColorPicker = new QColorDialog(this);
     pythonColorPicker->setOptions(QColorDialog::NoButtons | QColorDialog::DontUseNativeDialog);
     pythonColorPicker->setCurrentColor(settings->getValue("code/pythonKeywordColor").value<QColor>());
     codeSettingsLayout->addWidget(pythonColorPicker);
@@ -92,7 +120,8 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     connect(pythonColorPicker,
             &QColorDialog::currentColorChanged,
             this,
-            [=](const QColor &color) {
+            [=](const QColor &color)
+            {
                 SettingsManager::getInstance()->saveValue("code", "pythonKeywordColor", color);
             }
     );
@@ -100,10 +129,20 @@ OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
     codeSettingsLayout->addWidget(new QLabel("<h3>Code: Tab Length</h3>"));
     codeSettingsLayout->addWidget(new QLabel("Controls the tab length of code tabs. This is different than the tab length for the text editor."));
 
-    tabLengthSpinbox = new QSpinBox();
-    tabLengthSpinbox->setValue(defaultCodeTabLength);
-    tabLengthSpinbox->setRange(2, 16);
-    codeSettingsLayout->addWidget(tabLengthSpinbox);
+    codeTabLengthSpinBox = new QSpinBox();
+    codeTabLengthSpinBox->setValue(settings->getValue("code/tabLength").toInt());
+    codeTabLengthSpinBox->setRange(2, 16);
+    codeSettingsLayout->addWidget(codeTabLengthSpinBox);
+
+    connect(codeTabLengthSpinBox,
+            QOverload<int>::of(&QSpinBox::valueChanged),
+            this,
+            [=](int value)
+            {
+                SettingsManager::getInstance()->saveValue("code", "tabLength", value);
+            }
+    );
+
 
     ui->context->addLayout(codeSettingsLayout);
 
@@ -121,19 +160,48 @@ void OptionsWindow::on_treeWidget_itemClicked(QTreeWidgetItem *item, int column)
 {
     QString clickedText = item->text(column);
 
-    if(item->text(column) == "Text Editor" || item->parent()->text(column) == "Text Editor")
+    if(clickedText == "Font Family")
     {
-
+        ui->scrollArea->ensureWidgetVisible(fontFamilyComboBox);
+        fontFamilyComboBox->setFocus();
     }
-    else if(item->text(column) == "Code Editor" || item->parent()->text(column) == "Code Editor")
+    else if(clickedText == "Font Size")
     {
-
+        ui->scrollArea->ensureWidgetVisible(fontSizeSpinbox);
+        fontSizeSpinbox->setFocus();
+    }
+    else if(item->parent() != nullptr && item->parent()->text(column) == "Text Editor" && clickedText == "Tab Length")
+    {
+        ui->scrollArea->ensureWidgetVisible(textTabLengthSpinbox);
+        textTabLengthSpinbox->setFocus();
+    }
+    else if(clickedText == "Java")
+    {
+        ui->scrollArea->ensureWidgetVisible(javaColorPicker);
+        javaColorPicker->setFocus();
+    }
+    else if(clickedText == "C++")
+    {
+        ui->scrollArea->ensureWidgetVisible(cppColorPicker);
+        cppColorPicker->setFocus();
+    }
+    else if(clickedText == "Python")
+    {
+        ui->scrollArea->ensureWidgetVisible(pythonColorPicker);
+        pythonColorPicker->setFocus();
+    }
+    else if(item->parent() != nullptr && item->parent()->text(column) == "Code Editor" && clickedText == "Tab Length")
+    {
+        ui->scrollArea->ensureWidgetVisible(codeTabLengthSpinBox);
+        codeTabLengthSpinBox->setFocus();
     }
 }
 
 void OptionsWindow::on_OptionsWindow_rejected()
 {
     qDebug() << "Closed";
+
+    //Update the code color per tab based on which code syntax highlighter each one has
     for(int i = 0; i < tabs->count() - 1; i++)
     {
         TextTabWidget* tab = dynamic_cast<TextTabWidget*>(tabs->widget(i));

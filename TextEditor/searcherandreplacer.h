@@ -17,6 +17,7 @@ public:
 
     void moveToFirstOccurence(QRegularExpressionMatch& match);
     void moveToNextOccurence();
+    void moveBackOneOccurence();
 
     void replaceCurrent(const QString &findText, const QString &replacementText);
     void replaceAll(const QString &findText, const QString& replacementText);

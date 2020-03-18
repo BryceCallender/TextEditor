@@ -23,7 +23,7 @@
 #include "pythonsyntaxhighlighter.h"
 #include "speciallineedit.h"
 
-class TextTabWidget : public QTabBar
+class TextTabWidget: public QWidget
 {
     Q_OBJECT
 public:
@@ -31,6 +31,7 @@ public:
 
     void setTabsFileName(const QString &name);
     QString getTabFileName();
+    QString getTabName();
 
     QTextEdit* getTextEdit();
 
@@ -38,7 +39,6 @@ public:
     void revealReplaceBox();
 
     void setTextEditText(const QString& text);
-    void setTabNameText(int index, const QString& text);
 
     void searchTextForQuery(const QString& query);
 
@@ -52,6 +52,8 @@ public:
     void handleBracketAndParenthesisMatch();
 
     CodeSyntaxHighlighter* getSyntaxHighlighter();
+
+    void setTabStopDistance(unsigned int length);
 private:
     QString fileName;
     QString tabName;

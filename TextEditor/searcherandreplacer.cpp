@@ -54,6 +54,20 @@ void SearcherAndReplacer::moveToNextOccurence()
     }
 }
 
+void SearcherAndReplacer::moveBackOneOccurence()
+{
+    if(textMatches.size() > 0)
+    {
+        currentIndex -= 1;
+        if(currentIndex < 0)
+        {
+            currentIndex = textMatches.size() - 1;
+        }
+        setResultsText();
+        moveCursorToOccurence(textMatches[currentIndex]);
+    }
+}
+
 void SearcherAndReplacer::moveCursorToOccurence(QRegularExpressionMatch &match)
 {
     QTextCursor cursor = textEdit->textCursor();

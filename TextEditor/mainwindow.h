@@ -26,6 +26,7 @@
 #include "texttabwidget.h"
 #include "optionswindow.h"
 #include "settingsmanager.h"
+#include "customtabwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -39,7 +40,14 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    TextTabWidget* getCurrentTabWidget();
+    void setWindowToFileName(int index);
+    void markTextTabAsClean(const QString& newPath);
+    void printPreview(QPrinter *printer);
     void closeEvent(QCloseEvent *event);
+protected:
+    void dragEnterEvent(QDragEnterEvent *event);
+    void dropEvent(QDropEvent *event);
 private slots:
     void on_actionNew_triggered();
 
@@ -93,10 +101,6 @@ private slots:
 
     void on_actionSave_triggered();
 
-    void on_actionSave_2_trigered();
-
-    void setWindowToFileName(int index);
-
     void on_actionFormat_Text_triggered();
 
     void on_actionBold_triggered();
@@ -111,10 +115,6 @@ private slots:
 
     void on_fontSizeComboBox_activated(const QString &arg1);
 
-    TextTabWidget* getCurrentTabWidget();
-
-    void markTextTabAsClean(const QString& newPath);
-
     void on_actionOptions_triggered();
 
     void on_actionCenter_triggered();
@@ -123,9 +123,11 @@ private slots:
 
     void on_actionAlign_Right_triggered();
 
-    void printPreview(QPrinter *printer);
-
     void on_actionSave_2_triggered();
+
+    void on_actionBullets_triggered();
+
+    void on_actionNumbering_triggered();
 
 private:
     Ui::MainWindow *ui;
@@ -143,5 +145,9 @@ private:
     QSplitter* splitter;
 
     SettingsManager* settings;
+
+    QDockWidget* dock;
+
+    QVector<CustomTabWidget*> tabWidgets;
 };
 #endif // MAINWINDOW_H

@@ -1,6 +1,6 @@
 #include "speciallineedit.h"
 
-SpecialLineEdit::SpecialLineEdit()
+SpecialLineEdit::SpecialLineEdit(QWidget *parent): QLineEdit(parent)
 {
 
 }

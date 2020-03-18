@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "texttabwidget.h"
 
 #include <QTabBar>
 #include <QDockWidget>
@@ -15,16 +14,16 @@ MainWindow::MainWindow(QWidget *parent)
 
     menuBar()->setNativeMenuBar(false);
 
-    ui->tabWidget->setMovable(false);
+    ui->tabWidget->setMovable(true);
     ui->tabWidget->setTabsClosable(true);
 
-    splitter = new QSplitter();
+    setAcceptDrops(true);
 
-    ui->tabWidget->clear();
-
-    ui->tabWidget->insertTab(0, new TextTabWidget(), "New Tab");
+    tabWidgets.push_back(ui->tabWidget);
 
     connect(ui->tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
+
+    setCentralWidget(ui->tabWidget);
 
     ui->tabWidget->setCurrentIndex(0);
     TextTabWidget* textTabWidget = getCurrentTabWidget();
@@ -41,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
     clipboard_changed();
 
     zoom = 8;
-    QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
+    QObject::connect(textTabWidget->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
 
     QObject::connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &MainWindow::clipboard_changed);
 
@@ -60,19 +59,6 @@ MainWindow::MainWindow(QWidget *parent)
                      &MainWindow::on_actionZoom_Out_triggered);
 
 
-    ui->tabWidget->addTab(new TextTabWidget(), "+");
-
-    QTabBar* tabBar = ui->tabWidget->tabBar();
-
-    #if defined(Q_OS_WIN) || defined(Q_OS_UNIX)
-        tabBar->tabButton(1, QTabBar::RightSide)->deleteLater();
-        tabBar->setTabButton(1, QTabBar::RightSide, 0);
-    #endif
-    #ifdef Q_OS_MACOS
-        tabBar->tabButton(1, QTabBar::LeftSide)->deleteLater();
-        tabBar->setTabButton(1, QTabBar::LeftSide, 0);
-    #endif
-
     fileWatcher = new QFileSystemWatcher();
 
     QObject::connect(fileWatcher,
@@ -89,6 +75,36 @@ MainWindow::MainWindow(QWidget *parent)
 
     settings = SettingsManager::getInstance();
     setGeometry(settings->getValue("ui/geometry").toRect());
+
+    //Sets values to the saved settings
+    ui->fontComboBox->setCurrentFont(settings->getValue("text/fontFamily").value<QFont>());
+    ui->fontSizeComboBox->setCurrentText(settings->getValue("text/fontSize").toString());
+
+    // create shortcut
+    QShortcut *saveShortcut = new QShortcut(QKeySequence::Save, this);
+
+    QObject::connect(saveShortcut,
+                     &QShortcut::activated,
+                     this,
+                     &MainWindow::on_actionSave_triggered);
+
+    // create shortcut
+    QShortcut *saveAsShortcut = new QShortcut(QKeySequence::SaveAs, this);
+
+    QObject::connect(saveAsShortcut,
+                     &QShortcut::activated,
+                     this,
+                     &MainWindow::on_actionSave_as_triggered);
+
+    // create shortcut
+    QShortcut *printShortcut = new QShortcut(QKeySequence::Print, this);
+
+    QObject::connect(printShortcut,
+                     &QShortcut::activated,
+                     this,
+                     &MainWindow::on_actionPrint_triggered);
+
+    qDebug() << size();
 }
 
 MainWindow::~MainWindow()
@@ -196,9 +212,11 @@ void MainWindow::on_actionPrint_triggered()
     //preview.exec();
 }
 
-void MainWindow::printPreview(QPrinter *printer){
+void MainWindow::printPreview(QPrinter *printer)
+{
     getCurrentTabWidget()->getTextEdit()->print(printer);
 }
+
 void MainWindow::on_actionExit_triggered()
 {
     QApplication::quit();
@@ -464,7 +482,6 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 
 void MainWindow::on_tabWidget_tabBarClicked(int index)
 {
-    qDebug() << index;
     //This will make sure to insert where the last tab is and they cannot move it or itll make a new tab
     if(index == ui->tabWidget->count() - 1)
     {
@@ -521,7 +538,7 @@ void MainWindow::on_actionSave_triggered()
 
 }
 
- void MainWindow::on_actionSave_2_trigered()
+ void MainWindow::on_actionSave_2_triggered()
  {
      on_actionSave_triggered();
  }
@@ -811,10 +828,197 @@ void MainWindow::closeEvent(QCloseEvent *event)
             }
         }
     }
-        QWidget::closeEvent(event);
+
+    QWidget::closeEvent(event);
 }
 
-void MainWindow::on_actionSave_2_triggered()
+void MainWindow::on_actionBullets_triggered()
 {
-    on_actionSave_triggered();
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+
+    if(ui->actionBullets->isChecked())
+    {
+        if(ui->actionNumbering->isChecked())
+        {
+            ui->actionNumbering->setChecked(false);
+        }
+        cursor.beginEditBlock();
+        QTextBlockFormat blockFmt = cursor.blockFormat();
+        QTextListFormat listFmt;
+
+        if (cursor.currentList())
+        {
+            listFmt = cursor.currentList()->format();
+        }
+        else
+        {
+            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
+            blockFmt.setIndent(0);
+            cursor.setBlockFormat(blockFmt);
+        }
+
+        listFmt.setStyle(QTextListFormat::ListDisc);
+        cursor.createList(listFmt);
+        cursor.endEditBlock();
+    }
+    else
+    {
+        QTextBlockFormat bfmt;
+        bfmt.setObjectIndex(0);
+        cursor.mergeBlockFormat(bfmt);
+    }
+
+}
+
+void MainWindow::on_actionNumbering_triggered()
+{
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+
+    if(ui->actionNumbering->isChecked())
+    {
+        if(ui->actionBullets->isChecked())
+        {
+            ui->actionBullets->setChecked(false);
+        }
+        cursor.beginEditBlock();
+        QTextBlockFormat blockFmt = cursor.blockFormat();
+        QTextListFormat listFmt;
+
+        if (cursor.currentList())
+        {
+            listFmt = cursor.currentList()->format();
+        }
+        else
+        {
+            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
+            blockFmt.setIndent(0);
+            cursor.setBlockFormat(blockFmt);
+        }
+
+        listFmt.setStyle(QTextListFormat::ListDecimal);
+        cursor.createList(listFmt);
+        cursor.endEditBlock();
+    }
+    else
+    {
+        QTextBlockFormat bfmt;
+        bfmt.setObjectIndex(0);
+        cursor.mergeBlockFormat(bfmt);
+    }
+}
+
+void MainWindow::dragEnterEvent(QDragEnterEvent *event)
+{
+    qDebug() << "MainWindow drag enter event";
+    QPoint contactPosition = mapFromGlobal(mapToGlobal(event->pos()));
+
+    //If the contact point is showing some sort of desire to detach and is on the right side of the window
+    if(contactPosition.x() > (size().width() * 0.75))
+    {
+        qDebug() << "Right tab location";
+        event->acceptProposedAction();
+    }
+
+    //If the tab is currently on the bottom side of the window
+    if(contactPosition.y() > (size().height() * 0.75))
+    {
+        qDebug() << "Bottom tab location";
+        event->acceptProposedAction();
+    }
+}
+
+void MainWindow::dropEvent(QDropEvent *event)
+{
+    //Get the current docking widgets in the mainwindow
+    QList<QDockWidget*> dockWidgets = findChildren<QDockWidget*>();
+
+    //Get position of the event occuring
+    QPoint dropPosition = mapFromGlobal(mapToGlobal(event->pos()));
+
+    dock = new QDockWidget("", this);
+
+    //Make a new custom tab widget incase it is needed
+    CustomTabWidget* tabWidget = new CustomTabWidget();
+
+    //Get data from the clipboard with this mime data tag and then read the bytes to convert it to TabTransferData
+    QByteArray data = event->mimeData()->data("application/tab");
+    QDataStream ds(&data, QIODevice::ReadWrite);
+    TabTransferData testTabData;
+
+    ds >> testTabData;
+
+    //Set the widget
+    tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
+    tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
+    tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
+    tabWidgets.at(CustomTabWidget::tabParent)->removeTab(CustomTabWidget::tabRemoving);
+
+    //connect signal
+    connect(tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
+
+    //set the dock widget incase it does get added
+    dock->setWidget(tabWidget);
+
+    if(dropPosition.x() > (size().width() * 0.75))
+    {
+        bool isOccupingRight = false;
+        QDockWidget* offender;
+        for(QDockWidget* dock: dockWidgets)
+        {
+            isOccupingRight |= dockWidgetArea(dock) == Qt::RightDockWidgetArea;
+            if(isOccupingRight)
+            {
+                offender = dock;
+            }
+        }
+
+        //There was no dock widget occuping the right dock widget area
+        if(!isOccupingRight)
+        {
+            addDockWidget(Qt::RightDockWidgetArea, dock);
+            tabWidgets.push_back(tabWidget);
+        }
+        else //Add to right dock widget since one is already there
+        {
+            qDebug() << "Adding tab to the dock widget";
+            CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
+
+            tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(), "New Tab");
+            tabWidget->setCurrentIndex(tabWidget->count() - 2);
+            tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
+            tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
+            tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
+        }
+    }
+    else if(dropPosition.y() > (size().height() * 0.75))
+    {
+        bool isOccupingBottom = false;
+        QDockWidget* offender;
+        for(QDockWidget* dock: dockWidgets)
+        {
+            isOccupingBottom |= dockWidgetArea(dock) == Qt::BottomDockWidgetArea;
+            if(isOccupingBottom)
+            {
+                offender = dock;
+            }
+        }
+
+        //There was no dock widget occuping the right dock widget area
+        if(!isOccupingBottom)
+        {
+            addDockWidget(Qt::BottomDockWidgetArea, dock);
+            tabWidgets.push_back(tabWidget);
+        }
+        else //Add to right dock widget since one is already there
+        {
+            qDebug() << "Adding tab to the dock widget";
+            CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
+
+            tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(), "New Tab");
+            tabWidget->setCurrentIndex(tabWidget->count() - 2);
+            tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
+            tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
+            tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
+        }
+    }
 }

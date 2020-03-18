@@ -1,8 +1,8 @@
 #include "texttabwidget.h"
 
-TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
+TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
 {
-    textEditArea = new QTextEdit();
+    textEditArea = new QTextEdit(this);
 
     highlighter = new SearchHighlighter(textEditArea->document());
     codeHighlighter = nullptr;
@@ -13,7 +13,7 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
 
     QVBoxLayout* mainLayout = new QVBoxLayout();
 
-    groupBox = new QGroupBox();
+    groupBox = new QGroupBox(this);
 
     groupBox->setTitle("Search");
 
@@ -21,14 +21,37 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     QVBoxLayout* groupBoxLayout = new QVBoxLayout();
 
     QHBoxLayout* findLayout = new QHBoxLayout();
-    findText = new SpecialLineEdit();
+    findText = new SpecialLineEdit(this);
     findText->setPlaceholderText("Find");
 
     findLayout->addWidget(findText);
     findLayout->addWidget(resultsLabel);
 
-    exitButton = new QPushButton();
-    exitButton->setIcon(QIcon(":/imgs/close.png"));
+    QPushButton* upArrow = new QPushButton(this);
+    upArrow->setIcon(QPixmap(":/imgs/icon/up-arrow.svg"));
+
+    connect(upArrow,
+            &QPushButton::pressed,
+            replacer,
+            &SearcherAndReplacer::moveToNextOccurence);
+
+    QPushButton* downArrow = new QPushButton(this);
+    downArrow->setIcon(QPixmap(":/imgs/icon/down-arrow.svg"));
+
+    connect(downArrow,
+            &QPushButton::pressed,
+            replacer,
+            &SearcherAndReplacer::moveBackOneOccurence);
+
+    QHBoxLayout *buttonLayout = new QHBoxLayout();
+    buttonLayout->addWidget(downArrow);
+    buttonLayout->addWidget(upArrow);
+    buttonLayout->setSpacing(0);
+
+    findLayout->addLayout(buttonLayout);
+
+    exitButton = new QPushButton(this);
+    exitButton->setIcon(QIcon(":/imgs/icon/close.png"));
 
     exitButton->setStyleSheet("QPushButton {background-color: rgba(255, 255, 255, 0);}"
                               "QPushButton:hover {background-color: lightgrey; }");
@@ -41,18 +64,17 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
 
     //Begin of replace layout
     QHBoxLayout* replaceLayout = new QHBoxLayout();
-    replaceText = new QLineEdit();
+    replaceText = new QLineEdit(this);
     replaceText->setPlaceholderText("Replace");
 
-    replaceCurrentButton = new QPushButton("Current");
-    replaceAllButton = new QPushButton("All");
+    replaceCurrentButton = new QPushButton("Current", this);
+    replaceAllButton = new QPushButton("All", this);
 
     replaceLayout->addWidget(replaceText);
     replaceLayout->addWidget(replaceCurrentButton);
     replaceLayout->addWidget(replaceAllButton);
+
     //End of replace layout
-
-
     replaceCurrentButton->setDisabled(true);
     replaceAllButton->setDisabled(true);
 
@@ -74,7 +96,7 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     groupBox->hide();
 
     // create shortcut
-    QShortcut *findShortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_F), this);
+    QShortcut *findShortcut = new QShortcut(QKeySequence::Find, this);
 
     QObject::connect(findShortcut,
                      &QShortcut::activated,
@@ -130,18 +152,24 @@ TextTabWidget::TextTabWidget(QWidget *parent) : QTabBar(parent)
     p.setColor(QPalette::Highlight, QColor(64, 148, 255));
     textEditArea->setPalette(p);
 
+    //Sets the font based on the current settings and applies it.
+    QFont currentFont = textEditArea->font();
+    currentFont.setFamily(SettingsManager::getInstance()->getValue("text/fontFamily").toString());
+    currentFont.setPointSize(SettingsManager::getInstance()->getValue("text/fontSize").toInt());
+    textEditArea->setFont(currentFont);
 
-    //Default code tab count is 4 space units, some have 2, and then for basic essay writing it is going to be 8 units
-    //Qt has a tab set as a stop distance of 80 pixels where the width of ' ' is 3 pixels. The stop distance is in terms of pixels as a qreal
-    //Reference: https://doc.qt.io/qt-5/qtextedit.html#tabStopDistance-prop
-    QFontMetrics metrics(textEditArea->font());
-    int tabSpaceCount = 4;
-    textEditArea->setTabStopDistance(tabSpaceCount * metrics.width(' '));
+    //Sets tab length based on the current settings and applies it as well.
+    setTabStopDistance(SettingsManager::getInstance()->getValue("text/tabLength").toInt());
 }
 
 QString TextTabWidget::getTabFileName()
 {
     return fileName;
+}
+
+QString TextTabWidget::getTabName()
+{
+    return tabName;
 }
 
 void TextTabWidget::setTabsFileName(const QString& name)
@@ -219,6 +247,13 @@ void TextTabWidget::handleCloseEvent()
 
     replaceCurrentButton->hide();
     replaceAllButton->hide();
+
+    //Regain the color!
+    if(codeHighlighter != nullptr)
+    {
+        codeHighlighter->rehighlight();
+    }
+
 }
 
 void TextTabWidget::handleBracketAndParenthesisMatch()
@@ -228,8 +263,11 @@ void TextTabWidget::handleBracketAndParenthesisMatch()
     QString suffix = fileInfo.suffix();
     if(suffix == "cpp" || suffix == "h" || suffix == "java") {
         if(textEditArea->toPlainText().endsWith("{")) {
-            textEditArea->textCursor().insertText("}");
-            textEditArea->textCursor().movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, 1);
+            qDebug() << "{ found";
+            QTextCursor cursor = textEditArea->textCursor();
+            cursor.insertText("}");
+            cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, 1);
+            textEditArea->setTextCursor(cursor);
         }
     }
 }
@@ -239,14 +277,18 @@ CodeSyntaxHighlighter* TextTabWidget::getSyntaxHighlighter()
     return codeHighlighter;
 }
 
+void TextTabWidget::setTabStopDistance(unsigned int length)
+{
+    //Default code tab count is 4 space units, some have 2, and then for basic essay writing it is going to be 8 units
+    //Qt has a tab set as a stop distance of 80 pixels where the width of ' ' is 3 pixels. The stop distance is in terms of pixels as a qreal
+    //Reference: https://doc.qt.io/qt-5/qtextedit.html#tabStopDistance-prop
+    QFontMetrics metrics(textEditArea->font());
+    textEditArea->setTabStopDistance(length * metrics.width(' '));
+}
+
 void TextTabWidget::setTextEditText(const QString &text)
 {
     textEditArea->setPlainText(text);
-}
-
-void TextTabWidget::setTabNameText(int index, const QString &text)
-{
-    setTabText(index, text);
 }
 
 QTextEdit* TextTabWidget::getTextEdit()
