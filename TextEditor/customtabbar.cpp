@@ -1,5 +1,6 @@
 #include "TabTransferData.h"
 #include "customtabbar.h"
+#include "mainwindow.h"
 #include "texttabwidget.h"
 
 CustomTabBar::CustomTabBar(QWidget *parent): QTabBar(parent)
@@ -16,6 +17,8 @@ CustomTabBar::CustomTabBar(QWidget *parent): QTabBar(parent)
 
 void CustomTabBar::handleTabMovement(int from, int to)
 {
+    Q_UNUSED(to);
+
     if(from == count() - 1)
     {
         moveTab(from-1, from);
@@ -29,6 +32,8 @@ void CustomTabBar::dragEnterEvent(QDragEnterEvent *event)
 
 void CustomTabBar::dropEvent(QDropEvent *event)
 {
+    qDebug() << "Tab bar drop event detected";
+
     //Get data from the clipboard with this mime data tag and then read the bytes to convert it to TabTransferData
     QByteArray data = event->mimeData()->data("application/tab");
     QDataStream ds(&data, QIODevice::ReadWrite);
@@ -41,9 +46,13 @@ void CustomTabBar::dropEvent(QDropEvent *event)
     //Set the widget
     newTab->setTabsFileName(testTabData.filePath);
     newTab->getTextEdit()->setText(testTabData.text);
-    setCurrentIndex(count() - 1);
+    int indexToInsert = count() - 1;
+    parent->insertTab(indexToInsert, newTab, "New Tab");
+    setTabText(indexToInsert, testTabData.tabName);
+    setCurrentIndex(indexToInsert);
 
-    parent->insertTab(currentIndex(), newTab, "New Tab");
+    //Parent of the CustomTabWidget is a QDockWidget and its parent is the MainWindow (which is what i need)
+    MainWindow *mainWindow = reinterpret_cast<MainWindow*>(this->parent->parentWidget()->parentWidget());
 
-    setTabText(currentIndex(), testTabData.tabName);
+    mainWindow->removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
 }

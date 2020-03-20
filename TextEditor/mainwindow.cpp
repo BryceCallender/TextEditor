@@ -19,7 +19,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     setAcceptDrops(true);
 
-    tabWidgets.push_back(ui->tabWidget);
+    tabWidgets = new QVector<CustomTabWidget*>();
+    tabWidgets->push_back(ui->tabWidget);
 
     connect(ui->tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
 
@@ -451,17 +452,17 @@ void MainWindow::on_tabWidget_tabCloseRequested(int index)
 void MainWindow::on_tabWidget_tabBarClicked(int index)
 {
     //This will make sure to insert where the last tab is and they cannot move it or itll make a new tab
-    if(index == ui->tabWidget->count() - 1)
-    {
-        ui->tabWidget->insertTab(index, new TextTabWidget(), "New tab");
-        ui->tabWidget->setCurrentIndex(index);
-    }
+//    if(index == ui->tabWidget->count() - 1)
+//    {
+//        ui->tabWidget->insertTab(index, new TextTabWidget(), "New tab");
+//        ui->tabWidget->setCurrentIndex(index);
+//    }
 
-    getCurrentTabWidget()->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
+//    getCurrentTabWidget()->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
 
-    connect(getCurrentTabWidget()->getTextEdit(), SIGNAL(customContextMenuRequested(const QPoint&)),
-        this, SLOT(showContextMenu(const QPoint&)));
-    QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
+//    connect(getCurrentTabWidget()->getTextEdit(), SIGNAL(customContextMenuRequested(const QPoint&)),
+//        this, SLOT(showContextMenu(const QPoint&)));
+//    QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
 }
 
 void MainWindow::on_actionView_Rendered_HTML_triggered()
@@ -474,7 +475,15 @@ void MainWindow::on_actionView_Rendered_HTML_triggered()
 
 void MainWindow::on_actionSplit_Dock_Horizontally_triggered()
 {
-    splitter->setSizes(QList<int>({INT_MAX, INT_MAX}));
+    qDebug() << "Splitting the window!";
+
+    //Get the current docking widgets in the mainwindow
+    QList<QDockWidget*> dockWidgets = findChildren<QDockWidget*>();
+
+    if(dockWidgets.size() == 2)
+    {
+        splitDockWidget(dockWidgets.at(0), dockWidgets.at(1), Qt::Horizontal);
+    }
 }
 
 void MainWindow::on_actionSave_triggered()
@@ -790,6 +799,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
     QWidget::closeEvent(event);
 }
 
+void MainWindow::removeTabFromWidget(int widgetIndex, int tabIndex)
+{
+    tabWidgets->at(widgetIndex)->removeTab(tabIndex);
+}
+
 void MainWindow::on_actionBullets_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
@@ -867,7 +881,7 @@ void MainWindow::on_actionNumbering_triggered()
 
 void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 {
-    qDebug() << "MainWindow drag enter event";
+    //qDebug() << "MainWindow drag enter event";
     QPoint contactPosition = mapFromGlobal(mapToGlobal(event->pos()));
 
     //If the contact point is showing some sort of desire to detach and is on the right side of the window
@@ -887,6 +901,8 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 
 void MainWindow::dropEvent(QDropEvent *event)
 {
+    qDebug() << "Main window drop event detected";
+
     //Get the current docking widgets in the mainwindow
     QList<QDockWidget*> dockWidgets = findChildren<QDockWidget*>();
 
@@ -909,7 +925,8 @@ void MainWindow::dropEvent(QDropEvent *event)
     tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
     tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
     tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
-    tabWidgets.at(CustomTabWidget::tabParent)->removeTab(CustomTabWidget::tabRemoving);
+    tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
+    removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
 
     //connect signal
     connect(tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
@@ -934,7 +951,7 @@ void MainWindow::dropEvent(QDropEvent *event)
         if(!isOccupingRight)
         {
             addDockWidget(Qt::RightDockWidgetArea, dock);
-            tabWidgets.push_back(tabWidget);
+            tabWidgets->push_back(tabWidget);
         }
         else //Add to right dock widget since one is already there
         {
@@ -965,7 +982,7 @@ void MainWindow::dropEvent(QDropEvent *event)
         if(!isOccupingBottom)
         {
             addDockWidget(Qt::BottomDockWidgetArea, dock);
-            tabWidgets.push_back(tabWidget);
+            tabWidgets->push_back(tabWidget);
         }
         else //Add to right dock widget since one is already there
         {

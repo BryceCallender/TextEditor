@@ -25,6 +25,8 @@ struct TabTransferData {
 
         in >> tabName >> filePath >> text;
 
+        in >> *highlighter;
+
         tabData.tabName = tabName;
         tabData.filePath = filePath;
         tabData.text = text;

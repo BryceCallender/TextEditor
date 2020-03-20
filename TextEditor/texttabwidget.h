@@ -52,6 +52,7 @@ public:
     void handleBracketAndParenthesisMatch();
 
     CodeSyntaxHighlighter* getSyntaxHighlighter();
+    void setSyntaxHighlighter(CodeSyntaxHighlighter* highlighter);
 
     void setTabStopDistance(unsigned int length);
 private:

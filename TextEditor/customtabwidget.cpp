@@ -35,8 +35,8 @@ CustomTabWidget::CustomTabWidget(QWidget *parent)
     tabBar()->setTabButton(1, QTabBar::LeftSide, 0);
 #endif
 
-//    QObject::connect(this, &CustomTabWidget::tabCloseRequested, this, &CustomTabWidget::tabCloseRequest);
-//    QObject::connect(this, &CustomTabWidget::tabBarClicked, this, )
+    QObject::connect(this, &CustomTabWidget::tabCloseRequested, this, &CustomTabWidget::tabCloseRequest);
+    QObject::connect(this, &CustomTabWidget::tabBarClicked, this, &CustomTabWidget::tabClicked);
 }
 
 void CustomTabWidget::mousePressEvent(QMouseEvent *event)
@@ -129,5 +129,15 @@ void CustomTabWidget::tabCloseRequest(int index)
     if(index > 0)
     {
         setCurrentIndex(index - 1);
+    }
+}
+
+void CustomTabWidget::tabClicked(int index)
+{
+    //This will make sure to insert where the last tab is and they cannot move it or itll make a new tab
+    if(index == count() - 1)
+    {
+        insertTab(index, new TextTabWidget(), "New Tab");
+        setCurrentIndex(index);
     }
 }

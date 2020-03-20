@@ -277,6 +277,11 @@ CodeSyntaxHighlighter* TextTabWidget::getSyntaxHighlighter()
     return codeHighlighter;
 }
 
+void TextTabWidget::setSyntaxHighlighter(CodeSyntaxHighlighter *highlighter)
+{
+    codeHighlighter = highlighter;
+}
+
 void TextTabWidget::setTabStopDistance(unsigned int length)
 {
     //Default code tab count is 4 space units, some have 2, and then for basic essay writing it is going to be 8 units

@@ -45,6 +45,7 @@ public:
     void markTextTabAsClean(const QString& newPath);
     void printPreview(QPrinter *printer);
     void closeEvent(QCloseEvent *event);
+    void removeTabFromWidget(int widgetIndex, int tabIndex);
 protected:
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
@@ -141,12 +142,10 @@ private:
     QFileSystemWatcher *fileWatcher;
     OptionsWindow* optionsWindow;
 
-    QSplitter* splitter;
-
     SettingsManager* settings;
 
     QDockWidget* dock;
 
-    QVector<CustomTabWidget*> tabWidgets;
+    QVector<CustomTabWidget*> *tabWidgets;
 };
 #endif // MAINWINDOW_H

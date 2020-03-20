@@ -37,6 +37,7 @@ public:
     TextTabWidget* getCurrentTabWidget();
 
     void tabCloseRequest(int index);
+    void tabClicked(int index);
 
     static int tabParent; /*!< The parent index of the tab being ripped off. */
     static int tabRemoving; /*!< The index of the tab being ripped off. */
