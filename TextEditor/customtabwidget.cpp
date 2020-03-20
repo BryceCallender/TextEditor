@@ -22,6 +22,10 @@ CustomTabWidget::CustomTabWidget(QWidget *parent)
     addTab(new TextTabWidget(), "New Tab");
     addTab(new TextTabWidget(), "+");
 
+    //Disable the + tab from accepting text incase the user tries to right text in it
+    TextTabWidget* textTabWidget = (TextTabWidget*) widget(1);
+    textTabWidget->getTextEdit()->setDisabled(true);
+
     setAcceptDrops(true);
 
     qRegisterMetaTypeStreamOperators<TabTransferData>("TabTransferData");
