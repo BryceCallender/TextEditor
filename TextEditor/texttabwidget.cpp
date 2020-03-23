@@ -249,6 +249,7 @@ void TextTabWidget::handleCloseEvent()
     replaceAllButton->hide();
 
     //Regain the color!
+    //TODO::Fix Crashes here due to mimedata issues
     if(codeHighlighter != nullptr)
     {
         codeHighlighter->rehighlight();

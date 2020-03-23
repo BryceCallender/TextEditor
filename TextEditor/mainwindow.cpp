@@ -979,6 +979,13 @@ void MainWindow::dropEvent(QDropEvent *event)
 
     ds >> testTabData;
 
+    //This highlighter was allocated, however this shouldnt be the case as it has no rules so we must
+    //explicitly assign it back to nullptr to avoid errors in other modules.
+    if(testTabData.highlighter->getRuleCount() == 0)
+    {
+        testTabData.highlighter = nullptr;
+    }
+
     //Set the widget
     tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
     tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
@@ -1069,5 +1076,5 @@ void MainWindow::dropEvent(QDropEvent *event)
 
 void MainWindow::on_actionFind_triggered()
 {
-    //getCurrentTabWidget()->revealReplaceBox();
+    getCurrentTabWidget()->revealReplaceBox();
 }

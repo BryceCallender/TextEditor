@@ -28,6 +28,11 @@ void CodeSyntaxHighlighter::updateKeywordColor(const QColor &color)
     qDebug() << "New Color: " << color;
 }
 
+int CodeSyntaxHighlighter::getRuleCount()
+{
+    return highlightingRules.size();
+}
+
 void CodeSyntaxHighlighter::highlightBlock(const QString &text)
 {
     for (const HighlightingRule &rule : qAsConst(highlightingRules))

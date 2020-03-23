@@ -36,6 +36,12 @@ public:
      */
     void updateKeywordColor(const QColor& color);
 
+    //! Gets the amount of rules for this highlighter
+    /*!
+      Responsible for telling if the highlighter is essentially empty or not
+     */
+    int getRuleCount();
+
     //! DataStream extractor for mimedata retrieval of the class CodeSyntaxHighlighter
     /*!
       \param in data stream that will be reading in the data.

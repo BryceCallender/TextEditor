@@ -77,8 +77,7 @@ void CustomTabWidget::mousePressEvent(QMouseEvent *event)
         data.text = textTab->getTextEdit()->toPlainText();
         data.highlighter = textTab->getSyntaxHighlighter();
         data.filePath = textTab->getTabFileName();
-        QFileInfo fileInfo(data.filePath);
-        data.tabName = fileInfo.fileName();
+        data.tabName = tabBar()->tabText(tab);
 
         QByteArray tabAsByte;
         QDataStream dataStream(&tabAsByte, QIODevice::ReadWrite);
@@ -95,7 +94,7 @@ void CustomTabWidget::mousePressEvent(QMouseEvent *event)
         drag->setPixmap(pixmap);
         //this->setCursor(Qt::OpenHandCursor);
         drag->setHotSpot(event->pos() - positionInTab);
-        Qt::DropAction dropAction = drag->exec(Qt::MoveAction);
+        drag->exec(Qt::MoveAction);
     }
 
     QTabWidget::mousePressEvent(event);

@@ -38,7 +38,4 @@ struct TabTransferData {
 
 Q_DECLARE_METATYPE(TabTransferData);
 
-
-
-
 #endif // TABTRANSFERDATA_H
