@@ -1,5 +1,14 @@
 \hypertarget{class_main_window}{}\doxysection{Main\+Window Class Reference}
 \label{class_main_window}\index{MainWindow@{MainWindow}}
+
+
+The main window and view for the editor.  
+
+
+
+
+{\ttfamily \#include $<$mainwindow.\+h$>$}
+
 Inheritance diagram for Main\+Window\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,9 +18,10 @@ Inheritance diagram for Main\+Window\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_main_window_a996c5a2b6f77944776856f08ec30858d}\label{class_main_window_a996c5a2b6f77944776856f08ec30858d}} 
-{\bfseries Main\+Window} (Q\+Widget $\ast$parent=nullptr)
-\item 
+\mbox{\hyperlink{class_main_window_a996c5a2b6f77944776856f08ec30858d}{Main\+Window}} (Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{$\sim$\+Main\+Window}} ()
+\begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{class_main_window_a4cefbb0f175adf3889b0f11eaa9f2e9f}\label{class_main_window_a4cefbb0f175adf3889b0f11eaa9f2e9f}} 
 \mbox{\hyperlink{class_text_tab_widget}{Text\+Tab\+Widget}} $\ast$ {\bfseries get\+Current\+Tab\+Widget} ()
 \item 
@@ -24,9 +34,12 @@ void {\bfseries mark\+Text\+Tab\+As\+Clean} (const Q\+String \&new\+Path)
 \mbox{\Hypertarget{class_main_window_aceea0c51c23ebdf9f251ce4bd1f07e4b}\label{class_main_window_aceea0c51c23ebdf9f251ce4bd1f07e4b}} 
 void {\bfseries print\+Preview} (Q\+Printer $\ast$printer)
 \item 
-\mbox{\Hypertarget{class_main_window_a4e20a4a065fbb0e4d3532a45a0a91425}\label{class_main_window_a4e20a4a065fbb0e4d3532a45a0a91425}} 
-void {\bfseries close\+Event} (Q\+Close\+Event $\ast$event)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_main_window_a4e20a4a065fbb0e4d3532a45a0a91425}{close\+Event}} (Q\+Close\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em When Window is closed completely. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a9815d5b4de2a012f4247222b42fd0293}{remove\+Tab\+From\+Widget}} (int widget\+Index, int tab\+Index)
+\begin{DoxyCompactList}\small\item\em Command for when to remove a tab from a specified widget index. \end{DoxyCompactList}\item 
+Q\+Vector$<$ \mbox{\hyperlink{class_custom_tab_widget}{Custom\+Tab\+Widget}} $\ast$ $>$ \mbox{\hyperlink{class_main_window_aad161d371ee2862c4c0bc32fef1db9b9}{get\+Tab\+Widgets}} ()
+\begin{DoxyCompactList}\small\item\em Gets the tab widgets from the main window. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -38,7 +51,80 @@ void {\bfseries drop\+Event} (Q\+Drop\+Event $\ast$event)
 \end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+The main window and view for the editor. 
+
+The main window which holds all the editor tools and formatting options. I holds all the tabs and allows for the special functionality. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_main_window_a996c5a2b6f77944776856f08ec30858d}\label{class_main_window_a996c5a2b6f77944776856f08ec30858d}} 
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\index{MainWindow@{MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{MainWindow()}{MainWindow()}}
+{\footnotesize\ttfamily Main\+Window\+::\+Main\+Window (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})}
+
+
+
+Constructor. 
+
+Initializes the UI and other functionality of the window. \mbox{\Hypertarget{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}\label{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}} 
+\index{MainWindow@{MainWindow}!````~MainWindow@{$\sim$MainWindow}}
+\index{````~MainWindow@{$\sim$MainWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{$\sim$MainWindow()}{~MainWindow()}}
+{\footnotesize\ttfamily Main\+Window\+::$\sim$\+Main\+Window (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Destructor. 
+
+Detroys all the data and UI freeing the memory used. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_main_window_a4e20a4a065fbb0e4d3532a45a0a91425}\label{class_main_window_a4e20a4a065fbb0e4d3532a45a0a91425}} 
+\index{MainWindow@{MainWindow}!closeEvent@{closeEvent}}
+\index{closeEvent@{closeEvent}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{closeEvent()}{closeEvent()}}
+{\footnotesize\ttfamily void Main\+Window\+::close\+Event (\begin{DoxyParamCaption}\item[{Q\+Close\+Event $\ast$}]{event }\end{DoxyParamCaption})}
+
+
+
+When Window is closed completely. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em event} & The event where teh user pressed the X button to close the window. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_main_window_aad161d371ee2862c4c0bc32fef1db9b9}\label{class_main_window_aad161d371ee2862c4c0bc32fef1db9b9}} 
+\index{MainWindow@{MainWindow}!getTabWidgets@{getTabWidgets}}
+\index{getTabWidgets@{getTabWidgets}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{getTabWidgets()}{getTabWidgets()}}
+{\footnotesize\ttfamily Q\+Vector$<$ \mbox{\hyperlink{class_custom_tab_widget}{Custom\+Tab\+Widget}} $\ast$ $>$ Main\+Window\+::get\+Tab\+Widgets (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the tab widgets from the main window. 
+
+Getter for other classes to grab the tab widgets associated with this window \mbox{\Hypertarget{class_main_window_a9815d5b4de2a012f4247222b42fd0293}\label{class_main_window_a9815d5b4de2a012f4247222b42fd0293}} 
+\index{MainWindow@{MainWindow}!removeTabFromWidget@{removeTabFromWidget}}
+\index{removeTabFromWidget@{removeTabFromWidget}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{removeTabFromWidget()}{removeTabFromWidget()}}
+{\footnotesize\ttfamily void Main\+Window\+::remove\+Tab\+From\+Widget (\begin{DoxyParamCaption}\item[{int}]{widget\+Index,  }\item[{int}]{tab\+Index }\end{DoxyParamCaption})}
+
+
+
+Command for when to remove a tab from a specified widget index. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em widget\+Index} & The widget index in the vector of tab widgets \\
+\hline
+{\em tab\+Index} & the tab index from the parent widget index \\
+\hline
+\end{DoxyParams}
+
+
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/bryce/\+Desktop/\+Text\+Editor/\+Text\+Editor/mainwindow.\+h\item 
-C\+:/\+Users/bryce/\+Desktop/\+Text\+Editor/\+Text\+Editor/mainwindow.\+cpp\end{DoxyCompactItemize}
+Text\+Editor/mainwindow.\+h\item 
+Text\+Editor/mainwindow.\+cpp\end{DoxyCompactItemize}

@@ -42,6 +42,7 @@ public:
     static int tabParent; /*!< The parent index of the tab being ripped off. */
     static int tabRemoving; /*!< The index of the tab being ripped off. */
     static int tabIndex; /*!< The counter of how many tab widgets exist. */
+    static int currentSelectedTabIndex; /*!< The index of the currently selected tab widget. */
     int tabWidgetIndex; /*!< The unqiue index of the current tab widget. */
 };
 

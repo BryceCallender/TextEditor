@@ -93,6 +93,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a30a285f721103527e638173a2eb9c9c1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_text_tab_widget.html">TextTabWidget</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_custom_tab_widget.html#a30a285f721103527e638173a2eb9c9c1">getCurrentTabWidget</a> ()</td></tr>
 <tr class="memdesc:a30a285f721103527e638173a2eb9c9c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Getter.  <a href="class_custom_tab_widget.html#a30a285f721103527e638173a2eb9c9c1">More...</a><br /></td></tr>
 <tr class="separator:a30a285f721103527e638173a2eb9c9c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab047df5edf541ff8518748e7bb471e0b"><td class="memItemLeft" align="right" valign="top"><a id="ab047df5edf541ff8518748e7bb471e0b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tabCloseRequest</b> (int index)</td></tr>
+<tr class="separator:ab047df5edf541ff8518748e7bb471e0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a070fce24e2342697444bec5ea66ea2bc"><td class="memItemLeft" align="right" valign="top"><a id="a070fce24e2342697444bec5ea66ea2bc"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>tabClicked</b> (int index)</td></tr>
+<tr class="separator:a070fce24e2342697444bec5ea66ea2bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -107,6 +113,8 @@ Static Public Attributes</h2></td></tr>
 <tr class="separator:abf53960945eee52f3e623945a959578f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa68bc7dd5e8705960f0e67e980ef7b0"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_custom_tab_widget.html#afa68bc7dd5e8705960f0e67e980ef7b0">tabIndex</a> = 0</td></tr>
 <tr class="separator:afa68bc7dd5e8705960f0e67e980ef7b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a32ff033070f9ba3eb54c388d1ba1e37d"><td class="memItemLeft" align="right" valign="top">static int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_custom_tab_widget.html#a32ff033070f9ba3eb54c388d1ba1e37d">currentSelectedTabIndex</a> = 0</td></tr>
+<tr class="separator:a32ff033070f9ba3eb54c388d1ba1e37d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Tab Widget with custom functionality. </p>
@@ -192,6 +200,29 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a id="a32ff033070f9ba3eb54c388d1ba1e37d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a32ff033070f9ba3eb54c388d1ba1e37d">&#9670;&nbsp;</a></span>currentSelectedTabIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int CustomTabWidget::currentSelectedTabIndex = 0</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>The index of the currently selected tab widget. </p>
+
+</div>
+</div>
 <a id="afa68bc7dd5e8705960f0e67e980ef7b0"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#afa68bc7dd5e8705960f0e67e980ef7b0">&#9670;&nbsp;</a></span>tabIndex</h2>
 
@@ -277,8 +308,8 @@ Static Public Attributes</h2></td></tr>
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/bryce/Desktop/TextEditor/TextEditor/<a class="el" href="customtabwidget_8h_source.html">customtabwidget.h</a></li>
-<li>C:/Users/bryce/Desktop/TextEditor/TextEditor/customtabwidget.cpp</li>
+<li>TextEditor/<a class="el" href="customtabwidget_8h_source.html">customtabwidget.h</a></li>
+<li>TextEditor/customtabwidget.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

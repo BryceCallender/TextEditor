@@ -60,8 +60,12 @@ Q\+Text\+Char\+Format \mbox{\hyperlink{class_code_syntax_highlighter_a2253015bb4
 \item 
 Q\+Data\+Stream \& \mbox{\hyperlink{class_code_syntax_highlighter_a59f02bc6c35a358a7eeaaba92efbd837}{operator$>$$>$}} (Q\+Data\+Stream \&in, \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} \&highlighter\+Data)
 \begin{DoxyCompactList}\small\item\em Data\+Stream extractor for mimedata retrieval of the class \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}}. \end{DoxyCompactList}\item 
+Q\+Data\+Stream \& \mbox{\hyperlink{class_code_syntax_highlighter_aaa5878758c8fefb586750aeb6972083b}{operator$<$$<$}} (Q\+Data\+Stream \&out, \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} \&highlighter\+Data)
+\begin{DoxyCompactList}\small\item\em Data\+Stream insert for mimedata storage of the class \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}}. \end{DoxyCompactList}\item 
 Q\+Data\+Stream \& \mbox{\hyperlink{class_code_syntax_highlighter_a51659b079ef6d8541987d8b0572f7c16}{operator$>$$>$}} (Q\+Data\+Stream \&in, \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}} \&rule)
-\begin{DoxyCompactList}\small\item\em Data\+Stream extractor for mimedata retrieval of the struct \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Data\+Stream extractor for mimedata retrieval of the struct \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}}. \end{DoxyCompactList}\item 
+Q\+Data\+Stream \& \mbox{\hyperlink{class_code_syntax_highlighter_ae62d9ff827b4dfe8c217093ece157da7}{operator$<$$<$}} (Q\+Data\+Stream \&out, \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}} \&rule)
+\begin{DoxyCompactList}\small\item\em Data\+Stream insertion for mimedata storing of the struct \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -130,6 +134,40 @@ Update the keyword color.
 
 
 \doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_code_syntax_highlighter_aaa5878758c8fefb586750aeb6972083b}\label{class_code_syntax_highlighter_aaa5878758c8fefb586750aeb6972083b}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+Data\+Stream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{Q\+Data\+Stream \&}]{out,  }\item[{\mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} \&}]{highlighter\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Data\+Stream insert for mimedata storage of the class \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & data stream that will be reading in the data. \\
+\hline
+{\em highlighter\+Data} & the syntax highlighter data that will be written to the stream in bytes. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_code_syntax_highlighter_ae62d9ff827b4dfe8c217093ece157da7}\label{class_code_syntax_highlighter_ae62d9ff827b4dfe8c217093ece157da7}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+Data\+Stream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{Q\+Data\+Stream \&}]{out,  }\item[{\mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}} \&}]{rule }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Data\+Stream insertion for mimedata storing of the struct \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & data stream that will be outputting the data. \\
+\hline
+{\em rule} & the highlighting rule data that will be written to the stream in bytes. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{class_code_syntax_highlighter_a59f02bc6c35a358a7eeaaba92efbd837}\label{class_code_syntax_highlighter_a59f02bc6c35a358a7eeaaba92efbd837}} 
 \index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!operator$>$$>$@{operator$>$$>$}}
 \index{operator$>$$>$@{operator$>$$>$}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
@@ -225,5 +263,5 @@ The formatting for when a single line comment is found.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/bryce/\+Desktop/\+Text\+Editor/\+Text\+Editor/codesyntaxhighlighter.\+h\item 
-C\+:/\+Users/bryce/\+Desktop/\+Text\+Editor/\+Text\+Editor/codesyntaxhighlighter.\+cpp\end{DoxyCompactItemize}
+Text\+Editor/codesyntaxhighlighter.\+h\item 
+Text\+Editor/codesyntaxhighlighter.\+cpp\end{DoxyCompactItemize}

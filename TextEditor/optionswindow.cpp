@@ -1,15 +1,14 @@
+#include "mainwindow.h"
 #include "optionswindow.h"
 #include "ui_optionswindow.h"
 
-OptionsWindow::OptionsWindow(QTabWidget *tabWidget, QWidget *parent) :
+OptionsWindow::OptionsWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::OptionsWindow)
 {
     ui->setupUi(this);
 
     setWindowTitle("Settings");
-
-    tabs = tabWidget;
 
     settings = SettingsManager::getInstance();
 
@@ -201,30 +200,36 @@ void OptionsWindow::on_OptionsWindow_rejected()
 {
     qDebug() << "Closed";
 
-    //Update the code color per tab based on which code syntax highlighter each one has
-    for(int i = 0; i < tabs->count() - 1; i++)
-    {
-        TextTabWidget* tab = dynamic_cast<TextTabWidget*>(tabs->widget(i));
-        CodeSyntaxHighlighter* highlighter = tab->getSyntaxHighlighter();
-        CodeSyntaxHighlighter* highlighterType = tab->getSyntaxHighlighter();
+    MainWindow* mainWindow = reinterpret_cast<MainWindow*>(parentWidget());
 
-        //The tab has a highlighter object defined
-        if(highlighter != nullptr)
+//    auto var = mainWindow->getTabWidgets();
+    for(CustomTabWidget* tabWidget: mainWindow->getTabWidgets())
+    {
+        //Update the code color per tab based on which code syntax highlighter each one has
+        for(int i = 0; i < tabWidget->count() - 1; i++)
         {
-            if((highlighterType = dynamic_cast<JavaSyntaxHighlighter*>(highlighter)) != nullptr)
+            TextTabWidget* tab = dynamic_cast<TextTabWidget*>(tabWidget->widget(i));
+            CodeSyntaxHighlighter* highlighter = tab->getSyntaxHighlighter();
+            CodeSyntaxHighlighter* highlighterType = tab->getSyntaxHighlighter();
+
+            //The tab has a highlighter object defined
+            if(highlighter != nullptr)
             {
-                highlighterType->updateKeywordColor(settings->getValue("code/javaKeywordColor").value<QColor>());
-                qDebug() << "Java updated!";
-            }
-            else if((highlighterType = dynamic_cast<CPPSyntaxHighlighter*>(highlighter)) != nullptr)
-            {
-                highlighterType->updateKeywordColor(settings->getValue("code/cppKeywordColor").value<QColor>());
-                qDebug() << "C++ updated!";
-            }
-            else if((highlighterType = dynamic_cast<PythonSyntaxHighlighter*>(highlighter)) != nullptr)
-            {
-                highlighterType->updateKeywordColor(settings->getValue("code/pythonKeywordColor").value<QColor>());
-                qDebug() << "Python updated!";
+                if((highlighterType = dynamic_cast<JavaSyntaxHighlighter*>(highlighter)) != nullptr)
+                {
+                    highlighterType->updateKeywordColor(settings->getValue("code/javaKeywordColor").value<QColor>());
+                    qDebug() << "Java updated!";
+                }
+                else if((highlighterType = dynamic_cast<CPPSyntaxHighlighter*>(highlighter)) != nullptr)
+                {
+                    highlighterType->updateKeywordColor(settings->getValue("code/cppKeywordColor").value<QColor>());
+                    qDebug() << "C++ updated!";
+                }
+                else if((highlighterType = dynamic_cast<PythonSyntaxHighlighter*>(highlighter)) != nullptr)
+                {
+                    highlighterType->updateKeywordColor(settings->getValue("code/pythonKeywordColor").value<QColor>());
+                    qDebug() << "Python updated!";
+                }
             }
         }
     }

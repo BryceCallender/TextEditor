@@ -27,7 +27,7 @@ public:
     /*!
       This constructor will construct the window and show the user the option window. It is also responsible for loading the settings and showing them to the user.
      */
-    explicit OptionsWindow(QTabWidget* tabWidget, QWidget *parent = nullptr);
+    explicit OptionsWindow(QWidget *parent = nullptr);
     //! Destructor
     /*!
       The destructor will save the settings that the window has in each spot and then free up the resources that need to be freed.
@@ -62,8 +62,6 @@ private:
     QColorDialog* pythonColorPicker; /*!< Default color for Python keywords. */
 
     QSpinBox* codeTabLengthSpinBox; /*!< Default length of a tab when writing code. */
-
-    QTabWidget* tabs; /*!< Reference to the tabs in the tab widget passed */
 
     SettingsManager* settings; /*!< Reference to the SettingsManager singleton class. */
 };

@@ -115,8 +115,10 @@ MainWindow::~MainWindow()
 
 void MainWindow::on_actionNew_triggered()
 {
-    ui->tabWidget->insertTab(ui->tabWidget->count() - 1, new TextTabWidget() , "New Tab");
-    ui->tabWidget->setCurrentIndex(ui->tabWidget->count() - 2);
+    CustomTabWidget* currentWidget = tabWidgets->at(CustomTabWidget::currentSelectedTabIndex);
+
+    currentWidget->insertTab(currentWidget->count() - 1, new TextTabWidget() , "New Tab");
+    currentWidget->setCurrentIndex(currentWidget->count() - 2);
     getCurrentTabWidget()->getTextEdit()->setText(QString());
     getCurrentTabWidget()->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
 
@@ -129,25 +131,28 @@ void MainWindow::on_actionOpen_triggered()
 {
     QStringList fileNames = QFileDialog::getOpenFileNames(this, "Open the file");
 
-    foreach (QString fileName, fileNames)
+    qDebug() << "Opening" << fileNames.size() << "files";
+    for(QString fileName: fileNames)
     {
+        qDebug() << fileName;
         QFile file(fileName);
         currentFile = fileName;
         if(!file.open(QIODevice::ReadOnly | QFile::Text))
         {
-            QMessageBox::warning(this, "Warning", "Cannot open file : " + file.errorString());
+            QMessageBox::warning(this, "Warning", "Cannot open " + fileName + ": " + file.errorString());
             return;
         }
 
-        int tabIndex = ui->tabWidget->currentIndex();
         TextTabWidget* textTabWidget = getCurrentTabWidget();
+        CustomTabWidget* currentWidget = tabWidgets->at(CustomTabWidget::currentSelectedTabIndex);
+        int tabIndex = currentWidget->currentIndex();
 
         //Current Tab is occupied so make a new tab, set its name, and then then carry on with setting the text
-        if(textTabWidget->getTabFileName() != "New File.txt" || ui->tabWidget->count() == 1)
+        if(textTabWidget->getTabFileName() != "New File.txt" || currentWidget->count() == 1)
         {
             on_actionNew_triggered();
+            tabIndex = currentWidget->currentIndex();
             textTabWidget = getCurrentTabWidget();
-            tabIndex = ui->tabWidget->currentIndex();
         }
 
         textTabWidget->setTabsFileName(fileName);
@@ -159,7 +164,7 @@ void MainWindow::on_actionOpen_triggered()
         textTabWidget->setTextEditText(text);
 
         QFileInfo fileInfo(fileName);
-        ui->tabWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
+        currentWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
 
         file.close();
     }
@@ -177,14 +182,17 @@ void MainWindow::on_actionSave_as_triggered()
     currentFile = fileName;
     setWindowTitle(fileName);
 
-    getCurrentTabWidget()->setTabsFileName(fileName);
+    TextTabWidget* textTabWidget = getCurrentTabWidget();
+    textTabWidget->setTabsFileName(fileName);
     QFileInfo fileInfo(fileName);
 
-    int tabIndex = ui->tabWidget->currentIndex();
-    ui->tabWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
+    CustomTabWidget* currentWidget = tabWidgets->at(CustomTabWidget::currentSelectedTabIndex);
+    int tabIndex = currentWidget->currentIndex();
+
+    currentWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
 
     QTextStream out(&file);
-    QString text = getCurrentTabWidget()->getTextEdit()->toPlainText();
+    QString text = textTabWidget->getTextEdit()->toPlainText();
     out << text;
     file.close();
 }
@@ -225,10 +233,10 @@ void MainWindow::on_actionExit_triggered()
 
 void MainWindow::fileChanged()
 {
-    QTabWidget* tab = ui->tabWidget;
-    int index = tab->currentIndex();
-    if(tab->tabText(index).back() != '*')
-        tab->setTabText(index, tab->tabText(index) + "*");
+    CustomTabWidget* currentWidget = tabWidgets->at(CustomTabWidget::currentSelectedTabIndex);
+    int index = currentWidget->currentIndex();
+    if(currentWidget->tabText(index).back() != '*')
+        currentWidget->setTabText(index, currentWidget->tabText(index) + "*");
 }
 
 void MainWindow::on_actionCopy_triggered()
@@ -246,6 +254,7 @@ void MainWindow::on_actionCopy_triggered()
             track++;
 
    }*/
+
    textTabWidget->getTextEdit()->copy();
 }
 
@@ -323,7 +332,7 @@ void MainWindow::on_actionPaste_2_triggered()
     if(savedCopy[0].hasText())
         getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[0].text());
     else if(savedCopy[0].hasImage())
-            getCurrentTabWidget()->getTextEdit()->textCursor().insertImage(savedCopy[0].imageData().value<QImage>());
+        getCurrentTabWidget()->getTextEdit()->textCursor().insertImage(savedCopy[0].imageData().value<QImage>());
 }
 
 void MainWindow::on_actionPaste_3_triggered()
@@ -331,7 +340,7 @@ void MainWindow::on_actionPaste_3_triggered()
     if(savedCopy[1].hasText())
         getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[1].text());
     else if(savedCopy[1].hasImage())
-            getCurrentTabWidget()->getTextEdit()->textCursor().insertImage(savedCopy[1].imageData().value<QImage>());
+        getCurrentTabWidget()->getTextEdit()->textCursor().insertImage(savedCopy[1].imageData().value<QImage>());
 }
 
 void MainWindow::on_actionPaste_4_triggered()
@@ -339,7 +348,7 @@ void MainWindow::on_actionPaste_4_triggered()
     if(savedCopy[2].hasText())
         getCurrentTabWidget()->getTextEdit()->textCursor().insertText(savedCopy[2].text());
     else if(savedCopy[2].hasImage())
-            getCurrentTabWidget()->getTextEdit()->textCursor().insertImage(savedCopy[2].imageData().value<QImage>());
+        getCurrentTabWidget()->getTextEdit()->textCursor().insertImage(savedCopy[2].imageData().value<QImage>());
 }
 
 void MainWindow::on_actionPaste_5_triggered()
@@ -520,22 +529,22 @@ void MainWindow::on_actionSplit_Dock_Horizontally_triggered()
 
 void MainWindow::on_actionSave_triggered()
 {
-    int index = ui->tabWidget->currentIndex();
     TextTabWidget* textTabWidget = getCurrentTabWidget();
-    qDebug() << textTabWidget->getTabFileName();
+    CustomTabWidget* currentWidget = tabWidgets->at(CustomTabWidget::currentSelectedTabIndex);
+    int index = currentWidget->currentIndex();
 
     //If the tabwidget has an actual path thats not just New File.txt (default name) then actually save it using that name
     if(textTabWidget->getTabFileName() != "New File.txt")
     {
         QFile file(textTabWidget->getTabFileName());
-        if(ui->tabWidget->tabText(index).back() == '*')
-            ui->tabWidget->setTabText(index, ui->tabWidget->tabText(index).left(ui->tabWidget->tabText(index).size() - 1));
+        if(currentWidget->tabText(index).back() == '*')
+            currentWidget->setTabText(index, currentWidget->tabText(index).left(currentWidget->tabText(index).size() - 1));
 
         if(file.open(QFile::WriteOnly))
         {
-        QTextStream out(&file);
-        QString text = textTabWidget->getTextEdit()->toPlainText();
-        out << text;
+            QTextStream out(&file);
+            QString text = textTabWidget->getTextEdit()->toPlainText();
+            out << text;
         }
         file.close();
 
@@ -554,11 +563,12 @@ void MainWindow::on_actionSave_triggered()
 
 void MainWindow::markTextTabAsClean(const QString &newPath)
 {
-    int index = ui->tabWidget->currentIndex();
+    CustomTabWidget* currentWidget = tabWidgets->at(CustomTabWidget::currentSelectedTabIndex);
+    int index = currentWidget->currentIndex();
     if(!fileWatcher->files().contains(newPath))
         fileWatcher->addPath(newPath);
-    if(ui->tabWidget->tabText(index).back() == '*')
-        ui->tabWidget->setTabText(index, ui->tabWidget->tabText(index).left(ui->tabWidget->tabText(index).size() - 1));
+    if(currentWidget->tabText(index).back() == '*')
+        currentWidget->setTabText(index, currentWidget->tabText(index).left(currentWidget->tabText(index).size() - 1));
     qDebug() << "file changed"; //file saved take away the * showing it saved
 
 }
@@ -759,15 +769,16 @@ void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
 
 TextTabWidget* MainWindow::getCurrentTabWidget()
 {
-    int tabIndex = ui->tabWidget->currentIndex();
-    TextTabWidget* textTabWidget = (TextTabWidget*) ui->tabWidget->widget(tabIndex);
+    qDebug() << "Getting TextEdit for tab index" << CustomTabWidget::currentSelectedTabIndex;
+    CustomTabWidget* customTabWidget = tabWidgets->at(CustomTabWidget::currentSelectedTabIndex);
+    TextTabWidget* textTabWidget = (TextTabWidget*) customTabWidget->widget(customTabWidget->currentIndex());
 
     return textTabWidget;
 }
 
 void MainWindow::on_actionOptions_triggered()
 {
-    optionsWindow = new OptionsWindow(ui->tabWidget);
+    optionsWindow = new OptionsWindow(this);
 
     optionsWindow->show();
 }
@@ -844,6 +855,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
 void MainWindow::removeTabFromWidget(int widgetIndex, int tabIndex)
 {
     tabWidgets->at(widgetIndex)->removeTab(tabIndex);
+}
+
+QVector<CustomTabWidget *> MainWindow::getTabWidgets()
+{
+    return *tabWidgets;
 }
 
 void MainWindow::on_actionBullets_triggered()
@@ -994,6 +1010,7 @@ void MainWindow::dropEvent(QDropEvent *event)
         {
             addDockWidget(Qt::RightDockWidgetArea, dock);
             tabWidgets->push_back(tabWidget);
+            tabWidgets->at(tabWidgets->size() - 1)->getCurrentTabWidget()->getTextEdit()->setFocus();
         }
         else //Add to right dock widget since one is already there
         {
@@ -1005,7 +1022,10 @@ void MainWindow::dropEvent(QDropEvent *event)
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
+            tabWidget->getCurrentTabWidget()->getTextEdit()->setFocus();
         }
+
+        setWindowTitle(testTabData.filePath);
     }
     else if(dropPosition.y() > (size().height() * 0.75))
     {
@@ -1025,6 +1045,7 @@ void MainWindow::dropEvent(QDropEvent *event)
         {
             addDockWidget(Qt::BottomDockWidgetArea, dock);
             tabWidgets->push_back(tabWidget);
+            tabWidgets->at(tabWidgets->size() - 1)->getCurrentTabWidget()->getTextEdit()->setFocus();
         }
         else //Add to right dock widget since one is already there
         {
@@ -1036,6 +1057,17 @@ void MainWindow::dropEvent(QDropEvent *event)
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
+            tabWidget->getCurrentTabWidget()->getTextEdit()->setFocus();
         }
+
+        setWindowTitle(testTabData.filePath);
     }
+
+    CustomTabWidget::currentSelectedTabIndex = tabWidgets->size() - 1;
+    qDebug() << "Current tab widget:" << CustomTabWidget::currentSelectedTabIndex;
+}
+
+void MainWindow::on_actionFind_triggered()
+{
+    //getCurrentTabWidget()->revealReplaceBox();
 }

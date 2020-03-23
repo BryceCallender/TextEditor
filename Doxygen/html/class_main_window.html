@@ -69,6 +69,11 @@ $(function() {
 <div class="title">MainWindow Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>The main window and view for the editor.  
+ <a href="class_main_window.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="mainwindow_8h_source.html">mainwindow.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for MainWindow:</div>
 <div class="dyncontent">
@@ -78,9 +83,12 @@ Inheritance diagram for MainWindow:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a996c5a2b6f77944776856f08ec30858d"><td class="memItemLeft" align="right" valign="top"><a id="a996c5a2b6f77944776856f08ec30858d"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>MainWindow</b> (QWidget *parent=nullptr)</td></tr>
+<tr class="memitem:a996c5a2b6f77944776856f08ec30858d"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a996c5a2b6f77944776856f08ec30858d">MainWindow</a> (QWidget *parent=nullptr)</td></tr>
+<tr class="memdesc:a996c5a2b6f77944776856f08ec30858d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_main_window.html#a996c5a2b6f77944776856f08ec30858d">More...</a><br /></td></tr>
 <tr class="separator:a996c5a2b6f77944776856f08ec30858d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae98d00a93bc118200eeef9f9bba1dba7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7">~MainWindow</a> ()</td></tr>
+<tr class="memdesc:ae98d00a93bc118200eeef9f9bba1dba7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7">More...</a><br /></td></tr>
+<tr class="separator:ae98d00a93bc118200eeef9f9bba1dba7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4cefbb0f175adf3889b0f11eaa9f2e9f"><td class="memItemLeft" align="right" valign="top"><a id="a4cefbb0f175adf3889b0f11eaa9f2e9f"></a>
 <a class="el" href="class_text_tab_widget.html">TextTabWidget</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>getCurrentTabWidget</b> ()</td></tr>
 <tr class="separator:a4cefbb0f175adf3889b0f11eaa9f2e9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -93,9 +101,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>markTextTabAsClean</b
 <tr class="memitem:aceea0c51c23ebdf9f251ce4bd1f07e4b"><td class="memItemLeft" align="right" valign="top"><a id="aceea0c51c23ebdf9f251ce4bd1f07e4b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>printPreview</b> (QPrinter *printer)</td></tr>
 <tr class="separator:aceea0c51c23ebdf9f251ce4bd1f07e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e20a4a065fbb0e4d3532a45a0a91425"><td class="memItemLeft" align="right" valign="top"><a id="a4e20a4a065fbb0e4d3532a45a0a91425"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>closeEvent</b> (QCloseEvent *event)</td></tr>
+<tr class="memitem:a4e20a4a065fbb0e4d3532a45a0a91425"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a4e20a4a065fbb0e4d3532a45a0a91425">closeEvent</a> (QCloseEvent *event)</td></tr>
+<tr class="memdesc:a4e20a4a065fbb0e4d3532a45a0a91425"><td class="mdescLeft">&#160;</td><td class="mdescRight">When Window is closed completely.  <a href="class_main_window.html#a4e20a4a065fbb0e4d3532a45a0a91425">More...</a><br /></td></tr>
 <tr class="separator:a4e20a4a065fbb0e4d3532a45a0a91425"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9815d5b4de2a012f4247222b42fd0293"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a9815d5b4de2a012f4247222b42fd0293">removeTabFromWidget</a> (int widgetIndex, int tabIndex)</td></tr>
+<tr class="memdesc:a9815d5b4de2a012f4247222b42fd0293"><td class="mdescLeft">&#160;</td><td class="mdescRight">Command for when to remove a tab from a specified widget index.  <a href="class_main_window.html#a9815d5b4de2a012f4247222b42fd0293">More...</a><br /></td></tr>
+<tr class="separator:a9815d5b4de2a012f4247222b42fd0293"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad161d371ee2862c4c0bc32fef1db9b9"><td class="memItemLeft" align="right" valign="top">QVector&lt; <a class="el" href="class_custom_tab_widget.html">CustomTabWidget</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#aad161d371ee2862c4c0bc32fef1db9b9">getTabWidgets</a> ()</td></tr>
+<tr class="memdesc:aad161d371ee2862c4c0bc32fef1db9b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the tab widgets from the main window.  <a href="class_main_window.html#aad161d371ee2862c4c0bc32fef1db9b9">More...</a><br /></td></tr>
+<tr class="separator:aad161d371ee2862c4c0bc32fef1db9b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -106,9 +120,138 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dragEnterEvent</b> (Q
 void&#160;</td><td class="memItemRight" valign="bottom"><b>dropEvent</b> (QDropEvent *event)</td></tr>
 <tr class="separator:ae7b97e68c51358f6f36be3c40b89c01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>The main window and view for the editor. </p>
+<p>The main window which holds all the editor tools and formatting options. I holds all the tabs and allows for the special functionality. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a996c5a2b6f77944776856f08ec30858d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a996c5a2b6f77944776856f08ec30858d">&#9670;&nbsp;</a></span>MainWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainWindow::MainWindow </td>
+          <td>(</td>
+          <td class="paramtype">QWidget *&#160;</td>
+          <td class="paramname"><em>parent</em> = <code>nullptr</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor. </p>
+<p>Initializes the UI and other functionality of the window. </p>
+
+</div>
+</div>
+<a id="ae98d00a93bc118200eeef9f9bba1dba7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae98d00a93bc118200eeef9f9bba1dba7">&#9670;&nbsp;</a></span>~MainWindow()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">MainWindow::~MainWindow </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Destructor. </p>
+<p>Detroys all the data and UI freeing the memory used. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="a4e20a4a065fbb0e4d3532a45a0a91425"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4e20a4a065fbb0e4d3532a45a0a91425">&#9670;&nbsp;</a></span>closeEvent()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::closeEvent </td>
+          <td>(</td>
+          <td class="paramtype">QCloseEvent *&#160;</td>
+          <td class="paramname"><em>event</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>When Window is closed completely. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">event</td><td>The event where teh user pressed the X button to close the window. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="aad161d371ee2862c4c0bc32fef1db9b9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aad161d371ee2862c4c0bc32fef1db9b9">&#9670;&nbsp;</a></span>getTabWidgets()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVector&lt; <a class="el" href="class_custom_tab_widget.html">CustomTabWidget</a> * &gt; MainWindow::getTabWidgets </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the tab widgets from the main window. </p>
+<p>Getter for other classes to grab the tab widgets associated with this window </p>
+
+</div>
+</div>
+<a id="a9815d5b4de2a012f4247222b42fd0293"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9815d5b4de2a012f4247222b42fd0293">&#9670;&nbsp;</a></span>removeTabFromWidget()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::removeTabFromWidget </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>widgetIndex</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>tabIndex</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Command for when to remove a tab from a specified widget index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">widgetIndex</td><td>The widget index in the vector of tab widgets </td></tr>
+    <tr><td class="paramname">tabIndex</td><td>the tab index from the parent widget index </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>C:/Users/bryce/Desktop/TextEditor/TextEditor/<a class="el" href="mainwindow_8h_source.html">mainwindow.h</a></li>
-<li>C:/Users/bryce/Desktop/TextEditor/TextEditor/mainwindow.cpp</li>
+<li>TextEditor/<a class="el" href="mainwindow_8h_source.html">mainwindow.h</a></li>
+<li>TextEditor/mainwindow.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

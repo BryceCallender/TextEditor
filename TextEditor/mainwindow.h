@@ -65,7 +65,19 @@ public:
         \param event The event where teh user pressed the X button to close the window.
      */
     void closeEvent(QCloseEvent *event);
+
+    //! Command for when to remove a tab from a specified widget index
+    /*!
+        \param widgetIndex The widget index in the vector of tab widgets
+        \param tabIndex the tab index from the parent widget index
+     */
     void removeTabFromWidget(int widgetIndex, int tabIndex);
+
+    //! Gets the tab widgets from the main window
+    /*!
+      Getter for other classes to grab the tab widgets associated with this window
+     */
+    QVector<CustomTabWidget*> getTabWidgets();
 protected:
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
@@ -214,6 +226,8 @@ private slots:
 
     void on_actionNumbering_triggered();
 
+    void on_actionFind_triggered();
+
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";
@@ -224,13 +238,13 @@ private:
     QMenu *pasteMenu; /*!< The menu for the context menu. */
     int zoom; /*!< Keeps track of the standard for zooming. */
 
-    QFileSystemWatcher *fileWatcher;
-    OptionsWindow* optionsWindow;
+    QFileSystemWatcher *fileWatcher; /*!< Keeps track of events such as file renaming and directory movements. */
+    OptionsWindow* optionsWindow; /*!< Options window pointer for when we need to open it. */
 
-    SettingsManager* settings;
+    SettingsManager* settings; /*!< Settings Manager singleton reference. */
 
-    QDockWidget* dock;
+    QDockWidget* dock; /*!< Used for creating docking widgets. */
 
-    QVector<CustomTabWidget*> *tabWidgets;
+    QVector<CustomTabWidget*> *tabWidgets; /*!< Holds all the tab widgets in the screen. */
 };
 #endif // MAINWINDOW_H

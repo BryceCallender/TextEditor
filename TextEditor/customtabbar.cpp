@@ -51,8 +51,21 @@ void CustomTabBar::dropEvent(QDropEvent *event)
     setTabText(indexToInsert, testTabData.tabName);
     setCurrentIndex(indexToInsert);
 
-    //Parent of the CustomTabWidget is a QDockWidget and its parent is the MainWindow (which is what i need)
-    MainWindow *mainWindow = reinterpret_cast<MainWindow*>(this->parent->parentWidget()->parentWidget());
+    MainWindow *mainWindow;
 
+    //Parent of the CustomTabWidget is directly the mainwindow (standard beginning tabwidget)
+    if(dynamic_cast<MainWindow*>(this->parent->parentWidget()) != nullptr)
+    {
+        mainWindow = reinterpret_cast<MainWindow*>(this->parent->parentWidget());
+    }
+    else //Parent of the CustomTabWidget is a QDockWidget and its parent is the MainWindow (which is what i need)
+    {
+        mainWindow = reinterpret_cast<MainWindow*>(this->parent->parentWidget()->parentWidget());
+    }
+
+
+    CustomTabWidget::currentSelectedTabIndex = parent->tabWidgetIndex;
+    qDebug() << "Current tab widget" << CustomTabWidget::currentSelectedTabIndex;
     mainWindow->removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
+    mainWindow->setWindowTitle(testTabData.filePath);
 }

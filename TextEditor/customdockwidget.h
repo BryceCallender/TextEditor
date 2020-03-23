@@ -10,9 +10,7 @@ class CustomDockWidget: public QDockWidget
 public:
     explicit CustomDockWidget(QWidget* parent = nullptr);
 protected:
-    void dragEnterEvent(QDragEnterEvent *event);
-    void dragMoveEvent(QDragMoveEvent *event);
-    void dropEvent(QDropEvent *event);
+    void closeEvent(QCloseEvent *event);
 };
 
 #endif // CUSTOMDOCKWIDGET_H

@@ -23,7 +23,13 @@ Inheritance diagram for Custom\+Tab\+Widget\+:\begin{figure}[H]
 void \mbox{\hyperlink{class_custom_tab_widget_a80eeae2a9ad3eb878bce886a2c3b074a}{mouse\+Press\+Event}} (Q\+Mouse\+Event $\ast$event) override
 \begin{DoxyCompactList}\small\item\em Mouse Event. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_text_tab_widget}{Text\+Tab\+Widget}} $\ast$ \mbox{\hyperlink{class_custom_tab_widget_a30a285f721103527e638173a2eb9c9c1}{get\+Current\+Tab\+Widget}} ()
-\begin{DoxyCompactList}\small\item\em Getter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Getter. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_custom_tab_widget_ab047df5edf541ff8518748e7bb471e0b}\label{class_custom_tab_widget_ab047df5edf541ff8518748e7bb471e0b}} 
+void {\bfseries tab\+Close\+Request} (int index)
+\item 
+\mbox{\Hypertarget{class_custom_tab_widget_a070fce24e2342697444bec5ea66ea2bc}\label{class_custom_tab_widget_a070fce24e2342697444bec5ea66ea2bc}} 
+void {\bfseries tab\+Clicked} (int index)
+\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -37,6 +43,8 @@ static int \mbox{\hyperlink{class_custom_tab_widget_a04abe786a0231330923b2cba704
 static int \mbox{\hyperlink{class_custom_tab_widget_abf53960945eee52f3e623945a959578f}{tab\+Removing}} = 0
 \item 
 static int \mbox{\hyperlink{class_custom_tab_widget_afa68bc7dd5e8705960f0e67e980ef7b0}{tab\+Index}} = 0
+\item 
+static int \mbox{\hyperlink{class_custom_tab_widget_a32ff033070f9ba3eb54c388d1ba1e37d}{current\+Selected\+Tab\+Index}} = 0
 \end{DoxyCompactItemize}
 
 
@@ -82,7 +90,13 @@ Mouse Event.
 This handles the mouse press event. It is responsible for showing the tab move with the cursor if the user decides to move the tab to another widget. 
 
 \doxysubsection{Member Data Documentation}
-\mbox{\Hypertarget{class_custom_tab_widget_afa68bc7dd5e8705960f0e67e980ef7b0}\label{class_custom_tab_widget_afa68bc7dd5e8705960f0e67e980ef7b0}} 
+\mbox{\Hypertarget{class_custom_tab_widget_a32ff033070f9ba3eb54c388d1ba1e37d}\label{class_custom_tab_widget_a32ff033070f9ba3eb54c388d1ba1e37d}} 
+\index{CustomTabWidget@{CustomTabWidget}!currentSelectedTabIndex@{currentSelectedTabIndex}}
+\index{currentSelectedTabIndex@{currentSelectedTabIndex}!CustomTabWidget@{CustomTabWidget}}
+\doxysubsubsection{\texorpdfstring{currentSelectedTabIndex}{currentSelectedTabIndex}}
+{\footnotesize\ttfamily int Custom\+Tab\+Widget\+::current\+Selected\+Tab\+Index = 0\hspace{0.3cm}{\ttfamily [static]}}
+
+The index of the currently selected tab widget. \mbox{\Hypertarget{class_custom_tab_widget_afa68bc7dd5e8705960f0e67e980ef7b0}\label{class_custom_tab_widget_afa68bc7dd5e8705960f0e67e980ef7b0}} 
 \index{CustomTabWidget@{CustomTabWidget}!tabIndex@{tabIndex}}
 \index{tabIndex@{tabIndex}!CustomTabWidget@{CustomTabWidget}}
 \doxysubsubsection{\texorpdfstring{tabIndex}{tabIndex}}
@@ -110,5 +124,5 @@ The unqiue index of the current tab widget.
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/bryce/\+Desktop/\+Text\+Editor/\+Text\+Editor/customtabwidget.\+h\item 
-C\+:/\+Users/bryce/\+Desktop/\+Text\+Editor/\+Text\+Editor/customtabwidget.\+cpp\end{DoxyCompactItemize}
+Text\+Editor/customtabwidget.\+h\item 
+Text\+Editor/customtabwidget.\+cpp\end{DoxyCompactItemize}

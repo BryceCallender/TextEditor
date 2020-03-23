@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TextEditor: C:/Users/bryce/Desktop/TextEditor/TextEditor/texttabwidget.h Source File</title>
+<title>TextEditor: TextEditor/texttabwidget.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -123,29 +123,30 @@ $(function() {
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> handleBracketAndParenthesisMatch();</div>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a>* getSyntaxHighlighter();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordtype">void</span> setTabStopDistance(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> length);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    QString fileName;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    QString tabName;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    QTextEdit *textEditArea;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    QGroupBox *groupBox;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <a class="code" href="class_special_line_edit.html">SpecialLineEdit</a> *findText;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    QLineEdit *replaceText;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    QLabel *resultsLabel;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    QPushButton *replaceCurrentButton;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    QPushButton *replaceAllButton;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    QPushButton *exitButton;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <a class="code" href="class_search_highlighter.html">SearchHighlighter</a> *highlighter;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="class_searcher_and_replacer.html">SearcherAndReplacer</a> *replacer;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a> *codeHighlighter;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;};</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="preprocessor">#endif // TEXTTABWIDGET_H</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> setSyntaxHighlighter(<a class="code" href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a>* highlighter);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> setTabStopDistance(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    QString fileName;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    QString tabName;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    QTextEdit *textEditArea;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    QGroupBox *groupBox;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="class_special_line_edit.html">SpecialLineEdit</a> *findText;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    QLineEdit *replaceText;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    QLabel *resultsLabel;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    QPushButton *replaceCurrentButton;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    QPushButton *replaceAllButton;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    QPushButton *exitButton;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="class_search_highlighter.html">SearchHighlighter</a> *highlighter;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="class_searcher_and_replacer.html">SearcherAndReplacer</a> *replacer;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a> *codeHighlighter;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;<span class="preprocessor">#endif // TEXTTABWIDGET_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_code_syntax_highlighter_html"><div class="ttname"><a href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a></div><div class="ttdoc">A syntax highlighter for class specific keywords.</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:17</div></div>
 <div class="ttc" id="aclass_searcher_and_replacer_html"><div class="ttname"><a href="class_searcher_and_replacer.html">SearcherAndReplacer</a></div><div class="ttdef"><b>Definition:</b> searcherandreplacer.h:10</div></div>

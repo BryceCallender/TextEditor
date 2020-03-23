@@ -1,4 +1,5 @@
 #include "customtabwidget.h"
+#include "mainwindow.h"
 #include "texttabwidget.h"
 
 #include <QMessageBox>
@@ -6,8 +7,9 @@
 int CustomTabWidget::tabParent = 0;
 int CustomTabWidget::tabRemoving = 0;
 int CustomTabWidget::tabIndex = 0;
+int CustomTabWidget::currentSelectedTabIndex = 0;
 
-CustomTabWidget::CustomTabWidget(QWidget *parent)
+CustomTabWidget::CustomTabWidget(QWidget *parent): QTabWidget(parent)
 {
     setTabBar(new CustomTabBar(this));
 
@@ -109,6 +111,8 @@ TextTabWidget *CustomTabWidget::getCurrentTabWidget()
 
 void CustomTabWidget::tabCloseRequest(int index)
 {
+    CustomTabWidget::currentSelectedTabIndex = tabWidgetIndex;
+
     if(tabText(index).back() == '*')
     {
         int clicked = QMessageBox::warning(this, "Save?", "Would you like to save the file?", QMessageBox::Ok, QMessageBox::Cancel, QMessageBox::Close);
@@ -138,10 +142,29 @@ void CustomTabWidget::tabCloseRequest(int index)
 
 void CustomTabWidget::tabClicked(int index)
 {
+    CustomTabWidget::currentSelectedTabIndex = tabWidgetIndex;
+
     //This will make sure to insert where the last tab is and they cannot move it or itll make a new tab
     if(index == count() - 1)
     {
         insertTab(index, new TextTabWidget(), "New Tab");
         setCurrentIndex(index);
     }
+    else
+    {
+        MainWindow* mainWindow;
+        //If this has no dock widget take this route
+        if(dynamic_cast<MainWindow*>(parentWidget()) != nullptr) {
+            mainWindow = reinterpret_cast<MainWindow*>(parentWidget());
+        }else { //everything else is inside of a dock widget so it has one more parent to get through
+            mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget());
+        }
+
+        qDebug() << mainWindow;
+
+        mainWindow->setWindowTitle(getCurrentTabWidget()->getTabFileName());
+        getCurrentTabWidget()->getTextEdit()->setFocus();
+    }
+
+    qDebug() << "Current tab widget:" << CustomTabWidget::currentSelectedTabIndex;
 }
