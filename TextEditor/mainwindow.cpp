@@ -981,7 +981,7 @@ void MainWindow::dropEvent(QDropEvent *event)
 
     //This highlighter was allocated, however this shouldnt be the case as it has no rules so we must
     //explicitly assign it back to nullptr to avoid errors in other modules.
-    if(testTabData.highlighter->getRuleCount() == 0)
+    if(testTabData.highlighter != nullptr && testTabData.highlighter->getRuleCount() == 0)
     {
         testTabData.highlighter = nullptr;
     }
@@ -1021,7 +1021,7 @@ void MainWindow::dropEvent(QDropEvent *event)
         }
         else //Add to right dock widget since one is already there
         {
-            qDebug() << "Adding tab to the dock widget";
+            offender->show();
             CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
 
             tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(), "New Tab");
@@ -1056,7 +1056,7 @@ void MainWindow::dropEvent(QDropEvent *event)
         }
         else //Add to right dock widget since one is already there
         {
-            qDebug() << "Adding tab to the dock widget";
+            offender->show();
             CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
 
             tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(), "New Tab");

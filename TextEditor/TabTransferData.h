@@ -21,7 +21,7 @@ struct TabTransferData {
         QString tabName;
         QString filePath;
         QString text;
-        CodeSyntaxHighlighter* highlighter;
+        CodeSyntaxHighlighter* highlighter = nullptr;
 
         in >> tabName >> filePath >> text;
 
