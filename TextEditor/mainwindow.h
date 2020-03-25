@@ -190,7 +190,7 @@ private slots:
     /*!
         Checks to see if the user has changed the file in the tab and asks if they want to save their work.
      */
-    void on_tabWidget_tabCloseRequested(int index);
+//    void on_tabWidget_tabCloseRequested(int index);
 
     void on_tabWidget_tabBarClicked(int index);
 

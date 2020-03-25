@@ -463,41 +463,41 @@ void MainWindow::on_actionZoom_Standard_triggered()
     cursor.clearSelection();
 }
 
-void MainWindow::on_tabWidget_tabCloseRequested(int index)
-{
-    if(ui->tabWidget->tabText(index).back() == '*')
-    {
-        int clicked = QMessageBox::warning(this, "Save?", "Would you like to save the file?", QMessageBox::Ok, QMessageBox::Cancel, QMessageBox::No);
-        if(clicked == QMessageBox::Ok)
-        {
-            on_actionSave_triggered();
-            qDebug() << "Closing " + QString::number(index);
-            ui->tabWidget->removeTab(index);
-        }
-        else if(clicked == QMessageBox::No)
-        {
-            qDebug() << "Closing " + QString::number(index);
-            ui->tabWidget->removeTab(index);
-        }
-    }
-    else
-    {
-        qDebug() << "Closing " + QString::number(index);
-        ui->tabWidget->removeTab(index);
-    }
+//void MainWindow::on_tabWidget_tabCloseRequested(int index)
+//{
+//    if(ui->tabWidget->tabText(index).back() == '*')
+//    {
+//        int clicked = QMessageBox::warning(this, "Save?", "Would you like to save the file?", QMessageBox::Ok, QMessageBox::Cancel, QMessageBox::No);
+//        if(clicked == QMessageBox::Ok)
+//        {
+//            on_actionSave_triggered();
+//            qDebug() << "Closing " + QString::number(index);
+//            ui->tabWidget->removeTab(index);
+//        }
+//        else if(clicked == QMessageBox::No)
+//        {
+//            qDebug() << "Closing " + QString::number(index);
+//            ui->tabWidget->removeTab(index);
+//        }
+//    }
+//    else
+//    {
+//        qDebug() << "Closing " + QString::number(index);
+//        ui->tabWidget->removeTab(index);
+//    }
 
-    ui->tabWidget->setCurrentIndex(index - 1);
-}
+//    ui->tabWidget->setCurrentIndex(index - 1);
+//}
 
 
 void MainWindow::on_tabWidget_tabBarClicked(int index)
 {
     //This will make sure to insert where the last tab is and they cannot move it or itll make a new tab
-    if(index == ui->tabWidget->count() - 1)
-    {
-        ui->tabWidget->insertTab(index, new TextTabWidget(), "New Tab");
-        ui->tabWidget->setCurrentIndex(index);
-    }
+//    if(index == ui->tabWidget->count() - 1)
+//    {
+//        ui->tabWidget->insertTab(index, new TextTabWidget(), "New Tab");
+//        ui->tabWidget->setCurrentIndex(index);
+//    }
 
     getCurrentTabWidget()->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
 

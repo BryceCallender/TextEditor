@@ -140,7 +140,6 @@
     </property>
     <addaction name="actionNew"/>
     <addaction name="actionOpen"/>
-    <addaction name="actionSave"/>
     <addaction name="actionSave_2"/>
     <addaction name="actionPrint"/>
     <addaction name="actionExit"/>
@@ -184,11 +183,6 @@
      <addaction name="actionItalic"/>
      <addaction name="actionUnderline"/>
     </widget>
-    <widget class="QMenu" name="menuFont_Size">
-     <property name="title">
-      <string>Font Size</string>
-     </property>
-    </widget>
     <widget class="QMenu" name="menuAlignment">
      <property name="title">
       <string>Alignment</string>
@@ -207,8 +201,6 @@
     <addaction name="actionFormat_Text"/>
     <addaction name="separator"/>
     <addaction name="menuFont_Type"/>
-    <addaction name="actionFont_Style"/>
-    <addaction name="menuFont_Size"/>
     <addaction name="menuAlignment"/>
     <addaction name="separator"/>
     <addaction name="menuInsert"/>
@@ -516,9 +508,6 @@
   <action name="actionFind">
    <property name="text">
     <string>Find And Replace</string>
-   </property>
-   <property name="shortcut">
-    <string>Ctrl+R</string>
    </property>
   </action>
  </widget>
