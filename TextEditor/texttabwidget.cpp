@@ -2,7 +2,7 @@
 
 TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
 {
-    textEditArea = new QTextEdit(this);
+    textEditArea = new SpecialTextEdit(this);
 
     highlighter = new SearchHighlighter(textEditArea->document());
     codeHighlighter = nullptr;

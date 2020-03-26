@@ -22,6 +22,7 @@
 #include "cppsyntaxhighlighter.h"
 #include "pythonsyntaxhighlighter.h"
 #include "speciallineedit.h"
+#include "specialtextedit.h"
 
 class TextTabWidget: public QWidget
 {
@@ -59,7 +60,7 @@ private:
     QString fileName;
     QString tabName;
 
-    QTextEdit *textEditArea;
+    SpecialTextEdit *textEditArea;
     QGroupBox *groupBox;
     SpecialLineEdit *findText;
     QLineEdit *replaceText;

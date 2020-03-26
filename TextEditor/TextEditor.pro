@@ -31,6 +31,7 @@ SOURCES += \
     searchhighlighter.cpp \
     settingsmanager.cpp \
     speciallineedit.cpp \
+    specialtextedit.cpp \
     texttabwidget.cpp
 
 HEADERS += \
@@ -48,6 +49,7 @@ HEADERS += \
     searchhighlighter.h \
     settingsmanager.h \
     speciallineedit.h \
+    specialtextedit.h \
     texttabwidget.h
 
 FORMS += \

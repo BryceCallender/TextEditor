@@ -1,6 +1,5 @@
 #include "customtabwidget.h"
 #include "mainwindow.h"
-#include "texttabwidget.h"
 
 #include <QMessageBox>
 
@@ -19,10 +18,11 @@ CustomTabWidget::CustomTabWidget(QWidget *parent): QTabWidget(parent)
     clear();
 
     tabWidgetIndex = tabIndex;
+    qDebug() << tabWidgetIndex;
     tabIndex++;
 
-    addTab(new TextTabWidget(), "New Tab");
-    addTab(new TextTabWidget(), "+");
+    addTab(new TextTabWidget(this), "New Tab");
+    addTab(new TextTabWidget(this), "+");
 
     //Disable the + tab from accepting text incase the user tries to right text in it
     TextTabWidget* textTabWidget = (TextTabWidget*) widget(1);
@@ -142,11 +142,12 @@ void CustomTabWidget::tabCloseRequest(int index)
 void CustomTabWidget::tabClicked(int index)
 {
     CustomTabWidget::currentSelectedTabIndex = tabWidgetIndex;
+    qDebug() << "Tab widget index" << tabWidgetIndex;
 
     //This will make sure to insert where the last tab is and they cannot move it or itll make a new tab
     if(index == count() - 1)
     {
-        insertTab(index, new TextTabWidget(), "New Tab");
+        insertTab(index, new TextTabWidget(this), "New Tab");
         setCurrentIndex(index);
     }
     else

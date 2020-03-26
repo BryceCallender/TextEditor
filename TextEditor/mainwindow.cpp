@@ -1009,6 +1009,7 @@ void MainWindow::dropEvent(QDropEvent *event)
             if(isOccupingRight)
             {
                 offender = dock;
+                break;
             }
         }
 
@@ -1044,6 +1045,7 @@ void MainWindow::dropEvent(QDropEvent *event)
             if(isOccupingBottom)
             {
                 offender = dock;
+                break;
             }
         }
 
