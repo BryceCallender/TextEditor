@@ -117,13 +117,14 @@ void MainWindow::on_actionNew_triggered()
 {
     CustomTabWidget* currentWidget = tabWidgets->at(CustomTabWidget::currentSelectedTabIndex);
 
-    currentWidget->insertTab(currentWidget->count() - 1, new TextTabWidget() , "New Tab");
+    currentWidget->insertTab(currentWidget->count() - 1, new TextTabWidget(currentWidget) , "New Tab");
     currentWidget->setCurrentIndex(currentWidget->count() - 2);
     getCurrentTabWidget()->getTextEdit()->setText(QString());
     getCurrentTabWidget()->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
 
     connect(getCurrentTabWidget()->getTextEdit(), SIGNAL(customContextMenuRequested(const QPoint&)),
         this, SLOT(showContextMenu(const QPoint&)));
+
     QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
 }
 
@@ -1034,7 +1035,7 @@ void MainWindow::dropEvent(QDropEvent *event)
             offender->show();
             CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
 
-            tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(), "New Tab");
+            tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(tabWidget), "New Tab");
             tabWidget->setCurrentIndex(tabWidget->count() - 2);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
@@ -1070,7 +1071,7 @@ void MainWindow::dropEvent(QDropEvent *event)
             offender->show();
             CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
 
-            tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(), "New Tab");
+            tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(tabWidget), "New Tab");
             tabWidget->setCurrentIndex(tabWidget->count() - 2);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
