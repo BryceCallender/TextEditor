@@ -160,8 +160,17 @@ void MainWindow::on_actionOpen_triggered()
         setWindowTitle(fileName);
         QTextStream in(&file);
         QString text = in.readAll();
+        if(fileName.contains(".txt"))
+        {
+            textTabWidget->getTextEdit()->setHtml(text);
+        }
+        else
+        {
+            textTabWidget->getTextEdit()->setText(text);
+        }
 
-        textTabWidget->setTextEditText(text);
+
+        //textTabWidget->setTextEditText(text);
 
         QFileInfo fileInfo(fileName);
         currentWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
@@ -192,8 +201,16 @@ void MainWindow::on_actionSave_as_triggered()
     currentWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
 
     QTextStream out(&file);
-    QString text = textTabWidget->getTextEdit()->toPlainText();
-    out << text;
+    if(fileName.contains(".txt"))
+    {
+        QString text = textTabWidget->getTextEdit()->toHtml();
+        out << text;
+    }
+    else
+    {
+        QString text = textTabWidget->getTextEdit()->toPlainText();
+        out << text;
+    }
     file.close();
 }
 
@@ -543,8 +560,17 @@ void MainWindow::on_actionSave_triggered()
         if(file.open(QFile::WriteOnly))
         {
             QTextStream out(&file);
-            QString text = textTabWidget->getTextEdit()->toPlainText();
-            out << text;
+            if(textTabWidget->getTabFileName().contains(".txt"))
+            {
+                QString text = textTabWidget->getTextEdit()->toHtml();
+                out << text;
+            }
+            else
+            {
+                QString text = textTabWidget->getTextEdit()->toPlainText();
+                out << text;
+            }
+
         }
         file.close();
 
@@ -649,14 +675,6 @@ void MainWindow::on_actionItalic_triggered()
         getCurrentTabWidget()->getTextEdit()->setFontItalic(false);
     }
 
-//    if(cursor.charFormat().fontItalic())
-//    {
-//        format.setFontItalic(false);
-//    }
-//    else
-//        format.setFontItalic(true);
-
-//    cursor.mergeCharFormat(format);//do the text as italic
 }
 
 void MainWindow::on_actionUnderline_triggered()
@@ -672,7 +690,7 @@ void MainWindow::on_actionUnderline_triggered()
             format.setFontUnderline(true);
             cursor.mergeCharFormat(format);//do the text as Bold
         }
-        getCurrentTabWidget()->getTextEdit()->setFontItalic(true);
+        getCurrentTabWidget()->getTextEdit()->setFontUnderline(true);
 
     }
     else
@@ -683,19 +701,83 @@ void MainWindow::on_actionUnderline_triggered()
             format.setFontUnderline(false);
             cursor.mergeCharFormat(format);//do the text as Bold
         }
-        getCurrentTabWidget()->getTextEdit()->setFontItalic(false);
+        getCurrentTabWidget()->getTextEdit()->setFontUnderline(false);
     }
-//    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
-//    QTextCharFormat format;
+}
 
-//    if(cursor.charFormat().fontUnderline())
-//    {
-//        format.setFontUnderline(false);
-//    }
-//    else
-//        format.setFontUnderline(true);
+void MainWindow::on_actionBullets_triggered()
+{
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
 
-//    cursor.mergeCharFormat(format);//do the text as underline
+    if(ui->actionBullets->isChecked())
+    {
+        if(ui->actionNumbering->isChecked())
+        {
+            ui->actionNumbering->setChecked(false);
+        }
+        cursor.beginEditBlock();
+        QTextBlockFormat blockFmt = cursor.blockFormat();
+        QTextListFormat listFmt;
+
+        if (cursor.currentList())
+        {
+            listFmt = cursor.currentList()->format();
+        }
+        else
+        {
+            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
+            blockFmt.setIndent(0);
+            cursor.setBlockFormat(blockFmt);
+        }
+
+        listFmt.setStyle(QTextListFormat::ListDisc);
+        cursor.createList(listFmt);
+        cursor.endEditBlock();
+    }
+    else
+    {
+        QTextBlockFormat bfmt;
+        bfmt.setObjectIndex(0);
+        cursor.mergeBlockFormat(bfmt);
+    }
+
+}
+
+void MainWindow::on_actionNumbering_triggered()
+{
+    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+
+    if(ui->actionNumbering->isChecked())
+    {
+        if(ui->actionBullets->isChecked())
+        {
+            ui->actionBullets->setChecked(false);
+        }
+        cursor.beginEditBlock();
+        QTextBlockFormat blockFmt = cursor.blockFormat();
+        QTextListFormat listFmt;
+
+        if (cursor.currentList())
+        {
+            listFmt = cursor.currentList()->format();
+        }
+        else
+        {
+            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
+            blockFmt.setIndent(0);
+            cursor.setBlockFormat(blockFmt);
+        }
+
+        listFmt.setStyle(QTextListFormat::ListDecimal);
+        cursor.createList(listFmt);
+        cursor.endEditBlock();
+    }
+    else
+    {
+        QTextBlockFormat bfmt;
+        bfmt.setObjectIndex(0);
+        cursor.mergeBlockFormat(bfmt);
+    }
 }
 
 void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
@@ -862,80 +944,7 @@ QVector<CustomTabWidget *> MainWindow::getTabWidgets()
     return *tabWidgets;
 }
 
-void MainWindow::on_actionBullets_triggered()
-{
-    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
 
-    if(ui->actionBullets->isChecked())
-    {
-        if(ui->actionNumbering->isChecked())
-        {
-            ui->actionNumbering->setChecked(false);
-        }
-        cursor.beginEditBlock();
-        QTextBlockFormat blockFmt = cursor.blockFormat();
-        QTextListFormat listFmt;
-
-        if (cursor.currentList())
-        {
-            listFmt = cursor.currentList()->format();
-        }
-        else
-        {
-            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
-            blockFmt.setIndent(0);
-            cursor.setBlockFormat(blockFmt);
-        }
-
-        listFmt.setStyle(QTextListFormat::ListDisc);
-        cursor.createList(listFmt);
-        cursor.endEditBlock();
-    }
-    else
-    {
-        QTextBlockFormat bfmt;
-        bfmt.setObjectIndex(0);
-        cursor.mergeBlockFormat(bfmt);
-    }
-
-}
-
-void MainWindow::on_actionNumbering_triggered()
-{
-    QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
-
-    if(ui->actionNumbering->isChecked())
-    {
-        if(ui->actionBullets->isChecked())
-        {
-            ui->actionBullets->setChecked(false);
-        }
-        cursor.beginEditBlock();
-        QTextBlockFormat blockFmt = cursor.blockFormat();
-        QTextListFormat listFmt;
-
-        if (cursor.currentList())
-        {
-            listFmt = cursor.currentList()->format();
-        }
-        else
-        {
-            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
-            blockFmt.setIndent(0);
-            cursor.setBlockFormat(blockFmt);
-        }
-
-        listFmt.setStyle(QTextListFormat::ListDecimal);
-        cursor.createList(listFmt);
-        cursor.endEditBlock();
-    }
-    else
-    {
-        QTextBlockFormat bfmt;
-        bfmt.setObjectIndex(0);
-        cursor.mergeBlockFormat(bfmt);
-    }
-}
 
 void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 {
