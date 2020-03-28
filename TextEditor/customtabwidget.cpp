@@ -27,6 +27,8 @@ CustomTabWidget::CustomTabWidget(QWidget *parent): QTabWidget(parent)
     //Disable the + tab from accepting text incase the user tries to right text in it
     TextTabWidget* textTabWidget = (TextTabWidget*) widget(1);
     textTabWidget->getTextEdit()->setDisabled(true);
+    textTabWidget->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
+    TextTabWidget* textConnection = (TextTabWidget*) widget(0);
 
     setAcceptDrops(true);
 
@@ -44,6 +46,8 @@ CustomTabWidget::CustomTabWidget(QWidget *parent): QTabWidget(parent)
 
     QObject::connect(this, &CustomTabWidget::tabCloseRequested, this, &CustomTabWidget::tabCloseRequest);
     QObject::connect(this, &CustomTabWidget::tabBarClicked, this, &CustomTabWidget::tabClicked);
+    connect(textConnection->getTextEdit(), SIGNAL(customContextMenuRequested(const QPoint&)),
+      this, SLOT(showContextMenu(const QPoint&)));
 }
 
 void CustomTabWidget::mousePressEvent(QMouseEvent *event)
@@ -58,6 +62,17 @@ void CustomTabWidget::mousePressEvent(QMouseEvent *event)
 
         if(tab == -1)
         {
+            MainWindow* mainWindow;
+            //If this has no dock widget take this route
+            if(dynamic_cast<MainWindow*>(parentWidget()) != nullptr) {
+                mainWindow = dynamic_cast<MainWindow*>(parentWidget());
+            }else { //everything else is inside of a dock widget so it has one more parent to get through
+                mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget());
+            }
+
+            qDebug() << mainWindow;
+
+            mainWindow->showContextMenu(positionInTab);
             return;
         }
 
@@ -115,14 +130,24 @@ void CustomTabWidget::tabCloseRequest(int index)
 
     if(tabText(index).back() == '*')
     {
-        int clicked = QMessageBox::warning(this, "Save?", "Would you like to save the file?", QMessageBox::Ok, QMessageBox::Cancel, QMessageBox::Close);
+        int clicked = QMessageBox::warning(this, "Save?", "Would you like to save the file?", QMessageBox::Ok, QMessageBox::Cancel, QMessageBox::No);
         if(clicked == QMessageBox::Ok)
         {
             //on_actionSave_triggered();
+
+            MainWindow* mainWindow;
+            //If this has no dock widget take this route
+            if(reinterpret_cast<MainWindow*>(parentWidget()) != nullptr) {
+                mainWindow = reinterpret_cast<MainWindow*>(parentWidget());
+            }else { //everything else is inside of a dock widget so it has one more parent to get through
+                mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget());
+            }
+
+            mainWindow->save();
             qDebug() << "Closing " + QString::number(index);
             removeTab(index);
         }
-        else if(clicked == QMessageBox::Close)
+        else if(clicked == QMessageBox::No)
         {
             qDebug() << "Closing " + QString::number(index);
             removeTab(index);
@@ -150,6 +175,7 @@ void CustomTabWidget::tabClicked(int index)
     {
         insertTab(index, new TextTabWidget(this), "New Tab");
         setCurrentIndex(index);
+
     }
     else
     {
@@ -165,7 +191,9 @@ void CustomTabWidget::tabClicked(int index)
 
         mainWindow->setWindowTitle(getCurrentTabWidget()->getTabFileName());
         getCurrentTabWidget()->getTextEdit()->setFocus();
+
     }
+    QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, dynamic_cast<MainWindow*>(parentWidget()->parentWidget()), &MainWindow::fileChanged);
 
     qDebug() << "Current tab widget:" << CustomTabWidget::currentSelectedTabIndex;
 }

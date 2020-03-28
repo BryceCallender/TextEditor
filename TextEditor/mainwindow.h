@@ -78,6 +78,25 @@ public:
       Getter for other classes to grab the tab widgets associated with this window
      */
     QVector<CustomTabWidget*> getTabWidgets();
+
+    //! When the user right clicks in the main window.
+    /*!
+        Shows a custom context menu at the click location that can undo, redo, cut, copy, paste, and zoom.
+     */
+    void showContextMenu(const QPoint&);
+
+    //! Used for closing tabs from other docking widgets
+    /*!
+        Calls the standard Main windows private saving function.
+     */
+    void save();
+
+    //! Whenever something in the current file is changed
+    /*!
+        Adds an asterisk into the tab name so that the user knows that the file is changed.
+     */
+    void fileChanged();
+
 protected:
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
@@ -109,12 +128,6 @@ private slots:
         Makes sure that if shortcuts are used, the new thing copied gets put into the multiple copy storage.
      */
     void clipboard_changed();
-
-    //! Whenever something in the current file is changed
-    /*!
-        Adds an asterisk into the tab name so that the user knows that the file is changed.
-     */
-    void fileChanged();
 
     //! Builds a context menu for pasting
     /*!
@@ -159,12 +172,6 @@ private slots:
         Redoes the previous undo action in the main window
      */
     void on_actionRedo_triggered();
-
-    //! When the user right clicks in the main window.
-    /*!
-        Shows a custom context menu at the click location that can undo, redo, cut, copy, paste, and zoom.
-     */
-    void showContextMenu(const QPoint&);
 
     //! When zoom in button is pressed in the toolbar
     /*!

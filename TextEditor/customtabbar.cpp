@@ -69,4 +69,5 @@ void CustomTabBar::dropEvent(QDropEvent *event)
     qDebug() << "Current tab widget" << CustomTabWidget::currentSelectedTabIndex;
     mainWindow->removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
     mainWindow->setWindowTitle(testTabData.filePath);
+    QObject::connect(newTab->getTextEdit(), &QTextEdit::textChanged, mainWindow, &MainWindow::fileChanged);
 }

@@ -249,6 +249,10 @@ void MainWindow::fileChanged()
     if(currentWidget->tabText(index).back() != '*')
         currentWidget->setTabText(index, currentWidget->tabText(index) + "*");
 }
+void MainWindow::save()
+{
+    on_actionSave_triggered();
+}
 
 void MainWindow::on_actionCopy_triggered()
 {
@@ -898,29 +902,33 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
     settings->saveValue("ui", "geometry", this->geometry());
 
-    for(int i = 0; i < ui->tabWidget->count(); i++)
+    for(int j = 0; j < tabWidgets->size(); j++)
     {
-        if(ui->tabWidget->tabText(i).back() == '*')
+        for(int i = 0; i < tabWidgets->at(j)->count(); i++)
         {
-            QString message;
-            if(ui->tabWidget->tabText(i).left(ui->tabWidget->tabText(i).size() - 1) == "New Tab")
+            if(tabWidgets->at(j)->tabText(i).back() == '*')
             {
-                message.setNum(i + 1);
-                message = "New Tab " + message;
-            }
-            else
-            {
-                message = ui->tabWidget->tabText(i).left(ui->tabWidget->tabText(i).size() - 1);
-            }
-            int clicked = QMessageBox::warning(this, "Save?", "Would you like to save " + message + "?", QMessageBox::Ok ,QMessageBox::No);
-            if(clicked == QMessageBox::Ok)
-            {
-                on_actionSave_triggered();
-                qDebug() << "Closing " + QString::number(i);
-            }
-            else if(clicked == QMessageBox::No)
-            {
-                qDebug() << "Closing " + QString::number(i);
+                QString message, temp;
+                if(tabWidgets->at(j)->tabText(i).left(tabWidgets->at(j)->tabText(i).size() - 1) == "New Tab")
+                {
+                    message.setNum(j + 1);
+                    temp.setNum(i + 1);
+                    message = "New Tab " + message + " " + temp;
+                }
+                else
+                {
+                    message = tabWidgets->at(j)->tabText(i).left(tabWidgets->at(j)->tabText(i).size() - 1);
+                }
+                int clicked = QMessageBox::warning(this, "Save?", "Would you like to save " + message + "?", QMessageBox::Ok ,QMessageBox::No);
+                if(clicked == QMessageBox::Ok)
+                {
+                    on_actionSave_triggered();
+                    qDebug() << "Closing " + QString::number(i);
+                }
+                else if(clicked == QMessageBox::No)
+                {
+                    qDebug() << "Closing " + QString::number(i);
+                }
             }
         }
     }
@@ -996,6 +1004,8 @@ void MainWindow::dropEvent(QDropEvent *event)
 
     //connect signal
     connect(tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
+    QObject::connect(tabWidget->getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
+
 
     //set the dock widget incase it does get added
     dock->setWidget(tabWidget);
@@ -1032,6 +1042,7 @@ void MainWindow::dropEvent(QDropEvent *event)
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setFocus();
+            QObject::connect(tabWidget->getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
         }
 
         setWindowTitle(testTabData.filePath);
@@ -1068,7 +1079,9 @@ void MainWindow::dropEvent(QDropEvent *event)
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setFocus();
+            QObject::connect(tabWidget->getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
         }
+
 
         setWindowTitle(testTabData.filePath);
     }

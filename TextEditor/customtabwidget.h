@@ -36,6 +36,10 @@ public:
      */
     TextTabWidget* getCurrentTabWidget();
 
+    //! Whenever something in the current file is changed
+    /*!
+        Adds an asterisk into the tab name so that the user knows that the file is changed.
+     */
     void tabCloseRequest(int index);
     void tabClicked(int index);
 

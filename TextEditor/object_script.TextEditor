@@ -1,5 +1,8 @@
 codesyntaxhighlighter.o
 cppsyntaxhighlighter.o
+customdockwidget.o
+customtabbar.o
+customtabwidget.o
 javasyntaxhighlighter.o
 main.o
 mainwindow.o
@@ -9,6 +12,7 @@ searcherandreplacer.o
 searchhighlighter.o
 settingsmanager.o
 speciallineedit.o
+specialtextedit.o
 texttabwidget.o
 qrc_resources.o
 moc_codesyntaxhighlighter.o
