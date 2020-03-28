@@ -41,14 +41,15 @@ void CustomTabBar::dropEvent(QDropEvent *event)
 
     ds >> testTabData;
 
-    TextTabWidget* newTab = new TextTabWidget();
+    TextTabWidget* newTab = new TextTabWidget(this->parent);
 
     //Set the widget
-    newTab->setTabsFileName(testTabData.filePath);
     newTab->getTextEdit()->setText(testTabData.text);
     int indexToInsert = count() - 1;
     parent->insertTab(indexToInsert, newTab, "New Tab");
     setTabText(indexToInsert, testTabData.tabName);
+    newTab->setSyntaxHighlighter(testTabData.highlighter);
+    newTab->setTabsFileName(testTabData.filePath);
     setCurrentIndex(indexToInsert);
 
     MainWindow *mainWindow;

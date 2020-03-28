@@ -30,6 +30,7 @@ CustomTabWidget::CustomTabWidget(QWidget *parent): QTabWidget(parent)
 
     setAcceptDrops(true);
 
+    //Registers the tab transfer data << and >> operators with this metatype (serialization)
     qRegisterMetaTypeStreamOperators<TabTransferData>("TabTransferData");
 
 #if defined(Q_OS_WIN) || defined(Q_OS_UNIX)
@@ -154,7 +155,7 @@ void CustomTabWidget::tabClicked(int index)
     {
         MainWindow* mainWindow;
         //If this has no dock widget take this route
-        if(dynamic_cast<MainWindow*>(parentWidget()) != nullptr) {
+        if(reinterpret_cast<MainWindow*>(parentWidget()) != nullptr) {
             mainWindow = reinterpret_cast<MainWindow*>(parentWidget());
         }else { //everything else is inside of a dock widget so it has one more parent to get through
             mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget());

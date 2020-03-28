@@ -15,8 +15,6 @@ void CodeSyntaxHighlighter::updateKeywordColor(const QColor &color)
         {
             rule.format.setForeground(color);
             rule.format.setFontWeight(QFont::Bold);
-
-            qDebug() << "Set" << rule.pattern.pattern() << "to color" << color;
         }
 
         highlightingRules[i] = rule;

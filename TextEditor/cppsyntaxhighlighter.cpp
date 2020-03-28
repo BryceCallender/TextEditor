@@ -49,7 +49,7 @@ void CPPSyntaxHighlighter::readKeywordFileAndPopulateList()
     //new and delete get a special color (plan is to make it super obvious they're using it
     newAndDeleteFormat.setForeground(Qt::red);
 
-    rule.pattern = QRegularExpression(QStringLiteral("\\bnew|delete\\b"));
+    rule.pattern = QRegularExpression(QStringLiteral("\\bnew\\b|\\bdelete\\b"));
     rule.format = newAndDeleteFormat;
     highlightingRules.append(rule);
 }

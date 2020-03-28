@@ -141,10 +141,10 @@ TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
                      this,
                      &TextTabWidget::handleCloseEvent);
 
-    QObject::connect(textEditArea,
-                     &QTextEdit::textChanged,
-                     this,
-                     &TextTabWidget::handleBracketAndParenthesisMatch);
+//    QObject::connect(textEditArea,
+//                     &QTextEdit::textChanged,
+//                     this,
+//                     &TextTabWidget::handleBracketAndParenthesisMatch);
 
     fileName = "New File.txt";
 
@@ -177,11 +177,16 @@ void TextTabWidget::setTabsFileName(const QString& name)
     QFileInfo fileInfo(name);
 
     QString suffix = fileInfo.suffix();
-    if(suffix == "java") {
-        codeHighlighter = new JavaSyntaxHighlighter(textEditArea->document());
-    }else if(suffix == "cpp" || suffix == "h") {
+    if(suffix == "java")
+    {
+       codeHighlighter = new JavaSyntaxHighlighter(textEditArea->document());
+    }
+    else if(suffix == "cpp" || suffix == "h")
+    {
         codeHighlighter = new CPPSyntaxHighlighter(textEditArea->document());
-    }else if(suffix == "py") {
+    }
+    else if(suffix == "py")
+    {
         codeHighlighter = new PythonSyntaxHighlighter(textEditArea->document());
     }
 
@@ -249,7 +254,6 @@ void TextTabWidget::handleCloseEvent()
     replaceAllButton->hide();
 
     //Regain the color!
-    //TODO::Fix Crashes here due to mimedata issues
     if(codeHighlighter != nullptr)
     {
         codeHighlighter->rehighlight();
@@ -262,8 +266,10 @@ void TextTabWidget::handleBracketAndParenthesisMatch()
     QFileInfo fileInfo(fileName);
 
     QString suffix = fileInfo.suffix();
-    if(suffix == "cpp" || suffix == "h" || suffix == "java") {
-        if(textEditArea->toPlainText().endsWith("{")) {
+    if(suffix == "cpp" || suffix == "h" || suffix == "java")
+    {
+        if(textEditArea->toPlainText().endsWith("{"))
+        {
             qDebug() << "{ found";
             QTextCursor cursor = textEditArea->textCursor();
             cursor.insertText("}");

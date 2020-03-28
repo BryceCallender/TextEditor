@@ -202,13 +202,12 @@ void OptionsWindow::on_OptionsWindow_rejected()
 
     MainWindow* mainWindow = reinterpret_cast<MainWindow*>(parentWidget());
 
-//    auto var = mainWindow->getTabWidgets();
     for(CustomTabWidget* tabWidget: mainWindow->getTabWidgets())
     {
         //Update the code color per tab based on which code syntax highlighter each one has
         for(int i = 0; i < tabWidget->count() - 1; i++)
         {
-            TextTabWidget* tab = dynamic_cast<TextTabWidget*>(tabWidget->widget(i));
+            TextTabWidget* tab = reinterpret_cast<TextTabWidget*>(tabWidget->widget(i));
             CodeSyntaxHighlighter* highlighter = tab->getSyntaxHighlighter();
             CodeSyntaxHighlighter* highlighterType = tab->getSyntaxHighlighter();
 

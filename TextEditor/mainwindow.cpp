@@ -104,8 +104,6 @@ MainWindow::MainWindow(QWidget *parent)
                      &QShortcut::activated,
                      this,
                      &MainWindow::on_actionPrint_triggered);
-
-    qDebug() << size();
 }
 
 MainWindow::~MainWindow()
@@ -132,10 +130,8 @@ void MainWindow::on_actionOpen_triggered()
 {
     QStringList fileNames = QFileDialog::getOpenFileNames(this, "Open the file");
 
-    qDebug() << "Opening" << fileNames.size() << "files";
     for(QString fileName: fileNames)
     {
-        qDebug() << fileName;
         QFile file(fileName);
         currentFile = fileName;
         if(!file.open(QIODevice::ReadOnly | QFile::Text))
@@ -169,9 +165,6 @@ void MainWindow::on_actionOpen_triggered()
         {
             textTabWidget->getTextEdit()->setText(text);
         }
-
-
-        //textTabWidget->setTextEditText(text);
 
         QFileInfo fileInfo(fileName);
         currentWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
@@ -955,14 +948,12 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
     //If the contact point is showing some sort of desire to detach and is on the right side of the window
     if(contactPosition.x() > (size().width() * 0.75))
     {
-        qDebug() << "Right tab location";
         event->acceptProposedAction();
     }
 
     //If the tab is currently on the bottom side of the window
     if(contactPosition.y() > (size().height() * 0.75))
     {
-        qDebug() << "Bottom tab location";
         event->acceptProposedAction();
     }
 }
@@ -980,7 +971,7 @@ void MainWindow::dropEvent(QDropEvent *event)
     dock = new QDockWidget("", this);
 
     //Make a new custom tab widget incase it is needed
-    CustomTabWidget* tabWidget = new CustomTabWidget();
+    CustomTabWidget* tabWidget = new CustomTabWidget(this);
 
     //Get data from the clipboard with this mime data tag and then read the bytes to convert it to TabTransferData
     QByteArray data = event->mimeData()->data("application/tab");
@@ -997,10 +988,10 @@ void MainWindow::dropEvent(QDropEvent *event)
     }
 
     //Set the widget
-    tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
     tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
     tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
     tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
+    tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
     removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
 
     //connect signal
