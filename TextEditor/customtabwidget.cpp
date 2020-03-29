@@ -137,7 +137,7 @@ void CustomTabWidget::tabCloseRequest(int index)
 
             MainWindow* mainWindow;
             //If this has no dock widget take this route
-            if(reinterpret_cast<MainWindow*>(parentWidget()) != nullptr) {
+            if(dynamic_cast<MainWindow*>(parentWidget()) != nullptr) {
                 mainWindow = reinterpret_cast<MainWindow*>(parentWidget());
             }else { //everything else is inside of a dock widget so it has one more parent to get through
                 mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget());
@@ -181,7 +181,7 @@ void CustomTabWidget::tabClicked(int index)
     {
         MainWindow* mainWindow;
         //If this has no dock widget take this route
-        if(reinterpret_cast<MainWindow*>(parentWidget()) != nullptr) {
+        if(dynamic_cast<MainWindow*>(parentWidget()) != nullptr) {
             mainWindow = reinterpret_cast<MainWindow*>(parentWidget());
         }else { //everything else is inside of a dock widget so it has one more parent to get through
             mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget());

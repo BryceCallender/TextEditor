@@ -978,8 +978,6 @@ void MainWindow::dropEvent(QDropEvent *event)
 
     dock = new QDockWidget("", this);
 
-    //Make a new custom tab widget incase it is needed
-    CustomTabWidget* tabWidget = new CustomTabWidget(this);
 
     //Get data from the clipboard with this mime data tag and then read the bytes to convert it to TabTransferData
     QByteArray data = event->mimeData()->data("application/tab");
@@ -994,21 +992,6 @@ void MainWindow::dropEvent(QDropEvent *event)
     {
         testTabData.highlighter = nullptr;
     }
-
-    //Set the widget
-    tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
-    tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
-    tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
-    tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
-    removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
-
-    //connect signal
-    connect(tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
-    QObject::connect(tabWidget->getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
-
-
-    //set the dock widget incase it does get added
-    dock->setWidget(tabWidget);
 
     if(dropPosition.x() > (size().width() * 0.75))
     {
@@ -1027,6 +1010,24 @@ void MainWindow::dropEvent(QDropEvent *event)
         //There was no dock widget occuping the right dock widget area
         if(!isOccupingRight)
         {
+            //Make a new custom tab widget incase it is needed
+            CustomTabWidget* tabWidget = new CustomTabWidget(this);
+
+            //Set the widget
+            tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
+            tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
+            tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
+            tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
+            removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
+
+            //connect signal
+            QObject::connect(tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
+            QObject::connect(tabWidget->getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
+
+
+            //set the dock widget incase it does get added
+            dock->setWidget(tabWidget);
+
             addDockWidget(Qt::RightDockWidgetArea, dock);
             tabWidgets->push_back(tabWidget);
             tabWidgets->at(tabWidgets->size() - 1)->getCurrentTabWidget()->getTextEdit()->setFocus();
@@ -1064,6 +1065,24 @@ void MainWindow::dropEvent(QDropEvent *event)
         //There was no dock widget occuping the right dock widget area
         if(!isOccupingBottom)
         {
+            //Make a new custom tab widget incase it is needed
+            CustomTabWidget* tabWidget = new CustomTabWidget(this);
+
+            //Set the widget
+            tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
+            tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
+            tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
+            tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
+            removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
+
+            //connect signal
+            QObject::connect(tabWidget, &QTabWidget::currentChanged, this, &MainWindow::setWindowToFileName);
+            QObject::connect(tabWidget->getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
+
+
+            //set the dock widget incase it does get added
+            dock->setWidget(tabWidget);
+
             addDockWidget(Qt::BottomDockWidgetArea, dock);
             tabWidgets->push_back(tabWidget);
             tabWidgets->at(tabWidgets->size() - 1)->getCurrentTabWidget()->getTextEdit()->setFocus();
