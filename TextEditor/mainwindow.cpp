@@ -976,7 +976,7 @@ void MainWindow::dropEvent(QDropEvent *event)
     //Get position of the event occuring
     QPoint dropPosition = mapFromGlobal(mapToGlobal(event->pos()));
 
-    dock = new QDockWidget("", this);
+    dock = new CustomDockWidget(this);
 
 
     //Get data from the clipboard with this mime data tag and then read the bytes to convert it to TabTransferData

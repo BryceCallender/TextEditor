@@ -27,6 +27,7 @@
 #include "optionswindow.h"
 #include "settingsmanager.h"
 #include "customtabwidget.h"
+#include "customdockwidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -250,7 +251,7 @@ private:
 
     SettingsManager* settings; /*!< Settings Manager singleton reference. */
 
-    QDockWidget* dock; /*!< Used for creating docking widgets. */
+    CustomDockWidget* dock; /*!< Used for creating docking widgets. */
 
     QVector<CustomTabWidget*> *tabWidgets; /*!< Holds all the tab widgets in the screen. */
 };
