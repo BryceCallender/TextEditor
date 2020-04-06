@@ -102,14 +102,34 @@ protected:
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
 private slots:
+    //! Creates a text edit tab.
+    /*!
+        Opens a new blank tab for creating a new file.
+     */
     void on_actionNew_triggered();
 
+    //! Load saved files.
+    /*!
+        Opens a directory window to select previously saved files. These files will occupy their own tabs.
+     */
     void on_actionOpen_triggered();
 
+    //! Save files.
+    /*!
+        Opens a directory window to save the file occupying the current tab.
+     */
     void on_actionSave_as_triggered();
 
+    //! Printing files.
+    /*!
+        Opens a printer preview window for setting your printing prefernces, to then print the file.
+     */
     void on_actionPrint_triggered();
 
+    //! Exiting.
+    /*!
+        Closing the application.
+     */
     void on_actionExit_triggered();
 
     //! When the copy keyword is pressed in the toolbar
@@ -208,30 +228,86 @@ private slots:
 
     void on_actionFormat_Text_triggered();
 
+    //! Font Style.
+    /*!
+        Sets selected text to be Bolded and continues with Bolded style until turned off.
+        If no text is selected then it will just continue with Bolded.
+        Can be used with other Font Style. (i.e. Italic, Underline)
+     */
     void on_actionBold_triggered();
 
+    //! Font Style.
+    /*!
+        Sets selected text to be Italic and continues with Italic style until turned off.
+        If no text is selected then it will just continue with Italic.
+        Can be used with other Font Style. (i.e. Bold, Underline)
+    */
     void on_actionItalic_triggered();
 
+    //! Font Style.
+    /*!
+        Sets selected text to be Underlined and continues with Underlinned style until turned off.
+        If no text is selected then it will just continue with Underline.
+        Can be used with other Font Style. (i.e. Bold, Italic)
+    */
     void on_actionUnderline_triggered();
 
+    //! Font Family.
+    /*!
+        Sets the selected text as the desired Font Family and continues with that setting.
+        If no text is selected then it will just continue with the new Font Family.
+    */
     void on_fontComboBox_currentFontChanged(const QFont &f);
 
+    //! Font Size.
+    /*!
+        Sets the selected text as the desired Font Size and continues with that setting.
+        If no text is selected then it will just continue with the new Font size.
+    */
     void on_fontSizeComboBox_currentIndexChanged(int index);
 
+    //! Font Size.
+    /*!
+        Sets the selected text as the desired Font Size and continues with that setting.
+        If no text is selected then it will just continue with the new Font size.
+    */
     void on_fontSizeComboBox_activated(const QString &arg1);
 
     void on_actionOptions_triggered();
 
+    //! Alignment.
+    /*!
+        Sets the selected text block to Center Alignement and continues.
+        If no text is selected then it will just continue with Center Alignment.
+    */
     void on_actionCenter_triggered();
 
+    //! Alignment.
+    /*!
+        Sets the selected text block to Left Alignement and continues.
+        If no text is selected then it will just continue with Left Alignment.
+    */
     void on_actionAlign_Left_triggered();
 
+    //! Alignment.
+    /*!
+        Sets the selected text block to Right Alignement and continues.
+        If no text is selected then it will just continue with Right Alignment.
+    */
     void on_actionAlign_Right_triggered();
 
     void on_actionSave_2_triggered();
 
+    //! Listing Format.
+    /*!
+        Creates a Listing Format with Bulleting system.
+    */
     void on_actionBullets_triggered();
 
+    //! Listing Format.
+    /*!
+        Creates a Listing Format with Numbering system.
+    */
     void on_actionNumbering_triggered();
 
     void on_actionFind_triggered();
