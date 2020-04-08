@@ -60,9 +60,10 @@ void CustomTabWidget::mousePressEvent(QMouseEvent *event)
         //Getting the tab that was currently clicked
         int tab = tabBar()->tabAt(event->pos());
 
+        MainWindow* mainWindow = nullptr;
+
         if(tab == -1)
-        {
-            MainWindow* mainWindow;
+        {    
             //If this has no dock widget take this route
             if(dynamic_cast<MainWindow*>(parentWidget()) != nullptr) {
                 mainWindow = dynamic_cast<MainWindow*>(parentWidget());
@@ -90,10 +91,11 @@ void CustomTabWidget::mousePressEvent(QMouseEvent *event)
         TextTabWidget* textTab = (TextTabWidget*)widget(tab);
         TabTransferData data;
 
-        data.text = textTab->getTextEdit()->toPlainText();
+        data.text = textTab->getTextEdit()->toHtml();
         data.highlighter = textTab->getSyntaxHighlighter();
         data.filePath = textTab->getTabFileName();
         data.tabName = tabBar()->tabText(tab);
+        data.fontInformation = mainWindow->getFontInformation();
 
         QByteArray tabAsByte;
         QDataStream dataStream(&tabAsByte, QIODevice::ReadWrite);
@@ -108,7 +110,6 @@ void CustomTabWidget::mousePressEvent(QMouseEvent *event)
 
         drag->setMimeData(mimeData);
         drag->setPixmap(pixmap);
-        //this->setCursor(Qt::OpenHandCursor);
         drag->setHotSpot(event->pos() - positionInTab);
         drag->exec(Qt::MoveAction);
     }

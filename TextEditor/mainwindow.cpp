@@ -81,6 +81,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->fontComboBox->setCurrentFont(settings->getValue("text/fontFamily").value<QFont>());
     ui->fontSizeComboBox->setCurrentText(settings->getValue("text/fontSize").toString());
 
+    undoStack = new QUndoStack(this);
+
     // create shortcut
     QShortcut *saveShortcut = new QShortcut(QKeySequence::Save, this);
 
@@ -235,6 +237,20 @@ void MainWindow::on_actionPrint_triggered()
 void MainWindow::printPreview(QPrinter *printer)
 {
     getCurrentTabWidget()->getTextEdit()->print(printer);
+}
+
+QFont MainWindow::getFontInformation()
+{
+    QFont fontInfo;
+
+    fontInfo.setBold(ui->actionBold->isChecked());
+    fontInfo.setItalic(ui->actionItalic->isChecked());
+    fontInfo.setUnderline(ui->actionUnderline->isChecked());
+
+    fontInfo.setPointSize(ui->fontSizeComboBox->currentText().toInt());
+    fontInfo.setFamily(ui->fontComboBox->currentFont().family());
+
+    return fontInfo;
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -521,27 +537,6 @@ void MainWindow::on_tabWidget_tabBarClicked(int index)
     QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
 }
 
-void MainWindow::on_actionView_Rendered_HTML_triggered()
-{
-//    QWebEngineView *view = new QWebEngineView();
-
-//    view->load(QUrl::fromLocalFile(getCurrentTabWidget()->getTabFileName()));
-//    view->show();
-}
-
-void MainWindow::on_actionSplit_Dock_Horizontally_triggered()
-{
-    qDebug() << "Splitting the window!";
-
-    //Get the current docking widgets in the mainwindow
-    QList<QDockWidget*> dockWidgets = findChildren<QDockWidget*>();
-
-    if(dockWidgets.size() == 2)
-    {
-        splitDockWidget(dockWidgets.at(0), dockWidgets.at(1), Qt::Horizontal);
-    }
-}
-
 void MainWindow::on_actionSave_triggered()
 {
     TextTabWidget* textTabWidget = getCurrentTabWidget();
@@ -790,7 +785,8 @@ void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
         QTextCharFormat format = cursor.charFormat();
         format.setFontFamily(f.family());
         cursor.mergeCharFormat(format);//Change font-family
-    }else
+    }
+    else
     {
         QString size = ui->fontSizeComboBox->currentText();
         QTextCharFormat format;
@@ -939,14 +935,17 @@ void MainWindow::closeEvent(QCloseEvent *event)
 void MainWindow::removeTabFromWidget(int widgetIndex, int tabIndex)
 {
     tabWidgets->at(widgetIndex)->removeTab(tabIndex);
+
+    if(widgetIndex > 0 && tabWidgets->at(widgetIndex)->count() == 1)
+    {
+        findChildren<QDockWidget*>().at(widgetIndex - 1)->hide();
+    }
 }
 
 QVector<CustomTabWidget *> MainWindow::getTabWidgets()
 {
     return *tabWidgets;
 }
-
-
 
 void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 {
@@ -1018,6 +1017,7 @@ void MainWindow::dropEvent(QDropEvent *event)
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
+            tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
             removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
 
             //connect signal
@@ -1035,6 +1035,7 @@ void MainWindow::dropEvent(QDropEvent *event)
         else //Add to right dock widget since one is already there
         {
             offender->show();
+
             CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
 
             tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(tabWidget), "New Tab");
@@ -1043,8 +1044,14 @@ void MainWindow::dropEvent(QDropEvent *event)
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setFocus();
+            tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
+            removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
             QObject::connect(tabWidget->getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
         }
+
+//        on_actionBold_triggered();
+//        on_actionItalic_triggered();
+//        on_actionUnderline_triggered();
 
         setWindowTitle(testTabData.filePath);
     }
@@ -1073,6 +1080,7 @@ void MainWindow::dropEvent(QDropEvent *event)
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
+            tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
             removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
 
             //connect signal
@@ -1098,9 +1106,14 @@ void MainWindow::dropEvent(QDropEvent *event)
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setFocus();
+            tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
+            removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
             QObject::connect(tabWidget->getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
         }
 
+//        on_actionBold_triggered();
+//        on_actionItalic_triggered();
+//        on_actionUnderline_triggered();
 
         setWindowTitle(testTabData.filePath);
     }

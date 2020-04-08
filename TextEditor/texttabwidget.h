@@ -15,6 +15,7 @@
 #include <QPalette>
 #include <QTextCursor>
 #include <QFileSystemWatcher>
+#include <QMessageBox>
 
 #include "searchhighlighter.h"
 #include "searcherandreplacer.h"
@@ -68,6 +69,7 @@ private:
 
     QPushButton *replaceCurrentButton;
     QPushButton *replaceAllButton;
+    QPushButton *regexExplainer;
 
     QPushButton *exitButton;
 

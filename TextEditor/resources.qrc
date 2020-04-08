@@ -3,6 +3,7 @@
         <file>cpp_keywords.txt</file>
         <file>java_keywords.txt</file>
         <file>python_keywords.txt</file>
+        <file>splashscreen.png</file>
     </qresource>
     <qresource prefix="/imgs">
         <file>icon/boldIcon.png</file>
@@ -24,5 +25,10 @@
         <file>icon/down-arrow.svg</file>
         <file>icon/bulletListIcon.png</file>
         <file>icon/numberListIcon.png</file>
+        <file>icon/redo.png</file>
+        <file>icon/undo.png</file>
+        <file>icon/copy.png</file>
+        <file>icon/zoom_in.png</file>
+        <file>icon/zoom_out.png</file>
     </qresource>
 </RCC>

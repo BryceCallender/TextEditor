@@ -29,19 +29,11 @@ TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
 
     QPushButton* upArrow = new QPushButton(this);
     upArrow->setIcon(QPixmap(":/imgs/icon/up-arrow.svg"));
-
-    connect(upArrow,
-            &QPushButton::pressed,
-            replacer,
-            &SearcherAndReplacer::moveToNextOccurence);
+    upArrow->setToolTip("Moves up once occurence. Will wrap around.");
 
     QPushButton* downArrow = new QPushButton(this);
     downArrow->setIcon(QPixmap(":/imgs/icon/down-arrow.svg"));
-
-    connect(downArrow,
-            &QPushButton::pressed,
-            replacer,
-            &SearcherAndReplacer::moveBackOneOccurence);
+    downArrow->setToolTip("Moves down once occurence. Will wrap around.");
 
     QHBoxLayout *buttonLayout = new QHBoxLayout();
     buttonLayout->addWidget(downArrow);
@@ -67,10 +59,15 @@ TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
     replaceText = new QLineEdit(this);
     replaceText->setPlaceholderText("Replace");
 
+    regexExplainer = new QPushButton(".* ?", this);
+    regexExplainer->setMaximumSize(QSize(regexExplainer->height(), 50));
+    regexExplainer->setToolTip("How to search with Regular Expressions.");
+
     replaceCurrentButton = new QPushButton("Current", this);
     replaceAllButton = new QPushButton("All", this);
 
     replaceLayout->addWidget(replaceText);
+    replaceLayout->addWidget(regexExplainer);
     replaceLayout->addWidget(replaceCurrentButton);
     replaceLayout->addWidget(replaceAllButton);
 
@@ -78,13 +75,13 @@ TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
     replaceCurrentButton->setDisabled(true);
     replaceAllButton->setDisabled(true);
 
-
     //Add this layout to the group so that we have a line edit and 2 buttons in this layout
     groupBoxLayout->addLayout(replaceLayout);
 
     replaceText->hide();
     replaceCurrentButton->hide();
     replaceAllButton->hide();
+    regexExplainer->hide();
 
     groupBox->setLayout(groupBoxLayout);
 
@@ -98,13 +95,28 @@ TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
     // create shortcut
     QShortcut *findShortcut = new QShortcut(QKeySequence::Find, this);
 
+    // create shortcut
+    QShortcut *replaceShortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_R), this);
+
+    fileName = "New File.txt";
+
+    QPalette p = textEditArea->palette();
+    p.setColor(QPalette::Highlight, QColor(64, 148, 255));
+    textEditArea->setPalette(p);
+
+    //Sets the font based on the current settings and applies it.
+    QFont currentFont = textEditArea->font();
+    currentFont.setFamily(SettingsManager::getInstance()->getValue("text/fontFamily").toString());
+    currentFont.setPointSize(SettingsManager::getInstance()->getValue("text/fontSize").toInt());
+    textEditArea->setFont(currentFont);
+
+    //Sets tab length based on the current settings and applies it as well.
+    setTabStopDistance(SettingsManager::getInstance()->getValue("text/tabLength").toInt());
+
     QObject::connect(findShortcut,
                      &QShortcut::activated,
                      this,
                      &TextTabWidget::revealSearchBox);
-
-    // create shortcut
-    QShortcut *replaceShortcut = new QShortcut(QKeySequence(Qt::CTRL + Qt::Key_R), this);
 
     QObject::connect(replaceShortcut,
                      &QShortcut::activated,
@@ -141,25 +153,36 @@ TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
                      this,
                      &TextTabWidget::handleCloseEvent);
 
+    QObject::connect(upArrow,
+            &QPushButton::pressed,
+            replacer,
+            &SearcherAndReplacer::moveToNextOccurence);
+
+    QObject::connect(downArrow,
+            &QPushButton::pressed,
+            replacer,
+            &SearcherAndReplacer::moveBackOneOccurence);
+
+    QObject::connect(regexExplainer,
+                     &QPushButton::pressed,
+                     this,
+                     [=] () {
+        QMessageBox messageBox(this);
+        messageBox.setTextFormat(Qt::RichText);
+        messageBox.setWindowTitle("Regex search feature");
+        messageBox.setText( tr("You are able to search text using regular expressions!<br><br>"
+                               "Here we have for example the text \"hello hello 123 goodbye.\"<br><br>"
+                               "We want to search for two words followed by a number of any length.<br>"
+                               "The query string would look like so \\w+ \\w+ \\d+<br><br>"
+                               "This is the perl regex for a word followed by a space then another word followed by a space and then a number of any length.<br><br>"
+                               "The syntax is similar to perl's and can be found here <a href='https://perldoc.perl.org/perlre.html#Regular-Expressions'>perl regular expression rules.</a>"));
+        messageBox.exec();
+    });
+
 //    QObject::connect(textEditArea,
 //                     &QTextEdit::textChanged,
 //                     this,
 //                     &TextTabWidget::handleBracketAndParenthesisMatch);
-
-    fileName = "New File.txt";
-
-    QPalette p = textEditArea->palette();
-    p.setColor(QPalette::Highlight, QColor(64, 148, 255));
-    textEditArea->setPalette(p);
-
-    //Sets the font based on the current settings and applies it.
-    QFont currentFont = textEditArea->font();
-    currentFont.setFamily(SettingsManager::getInstance()->getValue("text/fontFamily").toString());
-    currentFont.setPointSize(SettingsManager::getInstance()->getValue("text/fontSize").toInt());
-    textEditArea->setFont(currentFont);
-
-    //Sets tab length based on the current settings and applies it as well.
-    setTabStopDistance(SettingsManager::getInstance()->getValue("text/tabLength").toInt());
 }
 
 QString TextTabWidget::getTabFileName()
@@ -206,6 +229,7 @@ void TextTabWidget::revealReplaceBox()
     replaceText->show();
     replaceCurrentButton->show();
     replaceAllButton->show();
+    regexExplainer->show();
 
     replaceText->setFocus();
 }
@@ -252,6 +276,7 @@ void TextTabWidget::handleCloseEvent()
 
     replaceCurrentButton->hide();
     replaceAllButton->hide();
+    regexExplainer->hide();
 
     //Regain the color!
     if(codeHighlighter != nullptr)

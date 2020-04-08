@@ -3,7 +3,7 @@
 
 CustomDockWidget::CustomDockWidget(QWidget *parent): QDockWidget(parent)
 {
-
+    setFeatures(QDockWidget::DockWidgetClosable);
 }
 
 void CustomDockWidget::closeEvent(QCloseEvent *event)

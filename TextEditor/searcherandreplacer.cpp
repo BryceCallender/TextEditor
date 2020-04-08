@@ -1,3 +1,4 @@
+#include "replacercommand.h"
 #include "searcherandreplacer.h"
 
 SearcherAndReplacer::SearcherAndReplacer(QTextEdit* textEdit, QLabel *label) : QWidget(textEdit)
@@ -104,6 +105,12 @@ void SearcherAndReplacer::replaceCurrent(const QString& findText, const QString&
 
 void SearcherAndReplacer::replaceAll(const QString &findText, const QString& replacementText)
 {
+    //Incase user clicked out of focus (might be expensive to recall this again for larger files?)
+    populateAllExpressionMatchesAndMoveToFirst(textEdit, findText);
+
+    QTextCursor cursor = textEdit->textCursor();
+    //Groups all the changes into one action in the view of the undo/redo stack so itll rewind everything
+    cursor.beginEditBlock();
     if(textMatches.size() > 0)
     {
         while(textMatches.size() > 0)
@@ -111,6 +118,7 @@ void SearcherAndReplacer::replaceAll(const QString &findText, const QString& rep
             replaceCurrent(findText, replacementText);
         }
     }
+    cursor.endEditBlock();
 }
 
 int SearcherAndReplacer::getNumberOfMatches()

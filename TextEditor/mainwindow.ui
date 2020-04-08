@@ -299,6 +299,10 @@
    </property>
   </action>
   <action name="actionCopy">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/imgs/icon/copyIcon.png</normaloff>:/imgs/icon/copyIcon.png</iconset>
+   </property>
    <property name="text">
     <string>Copy</string>
    </property>
@@ -307,11 +311,19 @@
    </property>
   </action>
   <action name="actionUndo">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/imgs/icon/undo.png</normaloff>:/imgs/icon/undo.png</iconset>
+   </property>
    <property name="text">
     <string>Undo</string>
    </property>
   </action>
   <action name="actionRedo">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/imgs/icon/redo.png</normaloff>:/imgs/icon/redo.png</iconset>
+   </property>
    <property name="text">
     <string>Redo</string>
    </property>
@@ -422,11 +434,19 @@
    </property>
   </action>
   <action name="actionZoom_in">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/imgs/icon/zoom_in.png</normaloff>:/imgs/icon/zoom_in.png</iconset>
+   </property>
    <property name="text">
     <string>Zoom In</string>
    </property>
   </action>
   <action name="actionZoom_Out">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/imgs/icon/zoom_out.png</normaloff>:/imgs/icon/zoom_out.png</iconset>
+   </property>
    <property name="text">
     <string>Zoom Out</string>
    </property>

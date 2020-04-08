@@ -13,7 +13,6 @@ public:
     explicit CustomDockWidget(QWidget* parent = nullptr);
 protected:
     void closeEvent(QCloseEvent *event);
-
 private:
 };
 

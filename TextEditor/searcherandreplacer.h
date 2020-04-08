@@ -6,6 +6,7 @@
 #include <QDebug>
 #include <QShortcut>
 #include <QLabel>
+#include <QUndoCommand>
 
 class SearcherAndReplacer : public QWidget
 {

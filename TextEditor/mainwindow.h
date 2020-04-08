@@ -60,6 +60,7 @@ public:
     void setWindowToFileName(int index);
     void markTextTabAsClean(const QString& newPath);
     void printPreview(QPrinter *printer);
+    QFont getFontInformation();
 
     //! When Window is closed completely
     /*!
@@ -212,8 +213,6 @@ private slots:
      */
     void on_actionZoom_Standard_triggered();
 
-    void on_actionSplit_Dock_Horizontally_triggered();
-
     //! When user tries to close a tab
     /*!
         Checks to see if the user has changed the file in the tab and asks if they want to save their work.
@@ -221,8 +220,6 @@ private slots:
 //    void on_tabWidget_tabCloseRequested(int index);
 
     void on_tabWidget_tabBarClicked(int index);
-
-    void on_actionView_Rendered_HTML_triggered();
 
     void on_actionSave_triggered();
 
@@ -330,5 +327,7 @@ private:
     CustomDockWidget* dock; /*!< Used for creating docking widgets. */
 
     QVector<CustomTabWidget*> *tabWidgets; /*!< Holds all the tab widgets in the screen. */
+
+    QUndoStack *undoStack;
 };
 #endif // MAINWINDOW_H
