@@ -59,7 +59,7 @@ void CustomTabBar::dropEvent(QDropEvent *event)
     {
         mainWindow = reinterpret_cast<MainWindow*>(this->parent->parentWidget());
     }
-    else //Parent of the CustomTabWidget is a QDockWidget and its parent is the MainWindow (which is what i need)
+    else //Parent of the CustomTabWidget is a QDockWidget and its parent is the MainWindow
     {
         mainWindow = reinterpret_cast<MainWindow*>(this->parent->parentWidget()->parentWidget());
     }

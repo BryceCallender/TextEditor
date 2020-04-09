@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['getcurrenttabwidget_88',['getCurrentTabWidget',['../class_custom_tab_widget.html#a30a285f721103527e638173a2eb9c9c1',1,'CustomTabWidget']]],
-  ['gettabwidgets_89',['getTabWidgets',['../class_main_window.html#aad161d371ee2862c4c0bc32fef1db9b9',1,'MainWindow']]]
+  ['filechanged_97',['fileChanged',['../class_main_window.html#a0b769b6b30e384faa42c38dcfcb0dacd',1,'MainWindow']]]
 ];

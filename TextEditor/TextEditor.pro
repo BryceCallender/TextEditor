@@ -27,7 +27,6 @@ SOURCES += \
     mainwindow.cpp \
     optionswindow.cpp \
     pythonsyntaxhighlighter.cpp \
-    replacercommand.cpp \
     searcherandreplacer.cpp \
     searchhighlighter.cpp \
     settingsmanager.cpp \
@@ -46,7 +45,6 @@ HEADERS += \
     mainwindow.h \
     optionswindow.h \
     pythonsyntaxhighlighter.h \
-    replacercommand.h \
     searcherandreplacer.h \
     searchhighlighter.h \
     settingsmanager.h \

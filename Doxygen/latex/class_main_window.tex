@@ -9,10 +9,13 @@ The main window and view for the editor.
 
 {\ttfamily \#include $<$mainwindow.\+h$>$}
 
-Inheritance diagram for Main\+Window\+:\begin{figure}[H]
+
+
+Inheritance diagram for Main\+Window\+:\nopagebreak
+\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=2.000000cm]{class_main_window}
+\includegraphics[width=211pt]{class_main_window__inherit__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -34,12 +37,21 @@ void {\bfseries mark\+Text\+Tab\+As\+Clean} (const Q\+String \&new\+Path)
 \mbox{\Hypertarget{class_main_window_aceea0c51c23ebdf9f251ce4bd1f07e4b}\label{class_main_window_aceea0c51c23ebdf9f251ce4bd1f07e4b}} 
 void {\bfseries print\+Preview} (Q\+Printer $\ast$printer)
 \item 
+\mbox{\Hypertarget{class_main_window_ae15f20276bdb232bfd16c12956290ca1}\label{class_main_window_ae15f20276bdb232bfd16c12956290ca1}} 
+Q\+Font {\bfseries get\+Font\+Information} ()
+\item 
 void \mbox{\hyperlink{class_main_window_a4e20a4a065fbb0e4d3532a45a0a91425}{close\+Event}} (Q\+Close\+Event $\ast$event)
 \begin{DoxyCompactList}\small\item\em When Window is closed completely. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_main_window_a9815d5b4de2a012f4247222b42fd0293}{remove\+Tab\+From\+Widget}} (int widget\+Index, int tab\+Index)
 \begin{DoxyCompactList}\small\item\em Command for when to remove a tab from a specified widget index. \end{DoxyCompactList}\item 
 Q\+Vector$<$ \mbox{\hyperlink{class_custom_tab_widget}{Custom\+Tab\+Widget}} $\ast$ $>$ \mbox{\hyperlink{class_main_window_aad161d371ee2862c4c0bc32fef1db9b9}{get\+Tab\+Widgets}} ()
-\begin{DoxyCompactList}\small\item\em Gets the tab widgets from the main window. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Gets the tab widgets from the main window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a7bc0e7a64ef40d62990f389f462848b3}{show\+Context\+Menu}} (const Q\+Point \&)
+\begin{DoxyCompactList}\small\item\em When the user right clicks in the main window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a3ba1a371fb10e731ae0926ae85efeb4f}{save}} ()
+\begin{DoxyCompactList}\small\item\em Used for closing tabs from other docking widgets. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a0b769b6b30e384faa42c38dcfcb0dacd}{file\+Changed}} ()
+\begin{DoxyCompactList}\small\item\em Whenever something in the current file is changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -95,7 +107,17 @@ When Window is closed completely.
 {\em event} & The event where teh user pressed the X button to close the window. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_main_window_aad161d371ee2862c4c0bc32fef1db9b9}\label{class_main_window_aad161d371ee2862c4c0bc32fef1db9b9}} 
+\mbox{\Hypertarget{class_main_window_a0b769b6b30e384faa42c38dcfcb0dacd}\label{class_main_window_a0b769b6b30e384faa42c38dcfcb0dacd}} 
+\index{MainWindow@{MainWindow}!fileChanged@{fileChanged}}
+\index{fileChanged@{fileChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{fileChanged()}{fileChanged()}}
+{\footnotesize\ttfamily void Main\+Window\+::file\+Changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Whenever something in the current file is changed. 
+
+Adds an asterisk into the tab name so that the user knows that the file is changed. \mbox{\Hypertarget{class_main_window_aad161d371ee2862c4c0bc32fef1db9b9}\label{class_main_window_aad161d371ee2862c4c0bc32fef1db9b9}} 
 \index{MainWindow@{MainWindow}!getTabWidgets@{getTabWidgets}}
 \index{getTabWidgets@{getTabWidgets}!MainWindow@{MainWindow}}
 \doxysubsubsection{\texorpdfstring{getTabWidgets()}{getTabWidgets()}}
@@ -122,7 +144,27 @@ Command for when to remove a tab from a specified widget index.
 {\em tab\+Index} & the tab index from the parent widget index \\
 \hline
 \end{DoxyParams}
+\mbox{\Hypertarget{class_main_window_a3ba1a371fb10e731ae0926ae85efeb4f}\label{class_main_window_a3ba1a371fb10e731ae0926ae85efeb4f}} 
+\index{MainWindow@{MainWindow}!save@{save}}
+\index{save@{save}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{save()}{save()}}
+{\footnotesize\ttfamily void Main\+Window\+::save (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
 
+
+
+Used for closing tabs from other docking widgets. 
+
+Calls the standard \mbox{\hyperlink{class_main}{Main}} windows private saving function. \mbox{\Hypertarget{class_main_window_a7bc0e7a64ef40d62990f389f462848b3}\label{class_main_window_a7bc0e7a64ef40d62990f389f462848b3}} 
+\index{MainWindow@{MainWindow}!showContextMenu@{showContextMenu}}
+\index{showContextMenu@{showContextMenu}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{showContextMenu()}{showContextMenu()}}
+{\footnotesize\ttfamily void Main\+Window\+::show\+Context\+Menu (\begin{DoxyParamCaption}\item[{const Q\+Point \&}]{pos }\end{DoxyParamCaption})}
+
+
+
+When the user right clicks in the main window. 
+
+Shows a custom context menu at the click location that can undo, redo, cut, copy, paste, and zoom. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

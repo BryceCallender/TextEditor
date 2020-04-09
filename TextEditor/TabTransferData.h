@@ -9,11 +9,12 @@ struct TabTransferData {
     QString filePath;
     QString text;
     CodeSyntaxHighlighter* highlighter;
+    int cursorPosition;
     QFont fontInformation;
 
     friend QDataStream& operator<<(QDataStream &out, const TabTransferData& tabData)
     {
-        out << tabData.tabName << tabData.filePath << tabData.text << tabData.highlighter << tabData.fontInformation;
+        out << tabData.tabName << tabData.filePath << tabData.text << tabData.highlighter << tabData.cursorPosition << tabData.fontInformation;
         return out;
     }
 
@@ -23,18 +24,20 @@ struct TabTransferData {
         QString filePath;
         QString text;
         CodeSyntaxHighlighter* highlighter = nullptr;
+        int cursorPosition;
         QFont fontInformation;
 
         in >> tabName >> filePath >> text;
 
         in >> *highlighter;
 
-        in >> fontInformation;
+        in >> cursorPosition >> fontInformation;
 
         tabData.tabName = tabName;
         tabData.filePath = filePath;
         tabData.text = text;
         tabData.highlighter = highlighter;
+        tabData.cursorPosition = cursorPosition;
         tabData.fontInformation = fontInformation;
 
         return in;

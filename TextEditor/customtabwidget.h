@@ -36,11 +36,16 @@ public:
      */
     TextTabWidget* getCurrentTabWidget();
 
-    //! Whenever something in the current file is changed
+    //! tabCloseRequest
     /*!
-        Adds an asterisk into the tab name so that the user knows that the file is changed.
+      If the tab is closed this is responsible for allowing the user to save before it is closed or stop the close event.
      */
     void tabCloseRequest(int index);
+
+    //! tabClicked
+    /*!
+      Whenever this tab is clicked (focused on).
+     */
     void tabClicked(int index);
 
     static int tabParent; /*!< The parent index of the tab being ripped off. */

@@ -9,10 +9,13 @@ A syntax highlighter for class specific keywords.
 
 {\ttfamily \#include $<$codesyntaxhighlighter.\+h$>$}
 
-Inheritance diagram for Code\+Syntax\+Highlighter\+:\begin{figure}[H]
+
+
+Inheritance diagram for Code\+Syntax\+Highlighter\+:\nopagebreak
+\begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[height=3.000000cm]{class_code_syntax_highlighter}
+\includegraphics[width=350pt]{class_code_syntax_highlighter__inherit__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Classes}
@@ -28,7 +31,9 @@ struct \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Hi
 virtual void \mbox{\hyperlink{class_code_syntax_highlighter_a53fbd01fd935dd5f63d4f9185960ff5a}{read\+Keyword\+File\+And\+Populate\+List}} ()=0
 \begin{DoxyCompactList}\small\item\em Pure Virtual member. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_code_syntax_highlighter_adc0b2323570867faa9f42fee86e2ba63}{update\+Keyword\+Color}} (const Q\+Color \&color)
-\begin{DoxyCompactList}\small\item\em Update the keyword color. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Update the keyword color. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_code_syntax_highlighter_a2841d9a147d45978504e1fb1f496beac}{get\+Rule\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Gets the amount of rules for this highlighter. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -87,7 +92,17 @@ Constructor.
 The code syntax highlighter constructor is empty as this is an abstract class. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_code_syntax_highlighter_a5b381caaea33520382f864a12f1759a6}\label{class_code_syntax_highlighter_a5b381caaea33520382f864a12f1759a6}} 
+\mbox{\Hypertarget{class_code_syntax_highlighter_a2841d9a147d45978504e1fb1f496beac}\label{class_code_syntax_highlighter_a2841d9a147d45978504e1fb1f496beac}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!getRuleCount@{getRuleCount}}
+\index{getRuleCount@{getRuleCount}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{getRuleCount()}{getRuleCount()}}
+{\footnotesize\ttfamily int Code\+Syntax\+Highlighter\+::get\+Rule\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the amount of rules for this highlighter. 
+
+Responsible for telling if the highlighter is essentially empty or not \mbox{\Hypertarget{class_code_syntax_highlighter_a5b381caaea33520382f864a12f1759a6}\label{class_code_syntax_highlighter_a5b381caaea33520382f864a12f1759a6}} 
 \index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!highlightBlock@{highlightBlock}}
 \index{highlightBlock@{highlightBlock}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
 \doxysubsubsection{\texorpdfstring{highlightBlock()}{highlightBlock()}}

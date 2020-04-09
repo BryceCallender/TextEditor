@@ -1,0 +1,281 @@
+\hypertarget{class_code_syntax_highlighter}{}\doxysection{Code\+Syntax\+Highlighter Class Reference}
+\label{class_code_syntax_highlighter}\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+
+
+A syntax highlighter for class specific keywords.  
+
+
+
+
+{\ttfamily \#include $<$codesyntaxhighlighter.\+h$>$}
+
+
+
+Inheritance diagram for Code\+Syntax\+Highlighter\+:
+% FIG 0
+
+
+Collaboration diagram for Code\+Syntax\+Highlighter\+:
+% FIG 1
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}}
+\begin{DoxyCompactList}\small\item\em A container to hold the pattern and the word formatting. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_code_syntax_highlighter_ac9b552aab9cf508492447d13aef6156d}{Code\+Syntax\+Highlighter}} (Q\+Text\+Document $\ast$parent)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{class_code_syntax_highlighter_a53fbd01fd935dd5f63d4f9185960ff5a}{read\+Keyword\+File\+And\+Populate\+List}} ()=0
+\begin{DoxyCompactList}\small\item\em Pure Virtual member. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_code_syntax_highlighter_adc0b2323570867faa9f42fee86e2ba63}{update\+Keyword\+Color}} (const Q\+Color \&color)
+\begin{DoxyCompactList}\small\item\em Update the keyword color. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_code_syntax_highlighter_a2841d9a147d45978504e1fb1f496beac}{get\+Rule\+Count}} ()
+\begin{DoxyCompactList}\small\item\em Gets the amount of rules for this highlighter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_code_syntax_highlighter_a5b381caaea33520382f864a12f1759a6}{highlight\+Block}} (const Q\+String \&text) override
+\begin{DoxyCompactList}\small\item\em Virtual method override from parent class, Q\+Syntax\+Highlighter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Vector$<$ \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}} $>$ \mbox{\hyperlink{class_code_syntax_highlighter_afb1b1b47dacaa339067889550ea4d444}{highlighting\+Rules}}
+\item 
+Q\+Regular\+Expression \mbox{\hyperlink{class_code_syntax_highlighter_a2056204d04cdb83386e08441a798731f}{comment\+Start\+Expression}}
+\item 
+Q\+Regular\+Expression \mbox{\hyperlink{class_code_syntax_highlighter_a2e9fc0541c75202a19b91c78367755c7}{comment\+End\+Expression}}
+\item 
+Q\+Text\+Char\+Format \mbox{\hyperlink{class_code_syntax_highlighter_adf106d53ed0643e38cda97dd04cb2c40}{keyword\+Format}}
+\item 
+Q\+Text\+Char\+Format \mbox{\hyperlink{class_code_syntax_highlighter_a5e74343c8930f67201a093aebe12b569}{class\+Format}}
+\item 
+Q\+Text\+Char\+Format \mbox{\hyperlink{class_code_syntax_highlighter_a227d614b1c2dddfbf5950785a8b4f988}{single\+Line\+Comment\+Format}}
+\item 
+Q\+Text\+Char\+Format \mbox{\hyperlink{class_code_syntax_highlighter_a3dfa60803275d12e4fcc44f535d38c49}{multi\+Line\+Comment\+Format}}
+\item 
+Q\+Text\+Char\+Format \mbox{\hyperlink{class_code_syntax_highlighter_abed1a2e9896db53116f583276f289e8d}{quotation\+Format}}
+\item 
+Q\+Text\+Char\+Format \mbox{\hyperlink{class_code_syntax_highlighter_a2253015bb4d616cdf718a09a9eac197e}{function\+Format}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Data\+Stream \& \mbox{\hyperlink{class_code_syntax_highlighter_a59f02bc6c35a358a7eeaaba92efbd837}{operator$>$$>$}} (Q\+Data\+Stream \&in, \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} \&highlighter\+Data)
+\begin{DoxyCompactList}\small\item\em Data\+Stream extractor for mimedata retrieval of the class \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}}. \end{DoxyCompactList}\item 
+Q\+Data\+Stream \& \mbox{\hyperlink{class_code_syntax_highlighter_aaa5878758c8fefb586750aeb6972083b}{operator$<$$<$}} (Q\+Data\+Stream \&out, \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} \&highlighter\+Data)
+\begin{DoxyCompactList}\small\item\em Data\+Stream insert for mimedata storage of the class \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}}. \end{DoxyCompactList}\item 
+Q\+Data\+Stream \& \mbox{\hyperlink{class_code_syntax_highlighter_a51659b079ef6d8541987d8b0572f7c16}{operator$>$$>$}} (Q\+Data\+Stream \&in, \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}} \&rule)
+\begin{DoxyCompactList}\small\item\em Data\+Stream extractor for mimedata retrieval of the struct \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}}. \end{DoxyCompactList}\item 
+Q\+Data\+Stream \& \mbox{\hyperlink{class_code_syntax_highlighter_ae62d9ff827b4dfe8c217093ece157da7}{operator$<$$<$}} (Q\+Data\+Stream \&out, \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}} \&rule)
+\begin{DoxyCompactList}\small\item\em Data\+Stream insertion for mimedata storing of the struct \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A syntax highlighter for class specific keywords. 
+
+An abstract class responsible for highlighting language specific keywords. It\textquotesingle{}ll highlight based on colors set in the settings window. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_code_syntax_highlighter_ac9b552aab9cf508492447d13aef6156d}\label{class_code_syntax_highlighter_ac9b552aab9cf508492447d13aef6156d}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{CodeSyntaxHighlighter()}{CodeSyntaxHighlighter()}}
+{\footnotesize\ttfamily Code\+Syntax\+Highlighter\+::\+Code\+Syntax\+Highlighter (\begin{DoxyParamCaption}\item[{Q\+Text\+Document $\ast$}]{parent }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor. 
+
+The code syntax highlighter constructor is empty as this is an abstract class. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_code_syntax_highlighter_a2841d9a147d45978504e1fb1f496beac}\label{class_code_syntax_highlighter_a2841d9a147d45978504e1fb1f496beac}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!getRuleCount@{getRuleCount}}
+\index{getRuleCount@{getRuleCount}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{getRuleCount()}{getRuleCount()}}
+{\footnotesize\ttfamily int Code\+Syntax\+Highlighter\+::get\+Rule\+Count (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the amount of rules for this highlighter. 
+
+Responsible for telling if the highlighter is essentially empty or not \mbox{\Hypertarget{class_code_syntax_highlighter_a5b381caaea33520382f864a12f1759a6}\label{class_code_syntax_highlighter_a5b381caaea33520382f864a12f1759a6}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!highlightBlock@{highlightBlock}}
+\index{highlightBlock@{highlightBlock}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{highlightBlock()}{highlightBlock()}}
+{\footnotesize\ttfamily void Code\+Syntax\+Highlighter\+::highlight\+Block (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Virtual method override from parent class, Q\+Syntax\+Highlighter. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & the document text that will be highlighted \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_code_syntax_highlighter_a53fbd01fd935dd5f63d4f9185960ff5a}\label{class_code_syntax_highlighter_a53fbd01fd935dd5f63d4f9185960ff5a}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!readKeywordFileAndPopulateList@{readKeywordFileAndPopulateList}}
+\index{readKeywordFileAndPopulateList@{readKeywordFileAndPopulateList}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{readKeywordFileAndPopulateList()}{readKeywordFileAndPopulateList()}}
+{\footnotesize\ttfamily virtual void Code\+Syntax\+Highlighter\+::read\+Keyword\+File\+And\+Populate\+List (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Pure Virtual member. 
+
+This pure virtual function is how each syntax highlighter will read and populate the keywords it has jurisdiction over. 
+
+Implemented in \mbox{\hyperlink{class_c_p_p_syntax_highlighter_a519939934d971b194d2af61f69a48109}{C\+P\+P\+Syntax\+Highlighter}}, \mbox{\hyperlink{class_java_syntax_highlighter_ac0ec7f4a8b7b265a04496809e0256cec}{Java\+Syntax\+Highlighter}}, and \mbox{\hyperlink{class_python_syntax_highlighter_a9d1c7605b55deb8654a6e3d6dba11d48}{Python\+Syntax\+Highlighter}}.
+
+\mbox{\Hypertarget{class_code_syntax_highlighter_adc0b2323570867faa9f42fee86e2ba63}\label{class_code_syntax_highlighter_adc0b2323570867faa9f42fee86e2ba63}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!updateKeywordColor@{updateKeywordColor}}
+\index{updateKeywordColor@{updateKeywordColor}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{updateKeywordColor()}{updateKeywordColor()}}
+{\footnotesize\ttfamily void Code\+Syntax\+Highlighter\+::update\+Keyword\+Color (\begin{DoxyParamCaption}\item[{const Q\+Color \&}]{color }\end{DoxyParamCaption})}
+
+
+
+Update the keyword color. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em color} & The new color to highlight with. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Friends And Related Function Documentation}
+\mbox{\Hypertarget{class_code_syntax_highlighter_aaa5878758c8fefb586750aeb6972083b}\label{class_code_syntax_highlighter_aaa5878758c8fefb586750aeb6972083b}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+Data\+Stream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{Q\+Data\+Stream \&}]{out,  }\item[{\mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} \&}]{highlighter\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Data\+Stream insert for mimedata storage of the class \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & data stream that will be reading in the data. \\
+\hline
+{\em highlighter\+Data} & the syntax highlighter data that will be written to the stream in bytes. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_code_syntax_highlighter_ae62d9ff827b4dfe8c217093ece157da7}\label{class_code_syntax_highlighter_ae62d9ff827b4dfe8c217093ece157da7}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+Data\+Stream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{Q\+Data\+Stream \&}]{out,  }\item[{\mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}} \&}]{rule }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Data\+Stream insertion for mimedata storing of the struct \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em out} & data stream that will be outputting the data. \\
+\hline
+{\em rule} & the highlighting rule data that will be written to the stream in bytes. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_code_syntax_highlighter_a59f02bc6c35a358a7eeaaba92efbd837}\label{class_code_syntax_highlighter_a59f02bc6c35a358a7eeaaba92efbd837}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$}{operator>>}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Q\+Data\+Stream\& operator$>$$>$ (\begin{DoxyParamCaption}\item[{Q\+Data\+Stream \&}]{in,  }\item[{\mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} \&}]{highlighter\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Data\+Stream extractor for mimedata retrieval of the class \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & data stream that will be reading in the data. \\
+\hline
+{\em highlighter\+Data} & the syntax highlighter that will be populated with the stream data. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_code_syntax_highlighter_a51659b079ef6d8541987d8b0572f7c16}\label{class_code_syntax_highlighter_a51659b079ef6d8541987d8b0572f7c16}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$}{operator>>}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Q\+Data\+Stream\& operator$>$$>$ (\begin{DoxyParamCaption}\item[{Q\+Data\+Stream \&}]{in,  }\item[{\mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}} \&}]{rule }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Data\+Stream extractor for mimedata retrieval of the struct \mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & data stream that will be reading in the data. \\
+\hline
+{\em rule} & the highlighting rule that will be populated with the stream data. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_code_syntax_highlighter_a5e74343c8930f67201a093aebe12b569}\label{class_code_syntax_highlighter_a5e74343c8930f67201a093aebe12b569}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!classFormat@{classFormat}}
+\index{classFormat@{classFormat}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{classFormat}{classFormat}}
+{\footnotesize\ttfamily Q\+Text\+Char\+Format Code\+Syntax\+Highlighter\+::class\+Format\hspace{0.3cm}{\ttfamily [protected]}}
+
+The formatting for when a class is found. \mbox{\Hypertarget{class_code_syntax_highlighter_a2e9fc0541c75202a19b91c78367755c7}\label{class_code_syntax_highlighter_a2e9fc0541c75202a19b91c78367755c7}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!commentEndExpression@{commentEndExpression}}
+\index{commentEndExpression@{commentEndExpression}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{commentEndExpression}{commentEndExpression}}
+{\footnotesize\ttfamily Q\+Regular\+Expression Code\+Syntax\+Highlighter\+::comment\+End\+Expression\hspace{0.3cm}{\ttfamily [protected]}}
+
+The regular expression to find the end of a comment expression. \mbox{\Hypertarget{class_code_syntax_highlighter_a2056204d04cdb83386e08441a798731f}\label{class_code_syntax_highlighter_a2056204d04cdb83386e08441a798731f}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!commentStartExpression@{commentStartExpression}}
+\index{commentStartExpression@{commentStartExpression}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{commentStartExpression}{commentStartExpression}}
+{\footnotesize\ttfamily Q\+Regular\+Expression Code\+Syntax\+Highlighter\+::comment\+Start\+Expression\hspace{0.3cm}{\ttfamily [protected]}}
+
+The regular expression to find the start of a comment expression. \mbox{\Hypertarget{class_code_syntax_highlighter_a2253015bb4d616cdf718a09a9eac197e}\label{class_code_syntax_highlighter_a2253015bb4d616cdf718a09a9eac197e}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!functionFormat@{functionFormat}}
+\index{functionFormat@{functionFormat}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{functionFormat}{functionFormat}}
+{\footnotesize\ttfamily Q\+Text\+Char\+Format Code\+Syntax\+Highlighter\+::function\+Format\hspace{0.3cm}{\ttfamily [protected]}}
+
+The formatting for when a function declaration is found. \mbox{\Hypertarget{class_code_syntax_highlighter_afb1b1b47dacaa339067889550ea4d444}\label{class_code_syntax_highlighter_afb1b1b47dacaa339067889550ea4d444}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!highlightingRules@{highlightingRules}}
+\index{highlightingRules@{highlightingRules}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{highlightingRules}{highlightingRules}}
+{\footnotesize\ttfamily Q\+Vector$<$\mbox{\hyperlink{struct_code_syntax_highlighter_1_1_highlighting_rule}{Highlighting\+Rule}}$>$ Code\+Syntax\+Highlighter\+::highlighting\+Rules\hspace{0.3cm}{\ttfamily [protected]}}
+
+List of the highlighting rules for the language. \mbox{\Hypertarget{class_code_syntax_highlighter_adf106d53ed0643e38cda97dd04cb2c40}\label{class_code_syntax_highlighter_adf106d53ed0643e38cda97dd04cb2c40}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!keywordFormat@{keywordFormat}}
+\index{keywordFormat@{keywordFormat}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{keywordFormat}{keywordFormat}}
+{\footnotesize\ttfamily Q\+Text\+Char\+Format Code\+Syntax\+Highlighter\+::keyword\+Format\hspace{0.3cm}{\ttfamily [protected]}}
+
+The formatting for when a keyword is found. \mbox{\Hypertarget{class_code_syntax_highlighter_a3dfa60803275d12e4fcc44f535d38c49}\label{class_code_syntax_highlighter_a3dfa60803275d12e4fcc44f535d38c49}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!multiLineCommentFormat@{multiLineCommentFormat}}
+\index{multiLineCommentFormat@{multiLineCommentFormat}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{multiLineCommentFormat}{multiLineCommentFormat}}
+{\footnotesize\ttfamily Q\+Text\+Char\+Format Code\+Syntax\+Highlighter\+::multi\+Line\+Comment\+Format\hspace{0.3cm}{\ttfamily [protected]}}
+
+The formatting for when a multi line comment is found. \mbox{\Hypertarget{class_code_syntax_highlighter_abed1a2e9896db53116f583276f289e8d}\label{class_code_syntax_highlighter_abed1a2e9896db53116f583276f289e8d}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!quotationFormat@{quotationFormat}}
+\index{quotationFormat@{quotationFormat}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{quotationFormat}{quotationFormat}}
+{\footnotesize\ttfamily Q\+Text\+Char\+Format Code\+Syntax\+Highlighter\+::quotation\+Format\hspace{0.3cm}{\ttfamily [protected]}}
+
+The formatting for when a string or char literal is found. \mbox{\Hypertarget{class_code_syntax_highlighter_a227d614b1c2dddfbf5950785a8b4f988}\label{class_code_syntax_highlighter_a227d614b1c2dddfbf5950785a8b4f988}} 
+\index{CodeSyntaxHighlighter@{CodeSyntaxHighlighter}!singleLineCommentFormat@{singleLineCommentFormat}}
+\index{singleLineCommentFormat@{singleLineCommentFormat}!CodeSyntaxHighlighter@{CodeSyntaxHighlighter}}
+\doxysubsubsection{\texorpdfstring{singleLineCommentFormat}{singleLineCommentFormat}}
+{\footnotesize\ttfamily Q\+Text\+Char\+Format Code\+Syntax\+Highlighter\+::single\+Line\+Comment\+Format\hspace{0.3cm}{\ttfamily [protected]}}
+
+The formatting for when a single line comment is found. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Text\+Editor/codesyntaxhighlighter.\+h\item 
+Text\+Editor/codesyntaxhighlighter.\+cpp\end{DoxyCompactItemize}

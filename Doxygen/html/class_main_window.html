@@ -77,9 +77,12 @@ $(function() {
 <div class="dynheader">
 Inheritance diagram for MainWindow:</div>
 <div class="dyncontent">
- <div class="center">
-  <img src="class_main_window.png" alt=""/>
- </div></div>
+<div class="center"><img src="class_main_window__inherit__graph.png" border="0" usemap="#_main_window_inherit__map" alt="Inheritance graph"/></div>
+<map name="_main_window_inherit__map" id="_main_window_inherit__map">
+<area shape="rect" title="The main window and view for the editor." alt="" coords="5,131,180,413"/>
+<area shape="rect" title=" " alt="" coords="39,5,146,83"/>
+</map>
+</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -101,6 +104,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>markTextTabAsClean</b
 <tr class="memitem:aceea0c51c23ebdf9f251ce4bd1f07e4b"><td class="memItemLeft" align="right" valign="top"><a id="aceea0c51c23ebdf9f251ce4bd1f07e4b"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>printPreview</b> (QPrinter *printer)</td></tr>
 <tr class="separator:aceea0c51c23ebdf9f251ce4bd1f07e4b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae15f20276bdb232bfd16c12956290ca1"><td class="memItemLeft" align="right" valign="top"><a id="ae15f20276bdb232bfd16c12956290ca1"></a>
+QFont&#160;</td><td class="memItemRight" valign="bottom"><b>getFontInformation</b> ()</td></tr>
+<tr class="separator:ae15f20276bdb232bfd16c12956290ca1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e20a4a065fbb0e4d3532a45a0a91425"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a4e20a4a065fbb0e4d3532a45a0a91425">closeEvent</a> (QCloseEvent *event)</td></tr>
 <tr class="memdesc:a4e20a4a065fbb0e4d3532a45a0a91425"><td class="mdescLeft">&#160;</td><td class="mdescRight">When Window is closed completely.  <a href="class_main_window.html#a4e20a4a065fbb0e4d3532a45a0a91425">More...</a><br /></td></tr>
 <tr class="separator:a4e20a4a065fbb0e4d3532a45a0a91425"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -110,6 +116,15 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>printPreview</b> (QPr
 <tr class="memitem:aad161d371ee2862c4c0bc32fef1db9b9"><td class="memItemLeft" align="right" valign="top">QVector&lt; <a class="el" href="class_custom_tab_widget.html">CustomTabWidget</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#aad161d371ee2862c4c0bc32fef1db9b9">getTabWidgets</a> ()</td></tr>
 <tr class="memdesc:aad161d371ee2862c4c0bc32fef1db9b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the tab widgets from the main window.  <a href="class_main_window.html#aad161d371ee2862c4c0bc32fef1db9b9">More...</a><br /></td></tr>
 <tr class="separator:aad161d371ee2862c4c0bc32fef1db9b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bc0e7a64ef40d62990f389f462848b3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a7bc0e7a64ef40d62990f389f462848b3">showContextMenu</a> (const QPoint &amp;)</td></tr>
+<tr class="memdesc:a7bc0e7a64ef40d62990f389f462848b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">When the user right clicks in the main window.  <a href="class_main_window.html#a7bc0e7a64ef40d62990f389f462848b3">More...</a><br /></td></tr>
+<tr class="separator:a7bc0e7a64ef40d62990f389f462848b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ba1a371fb10e731ae0926ae85efeb4f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a3ba1a371fb10e731ae0926ae85efeb4f">save</a> ()</td></tr>
+<tr class="memdesc:a3ba1a371fb10e731ae0926ae85efeb4f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used for closing tabs from other docking widgets.  <a href="class_main_window.html#a3ba1a371fb10e731ae0926ae85efeb4f">More...</a><br /></td></tr>
+<tr class="separator:a3ba1a371fb10e731ae0926ae85efeb4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b769b6b30e384faa42c38dcfcb0dacd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_main_window.html#a0b769b6b30e384faa42c38dcfcb0dacd">fileChanged</a> ()</td></tr>
+<tr class="memdesc:a0b769b6b30e384faa42c38dcfcb0dacd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whenever something in the current file is changed.  <a href="class_main_window.html#a0b769b6b30e384faa42c38dcfcb0dacd">More...</a><br /></td></tr>
+<tr class="separator:a0b769b6b30e384faa42c38dcfcb0dacd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -192,6 +207,26 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dropEvent</b> (QDropE
 
 </div>
 </div>
+<a id="a0b769b6b30e384faa42c38dcfcb0dacd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b769b6b30e384faa42c38dcfcb0dacd">&#9670;&nbsp;</a></span>fileChanged()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::fileChanged </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whenever something in the current file is changed. </p>
+<p>Adds an asterisk into the tab name so that the user knows that the file is changed. </p>
+
+</div>
+</div>
 <a id="aad161d371ee2862c4c0bc32fef1db9b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aad161d371ee2862c4c0bc32fef1db9b9">&#9670;&nbsp;</a></span>getTabWidgets()</h2>
 
@@ -246,6 +281,47 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>dropEvent</b> (QDropE
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a3ba1a371fb10e731ae0926ae85efeb4f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ba1a371fb10e731ae0926ae85efeb4f">&#9670;&nbsp;</a></span>save()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::save </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Used for closing tabs from other docking widgets. </p>
+<p>Calls the standard <a class="el" href="class_main.html">Main</a> windows private saving function. </p>
+
+</div>
+</div>
+<a id="a7bc0e7a64ef40d62990f389f462848b3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7bc0e7a64ef40d62990f389f462848b3">&#9670;&nbsp;</a></span>showContextMenu()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void MainWindow::showContextMenu </td>
+          <td>(</td>
+          <td class="paramtype">const QPoint &amp;&#160;</td>
+          <td class="paramname"><em>pos</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>When the user right clicks in the main window. </p>
+<p>Shows a custom context menu at the click location that can undo, redo, cut, copy, paste, and zoom. </p>
 
 </div>
 </div>

@@ -799,6 +799,8 @@ void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
 
 void MainWindow::on_fontSizeComboBox_activated(const QString &arg1)
 {
+    Q_UNUSED(arg1);
+
     QString size = ui->fontSizeComboBox->currentText();
     QFont font;
     font.setPointSize(size.toInt());
@@ -813,7 +815,8 @@ void MainWindow::on_fontSizeComboBox_activated(const QString &arg1)
     if(cursor.hasSelection())
     {
         cursor.mergeCharFormat(format);//change font size
-    }else
+    }
+    else
     {
         getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
     }
@@ -822,6 +825,8 @@ void MainWindow::on_fontSizeComboBox_activated(const QString &arg1)
 
 void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
 {
+    Q_UNUSED(index);
+
     int size = ui->fontSizeComboBox->currentText().toInt();
 
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
@@ -837,7 +842,8 @@ void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
     if(cursor.hasSelection())
     {
         cursor.mergeCharFormat(format);
-    }else
+    }
+    else
     {
         getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
     }
@@ -1012,12 +1018,20 @@ void MainWindow::dropEvent(QDropEvent *event)
             //Make a new custom tab widget incase it is needed
             CustomTabWidget* tabWidget = new CustomTabWidget(this);
 
+            QTextCursor cursor = tabWidget->getCurrentTabWidget()->getTextEdit()->textCursor();
+            cursor.setPosition(testTabData.cursorPosition);
+
+            QTextCharFormat format;
+            format.setFont(testTabData.fontInformation);
+            cursor.setCharFormat(format);
+
             //Set the widget
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
-            tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
+            tabWidget->getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
+            //tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
             removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
 
             //connect signal
@@ -1038,20 +1052,21 @@ void MainWindow::dropEvent(QDropEvent *event)
 
             CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
 
+            QTextCursor cursor = tabWidget->getCurrentTabWidget()->getTextEdit()->textCursor();
+            cursor.setPosition(testTabData.cursorPosition);
+
             tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(tabWidget), "New Tab");
             tabWidget->setCurrentIndex(tabWidget->count() - 2);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setFocus();
+            tabWidget->getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
             tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
             removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
+
             QObject::connect(tabWidget->getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
         }
-
-//        on_actionBold_triggered();
-//        on_actionItalic_triggered();
-//        on_actionUnderline_triggered();
 
         setWindowTitle(testTabData.filePath);
     }
@@ -1075,11 +1090,20 @@ void MainWindow::dropEvent(QDropEvent *event)
             //Make a new custom tab widget incase it is needed
             CustomTabWidget* tabWidget = new CustomTabWidget(this);
 
+            QTextCursor cursor = tabWidget->getCurrentTabWidget()->getTextEdit()->textCursor();
+            cursor.setPosition(testTabData.cursorPosition);
+
+            QTextCharFormat format;
+            format.setFont(testTabData.fontInformation);
+
+            cursor.setCharFormat(format);
+
             //Set the widget
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
+            tabWidget->getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
             tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
             removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
 
@@ -1100,20 +1124,21 @@ void MainWindow::dropEvent(QDropEvent *event)
             offender->show();
             CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
 
+            QTextCursor cursor = tabWidget->getCurrentTabWidget()->getTextEdit()->textCursor();
+            cursor.setPosition(testTabData.cursorPosition);
+
             tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(tabWidget), "New Tab");
             tabWidget->setCurrentIndex(tabWidget->count() - 2);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setFocus();
+            tabWidget->getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
             tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
             removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
+
             QObject::connect(tabWidget->getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
         }
-
-//        on_actionBold_triggered();
-//        on_actionItalic_triggered();
-//        on_actionUnderline_triggered();
 
         setWindowTitle(testTabData.filePath);
     }

@@ -62,17 +62,18 @@ void CustomTabWidget::mousePressEvent(QMouseEvent *event)
 
         MainWindow* mainWindow = nullptr;
 
+        //If this has no dock widget take this route
+        if(dynamic_cast<MainWindow*>(parentWidget()) != nullptr)
+        {
+            mainWindow = reinterpret_cast<MainWindow*>(parentWidget());
+        }
+        else
+        { //everything else is inside of a dock widget so it has one more parent to get through
+            mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget());
+        }
+
         if(tab == -1)
         {    
-            //If this has no dock widget take this route
-            if(dynamic_cast<MainWindow*>(parentWidget()) != nullptr) {
-                mainWindow = dynamic_cast<MainWindow*>(parentWidget());
-            }else { //everything else is inside of a dock widget so it has one more parent to get through
-                mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget());
-            }
-
-            qDebug() << mainWindow;
-
             mainWindow->showContextMenu(positionInTab);
             return;
         }
@@ -95,6 +96,7 @@ void CustomTabWidget::mousePressEvent(QMouseEvent *event)
         data.highlighter = textTab->getSyntaxHighlighter();
         data.filePath = textTab->getTabFileName();
         data.tabName = tabBar()->tabText(tab);
+        data.cursorPosition = textTab->getTextEdit()->textCursor().position();
         data.fontInformation = mainWindow->getFontInformation();
 
         QByteArray tabAsByte;
@@ -138,9 +140,12 @@ void CustomTabWidget::tabCloseRequest(int index)
 
             MainWindow* mainWindow;
             //If this has no dock widget take this route
-            if(dynamic_cast<MainWindow*>(parentWidget()) != nullptr) {
+            if(dynamic_cast<MainWindow*>(parentWidget()) != nullptr)
+            {
                 mainWindow = reinterpret_cast<MainWindow*>(parentWidget());
-            }else { //everything else is inside of a dock widget so it has one more parent to get through
+            }
+            else
+            { //everything else is inside of a dock widget so it has one more parent to get through
                 mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget());
             }
 
@@ -182,9 +187,12 @@ void CustomTabWidget::tabClicked(int index)
     {
         MainWindow* mainWindow;
         //If this has no dock widget take this route
-        if(dynamic_cast<MainWindow*>(parentWidget()) != nullptr) {
+        if(dynamic_cast<MainWindow*>(parentWidget()) != nullptr)
+        {
             mainWindow = reinterpret_cast<MainWindow*>(parentWidget());
-        }else { //everything else is inside of a dock widget so it has one more parent to get through
+        }
+        else
+        { //everything else is inside of a dock widget so it has one more parent to get through
             mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget());
         }
 

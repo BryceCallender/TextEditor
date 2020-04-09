@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['javasyntaxhighlighter_61',['JavaSyntaxHighlighter',['../class_java_syntax_highlighter.html',1,'']]]
+  ['javasyntaxhighlighter_68',['JavaSyntaxHighlighter',['../class_java_syntax_highlighter.html',1,'']]]
 ];

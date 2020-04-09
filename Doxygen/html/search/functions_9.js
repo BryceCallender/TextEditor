@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['_7emainwindow_100',['~MainWindow',['../class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7',1,'MainWindow']]],
-  ['_7eoptionswindow_101',['~OptionsWindow',['../class_options_window.html#a034c885fe8bb4416e732a9571d14a6b4',1,'OptionsWindow']]]
+  ['save_110',['save',['../class_main_window.html#a3ba1a371fb10e731ae0926ae85efeb4f',1,'MainWindow']]],
+  ['showcontextmenu_111',['showContextMenu',['../class_main_window.html#a7bc0e7a64ef40d62990f389f462848b3',1,'MainWindow']]]
 ];

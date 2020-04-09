@@ -33,10 +33,18 @@ public:
      */
     void handleTabMovement(int from, int to);
 protected:
+    //! dragEnterEvent
+    /*!
+      If a tab is dragged into the tab bar we need to accept the event in order for the drop event to handle it.
+     */
     void dragEnterEvent(QDragEnterEvent *event);
+    //! dropEvent
+    /*!
+      Handles when a tab is dropped in the tab bar, which means accepting the tab and transferring data.
+     */
     void dropEvent(QDropEvent *event);
 private:
-    CustomTabWidget* parent;
+    CustomTabWidget* parent; /*!< The parent which is going to be a CustomTabWidget class type. */
 };
 
 #endif // CUSTOMTABBAR_H
