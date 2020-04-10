@@ -57,6 +57,12 @@ public:
     void setSyntaxHighlighter(CodeSyntaxHighlighter* highlighter);
 
     void setTabStopDistance(unsigned int length);
+
+    void formatChanged(const QTextCharFormat &format);
+
+//    bool eventFilter(QObject *obj, QEvent *ev) override;
+
+//    void keyPressEvent(QKeyEvent *event) override;
 private:
     QString fileName;
     QString tabName;
@@ -73,9 +79,12 @@ private:
 
     QPushButton *exitButton;
 
+    QKeyEvent *backspaceButton;
+
     SearchHighlighter *highlighter;
     SearcherAndReplacer *replacer;
     CodeSyntaxHighlighter *codeHighlighter;
+
 };
 
 #endif // TEXTTABWIDGET_H
