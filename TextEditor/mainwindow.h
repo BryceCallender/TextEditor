@@ -153,7 +153,7 @@ private slots:
 
     //! Builds a context menu for pasting
     /*!
-        Executes a context menu that shows the current things being stored in the mulit past storage and allows them to be clicked for pasting.
+        Executes a context menu that shows the current things being stored in the multi paste storage and allows them to be clicked for pasting.
      */
     void showContextPasteMenu(const QPoint& pos);
 

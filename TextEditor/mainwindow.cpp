@@ -334,18 +334,27 @@ void MainWindow::showContextPasteMenu(const QPoint& pos)
     QPoint globalPos = getCurrentTabWidget()->getTextEdit()->mapToGlobal(pos);
 
     QMenu *pasteMenu = new QMenu(this);
-    if(savedCopy[0].hasText())
-        pasteMenu->addAction(QString(savedCopy[0].text().left(20) + ((savedCopy[0].text().size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+    QAction *tool;
+    if(savedCopy[0].hasText()){
+        tool = pasteMenu->addAction(QString(savedCopy[0].text().left(40) + ((savedCopy[0].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+        tool->setToolTip(savedCopy[0].text());
+    }
     else if(savedCopy[0].hasImage())
         pasteMenu->addAction("Copied Image 0", this, SLOT(on_actionPaste_2_triggered()));
-    if(savedCopy[1].hasText())
-        pasteMenu->addAction(QString(savedCopy[1].text().left(20) + ((savedCopy[1].text().size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_3_triggered()));
+    if(savedCopy[1].hasText()){
+        tool = pasteMenu->addAction(QString(savedCopy[1].text().left(40) + ((savedCopy[1].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+        tool->setToolTip(savedCopy[1].text());
+    }
     else if(savedCopy[1].hasImage())
         pasteMenu->addAction("Copied Image 1", this, SLOT(on_actionPaste_3_triggered()));
-    if(savedCopy[2].hasText())
-        pasteMenu->addAction(QString(savedCopy[2].text().left(20) + ((savedCopy[2].text().size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_4_triggered()));
+    if(savedCopy[2].hasText()){
+        tool = pasteMenu->addAction(QString(savedCopy[2].text().left(40) + ((savedCopy[2].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+        tool->setToolTip(savedCopy[2].text());
+    }
     else if(savedCopy[2].hasImage())
         pasteMenu->addAction("Copied Image 2", this, SLOT(on_actionPaste_4_triggered()));
+
+    pasteMenu->setToolTipsVisible(true);
 
     pasteMenu->exec(globalPos);
 
@@ -402,6 +411,7 @@ void MainWindow::showContextMenu(const QPoint& pos)
     QPoint globalPos = getCurrentTabWidget()->getTextEdit()->mapToGlobal(pos);
 
     QMenu *pasteMenu = new QMenu(), *rightClick = new QMenu(this);
+    QAction *tool;
 
     rightClick->addAction(QString("Undo"), this, SLOT(on_actionUndo_triggered()));
     rightClick->addAction(QString("Redo"), this, SLOT(on_actionRedo_triggered()));
@@ -411,18 +421,28 @@ void MainWindow::showContextMenu(const QPoint& pos)
 
     pasteMenu->setTitle(QString("Paste"));
 
-    if(savedCopy[0].hasText())
-        pasteMenu->addAction(QString(savedCopy[0].text().left(20) + ((savedCopy[0].text().size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+    if(savedCopy[0].hasText()){
+        tool = pasteMenu->addAction(QString(savedCopy[0].text().left(40) + ((savedCopy[0].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+        tool->setToolTip(savedCopy[0].text());
+        //QObject::connect(tool, &QAction::hovered, tool,  &QAction::toolTip);
+    }
     else if(savedCopy[0].hasImage())
         pasteMenu->addAction("Copied Image 0", this, SLOT(on_actionPaste_2_triggered()));
-    if(savedCopy[1].hasText())
-        pasteMenu->addAction(QString(savedCopy[1].text().left(20) + ((savedCopy[1].text().size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_3_triggered()));
+    if(savedCopy[1].hasText()){
+        tool = pasteMenu->addAction(QString(savedCopy[1].text().left(40) + ((savedCopy[1].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+        tool->setToolTip(savedCopy[1].text());
+    }
     else if(savedCopy[1].hasImage())
         pasteMenu->addAction("Copied Image 1", this, SLOT(on_actionPaste_3_triggered()));
-    if(savedCopy[2].hasText())
-        pasteMenu->addAction(QString(savedCopy[2].text().left(20) + ((savedCopy[2].text().size() > 20) ? " ..." : "")), this, SLOT(on_actionPaste_4_triggered()));
+    if(savedCopy[2].hasText()){
+        tool = pasteMenu->addAction(QString(savedCopy[2].text().left(40) + ((savedCopy[2].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+        tool->setToolTip(savedCopy[2].text());
+    }
     else if(savedCopy[2].hasImage())
         pasteMenu->addAction("Copied Image 2", this, SLOT(on_actionPaste_4_triggered()));
+
+    pasteMenu->setToolTipsVisible(true);
+
     rightClick->addMenu(pasteMenu);
 
     rightClick->addSeparator();
