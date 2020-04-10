@@ -10,7 +10,7 @@ int main(int argc, char *argv[])
     QSplashScreen splash(pixmap);
     splash.show();
 
-    quint32 seconds = QRandomGenerator::global()->bounded(4000,5000);
+    quint32 seconds = QRandomGenerator::global()->bounded(2000,2500);
     qDebug() << "Waiting for" << seconds << "seconds";
 
     MainWindow w;
@@ -18,7 +18,5 @@ int main(int argc, char *argv[])
     QTimer::singleShot(seconds, &splash, SLOT(close()));
     QTimer::singleShot(seconds, &w, SLOT(show()));
 
-    w.show();
-    splash.finish(&w);
     return a.exec();
 }
