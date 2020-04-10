@@ -217,13 +217,6 @@ void MainWindow::on_actionPrint_triggered()
     QPrinter printer(QPrinter::HighResolution);
     printer.setPrinterName("Printer Name");
 
-//    QPrintDialog pDialog(&printer, this);
-//    if(pDialog.exec() == QDialog::Rejected)
-//    {
-//        QMessageBox::warning(this, "Warning", "Cannot Access Printer");
-//        return;
-//    }
-
     QPrintPreviewDialog preview(&printer, this);
     connect(&preview, &QPrintPreviewDialog::paintRequested,
                 this, &MainWindow::printPreview);
@@ -657,88 +650,36 @@ void MainWindow::on_actionFormat_Text_triggered()
 
 void MainWindow::on_actionBold_triggered()
 {
-    QTextCharFormat format;
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+
     if(ui->actionBold->isChecked())
-    {
-        if(cursor.hasSelection())
-        {
-
-            format.setFontWeight(QFont::Bold);
-            cursor.mergeCharFormat(format);//do the text as Bold
-        }
         getCurrentTabWidget()->getTextEdit()->setFontWeight(QFont::Bold);
-
-    }
     else
-    {
-        QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
-        if(cursor.hasSelection())
-        {
-            QTextCharFormat format;
-            format.setFontWeight(QFont::Normal);
-            cursor.mergeCharFormat(format);//do the text as Bold
-        }
         getCurrentTabWidget()->getTextEdit()->setFontWeight(QFont::Normal);
-    }
 
 }
 
 void MainWindow::on_actionItalic_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+
     QTextCharFormat format;
     if(ui->actionItalic->isChecked())
-    {
-        QTextCharFormat format;
-        if(cursor.hasSelection())
-        {
-
-            format.setFontItalic(true);
-            cursor.mergeCharFormat(format);//do the text as Bold
-        }
         getCurrentTabWidget()->getTextEdit()->setFontItalic(true);
-
-    }
     else
-    {
-        if(cursor.hasSelection())
-        {
-            QTextCharFormat format;
-            format.setFontItalic(false);
-            cursor.mergeCharFormat(format);//do the text as Bold
-        }
         getCurrentTabWidget()->getTextEdit()->setFontItalic(false);
-    }
 
 }
 
 void MainWindow::on_actionUnderline_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+
     QTextCharFormat format;
     if(ui->actionUnderline->isChecked())
-    {
-        QTextCharFormat format;
-        if(cursor.hasSelection())
-        {
-
-            format.setFontUnderline(true);
-            cursor.mergeCharFormat(format);//do the text as Bold
-        }
         getCurrentTabWidget()->getTextEdit()->setFontUnderline(true);
-
-    }
     else
-    {
-        if(cursor.hasSelection())
-        {
-            QTextCharFormat format;
-            format.setFontUnderline(false);
-            cursor.mergeCharFormat(format);//do the text as Bold
-        }
         getCurrentTabWidget()->getTextEdit()->setFontUnderline(false);
-    }
 }
 
 void MainWindow::on_actionBullets_triggered()
@@ -1218,15 +1159,3 @@ Ui::MainWindow MainWindow::get_UI()
     return *ui;
 }
 
-//bool MainWindow::eventFilter(QObject *obj, QEvent *event)
-// {
-//     if (event->type() == QEvent::KeyPress) {
-//         //and here put your own logic!!
-//         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-//         qDebug("Ate key press %d", keyEvent->key());
-//         return true;
-//     } else {
-//         // standard event processing
-//         return QObject::eventFilter(obj, event);
-//     }
-// }
