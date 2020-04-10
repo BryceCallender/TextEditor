@@ -52,6 +52,11 @@ void CustomTabBar::dropEvent(QDropEvent *event)
     newTab->setTabsFileName(testTabData.filePath);
     setCurrentIndex(indexToInsert);
 
+    QTextCursor cursor = newTab->getTextEdit()->textCursor();
+    cursor.setPosition(testTabData.cursorPosition);
+
+    newTab->getTextEdit()->setTextCursor(cursor);
+
     MainWindow *mainWindow;
 
     //Parent of the CustomTabWidget is directly the mainwindow (standard beginning tabwidget)

@@ -99,6 +99,10 @@ public:
      */
     void fileChanged();
 
+    Ui::MainWindow get_UI();
+
+    //void keyPressEvent(QKeyEvent *ev);
+
 protected:
     void dragEnterEvent(QDragEnterEvent *event);
     void dropEvent(QDropEvent *event);
@@ -308,6 +312,7 @@ private slots:
     void on_actionNumbering_triggered();
 
     void on_actionFind_triggered();
+
 
 private:
     Ui::MainWindow *ui;

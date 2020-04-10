@@ -9,7 +9,7 @@ struct TabTransferData {
     QString filePath;
     QString text;
     CodeSyntaxHighlighter* highlighter;
-    int cursorPosition;
+    int cursorPosition = 0;
     QFont fontInformation;
 
     friend QDataStream& operator<<(QDataStream &out, const TabTransferData& tabData)
