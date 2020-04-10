@@ -1,3 +1,5 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
 #include "texttabwidget.h"
 
 TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
@@ -140,6 +142,11 @@ TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
                      &QPushButton::pressed,
                      this,
                      &TextTabWidget::handleCloseEvent);
+
+    QObject::connect(textEditArea,
+                     &QTextEdit::currentCharFormatChanged,
+                     this,
+                     &TextTabWidget::formatChanged);
 
 //    QObject::connect(textEditArea,
 //                     &QTextEdit::textChanged,
@@ -307,5 +314,65 @@ QTextEdit* TextTabWidget::getTextEdit()
 {
     return textEditArea;
 }
+
+void TextTabWidget::formatChanged(const QTextCharFormat &format)
+{
+    MainWindow* mainWindow;
+    //If this has no dock widget take this route
+    if(dynamic_cast<MainWindow*>(parentWidget()->parentWidget()) != nullptr) {
+        mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget());
+    }else { //everything else is inside of a dock widget so it has one more parent to get through
+        mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget()->parentWidget());
+    }
+    QTextCursor cursor = textEditArea->textCursor();
+
+    if(format.fontWeight() != QFont::Bold && mainWindow->get_UI().actionBold->isChecked())
+    {
+        mainWindow->get_UI().actionBold->setChecked(false);
+    }
+    else if (format.fontWeight() == QFont::Bold && !mainWindow->get_UI().actionBold->isChecked())
+    {
+        mainWindow->get_UI().actionBold->setChecked(true);
+    }
+
+    if(!format.fontItalic() && mainWindow->get_UI().actionItalic->isChecked())
+    {
+        mainWindow->get_UI().actionItalic->setChecked(false);
+    }
+    else if (format.fontItalic() && !mainWindow->get_UI().actionItalic->isChecked())
+    {
+        mainWindow->get_UI().actionItalic->setChecked(true);
+    }
+
+    if(!format.fontUnderline() && mainWindow->get_UI().actionUnderline->isChecked())
+    {
+        mainWindow->get_UI().actionUnderline->setChecked(false);
+    }
+    else if (format.fontUnderline() && !mainWindow->get_UI().actionUnderline->isChecked())
+    {
+        mainWindow->get_UI().actionUnderline->setChecked(true);
+    }
+
+
+    if(format.fontPointSize() != 0 && !cursor.hasSelection())
+    {
+        if(format.fontPointSize() != mainWindow->get_UI().fontSizeComboBox->currentText().toInt())
+        {
+            int index = mainWindow->get_UI().fontSizeComboBox->findText(QString::number(format.fontPointSize()));
+            mainWindow->get_UI().fontSizeComboBox->setCurrentIndex(index);
+        }
+    }
+
+    if(format.fontFamily() != NULL && !cursor.hasSelection())
+    {
+        if(format.fontFamily() != mainWindow->get_UI().fontComboBox->currentText())
+        {
+            int index = mainWindow->get_UI().fontComboBox->findText(format.fontFamily());
+            mainWindow->get_UI().fontComboBox->setCurrentIndex(index);
+        }
+
+    }
+}
+
 
 

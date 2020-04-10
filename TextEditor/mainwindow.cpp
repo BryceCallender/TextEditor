@@ -104,6 +104,8 @@ MainWindow::MainWindow(QWidget *parent)
                      &QShortcut::activated,
                      this,
                      &MainWindow::on_actionPrint_triggered);
+
+     ui->tabWidget->installEventFilter(this);
 }
 
 MainWindow::~MainWindow()
@@ -608,10 +610,31 @@ void MainWindow::on_actionFormat_Text_triggered()
 {
     bool ok;
     QFont font = QFontDialog::getFont(&ok, this);
+    QTextCharFormat format;
+
 
     if(ok)
     {
+        qDebug() << font.strikeOut();
+        format.setFont(font);
+
+        if(font.pointSize() != ui->fontSizeComboBox->currentData().toInt())
+        {
+            int index = ui->fontSizeComboBox->findText(QString::number(font.pointSize()));
+            ui->fontSizeComboBox->setCurrentIndex(index);
+
+        }
+
+        if(font.family() != ui->fontComboBox->currentText())
+        {
+            int index = ui->fontComboBox->findText(font.family());
+            ui->fontComboBox->setCurrentIndex(index);
+
+        }
+
         getCurrentTabWidget()->getTextEdit()->setFont(font);
+        //getCurrentTabWidget()->getTextEdit()->textCursor().setCharFormat(format);
+
     }
     else
         return;
@@ -707,37 +730,46 @@ void MainWindow::on_actionBullets_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
 
-    if(ui->actionBullets->isChecked())
-    {
-        if(ui->actionNumbering->isChecked())
-        {
-            ui->actionNumbering->setChecked(false);
-        }
-        cursor.beginEditBlock();
-        QTextBlockFormat blockFmt = cursor.blockFormat();
-        QTextListFormat listFmt;
+    QTextListFormat listFormat = QTextListFormat();
+    if (cursor.currentList()) {
+        listFormat = cursor.currentList()->format();
+        listFormat.setIndent(listFormat.indent() + 1);
+     }
 
-        if (cursor.currentList())
-        {
-            listFmt = cursor.currentList()->format();
-        }
-        else
-        {
-            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
-            blockFmt.setIndent(0);
-            cursor.setBlockFormat(blockFmt);
-        }
+     listFormat.setStyle(QTextListFormat::Style::ListDisc);
+     cursor.insertList(listFormat);
 
-        listFmt.setStyle(QTextListFormat::ListDisc);
-        cursor.createList(listFmt);
-        cursor.endEditBlock();
-    }
-    else
-    {
-        QTextBlockFormat bfmt;
-        bfmt.setObjectIndex(0);
-        cursor.mergeBlockFormat(bfmt);
-    }
+//    if(ui->actionBullets->isChecked())
+//    {
+//        if(ui->actionNumbering->isChecked())
+//        {
+//            ui->actionNumbering->setChecked(false);
+//        }
+//        cursor.beginEditBlock();
+//        QTextBlockFormat blockFmt = cursor.blockFormat();
+//        QTextListFormat listFmt;
+
+//        if (cursor.currentList())
+//        {
+//            listFmt = cursor.currentList()->format();
+//        }
+//        else
+//        {
+//            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
+//            blockFmt.setIndent(0);
+//            cursor.setBlockFormat(blockFmt);
+//        }
+
+//        listFmt.setStyle(QTextListFormat::ListDisc);
+//        cursor.createList(listFmt);
+//        cursor.endEditBlock();
+//    }
+//    else
+//    {
+//        QTextBlockFormat bfmt;
+//        bfmt.setObjectIndex(0);
+//        cursor.mergeBlockFormat(bfmt);
+//    }
 
 }
 
@@ -745,37 +777,46 @@ void MainWindow::on_actionNumbering_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
 
-    if(ui->actionNumbering->isChecked())
-    {
-        if(ui->actionBullets->isChecked())
-        {
-            ui->actionBullets->setChecked(false);
-        }
-        cursor.beginEditBlock();
-        QTextBlockFormat blockFmt = cursor.blockFormat();
-        QTextListFormat listFmt;
+    QTextListFormat listFormat = QTextListFormat();
+    if (cursor.currentList()) {
+        listFormat = cursor.currentList()->format();
+        listFormat.setIndent(listFormat.indent() + 1);
+     }
 
-        if (cursor.currentList())
-        {
-            listFmt = cursor.currentList()->format();
-        }
-        else
-        {
-            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
-            blockFmt.setIndent(0);
-            cursor.setBlockFormat(blockFmt);
-        }
+     listFormat.setStyle(QTextListFormat::Style::ListDecimal);
+     cursor.insertList(listFormat);
 
-        listFmt.setStyle(QTextListFormat::ListDecimal);
-        cursor.createList(listFmt);
-        cursor.endEditBlock();
-    }
-    else
-    {
-        QTextBlockFormat bfmt;
-        bfmt.setObjectIndex(0);
-        cursor.mergeBlockFormat(bfmt);
-    }
+//    if(ui->actionNumbering->isChecked())
+//    {
+//        if(ui->actionBullets->isChecked())
+//        {
+//            ui->actionBullets->setChecked(false);
+//        }
+//        cursor.beginEditBlock();
+//        QTextBlockFormat blockFmt = cursor.blockFormat();
+//        QTextListFormat listFmt;
+
+//        if (cursor.currentList())
+//        {
+//            listFmt = cursor.currentList()->format();
+//        }
+//        else
+//        {
+//            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
+//            blockFmt.setIndent(0);
+//            cursor.setBlockFormat(blockFmt);
+//        }
+
+//        listFmt.setStyle(QTextListFormat::ListDecimal);
+//        cursor.createList(listFmt);
+//        cursor.endEditBlock();
+//    }
+//    else
+//    {
+//        QTextBlockFormat bfmt;
+//        bfmt.setObjectIndex(0);
+//        cursor.mergeBlockFormat(bfmt);
+//    }
 }
 
 void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
@@ -1113,3 +1154,21 @@ void MainWindow::on_actionFind_triggered()
 {
     getCurrentTabWidget()->revealReplaceBox();
 }
+
+Ui::MainWindow MainWindow::get_UI()
+{
+    return *ui;
+}
+
+//bool MainWindow::eventFilter(QObject *obj, QEvent *event)
+// {
+//     if (event->type() == QEvent::KeyPress) {
+//         //and here put your own logic!!
+//         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+//         qDebug("Ate key press %d", keyEvent->key());
+//         return true;
+//     } else {
+//         // standard event processing
+//         return QObject::eventFilter(obj, event);
+//     }
+// }
