@@ -808,20 +808,19 @@ void MainWindow::on_fontSizeComboBox_activated(const QString &arg1)
     font.setPointSize(size.toInt());
     font.setFamily(getCurrentTabWidget()->getTextEdit()->fontFamily());
 
+    if(ui->actionBold->isChecked())
+        font.setBold(QFont::Bold);
+    if(ui->actionItalic->isChecked())
+        font.setItalic(true);
+    if(ui->actionUnderline->isChecked())
+        font.setUnderline(true);
+
     zoom = size.toInt();
 
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
-    QTextCharFormat format;
-    format.setFont(font);
 
-    if(cursor.hasSelection())
-    {
-        cursor.mergeCharFormat(format);//change font size
-    }
-    else
-    {
-        getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
-    }
+    getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
+
 
 }
 
@@ -832,23 +831,21 @@ void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
     int size = ui->fontSizeComboBox->currentText().toInt();
 
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
-    QTextCharFormat format;
 
     zoom = size;
 
     QFont font;
     font.setPointSize(size);
     font.setFamily(getCurrentTabWidget()->getTextEdit()->fontFamily());
-    format.setFont(font);
 
-    if(cursor.hasSelection())
-    {
-        cursor.mergeCharFormat(format);
-    }
-    else
-    {
-        getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
-    }
+    if(ui->actionBold->isChecked())
+        font.setBold(QFont::Bold);
+    if(ui->actionItalic->isChecked())
+        font.setItalic(true);
+    if(ui->actionUnderline->isChecked())
+        font.setUnderline(true);
+
+    getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
 }
 
 TextTabWidget* MainWindow::getCurrentTabWidget()
