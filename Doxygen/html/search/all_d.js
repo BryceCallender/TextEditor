@@ -1,15 +1,11 @@
 var searchData=
 [
-  ['save_94',['save',['../class_main_window.html#a3ba1a371fb10e731ae0926ae85efeb4f',1,'MainWindow']]],
-  ['savedcopy_95',['savedCopy',['../class_main_window.html#a021e47800f98119b6de35d1939a39bb8',1,'MainWindow']]],
-  ['searcherandreplacer_96',['SearcherAndReplacer',['../class_searcher_and_replacer.html',1,'SearcherAndReplacer'],['../class_searcher_and_replacer.html#a70eeac13f442d8b8d5dd47d45363d38d',1,'SearcherAndReplacer::SearcherAndReplacer()']]],
-  ['searchhighlighter_97',['SearchHighlighter',['../class_search_highlighter.html',1,'']]],
-  ['setresultstext_98',['setResultsText',['../class_searcher_and_replacer.html#a4676505ef9d316f5039735a71f8fd2d0',1,'SearcherAndReplacer']]],
-  ['settings_99',['settings',['../class_main_window.html#a59aea5e2683cfbb1654d436c8e780aa0',1,'MainWindow::settings()'],['../class_options_window.html#a916d20a6154feee640e0e2c070c4c186',1,'OptionsWindow::settings()']]],
-  ['settingsmanager_100',['SettingsManager',['../class_settings_manager.html',1,'']]],
-  ['showcontextmenu_101',['showContextMenu',['../class_main_window.html#a7bc0e7a64ef40d62990f389f462848b3',1,'MainWindow']]],
-  ['showcontextpastemenu_102',['showContextPasteMenu',['../class_main_window.html#a4826f4f133f0b238849ccd44251f0faa',1,'MainWindow']]],
-  ['singlelinecommentformat_103',['singleLineCommentFormat',['../class_code_syntax_highlighter.html#a227d614b1c2dddfbf5950785a8b4f988',1,'CodeSyntaxHighlighter']]],
-  ['speciallineedit_104',['SpecialLineEdit',['../class_special_line_edit.html',1,'']]],
-  ['specialtextedit_105',['SpecialTextEdit',['../class_special_text_edit.html',1,'']]]
+  ['readkeywordfileandpopulatelist_115',['readKeywordFileAndPopulateList',['../class_code_syntax_highlighter.html#a53fbd01fd935dd5f63d4f9185960ff5a',1,'CodeSyntaxHighlighter::readKeywordFileAndPopulateList()'],['../class_c_p_p_syntax_highlighter.html#a519939934d971b194d2af61f69a48109',1,'CPPSyntaxHighlighter::readKeywordFileAndPopulateList()'],['../class_java_syntax_highlighter.html#ac0ec7f4a8b7b265a04496809e0256cec',1,'JavaSyntaxHighlighter::readKeywordFileAndPopulateList()'],['../class_python_syntax_highlighter.html#a9d1c7605b55deb8654a6e3d6dba11d48',1,'PythonSyntaxHighlighter::readKeywordFileAndPopulateList()']]],
+  ['removetabfromwidget_116',['removeTabFromWidget',['../class_main_window.html#a9815d5b4de2a012f4247222b42fd0293',1,'MainWindow']]],
+  ['replaceall_117',['replaceAll',['../class_searcher_and_replacer.html#a38d3c5a83dd2668b65c79e5b0c39a3a6',1,'SearcherAndReplacer']]],
+  ['replacecurrent_118',['replaceCurrent',['../class_searcher_and_replacer.html#a8eb18031099ea5e6decb473f59b6ef75',1,'SearcherAndReplacer']]],
+  ['replacer_119',['replacer',['../class_text_tab_widget.html#abdb29c441223550a077e762de0858bc3',1,'TextTabWidget']]],
+  ['resultslabel_120',['resultsLabel',['../class_searcher_and_replacer.html#a8115e710022088b89d43fa0b6e38f827',1,'SearcherAndReplacer']]],
+  ['revealreplacebox_121',['revealReplaceBox',['../class_text_tab_widget.html#ac81150b743827ccd7baf0911fa08f638',1,'TextTabWidget']]],
+  ['revealsearchbox_122',['revealSearchBox',['../class_text_tab_widget.html#a025604c6f9ce91480e5464a340b14f82',1,'TextTabWidget']]]
 ];

@@ -1,13 +1,10 @@
 var searchData=
 [
-  ['qt_5fmeta_5fstringdata_5fcodesyntaxhighligher_5ft_79',['qt_meta_stringdata_CodeSyntaxHighligher_t',['../structqt__meta__stringdata___code_syntax_highligher__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fcodesyntaxhighlighter_5ft_80',['qt_meta_stringdata_CodeSyntaxHighlighter_t',['../structqt__meta__stringdata___code_syntax_highlighter__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fmainwindow_5ft_81',['qt_meta_stringdata_MainWindow_t',['../structqt__meta__stringdata___main_window__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5foptionswindow_5ft_82',['qt_meta_stringdata_OptionsWindow_t',['../structqt__meta__stringdata___options_window__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fsearcherandreplacer_5ft_83',['qt_meta_stringdata_SearcherAndReplacer_t',['../structqt__meta__stringdata___searcher_and_replacer__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fsearchhighlighter_5ft_84',['qt_meta_stringdata_SearchHighlighter_t',['../structqt__meta__stringdata___search_highlighter__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fspecialcontextmenu_5ft_85',['qt_meta_stringdata_SpecialContextMenu_t',['../structqt__meta__stringdata___special_context_menu__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fspeciallineedit_5ft_86',['qt_meta_stringdata_SpecialLineEdit_t',['../structqt__meta__stringdata___special_line_edit__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5ftexttabwidget_5ft_87',['qt_meta_stringdata_TextTabWidget_t',['../structqt__meta__stringdata___text_tab_widget__t.html',1,'']]],
-  ['quotationformat_88',['quotationFormat',['../class_code_syntax_highlighter.html#abed1a2e9896db53116f583276f289e8d',1,'CodeSyntaxHighlighter']]]
+  ['parent_98',['parent',['../class_custom_tab_bar.html#a0d3dc9b7291c90224a619d148673494f',1,'CustomTabBar']]],
+  ['pastemenu_99',['pasteMenu',['../class_main_window.html#a12cd053eee9760d581caa3e68a7f0a74',1,'MainWindow']]],
+  ['pattern_100',['pattern',['../class_searcher_and_replacer.html#a533358c30a041416b4b4261ffd13721d',1,'SearcherAndReplacer::pattern()'],['../class_search_highlighter.html#a2a69aa733c912c3f998039a62f4d3c85',1,'SearchHighlighter::pattern()']]],
+  ['populateallexpressionmatchesandmovetofirst_101',['populateAllExpressionMatchesAndMoveToFirst',['../class_searcher_and_replacer.html#ac2da8912b4691ec518d393ef675e1b8f',1,'SearcherAndReplacer']]],
+  ['printpreview_102',['printPreview',['../class_main_window.html#aceea0c51c23ebdf9f251ce4bd1f07e4b',1,'MainWindow']]],
+  ['pythoncolorpicker_103',['pythonColorPicker',['../class_options_window.html#ac74e7fc1df0f0c89f098deaf0830d782',1,'OptionsWindow']]],
+  ['pythonsyntaxhighlighter_104',['PythonSyntaxHighlighter',['../class_python_syntax_highlighter.html',1,'PythonSyntaxHighlighter'],['../class_python_syntax_highlighter.html#af59fcdfb563aa925a8c8e3fc24b60cc1',1,'PythonSyntaxHighlighter::PythonSyntaxHighlighter()']]]
 ];

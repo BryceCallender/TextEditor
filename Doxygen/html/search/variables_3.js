@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['highlightingrules_236',['highlightingRules',['../class_code_syntax_highlighter.html#afb1b1b47dacaa339067889550ea4d444',1,'CodeSyntaxHighlighter']]]
+  ['groupbox_311',['groupBox',['../class_text_tab_widget.html#a18ae189f9e560e42c0c5e75ceb6daa1f',1,'TextTabWidget']]]
 ];

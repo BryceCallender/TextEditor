@@ -18,6 +18,12 @@ namespace Ui {
 class OptionsWindow;
 }
 
+
+/*! \class OptionsWindow
+    \brief Settings Window for the Editor
+
+    This is where the user can set things such as default font size, or the coloring of the syntax highlighters.
+ */
 class OptionsWindow : public QDialog
 {
     Q_OBJECT

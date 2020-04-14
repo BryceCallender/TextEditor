@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['savedcopy_247',['savedCopy',['../class_main_window.html#a021e47800f98119b6de35d1939a39bb8',1,'MainWindow']]],
-  ['settings_248',['settings',['../class_main_window.html#a59aea5e2683cfbb1654d436c8e780aa0',1,'MainWindow::settings()'],['../class_options_window.html#a916d20a6154feee640e0e2c070c4c186',1,'OptionsWindow::settings()']]],
-  ['singlelinecommentformat_249',['singleLineCommentFormat',['../class_code_syntax_highlighter.html#a227d614b1c2dddfbf5950785a8b4f988',1,'CodeSyntaxHighlighter']]]
+  ['parent_321',['parent',['../class_custom_tab_bar.html#a0d3dc9b7291c90224a619d148673494f',1,'CustomTabBar']]],
+  ['pastemenu_322',['pasteMenu',['../class_main_window.html#a12cd053eee9760d581caa3e68a7f0a74',1,'MainWindow']]],
+  ['pattern_323',['pattern',['../class_searcher_and_replacer.html#a533358c30a041416b4b4261ffd13721d',1,'SearcherAndReplacer::pattern()'],['../class_search_highlighter.html#a2a69aa733c912c3f998039a62f4d3c85',1,'SearchHighlighter::pattern()']]],
+  ['pythoncolorpicker_324',['pythonColorPicker',['../class_options_window.html#ac74e7fc1df0f0c89f098deaf0830d782',1,'OptionsWindow']]]
 ];

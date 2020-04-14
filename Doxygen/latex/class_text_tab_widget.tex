@@ -2,8 +2,16 @@
 \label{class_text_tab_widget}\index{TextTabWidget@{TextTabWidget}}
 
 
-Inheritance diagram for Text\+Tab\+Widget\+:
-\nopagebreak
+The Tab Widgets containing all the text edit information.  
+
+
+
+
+{\ttfamily \#include $<$texttabwidget.\+h$>$}
+
+
+
+Inheritance diagram for Text\+Tab\+Widget\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -16,71 +24,48 @@ Inheritance diagram for Text\+Tab\+Widget\+:
 \mbox{\Hypertarget{class_text_tab_widget_a7550758d43d0ef15cf648929baff000d}\label{class_text_tab_widget_a7550758d43d0ef15cf648929baff000d}} 
 {\bfseries Text\+Tab\+Widget} (Q\+Widget $\ast$parent=nullptr)
 \item 
-\mbox{\Hypertarget{class_text_tab_widget_a5085fbe7bf9e8c699e8c73aa34185ea5}\label{class_text_tab_widget_a5085fbe7bf9e8c699e8c73aa34185ea5}} 
-void {\bfseries set\+Tabs\+File\+Name} (const Q\+String \&name)
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_a53292b7db0c5c76111e8b5dc599a0a28}\label{class_text_tab_widget_a53292b7db0c5c76111e8b5dc599a0a28}} 
-Q\+String {\bfseries get\+Tab\+File\+Name} ()
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_a558c0f6e8d36533edabc162562f19c25}\label{class_text_tab_widget_a558c0f6e8d36533edabc162562f19c25}} 
-Q\+String {\bfseries get\+Tab\+Name} ()
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_aad8699d1dd1f6776c01b9f03067d91c7}\label{class_text_tab_widget_aad8699d1dd1f6776c01b9f03067d91c7}} 
-Q\+Text\+Edit $\ast$ {\bfseries get\+Text\+Edit} ()
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_a025604c6f9ce91480e5464a340b14f82}\label{class_text_tab_widget_a025604c6f9ce91480e5464a340b14f82}} 
-void {\bfseries reveal\+Search\+Box} ()
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_ac81150b743827ccd7baf0911fa08f638}\label{class_text_tab_widget_ac81150b743827ccd7baf0911fa08f638}} 
-void {\bfseries reveal\+Replace\+Box} ()
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_a1df3e910a4fda1a13b7d5e192d0408ed}\label{class_text_tab_widget_a1df3e910a4fda1a13b7d5e192d0408ed}} 
-void {\bfseries set\+Text\+Edit\+Text} (const Q\+String \&text)
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_a112d873395738a951e8f999b11ea1925}\label{class_text_tab_widget_a112d873395738a951e8f999b11ea1925}} 
-void {\bfseries search\+Text\+For\+Query} (const Q\+String \&query)
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_a6001db931ec2cf56b5eb819219802d6c}\label{class_text_tab_widget_a6001db931ec2cf56b5eb819219802d6c}} 
-void {\bfseries send\+Find\+Data\+To\+Replacer\+And\+Replace\+Current} ()
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_a6cb3e8aa69b18ca014ce34672e5f3429}\label{class_text_tab_widget_a6cb3e8aa69b18ca014ce34672e5f3429}} 
-void {\bfseries send\+Find\+Data\+To\+Replacer\+And\+Replace\+All} ()
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_a24e88fc8c4bccb1d2cd13313864e8c73}\label{class_text_tab_widget_a24e88fc8c4bccb1d2cd13313864e8c73}} 
-void {\bfseries set\+Results\+Text} (const Q\+String \&text)
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_a15f9eb5e8bb308431523a0dc0c3363fc}\label{class_text_tab_widget_a15f9eb5e8bb308431523a0dc0c3363fc}} 
-void {\bfseries handle\+Close\+Event} ()
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_a9a3c80967f1479e858338132681ded5e}\label{class_text_tab_widget_a9a3c80967f1479e858338132681ded5e}} 
-void {\bfseries handle\+Bracket\+And\+Parenthesis\+Match} ()
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_aa948377d0eb0deeeca69738d5a480060}\label{class_text_tab_widget_aa948377d0eb0deeeca69738d5a480060}} 
-\mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} $\ast$ {\bfseries get\+Syntax\+Highlighter} ()
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_a7054a3eaf3b26490cb23cdd27190f255}\label{class_text_tab_widget_a7054a3eaf3b26490cb23cdd27190f255}} 
-void {\bfseries set\+Syntax\+Highlighter} (\mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} $\ast$highlighter)
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_aff967b42807dfcdbaa9b68f044d32294}\label{class_text_tab_widget_aff967b42807dfcdbaa9b68f044d32294}} 
-void {\bfseries set\+Tab\+Stop\+Distance} (unsigned int length)
-\item 
-\mbox{\Hypertarget{class_text_tab_widget_add31755eb44af5460b9f72718c39d5ba}\label{class_text_tab_widget_add31755eb44af5460b9f72718c39d5ba}} 
-void {\bfseries format\+Changed} (const Q\+Text\+Char\+Format \&format)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_text_tab_widget_a5085fbe7bf9e8c699e8c73aa34185ea5}{set\+Tabs\+File\+Name}} (const Q\+String \&name)
+\begin{DoxyCompactList}\small\item\em Set tab file name. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_text_tab_widget_a53292b7db0c5c76111e8b5dc599a0a28}{get\+Tab\+File\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Tab File Name. \end{DoxyCompactList}\item 
+Q\+String \mbox{\hyperlink{class_text_tab_widget_a558c0f6e8d36533edabc162562f19c25}{get\+Tab\+Name}} ()
+\begin{DoxyCompactList}\small\item\em Get Tab Name. \end{DoxyCompactList}\item 
+Q\+Text\+Edit $\ast$ \mbox{\hyperlink{class_text_tab_widget_aad8699d1dd1f6776c01b9f03067d91c7}{get\+Text\+Edit}} ()
+\begin{DoxyCompactList}\small\item\em Get Text\+Edit Name. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_text_tab_widget_a025604c6f9ce91480e5464a340b14f82}{reveal\+Search\+Box}} ()
+\begin{DoxyCompactList}\small\item\em Reveal Search. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_text_tab_widget_ac81150b743827ccd7baf0911fa08f638}{reveal\+Replace\+Box}} ()
+\begin{DoxyCompactList}\small\item\em Reveal Replace Box. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_text_tab_widget_a1df3e910a4fda1a13b7d5e192d0408ed}{set\+Text\+Edit\+Text}} (const Q\+String \&text)
+\begin{DoxyCompactList}\small\item\em Sets the text edit text. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_text_tab_widget_a112d873395738a951e8f999b11ea1925}{search\+Text\+For\+Query}} (const Q\+String \&query)
+\begin{DoxyCompactList}\small\item\em Query Search. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_text_tab_widget_a6001db931ec2cf56b5eb819219802d6c}{send\+Find\+Data\+To\+Replacer\+And\+Replace\+Current}} ()
+\begin{DoxyCompactList}\small\item\em Replace Current Data Submission. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_text_tab_widget_a6cb3e8aa69b18ca014ce34672e5f3429}{send\+Find\+Data\+To\+Replacer\+And\+Replace\+All}} ()
+\begin{DoxyCompactList}\small\item\em Replace All Data Submission. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_text_tab_widget_a24e88fc8c4bccb1d2cd13313864e8c73}{set\+Results\+Text}} (const Q\+String \&text)
+\begin{DoxyCompactList}\small\item\em Result text setting. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_text_tab_widget_a15f9eb5e8bb308431523a0dc0c3363fc}{handle\+Close\+Event}} ()
+\begin{DoxyCompactList}\small\item\em Close Event. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} $\ast$ \mbox{\hyperlink{class_text_tab_widget_aa948377d0eb0deeeca69738d5a480060}{get\+Syntax\+Highlighter}} ()
+\begin{DoxyCompactList}\small\item\em Get highlighter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_text_tab_widget_a7054a3eaf3b26490cb23cdd27190f255}{set\+Syntax\+Highlighter}} (\mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} $\ast$\mbox{\hyperlink{class_text_tab_widget_a6b36b325c337cf47c11ccd6649dc7213}{highlighter}})
+\begin{DoxyCompactList}\small\item\em Set highlighter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_text_tab_widget_aff967b42807dfcdbaa9b68f044d32294}{set\+Tab\+Stop\+Distance}} (unsigned int length)
+\begin{DoxyCompactList}\small\item\em Tab Count. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_text_tab_widget_add31755eb44af5460b9f72718c39d5ba}{format\+Changed}} (const Q\+Text\+Char\+Format \&format)
+\begin{DoxyCompactList}\small\item\em Format Changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Private Attributes}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_text_tab_widget_a746afb5b60af09c4498c9bef4efbbf56}\label{class_text_tab_widget_a746afb5b60af09c4498c9bef4efbbf56}} 
-Q\+String {\bfseries file\+Name}
+Q\+String \mbox{\hyperlink{class_text_tab_widget_a746afb5b60af09c4498c9bef4efbbf56}{file\+Name}}
 \item 
-\mbox{\Hypertarget{class_text_tab_widget_ab74c47bae2aa969695e8370c1eeda1ef}\label{class_text_tab_widget_ab74c47bae2aa969695e8370c1eeda1ef}} 
-Q\+String {\bfseries tab\+Name}
+Q\+String \mbox{\hyperlink{class_text_tab_widget_ab74c47bae2aa969695e8370c1eeda1ef}{tab\+Name}}
 \item 
-\mbox{\Hypertarget{class_text_tab_widget_aa6968f150a25da3587e71ad0a56c5e67}\label{class_text_tab_widget_aa6968f150a25da3587e71ad0a56c5e67}} 
-\mbox{\hyperlink{class_special_text_edit}{Special\+Text\+Edit}} $\ast$ {\bfseries text\+Edit\+Area}
+\mbox{\hyperlink{class_special_text_edit}{Special\+Text\+Edit}} $\ast$ \mbox{\hyperlink{class_text_tab_widget_aa6968f150a25da3587e71ad0a56c5e67}{text\+Edit\+Area}}
 \item 
-\mbox{\Hypertarget{class_text_tab_widget_a18ae189f9e560e42c0c5e75ceb6daa1f}\label{class_text_tab_widget_a18ae189f9e560e42c0c5e75ceb6daa1f}} 
-Q\+Group\+Box $\ast$ {\bfseries group\+Box}
+Q\+Group\+Box $\ast$ \mbox{\hyperlink{class_text_tab_widget_a18ae189f9e560e42c0c5e75ceb6daa1f}{group\+Box}}
 \item 
 \mbox{\Hypertarget{class_text_tab_widget_a2fe45137a23a9e2482a138e22bd53e07}\label{class_text_tab_widget_a2fe45137a23a9e2482a138e22bd53e07}} 
 \mbox{\hyperlink{class_special_line_edit}{Special\+Line\+Edit}} $\ast$ {\bfseries find\+Text}
@@ -106,16 +91,231 @@ Q\+Push\+Button $\ast$ {\bfseries exit\+Button}
 \mbox{\Hypertarget{class_text_tab_widget_a16c430139a31a087bf30ea287a2343a7}\label{class_text_tab_widget_a16c430139a31a087bf30ea287a2343a7}} 
 Q\+Key\+Event $\ast$ {\bfseries backspace\+Button}
 \item 
-\mbox{\Hypertarget{class_text_tab_widget_a6b36b325c337cf47c11ccd6649dc7213}\label{class_text_tab_widget_a6b36b325c337cf47c11ccd6649dc7213}} 
-\mbox{\hyperlink{class_search_highlighter}{Search\+Highlighter}} $\ast$ {\bfseries highlighter}
+\mbox{\hyperlink{class_search_highlighter}{Search\+Highlighter}} $\ast$ \mbox{\hyperlink{class_text_tab_widget_a6b36b325c337cf47c11ccd6649dc7213}{highlighter}}
 \item 
-\mbox{\Hypertarget{class_text_tab_widget_abdb29c441223550a077e762de0858bc3}\label{class_text_tab_widget_abdb29c441223550a077e762de0858bc3}} 
-\mbox{\hyperlink{class_searcher_and_replacer}{Searcher\+And\+Replacer}} $\ast$ {\bfseries replacer}
+\mbox{\hyperlink{class_searcher_and_replacer}{Searcher\+And\+Replacer}} $\ast$ \mbox{\hyperlink{class_text_tab_widget_abdb29c441223550a077e762de0858bc3}{replacer}}
 \item 
-\mbox{\Hypertarget{class_text_tab_widget_a341baf9f45c2bd39ac9ac9690e153f78}\label{class_text_tab_widget_a341baf9f45c2bd39ac9ac9690e153f78}} 
-\mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} $\ast$ {\bfseries code\+Highlighter}
+\mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} $\ast$ \mbox{\hyperlink{class_text_tab_widget_a341baf9f45c2bd39ac9ac9690e153f78}{code\+Highlighter}}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+The Tab Widgets containing all the text edit information. 
+
+This class is responsible for displaying the file contents to the user and the text they are currently writing. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_text_tab_widget_add31755eb44af5460b9f72718c39d5ba}\label{class_text_tab_widget_add31755eb44af5460b9f72718c39d5ba}} 
+\index{TextTabWidget@{TextTabWidget}!formatChanged@{formatChanged}}
+\index{formatChanged@{formatChanged}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{formatChanged()}{formatChanged()}}
+{\footnotesize\ttfamily void Text\+Tab\+Widget\+::format\+Changed (\begin{DoxyParamCaption}\item[{const Q\+Text\+Char\+Format \&}]{format }\end{DoxyParamCaption})}
+
+
+
+Format Changed. 
+
+Responsible slot for when the cursor goes to a different format \mbox{\Hypertarget{class_text_tab_widget_aa948377d0eb0deeeca69738d5a480060}\label{class_text_tab_widget_aa948377d0eb0deeeca69738d5a480060}} 
+\index{TextTabWidget@{TextTabWidget}!getSyntaxHighlighter@{getSyntaxHighlighter}}
+\index{getSyntaxHighlighter@{getSyntaxHighlighter}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{getSyntaxHighlighter()}{getSyntaxHighlighter()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} $\ast$ Text\+Tab\+Widget\+::get\+Syntax\+Highlighter (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get highlighter. 
+
+Gets the \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} responsible for coloring the tab widget \mbox{\Hypertarget{class_text_tab_widget_a53292b7db0c5c76111e8b5dc599a0a28}\label{class_text_tab_widget_a53292b7db0c5c76111e8b5dc599a0a28}} 
+\index{TextTabWidget@{TextTabWidget}!getTabFileName@{getTabFileName}}
+\index{getTabFileName@{getTabFileName}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{getTabFileName()}{getTabFileName()}}
+{\footnotesize\ttfamily Q\+String Text\+Tab\+Widget\+::get\+Tab\+File\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Tab File Name. 
+
+Returns the Tabs file name \mbox{\Hypertarget{class_text_tab_widget_a558c0f6e8d36533edabc162562f19c25}\label{class_text_tab_widget_a558c0f6e8d36533edabc162562f19c25}} 
+\index{TextTabWidget@{TextTabWidget}!getTabName@{getTabName}}
+\index{getTabName@{getTabName}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{getTabName()}{getTabName()}}
+{\footnotesize\ttfamily Q\+String Text\+Tab\+Widget\+::get\+Tab\+Name (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get Tab Name. 
+
+Returns the tab name \mbox{\Hypertarget{class_text_tab_widget_aad8699d1dd1f6776c01b9f03067d91c7}\label{class_text_tab_widget_aad8699d1dd1f6776c01b9f03067d91c7}} 
+\index{TextTabWidget@{TextTabWidget}!getTextEdit@{getTextEdit}}
+\index{getTextEdit@{getTextEdit}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{getTextEdit()}{getTextEdit()}}
+{\footnotesize\ttfamily Q\+Text\+Edit $\ast$ Text\+Tab\+Widget\+::get\+Text\+Edit (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Get Text\+Edit Name. 
+
+Returns the text edit for the current widget \mbox{\Hypertarget{class_text_tab_widget_a15f9eb5e8bb308431523a0dc0c3363fc}\label{class_text_tab_widget_a15f9eb5e8bb308431523a0dc0c3363fc}} 
+\index{TextTabWidget@{TextTabWidget}!handleCloseEvent@{handleCloseEvent}}
+\index{handleCloseEvent@{handleCloseEvent}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{handleCloseEvent()}{handleCloseEvent()}}
+{\footnotesize\ttfamily void Text\+Tab\+Widget\+::handle\+Close\+Event (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Close Event. 
+
+Handles hiding the search and replace box as well as rehighlighting from the color loss from the search highlighter \mbox{\Hypertarget{class_text_tab_widget_ac81150b743827ccd7baf0911fa08f638}\label{class_text_tab_widget_ac81150b743827ccd7baf0911fa08f638}} 
+\index{TextTabWidget@{TextTabWidget}!revealReplaceBox@{revealReplaceBox}}
+\index{revealReplaceBox@{revealReplaceBox}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{revealReplaceBox()}{revealReplaceBox()}}
+{\footnotesize\ttfamily void Text\+Tab\+Widget\+::reveal\+Replace\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reveal Replace Box. 
+
+Reveals the search box(if hidden) and replace box for a user to search for text \mbox{\Hypertarget{class_text_tab_widget_a025604c6f9ce91480e5464a340b14f82}\label{class_text_tab_widget_a025604c6f9ce91480e5464a340b14f82}} 
+\index{TextTabWidget@{TextTabWidget}!revealSearchBox@{revealSearchBox}}
+\index{revealSearchBox@{revealSearchBox}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{revealSearchBox()}{revealSearchBox()}}
+{\footnotesize\ttfamily void Text\+Tab\+Widget\+::reveal\+Search\+Box (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Reveal Search. 
+
+Reveals the search box for a user to search for text \mbox{\Hypertarget{class_text_tab_widget_a112d873395738a951e8f999b11ea1925}\label{class_text_tab_widget_a112d873395738a951e8f999b11ea1925}} 
+\index{TextTabWidget@{TextTabWidget}!searchTextForQuery@{searchTextForQuery}}
+\index{searchTextForQuery@{searchTextForQuery}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{searchTextForQuery()}{searchTextForQuery()}}
+{\footnotesize\ttfamily void Text\+Tab\+Widget\+::search\+Text\+For\+Query (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{query }\end{DoxyParamCaption})}
+
+
+
+Query Search. 
+
+Sends the query to be searched and highlighted. Gets the Search/\+Replace ready \mbox{\Hypertarget{class_text_tab_widget_a6cb3e8aa69b18ca014ce34672e5f3429}\label{class_text_tab_widget_a6cb3e8aa69b18ca014ce34672e5f3429}} 
+\index{TextTabWidget@{TextTabWidget}!sendFindDataToReplacerAndReplaceAll@{sendFindDataToReplacerAndReplaceAll}}
+\index{sendFindDataToReplacerAndReplaceAll@{sendFindDataToReplacerAndReplaceAll}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{sendFindDataToReplacerAndReplaceAll()}{sendFindDataToReplacerAndReplaceAll()}}
+{\footnotesize\ttfamily void Text\+Tab\+Widget\+::send\+Find\+Data\+To\+Replacer\+And\+Replace\+All (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Replace All Data Submission. 
+
+Sends the query to be the Search/\+Replacer to replace all occurences. \mbox{\Hypertarget{class_text_tab_widget_a6001db931ec2cf56b5eb819219802d6c}\label{class_text_tab_widget_a6001db931ec2cf56b5eb819219802d6c}} 
+\index{TextTabWidget@{TextTabWidget}!sendFindDataToReplacerAndReplaceCurrent@{sendFindDataToReplacerAndReplaceCurrent}}
+\index{sendFindDataToReplacerAndReplaceCurrent@{sendFindDataToReplacerAndReplaceCurrent}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{sendFindDataToReplacerAndReplaceCurrent()}{sendFindDataToReplacerAndReplaceCurrent()}}
+{\footnotesize\ttfamily void Text\+Tab\+Widget\+::send\+Find\+Data\+To\+Replacer\+And\+Replace\+Current (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Replace Current Data Submission. 
+
+Sends the query to be the Search/\+Replacer to replace current occurence. \mbox{\Hypertarget{class_text_tab_widget_a24e88fc8c4bccb1d2cd13313864e8c73}\label{class_text_tab_widget_a24e88fc8c4bccb1d2cd13313864e8c73}} 
+\index{TextTabWidget@{TextTabWidget}!setResultsText@{setResultsText}}
+\index{setResultsText@{setResultsText}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{setResultsText()}{setResultsText()}}
+{\footnotesize\ttfamily void Text\+Tab\+Widget\+::set\+Results\+Text (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{text }\end{DoxyParamCaption})}
+
+
+
+Result text setting. 
+
+Tells the class to set the results text \mbox{\Hypertarget{class_text_tab_widget_a7054a3eaf3b26490cb23cdd27190f255}\label{class_text_tab_widget_a7054a3eaf3b26490cb23cdd27190f255}} 
+\index{TextTabWidget@{TextTabWidget}!setSyntaxHighlighter@{setSyntaxHighlighter}}
+\index{setSyntaxHighlighter@{setSyntaxHighlighter}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{setSyntaxHighlighter()}{setSyntaxHighlighter()}}
+{\footnotesize\ttfamily void Text\+Tab\+Widget\+::set\+Syntax\+Highlighter (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} $\ast$}]{highlighter }\end{DoxyParamCaption})}
+
+
+
+Set highlighter. 
+
+Sets the \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}} responsible for coloring the tab widget \mbox{\Hypertarget{class_text_tab_widget_a5085fbe7bf9e8c699e8c73aa34185ea5}\label{class_text_tab_widget_a5085fbe7bf9e8c699e8c73aa34185ea5}} 
+\index{TextTabWidget@{TextTabWidget}!setTabsFileName@{setTabsFileName}}
+\index{setTabsFileName@{setTabsFileName}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{setTabsFileName()}{setTabsFileName()}}
+{\footnotesize\ttfamily void Text\+Tab\+Widget\+::set\+Tabs\+File\+Name (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Set tab file name. 
+
+Sets the file name and sets up the syntax highlighter if the extension matches a supported language 
+\begin{DoxyParams}{Parameters}
+{\em name} & File path to the file \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_text_tab_widget_aff967b42807dfcdbaa9b68f044d32294}\label{class_text_tab_widget_aff967b42807dfcdbaa9b68f044d32294}} 
+\index{TextTabWidget@{TextTabWidget}!setTabStopDistance@{setTabStopDistance}}
+\index{setTabStopDistance@{setTabStopDistance}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{setTabStopDistance()}{setTabStopDistance()}}
+{\footnotesize\ttfamily void Text\+Tab\+Widget\+::set\+Tab\+Stop\+Distance (\begin{DoxyParamCaption}\item[{unsigned int}]{length }\end{DoxyParamCaption})}
+
+
+
+Tab Count. 
+
+Sets the distance for when a user hits tab \mbox{\Hypertarget{class_text_tab_widget_a1df3e910a4fda1a13b7d5e192d0408ed}\label{class_text_tab_widget_a1df3e910a4fda1a13b7d5e192d0408ed}} 
+\index{TextTabWidget@{TextTabWidget}!setTextEditText@{setTextEditText}}
+\index{setTextEditText@{setTextEditText}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{setTextEditText()}{setTextEditText()}}
+{\footnotesize\ttfamily void Text\+Tab\+Widget\+::set\+Text\+Edit\+Text (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{text }\end{DoxyParamCaption})}
+
+
+
+Sets the text edit text. 
+
+Sets the text edit text when transferring tabs to other widgets 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_text_tab_widget_a341baf9f45c2bd39ac9ac9690e153f78}\label{class_text_tab_widget_a341baf9f45c2bd39ac9ac9690e153f78}} 
+\index{TextTabWidget@{TextTabWidget}!codeHighlighter@{codeHighlighter}}
+\index{codeHighlighter@{codeHighlighter}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{codeHighlighter}{codeHighlighter}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_code_syntax_highlighter}{Code\+Syntax\+Highlighter}}$\ast$ Text\+Tab\+Widget\+::code\+Highlighter\hspace{0.3cm}{\ttfamily [private]}}
+
+Highlighter if the text is from cpp, java, or python. \mbox{\Hypertarget{class_text_tab_widget_a746afb5b60af09c4498c9bef4efbbf56}\label{class_text_tab_widget_a746afb5b60af09c4498c9bef4efbbf56}} 
+\index{TextTabWidget@{TextTabWidget}!fileName@{fileName}}
+\index{fileName@{fileName}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{fileName}{fileName}}
+{\footnotesize\ttfamily Q\+String Text\+Tab\+Widget\+::file\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+File Name for the widget. \mbox{\Hypertarget{class_text_tab_widget_a18ae189f9e560e42c0c5e75ceb6daa1f}\label{class_text_tab_widget_a18ae189f9e560e42c0c5e75ceb6daa1f}} 
+\index{TextTabWidget@{TextTabWidget}!groupBox@{groupBox}}
+\index{groupBox@{groupBox}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{groupBox}{groupBox}}
+{\footnotesize\ttfamily Q\+Group\+Box$\ast$ Text\+Tab\+Widget\+::group\+Box\hspace{0.3cm}{\ttfamily [private]}}
+
+Holds the search/replacer widgets. \mbox{\Hypertarget{class_text_tab_widget_a6b36b325c337cf47c11ccd6649dc7213}\label{class_text_tab_widget_a6b36b325c337cf47c11ccd6649dc7213}} 
+\index{TextTabWidget@{TextTabWidget}!highlighter@{highlighter}}
+\index{highlighter@{highlighter}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{highlighter}{highlighter}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_search_highlighter}{Search\+Highlighter}}$\ast$ Text\+Tab\+Widget\+::highlighter\hspace{0.3cm}{\ttfamily [private]}}
+
+Search highlighter responsible for coloring the words in the document. \mbox{\Hypertarget{class_text_tab_widget_abdb29c441223550a077e762de0858bc3}\label{class_text_tab_widget_abdb29c441223550a077e762de0858bc3}} 
+\index{TextTabWidget@{TextTabWidget}!replacer@{replacer}}
+\index{replacer@{replacer}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{replacer}{replacer}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_searcher_and_replacer}{Searcher\+And\+Replacer}}$\ast$ Text\+Tab\+Widget\+::replacer\hspace{0.3cm}{\ttfamily [private]}}
+
+Logic for searching and replacing. \mbox{\Hypertarget{class_text_tab_widget_ab74c47bae2aa969695e8370c1eeda1ef}\label{class_text_tab_widget_ab74c47bae2aa969695e8370c1eeda1ef}} 
+\index{TextTabWidget@{TextTabWidget}!tabName@{tabName}}
+\index{tabName@{tabName}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{tabName}{tabName}}
+{\footnotesize\ttfamily Q\+String Text\+Tab\+Widget\+::tab\+Name\hspace{0.3cm}{\ttfamily [private]}}
+
+Tab name for the widget. \mbox{\Hypertarget{class_text_tab_widget_aa6968f150a25da3587e71ad0a56c5e67}\label{class_text_tab_widget_aa6968f150a25da3587e71ad0a56c5e67}} 
+\index{TextTabWidget@{TextTabWidget}!textEditArea@{textEditArea}}
+\index{textEditArea@{textEditArea}!TextTabWidget@{TextTabWidget}}
+\doxysubsubsection{\texorpdfstring{textEditArea}{textEditArea}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_special_text_edit}{Special\+Text\+Edit}}$\ast$ Text\+Tab\+Widget\+::text\+Edit\+Area\hspace{0.3cm}{\ttfamily [private]}}
+
+The text edit responsible for hosting all the text. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['tabtransferdata_150',['TabTransferData',['../struct_tab_transfer_data.html',1,'']]],
-  ['texttabwidget_151',['TextTabWidget',['../class_text_tab_widget.html',1,'']]]
+  ['ui_5fmainwindow_194',['Ui_MainWindow',['../class_ui___main_window.html',1,'']]],
+  ['ui_5foptionswindow_195',['Ui_OptionsWindow',['../class_ui___options_window.html',1,'']]]
 ];

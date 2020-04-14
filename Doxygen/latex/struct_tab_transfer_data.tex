@@ -1,5 +1,14 @@
-\hypertarget{struct_tab_transfer_data}{}\doxysection{Tab\+Transfer\+Data Struct Reference}
+\hypertarget{struct_tab_transfer_data}{}\doxysection{Tab\+Transfer\+Data Class Reference}
 \label{struct_tab_transfer_data}\index{TabTransferData@{TabTransferData}}
+
+
+All data needed for tab transfer.  
+
+
+
+
+{\ttfamily \#include $<$Tab\+Transfer\+Data.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
@@ -27,14 +36,54 @@ Q\+Font {\bfseries font\+Information}
 \doxysubsection*{Friends}
 \begin{DoxyCompactItemize}
 \item 
+Q\+Data\+Stream \& \mbox{\hyperlink{struct_tab_transfer_data_a16c7b62f98d0ffbf6bd331f0c8f06b3e}{operator$<$$<$}} (Q\+Data\+Stream \&out, const \mbox{\hyperlink{struct_tab_transfer_data}{Tab\+Transfer\+Data}} \&tab\+Data)
+\begin{DoxyCompactList}\small\item\em Data\+Stream extractor for mimedata retrieval of the class \mbox{\hyperlink{struct_tab_transfer_data}{Tab\+Transfer\+Data}}. \end{DoxyCompactList}\item 
+Q\+Data\+Stream \& \mbox{\hyperlink{struct_tab_transfer_data_afa6b67aad191cead08b294494e7a813b}{operator$>$$>$}} (Q\+Data\+Stream \&in, \mbox{\hyperlink{struct_tab_transfer_data}{Tab\+Transfer\+Data}} \&tab\+Data)
+\begin{DoxyCompactList}\small\item\em Data\+Stream extractor for mimedata retrieval of the class \mbox{\hyperlink{struct_tab_transfer_data}{Tab\+Transfer\+Data}}. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+All data needed for tab transfer. 
+
+This contains all the data that will be converted to byte array in order to be used with mimedata. The data will be transferred when dropped. 
+
+\doxysubsection{Friends And Related Function Documentation}
 \mbox{\Hypertarget{struct_tab_transfer_data_a16c7b62f98d0ffbf6bd331f0c8f06b3e}\label{struct_tab_transfer_data_a16c7b62f98d0ffbf6bd331f0c8f06b3e}} 
-Q\+Data\+Stream \& {\bfseries operator$<$$<$} (Q\+Data\+Stream \&out, const \mbox{\hyperlink{struct_tab_transfer_data}{Tab\+Transfer\+Data}} \&tab\+Data)
-\item 
+\index{TabTransferData@{TabTransferData}!operator$<$$<$@{operator$<$$<$}}
+\index{operator$<$$<$@{operator$<$$<$}!TabTransferData@{TabTransferData}}
+\doxysubsubsection{\texorpdfstring{operator$<$$<$}{operator<<}}
+{\footnotesize\ttfamily Q\+Data\+Stream\& operator$<$$<$ (\begin{DoxyParamCaption}\item[{Q\+Data\+Stream \&}]{out,  }\item[{const \mbox{\hyperlink{struct_tab_transfer_data}{Tab\+Transfer\+Data}} \&}]{tab\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
+
+
+
+Data\+Stream extractor for mimedata retrieval of the class \mbox{\hyperlink{struct_tab_transfer_data}{Tab\+Transfer\+Data}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & data stream that will be reading in the data. \\
+\hline
+{\em \mbox{\hyperlink{struct_tab_transfer_data}{Tab\+Transfer\+Data}}} & the tab data that will be populated with the stream data. \\
+\hline
+\end{DoxyParams}
 \mbox{\Hypertarget{struct_tab_transfer_data_afa6b67aad191cead08b294494e7a813b}\label{struct_tab_transfer_data_afa6b67aad191cead08b294494e7a813b}} 
-Q\+Data\+Stream \& {\bfseries operator$>$$>$} (Q\+Data\+Stream \&in, \mbox{\hyperlink{struct_tab_transfer_data}{Tab\+Transfer\+Data}} \&tab\+Data)
-\end{DoxyCompactItemize}
+\index{TabTransferData@{TabTransferData}!operator$>$$>$@{operator$>$$>$}}
+\index{operator$>$$>$@{operator$>$$>$}!TabTransferData@{TabTransferData}}
+\doxysubsubsection{\texorpdfstring{operator$>$$>$}{operator>>}}
+{\footnotesize\ttfamily Q\+Data\+Stream\& operator$>$$>$ (\begin{DoxyParamCaption}\item[{Q\+Data\+Stream \&}]{in,  }\item[{\mbox{\hyperlink{struct_tab_transfer_data}{Tab\+Transfer\+Data}} \&}]{tab\+Data }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [friend]}}
 
 
-The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+
+Data\+Stream extractor for mimedata retrieval of the class \mbox{\hyperlink{struct_tab_transfer_data}{Tab\+Transfer\+Data}}. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & data stream that will be reading in the data. \\
+\hline
+{\em \mbox{\hyperlink{struct_tab_transfer_data}{Tab\+Transfer\+Data}}} & the tab data that will be populated with the stream data. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
 Text\+Editor/Tab\+Transfer\+Data.\+h\end{DoxyCompactItemize}

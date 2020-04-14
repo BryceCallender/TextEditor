@@ -289,24 +289,6 @@ void TextTabWidget::handleCloseEvent()
 
 }
 
-void TextTabWidget::handleBracketAndParenthesisMatch()
-{
-    QFileInfo fileInfo(fileName);
-
-    QString suffix = fileInfo.suffix();
-    if(suffix == "cpp" || suffix == "h" || suffix == "java")
-    {
-        if(textEditArea->toPlainText().endsWith("{"))
-        {
-            qDebug() << "{ found";
-            QTextCursor cursor = textEditArea->textCursor();
-            cursor.insertText("}");
-            cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, 1);
-            textEditArea->setTextCursor(cursor);
-        }
-    }
-}
-
 CodeSyntaxHighlighter* TextTabWidget::getSyntaxHighlighter()
 {
     return codeHighlighter;
