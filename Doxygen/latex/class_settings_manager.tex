@@ -12,6 +12,8 @@ Manages user settings for this application.
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+void \mbox{\hyperlink{class_settings_manager_ab58d13c6d172b64182706bc353b58ec7}{save\+Settings}} ()
+\begin{DoxyCompactList}\small\item\em Save Settings. \end{DoxyCompactList}\item 
 Q\+Variant \mbox{\hyperlink{class_settings_manager_a15df182754a70e0e4e2e96979b26639c}{get\+Value}} (const Q\+String \&key)
 \begin{DoxyCompactList}\small\item\em Saved Value Retrieval. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_settings_manager_a52e05231d48e1373795009a4ff6f2852}{save\+Value}} (const Q\+String \&group\+Name, const Q\+String \&name, Q\+Variant data)
@@ -66,7 +68,17 @@ Retrieves the value associated with the key
 {\em key} & the key to search for and return its value as a Q\+Variant \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_settings_manager_a52e05231d48e1373795009a4ff6f2852}\label{class_settings_manager_a52e05231d48e1373795009a4ff6f2852}} 
+\mbox{\Hypertarget{class_settings_manager_ab58d13c6d172b64182706bc353b58ec7}\label{class_settings_manager_ab58d13c6d172b64182706bc353b58ec7}} 
+\index{SettingsManager@{SettingsManager}!saveSettings@{saveSettings}}
+\index{saveSettings@{saveSettings}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{saveSettings()}{saveSettings()}}
+{\footnotesize\ttfamily void Settings\+Manager\+::save\+Settings (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Save Settings. 
+
+Will sync all the settings to the save location in order to reflect the changes \mbox{\Hypertarget{class_settings_manager_a52e05231d48e1373795009a4ff6f2852}\label{class_settings_manager_a52e05231d48e1373795009a4ff6f2852}} 
 \index{SettingsManager@{SettingsManager}!saveValue@{saveValue}}
 \index{saveValue@{saveValue}!SettingsManager@{SettingsManager}}
 \doxysubsubsection{\texorpdfstring{saveValue()}{saveValue()}}

@@ -95,8 +95,6 @@ void CustomTabWidget::mousePressEvent(QMouseEvent *event)
         data.text = textTab->getTextEdit()->toHtml();
         data.filePath = textTab->getTabFileName();
         data.tabName = tabBar()->tabText(tab);
-        data.cursorPosition = textTab->getTextEdit()->textCursor().position();
-        data.fontInformation = mainWindow->getFontInformation();
 
         QByteArray tabAsByte;
         QDataStream dataStream(&tabAsByte, QIODevice::ReadWrite);
@@ -164,9 +162,12 @@ void CustomTabWidget::tabCloseRequest(int index)
         removeTab(index);
     }
 
-    if(index > 0)
+    //If we close last tab get rid of the docking widget
+    if(dynamic_cast<QDockWidget*>(parentWidget()) != nullptr)
     {
-        setCurrentIndex(index - 1);
+        QDockWidget* dockWidget = reinterpret_cast<QDockWidget*>(parentWidget());
+        if(count() == 1)
+            dockWidget->close();
     }
 }
 
@@ -180,7 +181,7 @@ void CustomTabWidget::tabClicked(int index)
     {
         insertTab(index, new TextTabWidget(this), "New Tab");
         setCurrentIndex(index);
-
+        getCurrentTabWidget()->getTextEdit()->setFocus();
     }
     else
     {

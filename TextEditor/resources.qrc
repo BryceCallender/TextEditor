@@ -4,6 +4,7 @@
         <file>java_keywords.txt</file>
         <file>python_keywords.txt</file>
         <file>splashscreen.png</file>
+        <file>Jae.ico</file>
     </qresource>
     <qresource prefix="/imgs">
         <file>icon/boldIcon.png</file>

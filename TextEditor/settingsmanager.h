@@ -15,6 +15,13 @@
 class SettingsManager
 {
 public:
+    //! Save Settings
+    /*!
+      Will sync all the settings to the save location in order to reflect the changes
+     */
+     void saveSettings();
+
+
     //! Saved Value Retrieval
     /*!
       Retrieves the value associated with the key

@@ -1,4 +1,3 @@
-#include "replacercommand.h"
 #include "searcherandreplacer.h"
 
 SearcherAndReplacer::SearcherAndReplacer(QTextEdit* textEdit, QLabel *label) : QWidget(textEdit)

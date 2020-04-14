@@ -38,7 +38,6 @@ QT_END_NAMESPACE
 
     The main window which holds all the editor tools and formatting options. I holds all the tabs and allows for the special functionality.
  */
-
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
@@ -56,13 +55,11 @@ public:
      */
     ~MainWindow();
 
-
     //! Getter
     /*!
         Gets the current texttabwidget associated with the current widget (like docking widget etc).
      */
     TextTabWidget* getCurrentTabWidget();
-
 
     //! Window name setter
     /*!
@@ -81,7 +78,6 @@ public:
         Shows the printer preview to the user showing what it'll look like.
      */
     void printPreview(QPrinter *printer);
-
 
     //! Font Information from tab
     /*!
@@ -145,6 +141,18 @@ protected:
      */
     void dropEvent(QDropEvent *event);
 private slots:
+    //! Whenever the clipboard is changed using the shortcuts
+    /*!
+        Makes sure that if shortcuts are used, the new thing copied gets put into the multiple copy storage.
+     */
+    void clipboard_changed();
+
+    //! Builds a context menu for pasting
+    /*!
+        Executes a context menu that shows the current things being stored in the multi paste storage and allows them to be clicked for pasting.
+     */
+    void showContextPasteMenu(const QPoint& pos);
+
     //! Creates a text edit tab.
     /*!
         Opens a new blank tab for creating a new file.
@@ -186,18 +194,6 @@ private slots:
         Executes the new cut functionality to store multiple copies.
      */
     void on_actionCut_triggered();
-
-    //! Whenever the clipboard is changed using the shortcuts
-    /*!
-        Makes sure that if shortcuts are used, the new thing copied gets put into the multiple copy storage.
-     */
-    void clipboard_changed();
-
-    //! Builds a context menu for pasting
-    /*!
-        Executes a context menu that shows the current things being stored in the multi paste storage and allows them to be clicked for pasting.
-     */
-    void showContextPasteMenu(const QPoint& pos);
 
     //! When paste in toolbar is pressed
     /*!
@@ -360,7 +356,6 @@ private slots:
         Opens the Find and replacer text edits in the currently editing document.
      */
     void on_actionFind_triggered();
-
 private:
     Ui::MainWindow *ui;
     QString currentFile = "";

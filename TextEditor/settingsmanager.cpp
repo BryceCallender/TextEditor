@@ -24,6 +24,14 @@ SettingsManager::~SettingsManager()
     delete settings;
 }
 
+void SettingsManager::saveSettings()
+{
+    settings->sync();
+
+    //update CodeSyntaxHighlighter colors and code tab length (from now on). Text tab need to decide on how to procede
+
+}
+
 QVariant SettingsManager::getValue(const QString &key)
 {
     if(key.contains("geometry"))

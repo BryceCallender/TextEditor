@@ -51,10 +51,8 @@ void CustomTabBar::dropEvent(QDropEvent *event)
     newTab->setTabsFileName(testTabData.filePath);
     setCurrentIndex(indexToInsert);
 
-    QTextCursor cursor = newTab->getTextEdit()->textCursor();
-    cursor.setPosition(testTabData.cursorPosition);
+    newTab->getTextEdit()->setFocus();
 
-    newTab->getTextEdit()->setTextCursor(cursor);
 
     MainWindow *mainWindow;
 

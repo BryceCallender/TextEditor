@@ -14,6 +14,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     menuBar()->setNativeMenuBar(false);
 
+    setWindowTitle("JAE");
+
     ui->tabWidget->setMovable(true);
     ui->tabWidget->setTabsClosable(true);
 
@@ -80,8 +82,6 @@ MainWindow::MainWindow(QWidget *parent)
     //Sets values to the saved settings
     ui->fontComboBox->setCurrentFont(settings->getValue("text/fontFamily").value<QFont>());
     ui->fontSizeComboBox->setCurrentText(settings->getValue("text/fontSize").toString());
-
-    undoStack = new QUndoStack(this);
 
     // create shortcut
     QShortcut *saveShortcut = new QShortcut(QKeySequence::Save, this);
@@ -973,19 +973,10 @@ void MainWindow::dropEvent(QDropEvent *event)
             //Make a new custom tab widget incase it is needed
             CustomTabWidget* tabWidget = new CustomTabWidget(this);
 
-            QTextCursor cursor = tabWidget->getCurrentTabWidget()->getTextEdit()->textCursor();
-            cursor.setPosition(testTabData.cursorPosition);
-
-            QTextCharFormat format;
-            format.setFont(testTabData.fontInformation);
-            cursor.setCharFormat(format);
-
             //Set the widget
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
-            tabWidget->getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
-            //tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
             removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
 
             //connect signal
@@ -1006,17 +997,12 @@ void MainWindow::dropEvent(QDropEvent *event)
 
             CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
 
-            QTextCursor cursor = tabWidget->getCurrentTabWidget()->getTextEdit()->textCursor();
-            cursor.setPosition(testTabData.cursorPosition);
-
             tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(tabWidget), "New Tab");
             tabWidget->setCurrentIndex(tabWidget->count() - 2);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setFocus();
-            tabWidget->getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
-            tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
             removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
 
             QObject::connect(tabWidget->getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
@@ -1044,20 +1030,10 @@ void MainWindow::dropEvent(QDropEvent *event)
             //Make a new custom tab widget incase it is needed
             CustomTabWidget* tabWidget = new CustomTabWidget(this);
 
-            QTextCursor cursor = tabWidget->getCurrentTabWidget()->getTextEdit()->textCursor();
-            cursor.setPosition(testTabData.cursorPosition);
-
-            QTextCharFormat format;
-            format.setFont(testTabData.fontInformation);
-
-            cursor.setCharFormat(format);
-
             //Set the widget
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
-            tabWidget->getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
-            tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
             removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
 
             //connect signal
@@ -1077,17 +1053,12 @@ void MainWindow::dropEvent(QDropEvent *event)
             offender->show();
             CustomTabWidget* tabWidget = offender->findChild<CustomTabWidget*>();
 
-            QTextCursor cursor = tabWidget->getCurrentTabWidget()->getTextEdit()->textCursor();
-            cursor.setPosition(testTabData.cursorPosition);
-
             tabWidget->insertTab(tabWidget->count() - 1, new TextTabWidget(tabWidget), "New Tab");
             tabWidget->setCurrentIndex(tabWidget->count() - 2);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setFocus();
-            tabWidget->getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
-            tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
             removeTabFromWidget(CustomTabWidget::tabParent, CustomTabWidget::tabRemoving);
 
             QObject::connect(tabWidget->getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
