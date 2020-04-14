@@ -337,20 +337,23 @@ void MainWindow::showContextPasteMenu(const QPoint& pos)
 
     QMenu *pasteMenu = new QMenu(this);
     QAction *tool;
-    if(savedCopy[0].hasText()){
+    if(savedCopy[0].hasText())
+    {
         tool = pasteMenu->addAction(QString(savedCopy[0].text().left(40) + ((savedCopy[0].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
         tool->setToolTip(savedCopy[0].text());
     }
     else if(savedCopy[0].hasImage())
         pasteMenu->addAction("Copied Image 0", this, SLOT(on_actionPaste_2_triggered()));
-    if(savedCopy[1].hasText()){
-        tool = pasteMenu->addAction(QString(savedCopy[1].text().left(40) + ((savedCopy[1].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+    if(savedCopy[1].hasText())
+    {
+        tool = pasteMenu->addAction(QString(savedCopy[1].text().left(40) + ((savedCopy[1].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_3_triggered()));
         tool->setToolTip(savedCopy[1].text());
     }
     else if(savedCopy[1].hasImage())
         pasteMenu->addAction("Copied Image 1", this, SLOT(on_actionPaste_3_triggered()));
-    if(savedCopy[2].hasText()){
-        tool = pasteMenu->addAction(QString(savedCopy[2].text().left(40) + ((savedCopy[2].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+    if(savedCopy[2].hasText())
+    {
+        tool = pasteMenu->addAction(QString(savedCopy[2].text().left(40) + ((savedCopy[2].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_4_triggered()));
         tool->setToolTip(savedCopy[2].text());
     }
     else if(savedCopy[2].hasImage())
@@ -423,21 +426,24 @@ void MainWindow::showContextMenu(const QPoint& pos)
 
     pasteMenu->setTitle(QString("Paste"));
 
-    if(savedCopy[0].hasText()){
+    if(savedCopy[0].hasText())
+    {
         tool = pasteMenu->addAction(QString(savedCopy[0].text().left(40) + ((savedCopy[0].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
         tool->setToolTip(savedCopy[0].text());
         //QObject::connect(tool, &QAction::hovered, tool,  &QAction::toolTip);
     }
     else if(savedCopy[0].hasImage())
         pasteMenu->addAction("Copied Image 0", this, SLOT(on_actionPaste_2_triggered()));
-    if(savedCopy[1].hasText()){
-        tool = pasteMenu->addAction(QString(savedCopy[1].text().left(40) + ((savedCopy[1].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+    if(savedCopy[1].hasText())
+    {
+        tool = pasteMenu->addAction(QString(savedCopy[1].text().left(40) + ((savedCopy[1].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_3_triggered()));
         tool->setToolTip(savedCopy[1].text());
     }
     else if(savedCopy[1].hasImage())
         pasteMenu->addAction("Copied Image 1", this, SLOT(on_actionPaste_3_triggered()));
-    if(savedCopy[2].hasText()){
-        tool = pasteMenu->addAction(QString(savedCopy[2].text().left(40) + ((savedCopy[2].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_2_triggered()));
+    if(savedCopy[2].hasText())
+    {
+        tool = pasteMenu->addAction(QString(savedCopy[2].text().left(40) + ((savedCopy[2].text().size() > 40) ? " ..." : "")), this, SLOT(on_actionPaste_4_triggered()));
         tool->setToolTip(savedCopy[2].text());
     }
     else if(savedCopy[2].hasImage())
