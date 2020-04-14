@@ -314,6 +314,10 @@ private slots:
     */
     void on_fontSizeComboBox_activated(const QString &arg1);
 
+    //! Option Window
+    /*!
+        Opens the option window once the menu action is triggered.
+    */
     void on_actionOptions_triggered();
 
     //! Alignment.
