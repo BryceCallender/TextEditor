@@ -686,46 +686,21 @@ void MainWindow::on_actionBullets_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
 
-    QTextListFormat listFormat = QTextListFormat();
-    if (cursor.currentList()) {
-        listFormat = cursor.currentList()->format();
-        listFormat.setIndent(listFormat.indent() + 1);
-     }
+    if(!cursor.hasSelection())
+    {
+        QTextListFormat listFormat = QTextListFormat();
+        if (cursor.currentList()) {
+            listFormat = cursor.currentList()->format();
+            listFormat.setIndent(listFormat.indent() + 1);
+         }
 
-     listFormat.setStyle(QTextListFormat::Style::ListDisc);
-     cursor.insertList(listFormat);
-
-//    if(ui->actionBullets->isChecked())
-//    {
-//        if(ui->actionNumbering->isChecked())
-//        {
-//            ui->actionNumbering->setChecked(false);
-//        }
-//        cursor.beginEditBlock();
-//        QTextBlockFormat blockFmt = cursor.blockFormat();
-//        QTextListFormat listFmt;
-
-//        if (cursor.currentList())
-//        {
-//            listFmt = cursor.currentList()->format();
-//        }
-//        else
-//        {
-//            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
-//            blockFmt.setIndent(0);
-//            cursor.setBlockFormat(blockFmt);
-//        }
-
-//        listFmt.setStyle(QTextListFormat::ListDisc);
-//        cursor.createList(listFmt);
-//        cursor.endEditBlock();
-//    }
-//    else
-//    {
-//        QTextBlockFormat bfmt;
-//        bfmt.setObjectIndex(0);
-//        cursor.mergeBlockFormat(bfmt);
-//    }
+         listFormat.setStyle(QTextListFormat::Style::ListDisc);
+         cursor.insertList(listFormat);
+    }
+    else
+    {
+        cursor.createList(QTextListFormat::Style::ListDisc);
+    }
 
 }
 
@@ -733,46 +708,22 @@ void MainWindow::on_actionNumbering_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
 
-    QTextListFormat listFormat = QTextListFormat();
-    if (cursor.currentList()) {
-        listFormat = cursor.currentList()->format();
-        listFormat.setIndent(listFormat.indent() + 1);
-     }
+    if(!cursor.hasSelection())
+    {
+        QTextListFormat listFormat = QTextListFormat();
+        if (cursor.currentList()) {
+            listFormat = cursor.currentList()->format();
+            listFormat.setIndent(listFormat.indent() + 1);
+         }
 
-     listFormat.setStyle(QTextListFormat::Style::ListDecimal);
-     cursor.insertList(listFormat);
+         listFormat.setStyle(QTextListFormat::Style::ListDecimal);
+         cursor.insertList(listFormat);
+    }
+    else
+    {
+        cursor.createList(QTextListFormat::Style::ListDecimal);
+    }
 
-//    if(ui->actionNumbering->isChecked())
-//    {
-//        if(ui->actionBullets->isChecked())
-//        {
-//            ui->actionBullets->setChecked(false);
-//        }
-//        cursor.beginEditBlock();
-//        QTextBlockFormat blockFmt = cursor.blockFormat();
-//        QTextListFormat listFmt;
-
-//        if (cursor.currentList())
-//        {
-//            listFmt = cursor.currentList()->format();
-//        }
-//        else
-//        {
-//            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
-//            blockFmt.setIndent(0);
-//            cursor.setBlockFormat(blockFmt);
-//        }
-
-//        listFmt.setStyle(QTextListFormat::ListDecimal);
-//        cursor.createList(listFmt);
-//        cursor.endEditBlock();
-//    }
-//    else
-//    {
-//        QTextBlockFormat bfmt;
-//        bfmt.setObjectIndex(0);
-//        cursor.mergeBlockFormat(bfmt);
-//    }
 }
 
 void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
