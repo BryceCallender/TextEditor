@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keywordformat_20',['keywordFormat',['../class_code_syntax_highlighter.html#adf106d53ed0643e38cda97dd04cb2c40',1,'CodeSyntaxHighlighter']]]
+  ['javasyntaxhighlighter_23',['JavaSyntaxHighlighter',['../class_java_syntax_highlighter.html',1,'JavaSyntaxHighlighter'],['../class_java_syntax_highlighter.html#a1b90299d186ae08325583a4c2f891694',1,'JavaSyntaxHighlighter::JavaSyntaxHighlighter()']]]
 ];

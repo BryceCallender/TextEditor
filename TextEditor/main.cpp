@@ -11,7 +11,6 @@ int main(int argc, char *argv[])
     splash.show();
 
     quint32 seconds = QRandomGenerator::global()->bounded(2000,2500);
-    qDebug() << "Waiting for" << seconds << "seconds";
 
     MainWindow w;
 

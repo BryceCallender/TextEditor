@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['_7emainwindow_60',['~MainWindow',['../class_main_window.html#ae98d00a93bc118200eeef9f9bba1dba7',1,'MainWindow']]],
-  ['_7eoptionswindow_61',['~OptionsWindow',['../class_options_window.html#a034c885fe8bb4416e732a9571d14a6b4',1,'OptionsWindow']]]
+  ['ui_5fmainwindow_67',['Ui_MainWindow',['../class_ui___main_window.html',1,'']]],
+  ['ui_5foptionswindow_68',['Ui_OptionsWindow',['../class_ui___options_window.html',1,'']]],
+  ['updatekeywordcolor_69',['updateKeywordColor',['../class_code_syntax_highlighter.html#adc0b2323570867faa9f42fee86e2ba63',1,'CodeSyntaxHighlighter']]]
 ];

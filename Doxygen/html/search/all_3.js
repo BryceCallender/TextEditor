@@ -1,7 +1,8 @@
 var searchData=
 [
-  ['handletabmovement_15',['handleTabMovement',['../class_custom_tab_bar.html#a83e83ba25915004b2eff0ca07439b59c',1,'CustomTabBar']]],
-  ['highlightblock_16',['highlightBlock',['../class_code_syntax_highlighter.html#a5b381caaea33520382f864a12f1759a6',1,'CodeSyntaxHighlighter']]],
-  ['highlightingrule_17',['HighlightingRule',['../struct_code_syntax_highlighter_1_1_highlighting_rule.html',1,'CodeSyntaxHighlighter']]],
-  ['highlightingrules_18',['highlightingRules',['../class_code_syntax_highlighter.html#afb1b1b47dacaa339067889550ea4d444',1,'CodeSyntaxHighlighter']]]
+  ['getcurrentindex_14',['getCurrentIndex',['../class_searcher_and_replacer.html#a32e6faa5c8261a35a6a55cacdae53b91',1,'SearcherAndReplacer']]],
+  ['getcurrenttabwidget_15',['getCurrentTabWidget',['../class_custom_tab_widget.html#a30a285f721103527e638173a2eb9c9c1',1,'CustomTabWidget']]],
+  ['getnumberofmatches_16',['getNumberOfMatches',['../class_searcher_and_replacer.html#aa05235222751c2b63e607ac2b3143abc',1,'SearcherAndReplacer']]],
+  ['getrulecount_17',['getRuleCount',['../class_code_syntax_highlighter.html#a2841d9a147d45978504e1fb1f496beac',1,'CodeSyntaxHighlighter']]],
+  ['gettabwidgets_18',['getTabWidgets',['../class_main_window.html#aad161d371ee2862c4c0bc32fef1db9b9',1,'MainWindow']]]
 ];

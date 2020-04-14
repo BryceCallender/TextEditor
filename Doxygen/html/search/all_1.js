@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['filechanged_10',['fileChanged',['../class_main_window.html#a0b769b6b30e384faa42c38dcfcb0dacd',1,'MainWindow']]],
-  ['functionformat_11',['functionFormat',['../class_code_syntax_highlighter.html#a2253015bb4d616cdf718a09a9eac197e',1,'CodeSyntaxHighlighter']]]
+  ['dragenterevent_10',['dragEnterEvent',['../class_custom_tab_bar.html#a52aab4e0f8012c754d28f5a00bfc225d',1,'CustomTabBar']]],
+  ['dropevent_11',['dropEvent',['../class_custom_tab_bar.html#a0b2f697c9d5c653c6597dc3bef73ac2e',1,'CustomTabBar']]]
 ];

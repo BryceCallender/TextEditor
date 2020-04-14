@@ -1,4 +1,7 @@
 var searchData=
 [
-  ['javasyntaxhighlighter_19',['JavaSyntaxHighlighter',['../class_java_syntax_highlighter.html',1,'JavaSyntaxHighlighter'],['../class_java_syntax_highlighter.html#a1b90299d186ae08325583a4c2f891694',1,'JavaSyntaxHighlighter::JavaSyntaxHighlighter()']]]
+  ['handletabmovement_19',['handleTabMovement',['../class_custom_tab_bar.html#a83e83ba25915004b2eff0ca07439b59c',1,'CustomTabBar']]],
+  ['highlightblock_20',['highlightBlock',['../class_code_syntax_highlighter.html#a5b381caaea33520382f864a12f1759a6',1,'CodeSyntaxHighlighter']]],
+  ['highlightingrule_21',['HighlightingRule',['../struct_code_syntax_highlighter_1_1_highlighting_rule.html',1,'CodeSyntaxHighlighter']]],
+  ['highlightingrules_22',['highlightingRules',['../class_code_syntax_highlighter.html#afb1b1b47dacaa339067889550ea4d444',1,'CodeSyntaxHighlighter']]]
 ];

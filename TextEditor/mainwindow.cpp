@@ -982,7 +982,6 @@ void MainWindow::dropEvent(QDropEvent *event)
 
     dock = new CustomDockWidget(this);
 
-
     //Get data from the clipboard with this mime data tag and then read the bytes to convert it to TabTransferData
     QByteArray data = event->mimeData()->data("application/tab");
     QDataStream ds(&data, QIODevice::ReadWrite);
@@ -992,10 +991,10 @@ void MainWindow::dropEvent(QDropEvent *event)
 
     //This highlighter was allocated, however this shouldnt be the case as it has no rules so we must
     //explicitly assign it back to nullptr to avoid errors in other modules.
-    if(testTabData.highlighter != nullptr && testTabData.highlighter->getRuleCount() == 0)
-    {
-        testTabData.highlighter = nullptr;
-    }
+//    if(testTabData.highlighter != nullptr && testTabData.highlighter->getRuleCount() == 0)
+//    {
+//        testTabData.highlighter = nullptr;
+//    }
 
     if(dropPosition.x() > (size().width() * 0.75))
     {
@@ -1027,7 +1026,6 @@ void MainWindow::dropEvent(QDropEvent *event)
             //Set the widget
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
-            tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
             //tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
@@ -1100,7 +1098,6 @@ void MainWindow::dropEvent(QDropEvent *event)
             //Set the widget
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
-            tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
             tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);

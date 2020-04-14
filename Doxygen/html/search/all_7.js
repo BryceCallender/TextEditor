@@ -1,6 +1,10 @@
 var searchData=
 [
-  ['operator_3c_3c_25',['operator&lt;&lt;',['../class_code_syntax_highlighter.html#aaa5878758c8fefb586750aeb6972083b',1,'CodeSyntaxHighlighter::operator&lt;&lt;()'],['../class_code_syntax_highlighter.html#ae62d9ff827b4dfe8c217093ece157da7',1,'CodeSyntaxHighlighter::operator&lt;&lt;()'],['../class_c_p_p_syntax_highlighter.html#a06d8d05c2c4a9237f49992675fab197b',1,'CPPSyntaxHighlighter::operator&lt;&lt;()']]],
-  ['operator_3e_3e_26',['operator&gt;&gt;',['../class_code_syntax_highlighter.html#a59f02bc6c35a358a7eeaaba92efbd837',1,'CodeSyntaxHighlighter::operator&gt;&gt;()'],['../class_code_syntax_highlighter.html#a51659b079ef6d8541987d8b0572f7c16',1,'CodeSyntaxHighlighter::operator&gt;&gt;()'],['../class_c_p_p_syntax_highlighter.html#a91f8bb75cc49a825e4fa5deb41f198bb',1,'CPPSyntaxHighlighter::operator&gt;&gt;()']]],
-  ['optionswindow_27',['OptionsWindow',['../class_ui_1_1_options_window.html',1,'Ui::OptionsWindow'],['../class_options_window.html',1,'OptionsWindow'],['../class_options_window.html#a449c0121a7519c281796d5bea8c965c3',1,'OptionsWindow::OptionsWindow()']]]
+  ['main_25',['Main',['../class_main.html',1,'']]],
+  ['mainwindow_26',['MainWindow',['../class_main_window.html',1,'MainWindow'],['../class_ui_1_1_main_window.html',1,'Ui::MainWindow'],['../class_main_window.html#a996c5a2b6f77944776856f08ec30858d',1,'MainWindow::MainWindow()']]],
+  ['mousepressevent_27',['mousePressEvent',['../class_custom_tab_widget.html#a80eeae2a9ad3eb878bce886a2c3b074a',1,'CustomTabWidget']]],
+  ['movebackoneoccurence_28',['moveBackOneOccurence',['../class_searcher_and_replacer.html#a4a60534471a552152e9715a18b581e4c',1,'SearcherAndReplacer']]],
+  ['movetofirstoccurence_29',['moveToFirstOccurence',['../class_searcher_and_replacer.html#a43549926a2a54ba9afe583ad03121dc2',1,'SearcherAndReplacer']]],
+  ['movetonextoccurence_30',['moveToNextOccurence',['../class_searcher_and_replacer.html#a8900d504dbd206a6bdc9024d240b2d09',1,'SearcherAndReplacer']]],
+  ['multilinecommentformat_31',['multiLineCommentFormat',['../class_code_syntax_highlighter.html#a3dfa60803275d12e4fcc44f535d38c49',1,'CodeSyntaxHighlighter']]]
 ];

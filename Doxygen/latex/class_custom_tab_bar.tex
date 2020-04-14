@@ -28,12 +28,10 @@ void \mbox{\hyperlink{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}{ha
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_custom_tab_bar_a52aab4e0f8012c754d28f5a00bfc225d}\label{class_custom_tab_bar_a52aab4e0f8012c754d28f5a00bfc225d}} 
-void {\bfseries drag\+Enter\+Event} (Q\+Drag\+Enter\+Event $\ast$event)
-\item 
-\mbox{\Hypertarget{class_custom_tab_bar_a0b2f697c9d5c653c6597dc3bef73ac2e}\label{class_custom_tab_bar_a0b2f697c9d5c653c6597dc3bef73ac2e}} 
-void {\bfseries drop\+Event} (Q\+Drop\+Event $\ast$event)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_custom_tab_bar_a52aab4e0f8012c754d28f5a00bfc225d}{drag\+Enter\+Event}} (Q\+Drag\+Enter\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em drag\+Enter\+Event \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_tab_bar_a0b2f697c9d5c653c6597dc3bef73ac2e}{drop\+Event}} (Q\+Drop\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em drop\+Event \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Detailed Description}
@@ -55,7 +53,27 @@ Constructor.
 Connects the {\itshape handle\+Tab\+Movement} to the Q\+Tab\+Bar moved signal and allows the tab bar to accept drops when a tab is attempted to be dropped here. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}\label{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}} 
+\mbox{\Hypertarget{class_custom_tab_bar_a52aab4e0f8012c754d28f5a00bfc225d}\label{class_custom_tab_bar_a52aab4e0f8012c754d28f5a00bfc225d}} 
+\index{CustomTabBar@{CustomTabBar}!dragEnterEvent@{dragEnterEvent}}
+\index{dragEnterEvent@{dragEnterEvent}!CustomTabBar@{CustomTabBar}}
+\doxysubsubsection{\texorpdfstring{dragEnterEvent()}{dragEnterEvent()}}
+{\footnotesize\ttfamily void Custom\+Tab\+Bar\+::drag\+Enter\+Event (\begin{DoxyParamCaption}\item[{Q\+Drag\+Enter\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+drag\+Enter\+Event 
+
+If a tab is dragged into the tab bar we need to accept the event in order for the drop event to handle it. \mbox{\Hypertarget{class_custom_tab_bar_a0b2f697c9d5c653c6597dc3bef73ac2e}\label{class_custom_tab_bar_a0b2f697c9d5c653c6597dc3bef73ac2e}} 
+\index{CustomTabBar@{CustomTabBar}!dropEvent@{dropEvent}}
+\index{dropEvent@{dropEvent}!CustomTabBar@{CustomTabBar}}
+\doxysubsubsection{\texorpdfstring{dropEvent()}{dropEvent()}}
+{\footnotesize\ttfamily void Custom\+Tab\+Bar\+::drop\+Event (\begin{DoxyParamCaption}\item[{Q\+Drop\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+drop\+Event 
+
+Handles when a tab is dropped in the tab bar, which means accepting the tab and transferring data. \mbox{\Hypertarget{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}\label{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}} 
 \index{CustomTabBar@{CustomTabBar}!handleTabMovement@{handleTabMovement}}
 \index{handleTabMovement@{handleTabMovement}!CustomTabBar@{CustomTabBar}}
 \doxysubsubsection{\texorpdfstring{handleTabMovement()}{handleTabMovement()}}
