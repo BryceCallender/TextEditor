@@ -56,10 +56,37 @@ public:
      */
     ~MainWindow();
 
+
+    //! Getter
+    /*!
+        Gets the current texttabwidget associated with the current widget (like docking widget etc).
+     */
     TextTabWidget* getCurrentTabWidget();
+
+
+    //! Window name setter
+    /*!
+        Sets the window name to the current active tab file path
+     */
     void setWindowToFileName(int index);
+
+    //! Saved Tab
+    /*!
+        Removes the * from tab showing they saved
+     */
     void markTextTabAsClean(const QString& newPath);
+
+    //! Window name setter
+    /*!
+        Shows the printer preview to the user showing what it'll look like.
+     */
     void printPreview(QPrinter *printer);
+
+
+    //! Font Information from tab
+    /*!
+        Gets font information when a tab is being transferred like status of menu bar.
+     */
     QFont getFontInformation();
 
     //! When Window is closed completely
@@ -99,12 +126,23 @@ public:
      */
     void fileChanged();
 
+    //! UI Getter
+    /*!
+        Returns access to the ui to get information from other classes
+     */
     Ui::MainWindow get_UI();
-
-    //void keyPressEvent(QKeyEvent *ev);
-
 protected:
+
+    //! Drag event
+    /*!
+        Handle when a drag enter event happens.
+     */
     void dragEnterEvent(QDragEnterEvent *event);
+
+    //! Drop event
+    /*!
+        Handles whether or not a new widget is shown, added on to, and if we accept the tab transfer
+     */
     void dropEvent(QDropEvent *event);
 private slots:
     //! Creates a text edit tab.
@@ -217,14 +255,16 @@ private slots:
      */
     void on_actionZoom_Standard_triggered();
 
-    //! When user tries to close a tab
+    //! Tab bar clicked
     /*!
-        Checks to see if the user has changed the file in the tab and asks if they want to save their work.
+      Handles setting up the connection for special context menu whenever a tab bar is clicked
      */
-//    void on_tabWidget_tabCloseRequested(int index);
-
     void on_tabWidget_tabBarClicked(int index);
 
+    //! Save
+    /*!
+        Saves the file to the window file path, if its new it'll call Save As
+     */
     void on_actionSave_triggered();
 
     void on_actionFormat_Text_triggered();
@@ -274,6 +314,10 @@ private slots:
     */
     void on_fontSizeComboBox_activated(const QString &arg1);
 
+    //! Option Window
+    /*!
+        Opens the option window once the menu action is triggered.
+    */
     void on_actionOptions_triggered();
 
     //! Alignment.
@@ -311,8 +355,11 @@ private slots:
     */
     void on_actionNumbering_triggered();
 
+    //! Find/Replacer Action
+    /*!
+        Opens the Find and replacer text edits in the currently editing document.
+     */
     void on_actionFind_triggered();
-
 
 private:
     Ui::MainWindow *ui;
@@ -332,7 +379,5 @@ private:
     CustomDockWidget* dock; /*!< Used for creating docking widgets. */
 
     QVector<CustomTabWidget*> *tabWidgets; /*!< Holds all the tab widgets in the screen. */
-
-    QUndoStack *undoStack;
 };
 #endif // MAINWINDOW_H

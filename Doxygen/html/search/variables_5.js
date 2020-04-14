@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['quotationformat_124',['quotationFormat',['../class_code_syntax_highlighter.html#abed1a2e9896db53116f583276f289e8d',1,'CodeSyntaxHighlighter']]]
+  ['instance_316',['instance',['../class_settings_manager.html#a70fb547f91d329638ad9b122b9d7d818',1,'SettingsManager']]]
 ];

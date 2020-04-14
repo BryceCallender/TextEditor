@@ -2,6 +2,15 @@
 \label{class_search_highlighter}\index{SearchHighlighter@{SearchHighlighter}}
 
 
+Highlight searches.  
+
+
+
+
+{\ttfamily \#include $<$searchhighlighter.\+h$>$}
+
+
+
 Inheritance diagram for Search\+Highlighter\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -12,19 +21,94 @@ Inheritance diagram for Search\+Highlighter\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_search_highlighter_ad0dad974d8d1a82bf3bbe386ed539268}\label{class_search_highlighter_ad0dad974d8d1a82bf3bbe386ed539268}} 
-{\bfseries Search\+Highlighter} (Q\+Text\+Document $\ast$parent=nullptr)
-\item 
-\mbox{\Hypertarget{class_search_highlighter_a5f1cb73706a076ecbf7d4c538b3a3b3f}\label{class_search_highlighter_a5f1cb73706a076ecbf7d4c538b3a3b3f}} 
-void {\bfseries search\+Text} (const Q\+String \&text)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_search_highlighter_ad0dad974d8d1a82bf3bbe386ed539268}{Search\+Highlighter}} (Q\+Text\+Document $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_search_highlighter_a5f1cb73706a076ecbf7d4c538b3a3b3f}{search\+Text}} (const Q\+String \&text)
+\begin{DoxyCompactList}\small\item\em Search. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_search_highlighter_ae33e51c2cd85583e7a4466e4cc0f06b9}\label{class_search_highlighter_ae33e51c2cd85583e7a4466e4cc0f06b9}} 
-virtual void {\bfseries highlight\+Block} (const Q\+String \&text) override
+virtual void \mbox{\hyperlink{class_search_highlighter_ae33e51c2cd85583e7a4466e4cc0f06b9}{highlight\+Block}} (const Q\+String \&text) override
+\begin{DoxyCompactList}\small\item\em Block Highlighter. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Regular\+Expression \mbox{\hyperlink{class_search_highlighter_a2a69aa733c912c3f998039a62f4d3c85}{pattern}}
+\item 
+Q\+Text\+Char\+Format \mbox{\hyperlink{class_search_highlighter_acdec6580b6f09fb42adae099749eb872}{format}}
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Highlight searches. 
+
+This class is responsible for searching the document and highlighting words that a user searched. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_search_highlighter_ad0dad974d8d1a82bf3bbe386ed539268}\label{class_search_highlighter_ad0dad974d8d1a82bf3bbe386ed539268}} 
+\index{SearchHighlighter@{SearchHighlighter}!SearchHighlighter@{SearchHighlighter}}
+\index{SearchHighlighter@{SearchHighlighter}!SearchHighlighter@{SearchHighlighter}}
+\doxysubsubsection{\texorpdfstring{SearchHighlighter()}{SearchHighlighter()}}
+{\footnotesize\ttfamily Search\+Highlighter\+::\+Search\+Highlighter (\begin{DoxyParamCaption}\item[{Q\+Text\+Document $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor. 
+
+Sets the color of the highlighter 
+\begin{DoxyParams}{Parameters}
+{\em parent} & the textedit that this is going to be searching in \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_search_highlighter_ae33e51c2cd85583e7a4466e4cc0f06b9}\label{class_search_highlighter_ae33e51c2cd85583e7a4466e4cc0f06b9}} 
+\index{SearchHighlighter@{SearchHighlighter}!highlightBlock@{highlightBlock}}
+\index{highlightBlock@{highlightBlock}!SearchHighlighter@{SearchHighlighter}}
+\doxysubsubsection{\texorpdfstring{highlightBlock()}{highlightBlock()}}
+{\footnotesize\ttfamily void Search\+Highlighter\+::highlight\+Block (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{text }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [protected]}, {\ttfamily [virtual]}}
+
+
+
+Block Highlighter. 
+
+Using the document text highlight based on the user searched regular expression 
+\begin{DoxyParams}{Parameters}
+{\em text} & the text to highlight \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_search_highlighter_a5f1cb73706a076ecbf7d4c538b3a3b3f}\label{class_search_highlighter_a5f1cb73706a076ecbf7d4c538b3a3b3f}} 
+\index{SearchHighlighter@{SearchHighlighter}!searchText@{searchText}}
+\index{searchText@{searchText}!SearchHighlighter@{SearchHighlighter}}
+\doxysubsubsection{\texorpdfstring{searchText()}{searchText()}}
+{\footnotesize\ttfamily void Search\+Highlighter\+::search\+Text (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{text }\end{DoxyParamCaption})}
+
+
+
+Search. 
+
+Search document for the text to highlight 
+\begin{DoxyParams}{Parameters}
+{\em text} & the text to highlight \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_search_highlighter_acdec6580b6f09fb42adae099749eb872}\label{class_search_highlighter_acdec6580b6f09fb42adae099749eb872}} 
+\index{SearchHighlighter@{SearchHighlighter}!format@{format}}
+\index{format@{format}!SearchHighlighter@{SearchHighlighter}}
+\doxysubsubsection{\texorpdfstring{format}{format}}
+{\footnotesize\ttfamily Q\+Text\+Char\+Format Search\+Highlighter\+::format\hspace{0.3cm}{\ttfamily [private]}}
+
+Format rules for when a text is highlighted. \mbox{\Hypertarget{class_search_highlighter_a2a69aa733c912c3f998039a62f4d3c85}\label{class_search_highlighter_a2a69aa733c912c3f998039a62f4d3c85}} 
+\index{SearchHighlighter@{SearchHighlighter}!pattern@{pattern}}
+\index{pattern@{pattern}!SearchHighlighter@{SearchHighlighter}}
+\doxysubsubsection{\texorpdfstring{pattern}{pattern}}
+{\footnotesize\ttfamily Q\+Regular\+Expression Search\+Highlighter\+::pattern\hspace{0.3cm}{\ttfamily [private]}}
+
+User query regular expression pattern. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

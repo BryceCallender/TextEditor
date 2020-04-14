@@ -15,7 +15,7 @@ Inheritance diagram for Main\+Window\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=211pt]{class_main_window__inherit__graph}
+\includegraphics[height=550pt]{class_main_window__inherit__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -25,21 +25,16 @@ Inheritance diagram for Main\+Window\+:\nopagebreak
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_main_window_ae98d00a93bc118200eeef9f9bba1dba7}{$\sim$\+Main\+Window}} ()
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_main_window_a4cefbb0f175adf3889b0f11eaa9f2e9f}\label{class_main_window_a4cefbb0f175adf3889b0f11eaa9f2e9f}} 
-\mbox{\hyperlink{class_text_tab_widget}{Text\+Tab\+Widget}} $\ast$ {\bfseries get\+Current\+Tab\+Widget} ()
-\item 
-\mbox{\Hypertarget{class_main_window_aab2049c5e84685ff218361197605adeb}\label{class_main_window_aab2049c5e84685ff218361197605adeb}} 
-void {\bfseries set\+Window\+To\+File\+Name} (int index)
-\item 
-\mbox{\Hypertarget{class_main_window_a6713518cddc8e195142db333f8a8143a}\label{class_main_window_a6713518cddc8e195142db333f8a8143a}} 
-void {\bfseries mark\+Text\+Tab\+As\+Clean} (const Q\+String \&new\+Path)
-\item 
-\mbox{\Hypertarget{class_main_window_aceea0c51c23ebdf9f251ce4bd1f07e4b}\label{class_main_window_aceea0c51c23ebdf9f251ce4bd1f07e4b}} 
-void {\bfseries print\+Preview} (Q\+Printer $\ast$printer)
-\item 
-\mbox{\Hypertarget{class_main_window_ae15f20276bdb232bfd16c12956290ca1}\label{class_main_window_ae15f20276bdb232bfd16c12956290ca1}} 
-Q\+Font {\bfseries get\+Font\+Information} ()
-\item 
+\mbox{\hyperlink{class_text_tab_widget}{Text\+Tab\+Widget}} $\ast$ \mbox{\hyperlink{class_main_window_a4cefbb0f175adf3889b0f11eaa9f2e9f}{get\+Current\+Tab\+Widget}} ()
+\begin{DoxyCompactList}\small\item\em Getter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_aab2049c5e84685ff218361197605adeb}{set\+Window\+To\+File\+Name}} (int index)
+\begin{DoxyCompactList}\small\item\em Window name setter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a6713518cddc8e195142db333f8a8143a}{mark\+Text\+Tab\+As\+Clean}} (const Q\+String \&new\+Path)
+\begin{DoxyCompactList}\small\item\em Saved Tab. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_aceea0c51c23ebdf9f251ce4bd1f07e4b}{print\+Preview}} (Q\+Printer $\ast$printer)
+\begin{DoxyCompactList}\small\item\em Window name setter. \end{DoxyCompactList}\item 
+Q\+Font \mbox{\hyperlink{class_main_window_ae15f20276bdb232bfd16c12956290ca1}{get\+Font\+Information}} ()
+\begin{DoxyCompactList}\small\item\em Font Information from tab. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_main_window_a4e20a4a065fbb0e4d3532a45a0a91425}{close\+Event}} (Q\+Close\+Event $\ast$event)
 \begin{DoxyCompactList}\small\item\em When Window is closed completely. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_main_window_a9815d5b4de2a012f4247222b42fd0293}{remove\+Tab\+From\+Widget}} (int widget\+Index, int tab\+Index)
@@ -51,15 +46,125 @@ void \mbox{\hyperlink{class_main_window_a7bc0e7a64ef40d62990f389f462848b3}{show\
 void \mbox{\hyperlink{class_main_window_a3ba1a371fb10e731ae0926ae85efeb4f}{save}} ()
 \begin{DoxyCompactList}\small\item\em Used for closing tabs from other docking widgets. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_main_window_a0b769b6b30e384faa42c38dcfcb0dacd}{file\+Changed}} ()
-\begin{DoxyCompactList}\small\item\em Whenever something in the current file is changed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Whenever something in the current file is changed. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_ui_1_1_main_window}{Ui\+::\+Main\+Window}} \mbox{\hyperlink{class_main_window_a98845023319e6797e650483618fa02c2}{get\+\_\+\+UI}} ()
+\begin{DoxyCompactList}\small\item\em UI Getter. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_main_window_a671bf73078069470c19965a3d948b6fa}\label{class_main_window_a671bf73078069470c19965a3d948b6fa}} 
-void {\bfseries drag\+Enter\+Event} (Q\+Drag\+Enter\+Event $\ast$event)
+void \mbox{\hyperlink{class_main_window_a671bf73078069470c19965a3d948b6fa}{drag\+Enter\+Event}} (Q\+Drag\+Enter\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Drag event. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_ae7b97e68c51358f6f36be3c40b89c01c}{drop\+Event}} (Q\+Drop\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em Drop event. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Slots}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_main_window_ae7b97e68c51358f6f36be3c40b89c01c}\label{class_main_window_ae7b97e68c51358f6f36be3c40b89c01c}} 
-void {\bfseries drop\+Event} (Q\+Drop\+Event $\ast$event)
+void \mbox{\hyperlink{class_main_window_aed8d4c16aaa87ae02a2de2edd5fc91c7}{on\+\_\+action\+New\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Creates a text edit tab. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a48ed0a16f674e38e0e2a24274852a9af}{on\+\_\+action\+Open\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Load saved files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_ac9d9bb227fec320d80f2bd430336b54d}{on\+\_\+action\+Save\+\_\+as\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Save files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a214a1a535fdbf35b0ed12e26231eef56}{on\+\_\+action\+Print\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Printing files. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_ab4487c4b02224acd4a0193d38b704ddb}{on\+\_\+action\+Exit\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Exiting. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_ad961df58a2f20f09dd16c856b1f3040a}{on\+\_\+action\+Copy\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em When the copy keyword is pressed in the toolbar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a02df09004a7752e6f1bd3355a19999d3}{on\+\_\+action\+Cut\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em When the cut keyword is pressed in the toolbar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_aa41e92c8fbd5a691c3647bb7ed64e7fa}{clipboard\+\_\+changed}} ()
+\begin{DoxyCompactList}\small\item\em Whenever the clipboard is changed using the shortcuts. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a4826f4f133f0b238849ccd44251f0faa}{show\+Context\+Paste\+Menu}} (const Q\+Point \&pos)
+\begin{DoxyCompactList}\small\item\em Builds a context menu for pasting. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a0e835b057aadd7902e431132e9d842cb}{on\+\_\+action\+Paste\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em When paste in toolbar is pressed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_aed7351ed705971d05a9863f33c1f05bf}{on\+\_\+action\+Paste\+\_\+2\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em When topmost section of context menu is pressed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_aa0ed06393662f74f670f70922ee36750}{on\+\_\+action\+Paste\+\_\+3\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em When middle section of context menu is pressed. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_ad44636814c6d4342763797ac3fb58e40}{on\+\_\+action\+Paste\+\_\+4\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em When bottommost section of context menu is pressed. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_main_window_aa2ddff37422acdcafee59dd321b434b4}\label{class_main_window_aa2ddff37422acdcafee59dd321b434b4}} 
+void {\bfseries on\+\_\+action\+Paste\+\_\+5\+\_\+triggered} ()
+\item 
+void \mbox{\hyperlink{class_main_window_abbab7cd8683132f28cf976d069c7c448}{on\+\_\+action\+Undo\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em When undo button is pressed in the toolbar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a386390413f5b36190ba30ab8d4c653d0}{on\+\_\+action\+Redo\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em When redo button is pressed in the toolbar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a3891cf3ebbd85bac20a58d0a9a8376fa}{on\+\_\+action\+Zoom\+\_\+in\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em When zoom in button is pressed in the toolbar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a1512b66c93874af7397d2edb92f81d4b}{on\+\_\+action\+Zoom\+\_\+\+Out\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em When zoom out button is pressed in the toolbar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_ab3f19d6dea638d02e4d5a6032547534c}{on\+\_\+action\+Zoom\+\_\+\+Standard\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em When zoom standard button is pressed in the toolbar. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a738c75b6db1208e2378a539403c6aff9}{on\+\_\+tab\+Widget\+\_\+tab\+Bar\+Clicked}} (int index)
+\begin{DoxyCompactList}\small\item\em Tab bar clicked. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_ad550c61cfa05c7e528dedc6cf636ed10}{on\+\_\+action\+Save\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Save. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_main_window_a95abd20ebe4d255af34b1cf829af8e55}\label{class_main_window_a95abd20ebe4d255af34b1cf829af8e55}} 
+void {\bfseries on\+\_\+action\+Format\+\_\+\+Text\+\_\+triggered} ()
+\item 
+void \mbox{\hyperlink{class_main_window_a0926d3657378e2fa15d454d7570ee029}{on\+\_\+action\+Bold\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Font Style. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_af8ee3d451fe7e0ea9ba784baeb355f54}{on\+\_\+action\+Italic\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Font Style. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_ace65945799cf3127f6c8b66876884e30}{on\+\_\+action\+Underline\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Font Style. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_ad34944b0fab5c11a60ef398810144472}{on\+\_\+font\+Combo\+Box\+\_\+current\+Font\+Changed}} (const Q\+Font \&f)
+\begin{DoxyCompactList}\small\item\em Font Family. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a7d0db4385e19389b12c15c6bf7287f54}{on\+\_\+font\+Size\+Combo\+Box\+\_\+current\+Index\+Changed}} (int index)
+\begin{DoxyCompactList}\small\item\em Font Size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a0724cc9f624723ed4835ec91c32e199a}{on\+\_\+font\+Size\+Combo\+Box\+\_\+activated}} (const Q\+String \&arg1)
+\begin{DoxyCompactList}\small\item\em Font Size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a1dd57ccb62bc6f5a361aba6e088dd2e1}{on\+\_\+action\+Options\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Option Window. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_abbc5e5c15e23870adeb2ecaabeba0325}{on\+\_\+action\+Center\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Alignment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a75e04e5e35116e4c2e964004d7c57982}{on\+\_\+action\+Align\+\_\+\+Left\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Alignment. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a50379b4703ec1fbbd46271fcba6ec711}{on\+\_\+action\+Align\+\_\+\+Right\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Alignment. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_main_window_acbf255e58397f8fd0ed4cc262e0e2138}\label{class_main_window_acbf255e58397f8fd0ed4cc262e0e2138}} 
+void {\bfseries on\+\_\+action\+Save\+\_\+2\+\_\+triggered} ()
+\item 
+void \mbox{\hyperlink{class_main_window_a50c225c44c9b253f3bbb3c8a622742ce}{on\+\_\+action\+Bullets\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Listing Format. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_a69ab80b2a4ade8465b13b9cf3149b28a}{on\+\_\+action\+Numbering\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Listing Format. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_main_window_af876cd5a47fe892e0935ed3a5a9720c6}{on\+\_\+action\+Find\+\_\+triggered}} ()
+\begin{DoxyCompactList}\small\item\em Find/\+Replacer Action. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_main_window_a35466a70ed47252a0191168126a352a5}\label{class_main_window_a35466a70ed47252a0191168126a352a5}} 
+\mbox{\hyperlink{class_ui_1_1_main_window}{Ui\+::\+Main\+Window}} $\ast$ {\bfseries ui}
+\item 
+\mbox{\Hypertarget{class_main_window_a79735334401b3f9df6d6cd7daaf10255}\label{class_main_window_a79735334401b3f9df6d6cd7daaf10255}} 
+Q\+String {\bfseries current\+File} = \char`\"{}\char`\"{}
+\item 
+Q\+Mime\+Data \mbox{\hyperlink{class_main_window_a021e47800f98119b6de35d1939a39bb8}{saved\+Copy}} \mbox{[}\mbox{\hyperlink{class_main_window_ad00ad954ca0add640f48cc3aad2e3de4}{num\+Copies}}\mbox{]}
+\item 
+int \mbox{\hyperlink{class_main_window_adfa0e02003b4475d4a39a141f15fd00a}{track}}
+\item 
+Q\+Menu $\ast$ \mbox{\hyperlink{class_main_window_a12cd053eee9760d581caa3e68a7f0a74}{paste\+Menu}}
+\item 
+int \mbox{\hyperlink{class_main_window_ae2d5e314921b22574d414a6452fa8e69}{zoom}}
+\item 
+Q\+File\+System\+Watcher $\ast$ \mbox{\hyperlink{class_main_window_a9049c5b2cfba9bd2d41ca2789d7227d7}{file\+Watcher}}
+\item 
+\mbox{\hyperlink{class_options_window}{Options\+Window}} $\ast$ \mbox{\hyperlink{class_main_window_a9222bd0a3b494e5c36a6c326d3be1a41}{options\+Window}}
+\item 
+\mbox{\hyperlink{class_settings_manager}{Settings\+Manager}} $\ast$ \mbox{\hyperlink{class_main_window_a59aea5e2683cfbb1654d436c8e780aa0}{settings}}
+\item 
+\mbox{\hyperlink{class_custom_dock_widget}{Custom\+Dock\+Widget}} $\ast$ \mbox{\hyperlink{class_main_window_ad66415b06ba45fc9e16d274814f07980}{dock}}
+\item 
+Q\+Vector$<$ \mbox{\hyperlink{class_custom_tab_widget}{Custom\+Tab\+Widget}} $\ast$ $>$ $\ast$ \mbox{\hyperlink{class_main_window_a3539464b3a0cd329b92271e65d450069}{tab\+Widgets}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static const qint8 \mbox{\hyperlink{class_main_window_ad00ad954ca0add640f48cc3aad2e3de4}{num\+Copies}} = 3
 \end{DoxyCompactItemize}
 
 
@@ -92,7 +197,17 @@ Destructor.
 Detroys all the data and UI freeing the memory used. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_main_window_a4e20a4a065fbb0e4d3532a45a0a91425}\label{class_main_window_a4e20a4a065fbb0e4d3532a45a0a91425}} 
+\mbox{\Hypertarget{class_main_window_aa41e92c8fbd5a691c3647bb7ed64e7fa}\label{class_main_window_aa41e92c8fbd5a691c3647bb7ed64e7fa}} 
+\index{MainWindow@{MainWindow}!clipboard\_changed@{clipboard\_changed}}
+\index{clipboard\_changed@{clipboard\_changed}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{clipboard\_changed}{clipboard\_changed}}
+{\footnotesize\ttfamily void Main\+Window\+::clipboard\+\_\+changed (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Whenever the clipboard is changed using the shortcuts. 
+
+Makes sure that if shortcuts are used, the new thing copied gets put into the multiple copy storage. \mbox{\Hypertarget{class_main_window_a4e20a4a065fbb0e4d3532a45a0a91425}\label{class_main_window_a4e20a4a065fbb0e4d3532a45a0a91425}} 
 \index{MainWindow@{MainWindow}!closeEvent@{closeEvent}}
 \index{closeEvent@{closeEvent}!MainWindow@{MainWindow}}
 \doxysubsubsection{\texorpdfstring{closeEvent()}{closeEvent()}}
@@ -107,7 +222,27 @@ When Window is closed completely.
 {\em event} & The event where teh user pressed the X button to close the window. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{class_main_window_a0b769b6b30e384faa42c38dcfcb0dacd}\label{class_main_window_a0b769b6b30e384faa42c38dcfcb0dacd}} 
+\mbox{\Hypertarget{class_main_window_a671bf73078069470c19965a3d948b6fa}\label{class_main_window_a671bf73078069470c19965a3d948b6fa}} 
+\index{MainWindow@{MainWindow}!dragEnterEvent@{dragEnterEvent}}
+\index{dragEnterEvent@{dragEnterEvent}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{dragEnterEvent()}{dragEnterEvent()}}
+{\footnotesize\ttfamily void Main\+Window\+::drag\+Enter\+Event (\begin{DoxyParamCaption}\item[{Q\+Drag\+Enter\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Drag event. 
+
+Handle when a drag enter event happens. \mbox{\Hypertarget{class_main_window_ae7b97e68c51358f6f36be3c40b89c01c}\label{class_main_window_ae7b97e68c51358f6f36be3c40b89c01c}} 
+\index{MainWindow@{MainWindow}!dropEvent@{dropEvent}}
+\index{dropEvent@{dropEvent}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{dropEvent()}{dropEvent()}}
+{\footnotesize\ttfamily void Main\+Window\+::drop\+Event (\begin{DoxyParamCaption}\item[{Q\+Drop\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+Drop event. 
+
+Handles whether or not a new widget is shown, added on to, and if we accept the tab transfer \mbox{\Hypertarget{class_main_window_a0b769b6b30e384faa42c38dcfcb0dacd}\label{class_main_window_a0b769b6b30e384faa42c38dcfcb0dacd}} 
 \index{MainWindow@{MainWindow}!fileChanged@{fileChanged}}
 \index{fileChanged@{fileChanged}!MainWindow@{MainWindow}}
 \doxysubsubsection{\texorpdfstring{fileChanged()}{fileChanged()}}
@@ -117,7 +252,37 @@ When Window is closed completely.
 
 Whenever something in the current file is changed. 
 
-Adds an asterisk into the tab name so that the user knows that the file is changed. \mbox{\Hypertarget{class_main_window_aad161d371ee2862c4c0bc32fef1db9b9}\label{class_main_window_aad161d371ee2862c4c0bc32fef1db9b9}} 
+Adds an asterisk into the tab name so that the user knows that the file is changed. \mbox{\Hypertarget{class_main_window_a98845023319e6797e650483618fa02c2}\label{class_main_window_a98845023319e6797e650483618fa02c2}} 
+\index{MainWindow@{MainWindow}!get\_UI@{get\_UI}}
+\index{get\_UI@{get\_UI}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{get\_UI()}{get\_UI()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_ui_1_1_main_window}{Ui\+::\+Main\+Window}} Main\+Window\+::get\+\_\+\+UI (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+UI Getter. 
+
+Returns access to the ui to get information from other classes \mbox{\Hypertarget{class_main_window_a4cefbb0f175adf3889b0f11eaa9f2e9f}\label{class_main_window_a4cefbb0f175adf3889b0f11eaa9f2e9f}} 
+\index{MainWindow@{MainWindow}!getCurrentTabWidget@{getCurrentTabWidget}}
+\index{getCurrentTabWidget@{getCurrentTabWidget}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{getCurrentTabWidget()}{getCurrentTabWidget()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_text_tab_widget}{Text\+Tab\+Widget}} $\ast$ Main\+Window\+::get\+Current\+Tab\+Widget (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Getter. 
+
+Gets the current texttabwidget associated with the current widget (like docking widget etc). \mbox{\Hypertarget{class_main_window_ae15f20276bdb232bfd16c12956290ca1}\label{class_main_window_ae15f20276bdb232bfd16c12956290ca1}} 
+\index{MainWindow@{MainWindow}!getFontInformation@{getFontInformation}}
+\index{getFontInformation@{getFontInformation}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{getFontInformation()}{getFontInformation()}}
+{\footnotesize\ttfamily Q\+Font Main\+Window\+::get\+Font\+Information (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Font Information from tab. 
+
+Gets font information when a tab is being transferred like status of menu bar. \mbox{\Hypertarget{class_main_window_aad161d371ee2862c4c0bc32fef1db9b9}\label{class_main_window_aad161d371ee2862c4c0bc32fef1db9b9}} 
 \index{MainWindow@{MainWindow}!getTabWidgets@{getTabWidgets}}
 \index{getTabWidgets@{getTabWidgets}!MainWindow@{MainWindow}}
 \doxysubsubsection{\texorpdfstring{getTabWidgets()}{getTabWidgets()}}
@@ -127,7 +292,337 @@ Adds an asterisk into the tab name so that the user knows that the file is chang
 
 Gets the tab widgets from the main window. 
 
-Getter for other classes to grab the tab widgets associated with this window \mbox{\Hypertarget{class_main_window_a9815d5b4de2a012f4247222b42fd0293}\label{class_main_window_a9815d5b4de2a012f4247222b42fd0293}} 
+Getter for other classes to grab the tab widgets associated with this window \mbox{\Hypertarget{class_main_window_a6713518cddc8e195142db333f8a8143a}\label{class_main_window_a6713518cddc8e195142db333f8a8143a}} 
+\index{MainWindow@{MainWindow}!markTextTabAsClean@{markTextTabAsClean}}
+\index{markTextTabAsClean@{markTextTabAsClean}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{markTextTabAsClean()}{markTextTabAsClean()}}
+{\footnotesize\ttfamily void Main\+Window\+::mark\+Text\+Tab\+As\+Clean (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{new\+Path }\end{DoxyParamCaption})}
+
+
+
+Saved Tab. 
+
+Removes the $\ast$ from tab showing they saved \mbox{\Hypertarget{class_main_window_a75e04e5e35116e4c2e964004d7c57982}\label{class_main_window_a75e04e5e35116e4c2e964004d7c57982}} 
+\index{MainWindow@{MainWindow}!on\_actionAlign\_Left\_triggered@{on\_actionAlign\_Left\_triggered}}
+\index{on\_actionAlign\_Left\_triggered@{on\_actionAlign\_Left\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionAlign\_Left\_triggered}{on\_actionAlign\_Left\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Align\+\_\+\+Left\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Alignment. 
+
+Sets the selected text block to Left Alignement and continues. If no text is selected then it will just continue with Left Alignment. \mbox{\Hypertarget{class_main_window_a50379b4703ec1fbbd46271fcba6ec711}\label{class_main_window_a50379b4703ec1fbbd46271fcba6ec711}} 
+\index{MainWindow@{MainWindow}!on\_actionAlign\_Right\_triggered@{on\_actionAlign\_Right\_triggered}}
+\index{on\_actionAlign\_Right\_triggered@{on\_actionAlign\_Right\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionAlign\_Right\_triggered}{on\_actionAlign\_Right\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Align\+\_\+\+Right\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Alignment. 
+
+Sets the selected text block to Right Alignement and continues. If no text is selected then it will just continue with Right Alignment. \mbox{\Hypertarget{class_main_window_a0926d3657378e2fa15d454d7570ee029}\label{class_main_window_a0926d3657378e2fa15d454d7570ee029}} 
+\index{MainWindow@{MainWindow}!on\_actionBold\_triggered@{on\_actionBold\_triggered}}
+\index{on\_actionBold\_triggered@{on\_actionBold\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionBold\_triggered}{on\_actionBold\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Bold\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Font Style. 
+
+Sets selected text to be Bolded and continues with Bolded style until turned off. If no text is selected then it will just continue with Bolded. Can be used with other Font Style. (i.\+e. Italic, Underline) \mbox{\Hypertarget{class_main_window_a50c225c44c9b253f3bbb3c8a622742ce}\label{class_main_window_a50c225c44c9b253f3bbb3c8a622742ce}} 
+\index{MainWindow@{MainWindow}!on\_actionBullets\_triggered@{on\_actionBullets\_triggered}}
+\index{on\_actionBullets\_triggered@{on\_actionBullets\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionBullets\_triggered}{on\_actionBullets\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Bullets\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Listing Format. 
+
+Creates a Listing Format with Bulleting system. \mbox{\Hypertarget{class_main_window_abbc5e5c15e23870adeb2ecaabeba0325}\label{class_main_window_abbc5e5c15e23870adeb2ecaabeba0325}} 
+\index{MainWindow@{MainWindow}!on\_actionCenter\_triggered@{on\_actionCenter\_triggered}}
+\index{on\_actionCenter\_triggered@{on\_actionCenter\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionCenter\_triggered}{on\_actionCenter\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Center\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Alignment. 
+
+Sets the selected text block to Center Alignement and continues. If no text is selected then it will just continue with Center Alignment. \mbox{\Hypertarget{class_main_window_ad961df58a2f20f09dd16c856b1f3040a}\label{class_main_window_ad961df58a2f20f09dd16c856b1f3040a}} 
+\index{MainWindow@{MainWindow}!on\_actionCopy\_triggered@{on\_actionCopy\_triggered}}
+\index{on\_actionCopy\_triggered@{on\_actionCopy\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionCopy\_triggered}{on\_actionCopy\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Copy\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+When the copy keyword is pressed in the toolbar. 
+
+Executes the new copy functionality to store multiple copies. \mbox{\Hypertarget{class_main_window_a02df09004a7752e6f1bd3355a19999d3}\label{class_main_window_a02df09004a7752e6f1bd3355a19999d3}} 
+\index{MainWindow@{MainWindow}!on\_actionCut\_triggered@{on\_actionCut\_triggered}}
+\index{on\_actionCut\_triggered@{on\_actionCut\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionCut\_triggered}{on\_actionCut\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Cut\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+When the cut keyword is pressed in the toolbar. 
+
+Executes the new cut functionality to store multiple copies. \mbox{\Hypertarget{class_main_window_ab4487c4b02224acd4a0193d38b704ddb}\label{class_main_window_ab4487c4b02224acd4a0193d38b704ddb}} 
+\index{MainWindow@{MainWindow}!on\_actionExit\_triggered@{on\_actionExit\_triggered}}
+\index{on\_actionExit\_triggered@{on\_actionExit\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionExit\_triggered}{on\_actionExit\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Exit\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Exiting. 
+
+Closing the application. \mbox{\Hypertarget{class_main_window_af876cd5a47fe892e0935ed3a5a9720c6}\label{class_main_window_af876cd5a47fe892e0935ed3a5a9720c6}} 
+\index{MainWindow@{MainWindow}!on\_actionFind\_triggered@{on\_actionFind\_triggered}}
+\index{on\_actionFind\_triggered@{on\_actionFind\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionFind\_triggered}{on\_actionFind\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Find\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Find/\+Replacer Action. 
+
+Opens the Find and replacer text edits in the currently editing document. \mbox{\Hypertarget{class_main_window_af8ee3d451fe7e0ea9ba784baeb355f54}\label{class_main_window_af8ee3d451fe7e0ea9ba784baeb355f54}} 
+\index{MainWindow@{MainWindow}!on\_actionItalic\_triggered@{on\_actionItalic\_triggered}}
+\index{on\_actionItalic\_triggered@{on\_actionItalic\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionItalic\_triggered}{on\_actionItalic\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Italic\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Font Style. 
+
+Sets selected text to be Italic and continues with Italic style until turned off. If no text is selected then it will just continue with Italic. Can be used with other Font Style. (i.\+e. Bold, Underline) \mbox{\Hypertarget{class_main_window_aed8d4c16aaa87ae02a2de2edd5fc91c7}\label{class_main_window_aed8d4c16aaa87ae02a2de2edd5fc91c7}} 
+\index{MainWindow@{MainWindow}!on\_actionNew\_triggered@{on\_actionNew\_triggered}}
+\index{on\_actionNew\_triggered@{on\_actionNew\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionNew\_triggered}{on\_actionNew\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+New\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Creates a text edit tab. 
+
+Opens a new blank tab for creating a new file. \mbox{\Hypertarget{class_main_window_a69ab80b2a4ade8465b13b9cf3149b28a}\label{class_main_window_a69ab80b2a4ade8465b13b9cf3149b28a}} 
+\index{MainWindow@{MainWindow}!on\_actionNumbering\_triggered@{on\_actionNumbering\_triggered}}
+\index{on\_actionNumbering\_triggered@{on\_actionNumbering\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionNumbering\_triggered}{on\_actionNumbering\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Numbering\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Listing Format. 
+
+Creates a Listing Format with Numbering system. \mbox{\Hypertarget{class_main_window_a48ed0a16f674e38e0e2a24274852a9af}\label{class_main_window_a48ed0a16f674e38e0e2a24274852a9af}} 
+\index{MainWindow@{MainWindow}!on\_actionOpen\_triggered@{on\_actionOpen\_triggered}}
+\index{on\_actionOpen\_triggered@{on\_actionOpen\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionOpen\_triggered}{on\_actionOpen\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Open\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Load saved files. 
+
+Opens a directory window to select previously saved files. These files will occupy their own tabs. \mbox{\Hypertarget{class_main_window_a1dd57ccb62bc6f5a361aba6e088dd2e1}\label{class_main_window_a1dd57ccb62bc6f5a361aba6e088dd2e1}} 
+\index{MainWindow@{MainWindow}!on\_actionOptions\_triggered@{on\_actionOptions\_triggered}}
+\index{on\_actionOptions\_triggered@{on\_actionOptions\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionOptions\_triggered}{on\_actionOptions\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Options\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Option Window. 
+
+Opens the option window once the menu action is triggered. \mbox{\Hypertarget{class_main_window_aed7351ed705971d05a9863f33c1f05bf}\label{class_main_window_aed7351ed705971d05a9863f33c1f05bf}} 
+\index{MainWindow@{MainWindow}!on\_actionPaste\_2\_triggered@{on\_actionPaste\_2\_triggered}}
+\index{on\_actionPaste\_2\_triggered@{on\_actionPaste\_2\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionPaste\_2\_triggered}{on\_actionPaste\_2\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Paste\+\_\+2\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+When topmost section of context menu is pressed. 
+
+Pastes in the first section of the paste storage and removes the context menu. \mbox{\Hypertarget{class_main_window_aa0ed06393662f74f670f70922ee36750}\label{class_main_window_aa0ed06393662f74f670f70922ee36750}} 
+\index{MainWindow@{MainWindow}!on\_actionPaste\_3\_triggered@{on\_actionPaste\_3\_triggered}}
+\index{on\_actionPaste\_3\_triggered@{on\_actionPaste\_3\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionPaste\_3\_triggered}{on\_actionPaste\_3\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Paste\+\_\+3\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+When middle section of context menu is pressed. 
+
+Pastes in the second section of the paste storage and removes the context menu. \mbox{\Hypertarget{class_main_window_ad44636814c6d4342763797ac3fb58e40}\label{class_main_window_ad44636814c6d4342763797ac3fb58e40}} 
+\index{MainWindow@{MainWindow}!on\_actionPaste\_4\_triggered@{on\_actionPaste\_4\_triggered}}
+\index{on\_actionPaste\_4\_triggered@{on\_actionPaste\_4\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionPaste\_4\_triggered}{on\_actionPaste\_4\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Paste\+\_\+4\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+When bottommost section of context menu is pressed. 
+
+Pastes in the last section of the paste storage and removes the context menu. \mbox{\Hypertarget{class_main_window_a0e835b057aadd7902e431132e9d842cb}\label{class_main_window_a0e835b057aadd7902e431132e9d842cb}} 
+\index{MainWindow@{MainWindow}!on\_actionPaste\_triggered@{on\_actionPaste\_triggered}}
+\index{on\_actionPaste\_triggered@{on\_actionPaste\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionPaste\_triggered}{on\_actionPaste\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Paste\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+When paste in toolbar is pressed. 
+
+Sets the position of where to build the context menu for pasting and executes it. \mbox{\Hypertarget{class_main_window_a214a1a535fdbf35b0ed12e26231eef56}\label{class_main_window_a214a1a535fdbf35b0ed12e26231eef56}} 
+\index{MainWindow@{MainWindow}!on\_actionPrint\_triggered@{on\_actionPrint\_triggered}}
+\index{on\_actionPrint\_triggered@{on\_actionPrint\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionPrint\_triggered}{on\_actionPrint\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Print\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Printing files. 
+
+Opens a printer preview window for setting your printing prefernces, to then print the file. \mbox{\Hypertarget{class_main_window_a386390413f5b36190ba30ab8d4c653d0}\label{class_main_window_a386390413f5b36190ba30ab8d4c653d0}} 
+\index{MainWindow@{MainWindow}!on\_actionRedo\_triggered@{on\_actionRedo\_triggered}}
+\index{on\_actionRedo\_triggered@{on\_actionRedo\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionRedo\_triggered}{on\_actionRedo\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Redo\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+When redo button is pressed in the toolbar. 
+
+Redoes the previous undo action in the main window \mbox{\Hypertarget{class_main_window_ac9d9bb227fec320d80f2bd430336b54d}\label{class_main_window_ac9d9bb227fec320d80f2bd430336b54d}} 
+\index{MainWindow@{MainWindow}!on\_actionSave\_as\_triggered@{on\_actionSave\_as\_triggered}}
+\index{on\_actionSave\_as\_triggered@{on\_actionSave\_as\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionSave\_as\_triggered}{on\_actionSave\_as\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Save\+\_\+as\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Save files. 
+
+Opens a directory window to save the file occupying the current tab. \mbox{\Hypertarget{class_main_window_ad550c61cfa05c7e528dedc6cf636ed10}\label{class_main_window_ad550c61cfa05c7e528dedc6cf636ed10}} 
+\index{MainWindow@{MainWindow}!on\_actionSave\_triggered@{on\_actionSave\_triggered}}
+\index{on\_actionSave\_triggered@{on\_actionSave\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionSave\_triggered}{on\_actionSave\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Save\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Save. 
+
+Saves the file to the window file path, if its new it\textquotesingle{}ll call Save As \mbox{\Hypertarget{class_main_window_ace65945799cf3127f6c8b66876884e30}\label{class_main_window_ace65945799cf3127f6c8b66876884e30}} 
+\index{MainWindow@{MainWindow}!on\_actionUnderline\_triggered@{on\_actionUnderline\_triggered}}
+\index{on\_actionUnderline\_triggered@{on\_actionUnderline\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionUnderline\_triggered}{on\_actionUnderline\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Underline\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Font Style. 
+
+Sets selected text to be Underlined and continues with Underlinned style until turned off. If no text is selected then it will just continue with Underline. Can be used with other Font Style. (i.\+e. Bold, Italic) \mbox{\Hypertarget{class_main_window_abbab7cd8683132f28cf976d069c7c448}\label{class_main_window_abbab7cd8683132f28cf976d069c7c448}} 
+\index{MainWindow@{MainWindow}!on\_actionUndo\_triggered@{on\_actionUndo\_triggered}}
+\index{on\_actionUndo\_triggered@{on\_actionUndo\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionUndo\_triggered}{on\_actionUndo\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Undo\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+When undo button is pressed in the toolbar. 
+
+Undoes the previous action in the main window \mbox{\Hypertarget{class_main_window_a3891cf3ebbd85bac20a58d0a9a8376fa}\label{class_main_window_a3891cf3ebbd85bac20a58d0a9a8376fa}} 
+\index{MainWindow@{MainWindow}!on\_actionZoom\_in\_triggered@{on\_actionZoom\_in\_triggered}}
+\index{on\_actionZoom\_in\_triggered@{on\_actionZoom\_in\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionZoom\_in\_triggered}{on\_actionZoom\_in\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Zoom\+\_\+in\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+When zoom in button is pressed in the toolbar. 
+
+Zooms in the text on the screen by increasing the font size. \mbox{\Hypertarget{class_main_window_a1512b66c93874af7397d2edb92f81d4b}\label{class_main_window_a1512b66c93874af7397d2edb92f81d4b}} 
+\index{MainWindow@{MainWindow}!on\_actionZoom\_Out\_triggered@{on\_actionZoom\_Out\_triggered}}
+\index{on\_actionZoom\_Out\_triggered@{on\_actionZoom\_Out\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionZoom\_Out\_triggered}{on\_actionZoom\_Out\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Zoom\+\_\+\+Out\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+When zoom out button is pressed in the toolbar. 
+
+Zooms out the text on the screen by decreasing the font size. \mbox{\Hypertarget{class_main_window_ab3f19d6dea638d02e4d5a6032547534c}\label{class_main_window_ab3f19d6dea638d02e4d5a6032547534c}} 
+\index{MainWindow@{MainWindow}!on\_actionZoom\_Standard\_triggered@{on\_actionZoom\_Standard\_triggered}}
+\index{on\_actionZoom\_Standard\_triggered@{on\_actionZoom\_Standard\_triggered}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_actionZoom\_Standard\_triggered}{on\_actionZoom\_Standard\_triggered}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+action\+Zoom\+\_\+\+Standard\+\_\+triggered (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+When zoom standard button is pressed in the toolbar. 
+
+Resets the zoom to the previous font size that the user specified. \mbox{\Hypertarget{class_main_window_ad34944b0fab5c11a60ef398810144472}\label{class_main_window_ad34944b0fab5c11a60ef398810144472}} 
+\index{MainWindow@{MainWindow}!on\_fontComboBox\_currentFontChanged@{on\_fontComboBox\_currentFontChanged}}
+\index{on\_fontComboBox\_currentFontChanged@{on\_fontComboBox\_currentFontChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_fontComboBox\_currentFontChanged}{on\_fontComboBox\_currentFontChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+font\+Combo\+Box\+\_\+current\+Font\+Changed (\begin{DoxyParamCaption}\item[{const Q\+Font \&}]{f }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Font Family. 
+
+Sets the selected text as the desired Font Family and continues with that setting. If no text is selected then it will just continue with the new Font Family. \mbox{\Hypertarget{class_main_window_a0724cc9f624723ed4835ec91c32e199a}\label{class_main_window_a0724cc9f624723ed4835ec91c32e199a}} 
+\index{MainWindow@{MainWindow}!on\_fontSizeComboBox\_activated@{on\_fontSizeComboBox\_activated}}
+\index{on\_fontSizeComboBox\_activated@{on\_fontSizeComboBox\_activated}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_fontSizeComboBox\_activated}{on\_fontSizeComboBox\_activated}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+font\+Size\+Combo\+Box\+\_\+activated (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{arg1 }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Font Size. 
+
+Sets the selected text as the desired Font Size and continues with that setting. If no text is selected then it will just continue with the new Font size. \mbox{\Hypertarget{class_main_window_a7d0db4385e19389b12c15c6bf7287f54}\label{class_main_window_a7d0db4385e19389b12c15c6bf7287f54}} 
+\index{MainWindow@{MainWindow}!on\_fontSizeComboBox\_currentIndexChanged@{on\_fontSizeComboBox\_currentIndexChanged}}
+\index{on\_fontSizeComboBox\_currentIndexChanged@{on\_fontSizeComboBox\_currentIndexChanged}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_fontSizeComboBox\_currentIndexChanged}{on\_fontSizeComboBox\_currentIndexChanged}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+font\+Size\+Combo\+Box\+\_\+current\+Index\+Changed (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Font Size. 
+
+Sets the selected text as the desired Font Size and continues with that setting. If no text is selected then it will just continue with the new Font size. \mbox{\Hypertarget{class_main_window_a738c75b6db1208e2378a539403c6aff9}\label{class_main_window_a738c75b6db1208e2378a539403c6aff9}} 
+\index{MainWindow@{MainWindow}!on\_tabWidget\_tabBarClicked@{on\_tabWidget\_tabBarClicked}}
+\index{on\_tabWidget\_tabBarClicked@{on\_tabWidget\_tabBarClicked}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{on\_tabWidget\_tabBarClicked}{on\_tabWidget\_tabBarClicked}}
+{\footnotesize\ttfamily void Main\+Window\+::on\+\_\+tab\+Widget\+\_\+tab\+Bar\+Clicked (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Tab bar clicked. 
+
+Handles setting up the connection for special context menu whenever a tab bar is clicked \mbox{\Hypertarget{class_main_window_aceea0c51c23ebdf9f251ce4bd1f07e4b}\label{class_main_window_aceea0c51c23ebdf9f251ce4bd1f07e4b}} 
+\index{MainWindow@{MainWindow}!printPreview@{printPreview}}
+\index{printPreview@{printPreview}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{printPreview()}{printPreview()}}
+{\footnotesize\ttfamily void Main\+Window\+::print\+Preview (\begin{DoxyParamCaption}\item[{Q\+Printer $\ast$}]{printer }\end{DoxyParamCaption})}
+
+
+
+Window name setter. 
+
+Shows the printer preview to the user showing what it\textquotesingle{}ll look like. \mbox{\Hypertarget{class_main_window_a9815d5b4de2a012f4247222b42fd0293}\label{class_main_window_a9815d5b4de2a012f4247222b42fd0293}} 
 \index{MainWindow@{MainWindow}!removeTabFromWidget@{removeTabFromWidget}}
 \index{removeTabFromWidget@{removeTabFromWidget}!MainWindow@{MainWindow}}
 \doxysubsubsection{\texorpdfstring{removeTabFromWidget()}{removeTabFromWidget()}}
@@ -154,7 +649,17 @@ Command for when to remove a tab from a specified widget index.
 
 Used for closing tabs from other docking widgets. 
 
-Calls the standard \mbox{\hyperlink{class_main}{Main}} windows private saving function. \mbox{\Hypertarget{class_main_window_a7bc0e7a64ef40d62990f389f462848b3}\label{class_main_window_a7bc0e7a64ef40d62990f389f462848b3}} 
+Calls the standard \mbox{\hyperlink{class_main}{Main}} windows private saving function. \mbox{\Hypertarget{class_main_window_aab2049c5e84685ff218361197605adeb}\label{class_main_window_aab2049c5e84685ff218361197605adeb}} 
+\index{MainWindow@{MainWindow}!setWindowToFileName@{setWindowToFileName}}
+\index{setWindowToFileName@{setWindowToFileName}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{setWindowToFileName()}{setWindowToFileName()}}
+{\footnotesize\ttfamily void Main\+Window\+::set\+Window\+To\+File\+Name (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+Window name setter. 
+
+Sets the window name to the current active tab file path \mbox{\Hypertarget{class_main_window_a7bc0e7a64ef40d62990f389f462848b3}\label{class_main_window_a7bc0e7a64ef40d62990f389f462848b3}} 
 \index{MainWindow@{MainWindow}!showContextMenu@{showContextMenu}}
 \index{showContextMenu@{showContextMenu}!MainWindow@{MainWindow}}
 \doxysubsubsection{\texorpdfstring{showContextMenu()}{showContextMenu()}}
@@ -164,7 +669,80 @@ Calls the standard \mbox{\hyperlink{class_main}{Main}} windows private saving fu
 
 When the user right clicks in the main window. 
 
-Shows a custom context menu at the click location that can undo, redo, cut, copy, paste, and zoom. 
+Shows a custom context menu at the click location that can undo, redo, cut, copy, paste, and zoom. \mbox{\Hypertarget{class_main_window_a4826f4f133f0b238849ccd44251f0faa}\label{class_main_window_a4826f4f133f0b238849ccd44251f0faa}} 
+\index{MainWindow@{MainWindow}!showContextPasteMenu@{showContextPasteMenu}}
+\index{showContextPasteMenu@{showContextPasteMenu}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{showContextPasteMenu}{showContextPasteMenu}}
+{\footnotesize\ttfamily void Main\+Window\+::show\+Context\+Paste\+Menu (\begin{DoxyParamCaption}\item[{const Q\+Point \&}]{pos }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Builds a context menu for pasting. 
+
+Executes a context menu that shows the current things being stored in the multi paste storage and allows them to be clicked for pasting. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_main_window_ad66415b06ba45fc9e16d274814f07980}\label{class_main_window_ad66415b06ba45fc9e16d274814f07980}} 
+\index{MainWindow@{MainWindow}!dock@{dock}}
+\index{dock@{dock}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{dock}{dock}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_custom_dock_widget}{Custom\+Dock\+Widget}}$\ast$ Main\+Window\+::dock\hspace{0.3cm}{\ttfamily [private]}}
+
+Used for creating docking widgets. \mbox{\Hypertarget{class_main_window_a9049c5b2cfba9bd2d41ca2789d7227d7}\label{class_main_window_a9049c5b2cfba9bd2d41ca2789d7227d7}} 
+\index{MainWindow@{MainWindow}!fileWatcher@{fileWatcher}}
+\index{fileWatcher@{fileWatcher}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{fileWatcher}{fileWatcher}}
+{\footnotesize\ttfamily Q\+File\+System\+Watcher$\ast$ Main\+Window\+::file\+Watcher\hspace{0.3cm}{\ttfamily [private]}}
+
+Keeps track of events such as file renaming and directory movements. \mbox{\Hypertarget{class_main_window_ad00ad954ca0add640f48cc3aad2e3de4}\label{class_main_window_ad00ad954ca0add640f48cc3aad2e3de4}} 
+\index{MainWindow@{MainWindow}!numCopies@{numCopies}}
+\index{numCopies@{numCopies}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{numCopies}{numCopies}}
+{\footnotesize\ttfamily const qint8 Main\+Window\+::num\+Copies = 3\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Size of the paste storage. \mbox{\Hypertarget{class_main_window_a9222bd0a3b494e5c36a6c326d3be1a41}\label{class_main_window_a9222bd0a3b494e5c36a6c326d3be1a41}} 
+\index{MainWindow@{MainWindow}!optionsWindow@{optionsWindow}}
+\index{optionsWindow@{optionsWindow}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{optionsWindow}{optionsWindow}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_options_window}{Options\+Window}}$\ast$ Main\+Window\+::options\+Window\hspace{0.3cm}{\ttfamily [private]}}
+
+Options window pointer for when we need to open it. \mbox{\Hypertarget{class_main_window_a12cd053eee9760d581caa3e68a7f0a74}\label{class_main_window_a12cd053eee9760d581caa3e68a7f0a74}} 
+\index{MainWindow@{MainWindow}!pasteMenu@{pasteMenu}}
+\index{pasteMenu@{pasteMenu}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{pasteMenu}{pasteMenu}}
+{\footnotesize\ttfamily Q\+Menu$\ast$ Main\+Window\+::paste\+Menu\hspace{0.3cm}{\ttfamily [private]}}
+
+The menu for the context menu. \mbox{\Hypertarget{class_main_window_a021e47800f98119b6de35d1939a39bb8}\label{class_main_window_a021e47800f98119b6de35d1939a39bb8}} 
+\index{MainWindow@{MainWindow}!savedCopy@{savedCopy}}
+\index{savedCopy@{savedCopy}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{savedCopy}{savedCopy}}
+{\footnotesize\ttfamily Q\+Mime\+Data Main\+Window\+::saved\+Copy\mbox{[}\mbox{\hyperlink{class_main_window_ad00ad954ca0add640f48cc3aad2e3de4}{num\+Copies}}\mbox{]}\hspace{0.3cm}{\ttfamily [private]}}
+
+The paste storage which allows for multiple copied things to be stored. \mbox{\Hypertarget{class_main_window_a59aea5e2683cfbb1654d436c8e780aa0}\label{class_main_window_a59aea5e2683cfbb1654d436c8e780aa0}} 
+\index{MainWindow@{MainWindow}!settings@{settings}}
+\index{settings@{settings}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{settings}{settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_settings_manager}{Settings\+Manager}}$\ast$ Main\+Window\+::settings\hspace{0.3cm}{\ttfamily [private]}}
+
+Settings Manager singleton reference. \mbox{\Hypertarget{class_main_window_a3539464b3a0cd329b92271e65d450069}\label{class_main_window_a3539464b3a0cd329b92271e65d450069}} 
+\index{MainWindow@{MainWindow}!tabWidgets@{tabWidgets}}
+\index{tabWidgets@{tabWidgets}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{tabWidgets}{tabWidgets}}
+{\footnotesize\ttfamily Q\+Vector$<$\mbox{\hyperlink{class_custom_tab_widget}{Custom\+Tab\+Widget}}$\ast$$>$$\ast$ Main\+Window\+::tab\+Widgets\hspace{0.3cm}{\ttfamily [private]}}
+
+Holds all the tab widgets in the screen. \mbox{\Hypertarget{class_main_window_adfa0e02003b4475d4a39a141f15fd00a}\label{class_main_window_adfa0e02003b4475d4a39a141f15fd00a}} 
+\index{MainWindow@{MainWindow}!track@{track}}
+\index{track@{track}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{track}{track}}
+{\footnotesize\ttfamily int Main\+Window\+::track\hspace{0.3cm}{\ttfamily [private]}}
+
+keeps track of the next slot to be updated in saved\+Copy. \mbox{\Hypertarget{class_main_window_ae2d5e314921b22574d414a6452fa8e69}\label{class_main_window_ae2d5e314921b22574d414a6452fa8e69}} 
+\index{MainWindow@{MainWindow}!zoom@{zoom}}
+\index{zoom@{zoom}!MainWindow@{MainWindow}}
+\doxysubsubsection{\texorpdfstring{zoom}{zoom}}
+{\footnotesize\ttfamily int Main\+Window\+::zoom\hspace{0.3cm}{\ttfamily [private]}}
+
+Keeps track of the standard for zooming. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

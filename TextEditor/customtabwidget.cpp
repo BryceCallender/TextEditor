@@ -93,7 +93,6 @@ void CustomTabWidget::mousePressEvent(QMouseEvent *event)
         TabTransferData data;
 
         data.text = textTab->getTextEdit()->toHtml();
-        data.highlighter = textTab->getSyntaxHighlighter();
         data.filePath = textTab->getTabFileName();
         data.tabName = tabBar()->tabText(tab);
         data.cursorPosition = textTab->getTextEdit()->textCursor().position();

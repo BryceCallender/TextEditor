@@ -2,6 +2,15 @@
 \label{class_custom_dock_widget}\index{CustomDockWidget@{CustomDockWidget}}
 
 
+Docking widget with custom functionality.  
+
+
+
+
+{\ttfamily \#include $<$customdockwidget.\+h$>$}
+
+
+
 Inheritance diagram for Custom\+Dock\+Widget\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
@@ -12,16 +21,45 @@ Inheritance diagram for Custom\+Dock\+Widget\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_custom_dock_widget_ad2319dbabce7b1ef50507135e9e3c904}\label{class_custom_dock_widget_ad2319dbabce7b1ef50507135e9e3c904}} 
-{\bfseries Custom\+Dock\+Widget} (Q\+Widget $\ast$parent=nullptr)
-\end{DoxyCompactItemize}
+\mbox{\hyperlink{class_custom_dock_widget_ad2319dbabce7b1ef50507135e9e3c904}{Custom\+Dock\+Widget}} (Q\+Widget $\ast$parent=nullptr)
+\begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_custom_dock_widget_a82744319d1d7c07e7a9c7199b6bffa2e}\label{class_custom_dock_widget_a82744319d1d7c07e7a9c7199b6bffa2e}} 
-void {\bfseries close\+Event} (Q\+Close\+Event $\ast$event)
-\end{DoxyCompactItemize}
+void \mbox{\hyperlink{class_custom_dock_widget_a82744319d1d7c07e7a9c7199b6bffa2e}{close\+Event}} (Q\+Close\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em close\+Event \end{DoxyCompactList}\end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Docking widget with custom functionality. 
+
+Custom functionality to handle application specific needs that default class does not support. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{class_custom_dock_widget_ad2319dbabce7b1ef50507135e9e3c904}\label{class_custom_dock_widget_ad2319dbabce7b1ef50507135e9e3c904}} 
+\index{CustomDockWidget@{CustomDockWidget}!CustomDockWidget@{CustomDockWidget}}
+\index{CustomDockWidget@{CustomDockWidget}!CustomDockWidget@{CustomDockWidget}}
+\doxysubsubsection{\texorpdfstring{CustomDockWidget()}{CustomDockWidget()}}
+{\footnotesize\ttfamily Custom\+Dock\+Widget\+::\+Custom\+Dock\+Widget (\begin{DoxyParamCaption}\item[{Q\+Widget $\ast$}]{parent = {\ttfamily nullptr} }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [explicit]}}
+
+
+
+Constructor. 
+
+Responsible for setting up the rules for our docking widgets such as no movement, etc. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_custom_dock_widget_a82744319d1d7c07e7a9c7199b6bffa2e}\label{class_custom_dock_widget_a82744319d1d7c07e7a9c7199b6bffa2e}} 
+\index{CustomDockWidget@{CustomDockWidget}!closeEvent@{closeEvent}}
+\index{closeEvent@{closeEvent}!CustomDockWidget@{CustomDockWidget}}
+\doxysubsubsection{\texorpdfstring{closeEvent()}{closeEvent()}}
+{\footnotesize\ttfamily void Custom\+Dock\+Widget\+::close\+Event (\begin{DoxyParamCaption}\item[{Q\+Close\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+close\+Event 
+
+This handles asking the user to save if they have edited tabs 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

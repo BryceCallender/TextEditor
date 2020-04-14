@@ -3,7 +3,7 @@
 
 #include "codesyntaxhighlighter.h"
 
-/*! \class CPPSyntaxHighlighter
+/*! \class PythonSyntaxHighlighter
     \brief A syntax highlighter for the language of Python.
 
     This is a concrete implementation of the CodeSyntaxHighlighter class for the language of Python.

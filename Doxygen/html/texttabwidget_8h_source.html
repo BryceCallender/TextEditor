@@ -96,67 +96,113 @@ $(function() {
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="preprocessor">#include &quot;speciallineedit.h&quot;</span></div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="preprocessor">#include &quot;specialtextedit.h&quot;</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="class_text_tab_widget.html">   28</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_text_tab_widget.html">TextTabWidget</a>: <span class="keyword">public</span> QWidget</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;{</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    Q_OBJECT</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_text_tab_widget.html">TextTabWidget</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">void</span> setTabsFileName(<span class="keyword">const</span> QString &amp;name);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    QString getTabFileName();</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    QString getTabName();</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    QTextEdit* getTextEdit();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_text_tab_widget.html">   34</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_text_tab_widget.html">TextTabWidget</a>: <span class="keyword">public</span> QWidget</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;{</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    Q_OBJECT</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_text_tab_widget.html">TextTabWidget</a>(QWidget *parent = <span class="keyword">nullptr</span>);</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordtype">void</span> revealSearchBox();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">void</span> revealReplaceBox();</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">void</span> setTextEditText(<span class="keyword">const</span> QString&amp; text);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> searchTextForQuery(<span class="keyword">const</span> QString&amp; query);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_tab_widget.html#a5085fbe7bf9e8c699e8c73aa34185ea5">setTabsFileName</a>(<span class="keyword">const</span> QString &amp;name);</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">void</span> sendFindDataToReplacerAndReplaceCurrent();</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">void</span> sendFindDataToReplacerAndReplaceAll();</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160; </div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordtype">void</span> setResultsText(<span class="keyword">const</span> QString&amp; text);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keywordtype">void</span> handleCloseEvent();</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> handleBracketAndParenthesisMatch();</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a>* getSyntaxHighlighter();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordtype">void</span> setSyntaxHighlighter(<a class="code" href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a>* highlighter);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    QString <a class="code" href="class_text_tab_widget.html#a53292b7db0c5c76111e8b5dc599a0a28">getTabFileName</a>();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    QString <a class="code" href="class_text_tab_widget.html#a558c0f6e8d36533edabc162562f19c25">getTabName</a>();</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordtype">void</span> setTabStopDistance(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> length);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    QString fileName;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    QString tabName;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <a class="code" href="class_special_text_edit.html">SpecialTextEdit</a> *textEditArea;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    QGroupBox *groupBox;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <a class="code" href="class_special_line_edit.html">SpecialLineEdit</a> *findText;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    QLineEdit *replaceText;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    QLabel *resultsLabel;</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    QPushButton *replaceCurrentButton;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    QPushButton *replaceAllButton;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    QPushButton *regexExplainer;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    QPushButton *exitButton;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="class_search_highlighter.html">SearchHighlighter</a> *highlighter;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <a class="code" href="class_searcher_and_replacer.html">SearcherAndReplacer</a> *replacer;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <a class="code" href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a> *codeHighlighter;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160; </div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif // TEXTTABWIDGET_H</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    QTextEdit* <a class="code" href="class_text_tab_widget.html#aad8699d1dd1f6776c01b9f03067d91c7">getTextEdit</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_tab_widget.html#a025604c6f9ce91480e5464a340b14f82">revealSearchBox</a>();</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_tab_widget.html#ac81150b743827ccd7baf0911fa08f638">revealReplaceBox</a>();</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_tab_widget.html#a1df3e910a4fda1a13b7d5e192d0408ed">setTextEditText</a>(<span class="keyword">const</span> QString&amp; text);</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_tab_widget.html#a112d873395738a951e8f999b11ea1925">searchTextForQuery</a>(<span class="keyword">const</span> QString&amp; query);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_tab_widget.html#a6001db931ec2cf56b5eb819219802d6c">sendFindDataToReplacerAndReplaceCurrent</a>();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_tab_widget.html#a6cb3e8aa69b18ca014ce34672e5f3429">sendFindDataToReplacerAndReplaceAll</a>();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_tab_widget.html#a24e88fc8c4bccb1d2cd13313864e8c73">setResultsText</a>(<span class="keyword">const</span> QString&amp; text);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_tab_widget.html#a15f9eb5e8bb308431523a0dc0c3363fc">handleCloseEvent</a>();</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a>* <a class="code" href="class_text_tab_widget.html#aa948377d0eb0deeeca69738d5a480060">getSyntaxHighlighter</a>();</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160; </div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160; </div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_tab_widget.html#a7054a3eaf3b26490cb23cdd27190f255">setSyntaxHighlighter</a>(<a class="code" href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a>* <a class="code" href="class_text_tab_widget.html#a6b36b325c337cf47c11ccd6649dc7213">highlighter</a>);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160; </div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_tab_widget.html#aff967b42807dfcdbaa9b68f044d32294">setTabStopDistance</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> length);</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160; </div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_text_tab_widget.html#add31755eb44af5460b9f72718c39d5ba">formatChanged</a>(<span class="keyword">const</span> QTextCharFormat &amp;format);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00137"></a><span class="lineno"><a class="line" href="class_text_tab_widget.html#a746afb5b60af09c4498c9bef4efbbf56">  137</a></span>&#160;    QString <a class="code" href="class_text_tab_widget.html#a746afb5b60af09c4498c9bef4efbbf56">fileName</a>; </div>
+<div class="line"><a name="l00138"></a><span class="lineno"><a class="line" href="class_text_tab_widget.html#ab74c47bae2aa969695e8370c1eeda1ef">  138</a></span>&#160;    QString <a class="code" href="class_text_tab_widget.html#ab74c47bae2aa969695e8370c1eeda1ef">tabName</a>; </div>
+<div class="line"><a name="l00140"></a><span class="lineno"><a class="line" href="class_text_tab_widget.html#aa6968f150a25da3587e71ad0a56c5e67">  140</a></span>&#160;    <a class="code" href="class_special_text_edit.html">SpecialTextEdit</a> *<a class="code" href="class_text_tab_widget.html#aa6968f150a25da3587e71ad0a56c5e67">textEditArea</a>; </div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="line" href="class_text_tab_widget.html#a18ae189f9e560e42c0c5e75ceb6daa1f">  141</a></span>&#160;    QGroupBox *<a class="code" href="class_text_tab_widget.html#a18ae189f9e560e42c0c5e75ceb6daa1f">groupBox</a>; </div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;    <a class="code" href="class_special_line_edit.html">SpecialLineEdit</a> *findText;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;    QLineEdit *replaceText;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    QLabel *resultsLabel;</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    QPushButton *replaceCurrentButton;</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;    QPushButton *replaceAllButton;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;    QPushButton *regexExplainer;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160; </div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    QPushButton *exitButton;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    QKeyEvent *backspaceButton;</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
+<div class="line"><a name="l00154"></a><span class="lineno"><a class="line" href="class_text_tab_widget.html#a6b36b325c337cf47c11ccd6649dc7213">  154</a></span>&#160;    <a class="code" href="class_search_highlighter.html">SearchHighlighter</a> *<a class="code" href="class_text_tab_widget.html#a6b36b325c337cf47c11ccd6649dc7213">highlighter</a>; </div>
+<div class="line"><a name="l00155"></a><span class="lineno"><a class="line" href="class_text_tab_widget.html#abdb29c441223550a077e762de0858bc3">  155</a></span>&#160;    <a class="code" href="class_searcher_and_replacer.html">SearcherAndReplacer</a> *<a class="code" href="class_text_tab_widget.html#abdb29c441223550a077e762de0858bc3">replacer</a>; </div>
+<div class="line"><a name="l00156"></a><span class="lineno"><a class="line" href="class_text_tab_widget.html#a341baf9f45c2bd39ac9ac9690e153f78">  156</a></span>&#160;    <a class="code" href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a> *<a class="code" href="class_text_tab_widget.html#a341baf9f45c2bd39ac9ac9690e153f78">codeHighlighter</a>; </div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;};</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160; </div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;<span class="preprocessor">#endif // TEXTTABWIDGET_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclass_text_tab_widget_html_a6cb3e8aa69b18ca014ce34672e5f3429"><div class="ttname"><a href="class_text_tab_widget.html#a6cb3e8aa69b18ca014ce34672e5f3429">TextTabWidget::sendFindDataToReplacerAndReplaceAll</a></div><div class="ttdeci">void sendFindDataToReplacerAndReplaceAll()</div><div class="ttdoc">Replace All Data Submission.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:258</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_add31755eb44af5460b9f72718c39d5ba"><div class="ttname"><a href="class_text_tab_widget.html#add31755eb44af5460b9f72718c39d5ba">TextTabWidget::formatChanged</a></div><div class="ttdeci">void formatChanged(const QTextCharFormat &amp;format)</div><div class="ttdoc">Format Changed.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:321</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a18ae189f9e560e42c0c5e75ceb6daa1f"><div class="ttname"><a href="class_text_tab_widget.html#a18ae189f9e560e42c0c5e75ceb6daa1f">TextTabWidget::groupBox</a></div><div class="ttdeci">QGroupBox * groupBox</div><div class="ttdef"><b>Definition:</b> texttabwidget.h:141</div></div>
 <div class="ttc" id="aclass_code_syntax_highlighter_html"><div class="ttname"><a href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a></div><div class="ttdoc">A syntax highlighter for class specific keywords.</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:17</div></div>
-<div class="ttc" id="aclass_searcher_and_replacer_html"><div class="ttname"><a href="class_searcher_and_replacer.html">SearcherAndReplacer</a></div><div class="ttdef"><b>Definition:</b> searcherandreplacer.h:11</div></div>
-<div class="ttc" id="aclass_special_line_edit_html"><div class="ttname"><a href="class_special_line_edit.html">SpecialLineEdit</a></div><div class="ttdef"><b>Definition:</b> speciallineedit.h:6</div></div>
-<div class="ttc" id="aclass_special_text_edit_html"><div class="ttname"><a href="class_special_text_edit.html">SpecialTextEdit</a></div><div class="ttdef"><b>Definition:</b> specialtextedit.h:8</div></div>
-<div class="ttc" id="aclass_search_highlighter_html"><div class="ttname"><a href="class_search_highlighter.html">SearchHighlighter</a></div><div class="ttdef"><b>Definition:</b> searchhighlighter.h:10</div></div>
-<div class="ttc" id="aclass_text_tab_widget_html"><div class="ttname"><a href="class_text_tab_widget.html">TextTabWidget</a></div><div class="ttdef"><b>Definition:</b> texttabwidget.h:28</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_aa6968f150a25da3587e71ad0a56c5e67"><div class="ttname"><a href="class_text_tab_widget.html#aa6968f150a25da3587e71ad0a56c5e67">TextTabWidget::textEditArea</a></div><div class="ttdeci">SpecialTextEdit * textEditArea</div><div class="ttdef"><b>Definition:</b> texttabwidget.h:140</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a025604c6f9ce91480e5464a340b14f82"><div class="ttname"><a href="class_text_tab_widget.html#a025604c6f9ce91480e5464a340b14f82">TextTabWidget::revealSearchBox</a></div><div class="ttdeci">void revealSearchBox()</div><div class="ttdoc">Reveal Search.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:222</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_aad8699d1dd1f6776c01b9f03067d91c7"><div class="ttname"><a href="class_text_tab_widget.html#aad8699d1dd1f6776c01b9f03067d91c7">TextTabWidget::getTextEdit</a></div><div class="ttdeci">QTextEdit * getTextEdit()</div><div class="ttdoc">Get TextEdit Name.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:316</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a24e88fc8c4bccb1d2cd13313864e8c73"><div class="ttname"><a href="class_text_tab_widget.html#a24e88fc8c4bccb1d2cd13313864e8c73">TextTabWidget::setResultsText</a></div><div class="ttdeci">void setResultsText(const QString &amp;text)</div><div class="ttdoc">Result text setting.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:266</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a1df3e910a4fda1a13b7d5e192d0408ed"><div class="ttname"><a href="class_text_tab_widget.html#a1df3e910a4fda1a13b7d5e192d0408ed">TextTabWidget::setTextEditText</a></div><div class="ttdeci">void setTextEditText(const QString &amp;text)</div><div class="ttdoc">Sets the text edit text.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:311</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a6b36b325c337cf47c11ccd6649dc7213"><div class="ttname"><a href="class_text_tab_widget.html#a6b36b325c337cf47c11ccd6649dc7213">TextTabWidget::highlighter</a></div><div class="ttdeci">SearchHighlighter * highlighter</div><div class="ttdef"><b>Definition:</b> texttabwidget.h:154</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a5085fbe7bf9e8c699e8c73aa34185ea5"><div class="ttname"><a href="class_text_tab_widget.html#a5085fbe7bf9e8c699e8c73aa34185ea5">TextTabWidget::setTabsFileName</a></div><div class="ttdeci">void setTabsFileName(const QString &amp;name)</div><div class="ttdoc">Set tab file name.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:201</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a7054a3eaf3b26490cb23cdd27190f255"><div class="ttname"><a href="class_text_tab_widget.html#a7054a3eaf3b26490cb23cdd27190f255">TextTabWidget::setSyntaxHighlighter</a></div><div class="ttdeci">void setSyntaxHighlighter(CodeSyntaxHighlighter *highlighter)</div><div class="ttdoc">Set highlighter.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:297</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a558c0f6e8d36533edabc162562f19c25"><div class="ttname"><a href="class_text_tab_widget.html#a558c0f6e8d36533edabc162562f19c25">TextTabWidget::getTabName</a></div><div class="ttdeci">QString getTabName()</div><div class="ttdoc">Get Tab Name.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:196</div></div>
+<div class="ttc" id="aclass_searcher_and_replacer_html"><div class="ttname"><a href="class_searcher_and_replacer.html">SearcherAndReplacer</a></div><div class="ttdoc">Find and Replace functionality.</div><div class="ttdef"><b>Definition:</b> searcherandreplacer.h:16</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_aff967b42807dfcdbaa9b68f044d32294"><div class="ttname"><a href="class_text_tab_widget.html#aff967b42807dfcdbaa9b68f044d32294">TextTabWidget::setTabStopDistance</a></div><div class="ttdeci">void setTabStopDistance(unsigned int length)</div><div class="ttdoc">Tab Count.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:302</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a112d873395738a951e8f999b11ea1925"><div class="ttname"><a href="class_text_tab_widget.html#a112d873395738a951e8f999b11ea1925">TextTabWidget::searchTextForQuery</a></div><div class="ttdeci">void searchTextForQuery(const QString &amp;query)</div><div class="ttdoc">Query Search.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:240</div></div>
+<div class="ttc" id="aclass_special_line_edit_html"><div class="ttname"><a href="class_special_line_edit.html">SpecialLineEdit</a></div><div class="ttdoc">QLineEdit with special functionality.</div><div class="ttdef"><b>Definition:</b> speciallineedit.h:11</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a746afb5b60af09c4498c9bef4efbbf56"><div class="ttname"><a href="class_text_tab_widget.html#a746afb5b60af09c4498c9bef4efbbf56">TextTabWidget::fileName</a></div><div class="ttdeci">QString fileName</div><div class="ttdef"><b>Definition:</b> texttabwidget.h:137</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a53292b7db0c5c76111e8b5dc599a0a28"><div class="ttname"><a href="class_text_tab_widget.html#a53292b7db0c5c76111e8b5dc599a0a28">TextTabWidget::getTabFileName</a></div><div class="ttdeci">QString getTabFileName()</div><div class="ttdoc">Tab File Name.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:191</div></div>
+<div class="ttc" id="aclass_special_text_edit_html"><div class="ttname"><a href="class_special_text_edit.html">SpecialTextEdit</a></div><div class="ttdoc">QTextEdit with special functionality.</div><div class="ttdef"><b>Definition:</b> specialtextedit.h:15</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a6001db931ec2cf56b5eb819219802d6c"><div class="ttname"><a href="class_text_tab_widget.html#a6001db931ec2cf56b5eb819219802d6c">TextTabWidget::sendFindDataToReplacerAndReplaceCurrent</a></div><div class="ttdeci">void sendFindDataToReplacerAndReplaceCurrent()</div><div class="ttdoc">Replace Current Data Submission.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:250</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a15f9eb5e8bb308431523a0dc0c3363fc"><div class="ttname"><a href="class_text_tab_widget.html#a15f9eb5e8bb308431523a0dc0c3363fc">TextTabWidget::handleCloseEvent</a></div><div class="ttdeci">void handleCloseEvent()</div><div class="ttdoc">Close Event.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:271</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_ac81150b743827ccd7baf0911fa08f638"><div class="ttname"><a href="class_text_tab_widget.html#ac81150b743827ccd7baf0911fa08f638">TextTabWidget::revealReplaceBox</a></div><div class="ttdeci">void revealReplaceBox()</div><div class="ttdoc">Reveal Replace Box.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:228</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_ab74c47bae2aa969695e8370c1eeda1ef"><div class="ttname"><a href="class_text_tab_widget.html#ab74c47bae2aa969695e8370c1eeda1ef">TextTabWidget::tabName</a></div><div class="ttdeci">QString tabName</div><div class="ttdef"><b>Definition:</b> texttabwidget.h:138</div></div>
+<div class="ttc" id="aclass_search_highlighter_html"><div class="ttname"><a href="class_search_highlighter.html">SearchHighlighter</a></div><div class="ttdoc">Highlight searches.</div><div class="ttdef"><b>Definition:</b> searchhighlighter.h:15</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_aa948377d0eb0deeeca69738d5a480060"><div class="ttname"><a href="class_text_tab_widget.html#aa948377d0eb0deeeca69738d5a480060">TextTabWidget::getSyntaxHighlighter</a></div><div class="ttdeci">CodeSyntaxHighlighter * getSyntaxHighlighter()</div><div class="ttdoc">Get highlighter.</div><div class="ttdef"><b>Definition:</b> texttabwidget.cpp:292</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_a341baf9f45c2bd39ac9ac9690e153f78"><div class="ttname"><a href="class_text_tab_widget.html#a341baf9f45c2bd39ac9ac9690e153f78">TextTabWidget::codeHighlighter</a></div><div class="ttdeci">CodeSyntaxHighlighter * codeHighlighter</div><div class="ttdef"><b>Definition:</b> texttabwidget.h:156</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html"><div class="ttname"><a href="class_text_tab_widget.html">TextTabWidget</a></div><div class="ttdoc">The Tab Widgets containing all the text edit information.</div><div class="ttdef"><b>Definition:</b> texttabwidget.h:34</div></div>
+<div class="ttc" id="aclass_text_tab_widget_html_abdb29c441223550a077e762de0858bc3"><div class="ttname"><a href="class_text_tab_widget.html#abdb29c441223550a077e762de0858bc3">TextTabWidget::replacer</a></div><div class="ttdeci">SearcherAndReplacer * replacer</div><div class="ttdef"><b>Definition:</b> texttabwidget.h:155</div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

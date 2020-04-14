@@ -1,11 +1,10 @@
 var searchData=
 [
-  ['save_42',['save',['../class_main_window.html#a3ba1a371fb10e731ae0926ae85efeb4f',1,'MainWindow']]],
-  ['searcherandreplacer_43',['SearcherAndReplacer',['../class_searcher_and_replacer.html',1,'']]],
-  ['searchhighlighter_44',['SearchHighlighter',['../class_search_highlighter.html',1,'']]],
-  ['settingsmanager_45',['SettingsManager',['../class_settings_manager.html',1,'']]],
-  ['showcontextmenu_46',['showContextMenu',['../class_main_window.html#a7bc0e7a64ef40d62990f389f462848b3',1,'MainWindow']]],
-  ['singlelinecommentformat_47',['singleLineCommentFormat',['../class_code_syntax_highlighter.html#a227d614b1c2dddfbf5950785a8b4f988',1,'CodeSyntaxHighlighter']]],
-  ['speciallineedit_48',['SpecialLineEdit',['../class_special_line_edit.html',1,'']]],
-  ['specialtextedit_49',['SpecialTextEdit',['../class_special_text_edit.html',1,'']]]
+  ['parent_99',['parent',['../class_custom_tab_bar.html#a0d3dc9b7291c90224a619d148673494f',1,'CustomTabBar']]],
+  ['pastemenu_100',['pasteMenu',['../class_main_window.html#a12cd053eee9760d581caa3e68a7f0a74',1,'MainWindow']]],
+  ['pattern_101',['pattern',['../class_searcher_and_replacer.html#a533358c30a041416b4b4261ffd13721d',1,'SearcherAndReplacer::pattern()'],['../class_search_highlighter.html#a2a69aa733c912c3f998039a62f4d3c85',1,'SearchHighlighter::pattern()']]],
+  ['populateallexpressionmatchesandmovetofirst_102',['populateAllExpressionMatchesAndMoveToFirst',['../class_searcher_and_replacer.html#ac2da8912b4691ec518d393ef675e1b8f',1,'SearcherAndReplacer']]],
+  ['printpreview_103',['printPreview',['../class_main_window.html#aceea0c51c23ebdf9f251ce4bd1f07e4b',1,'MainWindow']]],
+  ['pythoncolorpicker_104',['pythonColorPicker',['../class_options_window.html#ac74e7fc1df0f0c89f098deaf0830d782',1,'OptionsWindow']]],
+  ['pythonsyntaxhighlighter_105',['PythonSyntaxHighlighter',['../class_python_syntax_highlighter.html',1,'PythonSyntaxHighlighter'],['../class_python_syntax_highlighter.html#af59fcdfb563aa925a8c8e3fc24b60cc1',1,'PythonSyntaxHighlighter::PythonSyntaxHighlighter()']]]
 ];

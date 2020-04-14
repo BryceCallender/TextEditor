@@ -1,10 +1,13 @@
 var searchData=
 [
-  ['tabcloserequest_50',['tabCloseRequest',['../class_custom_tab_widget.html#ab047df5edf541ff8518748e7bb471e0b',1,'CustomTabWidget']]],
-  ['tabindex_51',['tabIndex',['../class_custom_tab_widget.html#afa68bc7dd5e8705960f0e67e980ef7b0',1,'CustomTabWidget']]],
-  ['tabparent_52',['tabParent',['../class_custom_tab_widget.html#a04abe786a0231330923b2cba70459cc1',1,'CustomTabWidget']]],
-  ['tabremoving_53',['tabRemoving',['../class_custom_tab_widget.html#abf53960945eee52f3e623945a959578f',1,'CustomTabWidget']]],
-  ['tabtransferdata_54',['TabTransferData',['../struct_tab_transfer_data.html',1,'']]],
-  ['tabwidgetindex_55',['tabWidgetIndex',['../class_custom_tab_widget.html#adef5a047b4cea79cf495d8b252ee66c4',1,'CustomTabWidget']]],
-  ['texttabwidget_56',['TextTabWidget',['../class_text_tab_widget.html',1,'']]]
+  ['qt_5fmeta_5fstringdata_5fcodesyntaxhighligher_5ft_106',['qt_meta_stringdata_CodeSyntaxHighligher_t',['../structqt__meta__stringdata___code_syntax_highligher__t.html',1,'']]],
+  ['qt_5fmeta_5fstringdata_5fcodesyntaxhighlighter_5ft_107',['qt_meta_stringdata_CodeSyntaxHighlighter_t',['../structqt__meta__stringdata___code_syntax_highlighter__t.html',1,'']]],
+  ['qt_5fmeta_5fstringdata_5fmainwindow_5ft_108',['qt_meta_stringdata_MainWindow_t',['../structqt__meta__stringdata___main_window__t.html',1,'']]],
+  ['qt_5fmeta_5fstringdata_5foptionswindow_5ft_109',['qt_meta_stringdata_OptionsWindow_t',['../structqt__meta__stringdata___options_window__t.html',1,'']]],
+  ['qt_5fmeta_5fstringdata_5fsearcherandreplacer_5ft_110',['qt_meta_stringdata_SearcherAndReplacer_t',['../structqt__meta__stringdata___searcher_and_replacer__t.html',1,'']]],
+  ['qt_5fmeta_5fstringdata_5fsearchhighlighter_5ft_111',['qt_meta_stringdata_SearchHighlighter_t',['../structqt__meta__stringdata___search_highlighter__t.html',1,'']]],
+  ['qt_5fmeta_5fstringdata_5fspecialcontextmenu_5ft_112',['qt_meta_stringdata_SpecialContextMenu_t',['../structqt__meta__stringdata___special_context_menu__t.html',1,'']]],
+  ['qt_5fmeta_5fstringdata_5fspeciallineedit_5ft_113',['qt_meta_stringdata_SpecialLineEdit_t',['../structqt__meta__stringdata___special_line_edit__t.html',1,'']]],
+  ['qt_5fmeta_5fstringdata_5ftexttabwidget_5ft_114',['qt_meta_stringdata_TextTabWidget_t',['../structqt__meta__stringdata___text_tab_widget__t.html',1,'']]],
+  ['quotationformat_115',['quotationFormat',['../class_code_syntax_highlighter.html#abed1a2e9896db53116f583276f289e8d',1,'CodeSyntaxHighlighter']]]
 ];

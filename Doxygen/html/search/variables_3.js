@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keywordformat_122',['keywordFormat',['../class_code_syntax_highlighter.html#adf106d53ed0643e38cda97dd04cb2c40',1,'CodeSyntaxHighlighter']]]
+  ['groupbox_313',['groupBox',['../class_text_tab_widget.html#a18ae189f9e560e42c0c5e75ceb6daa1f',1,'TextTabWidget']]]
 ];

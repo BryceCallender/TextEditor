@@ -21,18 +21,21 @@ Inheritance diagram for Custom\+Tab\+Bar\+:\nopagebreak
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\hyperlink{class_custom_tab_bar_a3f05726c1206f84cae21e175d53f4f90}{Custom\+Tab\+Bar}} (Q\+Widget $\ast$parent=nullptr)
+\mbox{\hyperlink{class_custom_tab_bar_a3f05726c1206f84cae21e175d53f4f90}{Custom\+Tab\+Bar}} (Q\+Widget $\ast$\mbox{\hyperlink{class_custom_tab_bar_a0d3dc9b7291c90224a619d148673494f}{parent}}=nullptr)
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}{handle\+Tab\+Movement}} (int from, int to)
 \begin{DoxyCompactList}\small\item\em Tab movement. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_custom_tab_bar_a52aab4e0f8012c754d28f5a00bfc225d}\label{class_custom_tab_bar_a52aab4e0f8012c754d28f5a00bfc225d}} 
-void {\bfseries drag\+Enter\+Event} (Q\+Drag\+Enter\+Event $\ast$event)
+void \mbox{\hyperlink{class_custom_tab_bar_a52aab4e0f8012c754d28f5a00bfc225d}{drag\+Enter\+Event}} (Q\+Drag\+Enter\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em drag\+Enter\+Event \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_tab_bar_a0b2f697c9d5c653c6597dc3bef73ac2e}{drop\+Event}} (Q\+Drop\+Event $\ast$event)
+\begin{DoxyCompactList}\small\item\em drop\+Event \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_custom_tab_bar_a0b2f697c9d5c653c6597dc3bef73ac2e}\label{class_custom_tab_bar_a0b2f697c9d5c653c6597dc3bef73ac2e}} 
-void {\bfseries drop\+Event} (Q\+Drop\+Event $\ast$event)
+\mbox{\hyperlink{class_custom_tab_widget}{Custom\+Tab\+Widget}} $\ast$ \mbox{\hyperlink{class_custom_tab_bar_a0d3dc9b7291c90224a619d148673494f}{parent}}
 \end{DoxyCompactItemize}
 
 
@@ -55,7 +58,27 @@ Constructor.
 Connects the {\itshape handle\+Tab\+Movement} to the Q\+Tab\+Bar moved signal and allows the tab bar to accept drops when a tab is attempted to be dropped here. 
 
 \doxysubsection{Member Function Documentation}
-\mbox{\Hypertarget{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}\label{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}} 
+\mbox{\Hypertarget{class_custom_tab_bar_a52aab4e0f8012c754d28f5a00bfc225d}\label{class_custom_tab_bar_a52aab4e0f8012c754d28f5a00bfc225d}} 
+\index{CustomTabBar@{CustomTabBar}!dragEnterEvent@{dragEnterEvent}}
+\index{dragEnterEvent@{dragEnterEvent}!CustomTabBar@{CustomTabBar}}
+\doxysubsubsection{\texorpdfstring{dragEnterEvent()}{dragEnterEvent()}}
+{\footnotesize\ttfamily void Custom\+Tab\+Bar\+::drag\+Enter\+Event (\begin{DoxyParamCaption}\item[{Q\+Drag\+Enter\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+drag\+Enter\+Event 
+
+If a tab is dragged into the tab bar we need to accept the event in order for the drop event to handle it. \mbox{\Hypertarget{class_custom_tab_bar_a0b2f697c9d5c653c6597dc3bef73ac2e}\label{class_custom_tab_bar_a0b2f697c9d5c653c6597dc3bef73ac2e}} 
+\index{CustomTabBar@{CustomTabBar}!dropEvent@{dropEvent}}
+\index{dropEvent@{dropEvent}!CustomTabBar@{CustomTabBar}}
+\doxysubsubsection{\texorpdfstring{dropEvent()}{dropEvent()}}
+{\footnotesize\ttfamily void Custom\+Tab\+Bar\+::drop\+Event (\begin{DoxyParamCaption}\item[{Q\+Drop\+Event $\ast$}]{event }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [protected]}}
+
+
+
+drop\+Event 
+
+Handles when a tab is dropped in the tab bar, which means accepting the tab and transferring data. \mbox{\Hypertarget{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}\label{class_custom_tab_bar_a83e83ba25915004b2eff0ca07439b59c}} 
 \index{CustomTabBar@{CustomTabBar}!handleTabMovement@{handleTabMovement}}
 \index{handleTabMovement@{handleTabMovement}!CustomTabBar@{CustomTabBar}}
 \doxysubsubsection{\texorpdfstring{handleTabMovement()}{handleTabMovement()}}
@@ -66,6 +89,15 @@ Connects the {\itshape handle\+Tab\+Movement} to the Q\+Tab\+Bar moved signal an
 Tab movement. 
 
 Handles cases for when the current tab is moved beyond the \textquotesingle{}+\textquotesingle{} tab so that the \textquotesingle{}+\textquotesingle{} will always be at the end. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_custom_tab_bar_a0d3dc9b7291c90224a619d148673494f}\label{class_custom_tab_bar_a0d3dc9b7291c90224a619d148673494f}} 
+\index{CustomTabBar@{CustomTabBar}!parent@{parent}}
+\index{parent@{parent}!CustomTabBar@{CustomTabBar}}
+\doxysubsubsection{\texorpdfstring{parent}{parent}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_custom_tab_widget}{Custom\+Tab\+Widget}}$\ast$ Custom\+Tab\+Bar\+::parent\hspace{0.3cm}{\ttfamily [private]}}
+
+The parent which is going to be a \mbox{\hyperlink{class_custom_tab_widget}{Custom\+Tab\+Widget}} class type. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

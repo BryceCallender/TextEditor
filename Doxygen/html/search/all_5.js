@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keywordformat_20',['keywordFormat',['../class_code_syntax_highlighter.html#adf106d53ed0643e38cda97dd04cb2c40',1,'CodeSyntaxHighlighter']]]
+  ['instance_48',['instance',['../class_settings_manager.html#a70fb547f91d329638ad9b122b9d7d818',1,'SettingsManager']]]
 ];

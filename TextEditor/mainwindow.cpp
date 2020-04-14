@@ -217,13 +217,6 @@ void MainWindow::on_actionPrint_triggered()
     QPrinter printer(QPrinter::HighResolution);
     printer.setPrinterName("Printer Name");
 
-//    QPrintDialog pDialog(&printer, this);
-//    if(pDialog.exec() == QDialog::Rejected)
-//    {
-//        QMessageBox::warning(this, "Warning", "Cannot Access Printer");
-//        return;
-//    }
-
     QPrintPreviewDialog preview(&printer, this);
     connect(&preview, &QPrintPreviewDialog::paintRequested,
                 this, &MainWindow::printPreview);
@@ -663,134 +656,57 @@ void MainWindow::on_actionFormat_Text_triggered()
 
 void MainWindow::on_actionBold_triggered()
 {
-    QTextCharFormat format;
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+
     if(ui->actionBold->isChecked())
-    {
-        if(cursor.hasSelection())
-        {
-
-            format.setFontWeight(QFont::Bold);
-            cursor.mergeCharFormat(format);//do the text as Bold
-        }
         getCurrentTabWidget()->getTextEdit()->setFontWeight(QFont::Bold);
-
-    }
     else
-    {
-        QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
-        if(cursor.hasSelection())
-        {
-            QTextCharFormat format;
-            format.setFontWeight(QFont::Normal);
-            cursor.mergeCharFormat(format);//do the text as Bold
-        }
         getCurrentTabWidget()->getTextEdit()->setFontWeight(QFont::Normal);
-    }
 
 }
 
 void MainWindow::on_actionItalic_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+
     QTextCharFormat format;
     if(ui->actionItalic->isChecked())
-    {
-        QTextCharFormat format;
-        if(cursor.hasSelection())
-        {
-
-            format.setFontItalic(true);
-            cursor.mergeCharFormat(format);//do the text as Bold
-        }
         getCurrentTabWidget()->getTextEdit()->setFontItalic(true);
-
-    }
     else
-    {
-        if(cursor.hasSelection())
-        {
-            QTextCharFormat format;
-            format.setFontItalic(false);
-            cursor.mergeCharFormat(format);//do the text as Bold
-        }
         getCurrentTabWidget()->getTextEdit()->setFontItalic(false);
-    }
 
 }
 
 void MainWindow::on_actionUnderline_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
+
     QTextCharFormat format;
     if(ui->actionUnderline->isChecked())
-    {
-        QTextCharFormat format;
-        if(cursor.hasSelection())
-        {
-
-            format.setFontUnderline(true);
-            cursor.mergeCharFormat(format);//do the text as Bold
-        }
         getCurrentTabWidget()->getTextEdit()->setFontUnderline(true);
-
-    }
     else
-    {
-        if(cursor.hasSelection())
-        {
-            QTextCharFormat format;
-            format.setFontUnderline(false);
-            cursor.mergeCharFormat(format);//do the text as Bold
-        }
         getCurrentTabWidget()->getTextEdit()->setFontUnderline(false);
-    }
 }
 
 void MainWindow::on_actionBullets_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
 
-    QTextListFormat listFormat = QTextListFormat();
-    if (cursor.currentList()) {
-        listFormat = cursor.currentList()->format();
-        listFormat.setIndent(listFormat.indent() + 1);
-     }
+    if(!cursor.hasSelection())
+    {
+        QTextListFormat listFormat = QTextListFormat();
+        if (cursor.currentList()) {
+            listFormat = cursor.currentList()->format();
+            listFormat.setIndent(listFormat.indent() + 1);
+         }
 
-     listFormat.setStyle(QTextListFormat::Style::ListDisc);
-     cursor.insertList(listFormat);
-
-//    if(ui->actionBullets->isChecked())
-//    {
-//        if(ui->actionNumbering->isChecked())
-//        {
-//            ui->actionNumbering->setChecked(false);
-//        }
-//        cursor.beginEditBlock();
-//        QTextBlockFormat blockFmt = cursor.blockFormat();
-//        QTextListFormat listFmt;
-
-//        if (cursor.currentList())
-//        {
-//            listFmt = cursor.currentList()->format();
-//        }
-//        else
-//        {
-//            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
-//            blockFmt.setIndent(0);
-//            cursor.setBlockFormat(blockFmt);
-//        }
-
-//        listFmt.setStyle(QTextListFormat::ListDisc);
-//        cursor.createList(listFmt);
-//        cursor.endEditBlock();
-//    }
-//    else
-//    {
-//        QTextBlockFormat bfmt;
-//        bfmt.setObjectIndex(0);
-//        cursor.mergeBlockFormat(bfmt);
-//    }
+         listFormat.setStyle(QTextListFormat::Style::ListDisc);
+         cursor.insertList(listFormat);
+    }
+    else
+    {
+        cursor.createList(QTextListFormat::Style::ListDisc);
+    }
 
 }
 
@@ -798,46 +714,22 @@ void MainWindow::on_actionNumbering_triggered()
 {
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
 
-    QTextListFormat listFormat = QTextListFormat();
-    if (cursor.currentList()) {
-        listFormat = cursor.currentList()->format();
-        listFormat.setIndent(listFormat.indent() + 1);
-     }
+    if(!cursor.hasSelection())
+    {
+        QTextListFormat listFormat = QTextListFormat();
+        if (cursor.currentList()) {
+            listFormat = cursor.currentList()->format();
+            listFormat.setIndent(listFormat.indent() + 1);
+         }
 
-     listFormat.setStyle(QTextListFormat::Style::ListDecimal);
-     cursor.insertList(listFormat);
+         listFormat.setStyle(QTextListFormat::Style::ListDecimal);
+         cursor.insertList(listFormat);
+    }
+    else
+    {
+        cursor.createList(QTextListFormat::Style::ListDecimal);
+    }
 
-//    if(ui->actionNumbering->isChecked())
-//    {
-//        if(ui->actionBullets->isChecked())
-//        {
-//            ui->actionBullets->setChecked(false);
-//        }
-//        cursor.beginEditBlock();
-//        QTextBlockFormat blockFmt = cursor.blockFormat();
-//        QTextListFormat listFmt;
-
-//        if (cursor.currentList())
-//        {
-//            listFmt = cursor.currentList()->format();
-//        }
-//        else
-//        {
-//            listFmt.setIndent(blockFmt.indent() + (settings->getValue("text/tabLength").toInt()/4));
-//            blockFmt.setIndent(0);
-//            cursor.setBlockFormat(blockFmt);
-//        }
-
-//        listFmt.setStyle(QTextListFormat::ListDecimal);
-//        cursor.createList(listFmt);
-//        cursor.endEditBlock();
-//    }
-//    else
-//    {
-//        QTextBlockFormat bfmt;
-//        bfmt.setObjectIndex(0);
-//        cursor.mergeBlockFormat(bfmt);
-//    }
 }
 
 void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
@@ -873,20 +765,19 @@ void MainWindow::on_fontSizeComboBox_activated(const QString &arg1)
     font.setPointSize(size.toInt());
     font.setFamily(getCurrentTabWidget()->getTextEdit()->fontFamily());
 
+    if(ui->actionBold->isChecked())
+        font.setBold(QFont::Bold);
+    if(ui->actionItalic->isChecked())
+        font.setItalic(true);
+    if(ui->actionUnderline->isChecked())
+        font.setUnderline(true);
+
     zoom = size.toInt();
 
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
-    QTextCharFormat format;
-    format.setFont(font);
 
-    if(cursor.hasSelection())
-    {
-        cursor.mergeCharFormat(format);//change font size
-    }
-    else
-    {
-        getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
-    }
+    getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
+
 
 }
 
@@ -897,23 +788,21 @@ void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
     int size = ui->fontSizeComboBox->currentText().toInt();
 
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
-    QTextCharFormat format;
 
     zoom = size;
 
     QFont font;
     font.setPointSize(size);
     font.setFamily(getCurrentTabWidget()->getTextEdit()->fontFamily());
-    format.setFont(font);
 
-    if(cursor.hasSelection())
-    {
-        cursor.mergeCharFormat(format);
-    }
-    else
-    {
-        getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
-    }
+    if(ui->actionBold->isChecked())
+        font.setBold(QFont::Bold);
+    if(ui->actionItalic->isChecked())
+        font.setItalic(true);
+    if(ui->actionUnderline->isChecked())
+        font.setUnderline(true);
+
+    getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
 }
 
 TextTabWidget* MainWindow::getCurrentTabWidget()
@@ -1050,7 +939,6 @@ void MainWindow::dropEvent(QDropEvent *event)
 
     dock = new CustomDockWidget(this);
 
-
     //Get data from the clipboard with this mime data tag and then read the bytes to convert it to TabTransferData
     QByteArray data = event->mimeData()->data("application/tab");
     QDataStream ds(&data, QIODevice::ReadWrite);
@@ -1060,10 +948,10 @@ void MainWindow::dropEvent(QDropEvent *event)
 
     //This highlighter was allocated, however this shouldnt be the case as it has no rules so we must
     //explicitly assign it back to nullptr to avoid errors in other modules.
-    if(testTabData.highlighter != nullptr && testTabData.highlighter->getRuleCount() == 0)
-    {
-        testTabData.highlighter = nullptr;
-    }
+//    if(testTabData.highlighter != nullptr && testTabData.highlighter->getRuleCount() == 0)
+//    {
+//        testTabData.highlighter = nullptr;
+//    }
 
     if(dropPosition.x() > (size().width() * 0.75))
     {
@@ -1095,7 +983,6 @@ void MainWindow::dropEvent(QDropEvent *event)
             //Set the widget
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
-            tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
             //tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
@@ -1168,7 +1055,6 @@ void MainWindow::dropEvent(QDropEvent *event)
             //Set the widget
             tabWidget->getCurrentTabWidget()->getTextEdit()->setText(testTabData.text);
             tabWidget->setTabText(tabWidget->currentIndex(), testTabData.tabName);
-            tabWidget->getCurrentTabWidget()->setSyntaxHighlighter(testTabData.highlighter);
             tabWidget->getCurrentTabWidget()->setTabsFileName(testTabData.filePath);
             tabWidget->getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
             tabWidget->getCurrentTabWidget()->setFont(testTabData.fontInformation);
@@ -1224,15 +1110,3 @@ Ui::MainWindow MainWindow::get_UI()
     return *ui;
 }
 
-//bool MainWindow::eventFilter(QObject *obj, QEvent *event)
-// {
-//     if (event->type() == QEvent::KeyPress) {
-//         //and here put your own logic!!
-//         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-//         qDebug("Ate key press %d", keyEvent->key());
-//         return true;
-//     } else {
-//         // standard event processing
-//         return QObject::eventFilter(obj, event);
-//     }
-// }

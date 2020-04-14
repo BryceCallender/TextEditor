@@ -289,24 +289,6 @@ void TextTabWidget::handleCloseEvent()
 
 }
 
-void TextTabWidget::handleBracketAndParenthesisMatch()
-{
-    QFileInfo fileInfo(fileName);
-
-    QString suffix = fileInfo.suffix();
-    if(suffix == "cpp" || suffix == "h" || suffix == "java")
-    {
-        if(textEditArea->toPlainText().endsWith("{"))
-        {
-            qDebug() << "{ found";
-            QTextCursor cursor = textEditArea->textCursor();
-            cursor.insertText("}");
-            cursor.movePosition(QTextCursor::Left, QTextCursor::MoveAnchor, 1);
-            textEditArea->setTextCursor(cursor);
-        }
-    }
-}
-
 CodeSyntaxHighlighter* TextTabWidget::getSyntaxHighlighter()
 {
     return codeHighlighter;
@@ -380,7 +362,7 @@ void TextTabWidget::formatChanged(const QTextCharFormat &format)
     }
 
 
-    if(format.fontPointSize() != 0 && !cursor.hasSelection())
+    if(format.fontPointSize() != 0)
     {
         if(format.fontPointSize() != mainWindow->get_UI().fontSizeComboBox->currentText().toInt())
         {
@@ -388,8 +370,23 @@ void TextTabWidget::formatChanged(const QTextCharFormat &format)
             mainWindow->get_UI().fontSizeComboBox->setCurrentIndex(index);
         }
     }
+    else
+    {
+        QFont font;
+        font.setPointSize(mainWindow->get_UI().fontSizeComboBox->currentText().toInt());
+        font.setFamily(textEditArea->fontFamily());
 
-    if(format.fontFamily() != NULL && !cursor.hasSelection())
+        if(mainWindow->get_UI().actionBold->isChecked())
+            font.setBold(QFont::Bold);
+        if(mainWindow->get_UI().actionItalic->isChecked())
+            font.setItalic(true);
+        if(mainWindow->get_UI().actionUnderline->isChecked())
+            font.setUnderline(true);
+
+        textEditArea->setCurrentFont(font);
+    }
+
+    if(format.fontFamily() != NULL)
     {
         if(format.fontFamily() != mainWindow->get_UI().fontComboBox->currentText())
         {

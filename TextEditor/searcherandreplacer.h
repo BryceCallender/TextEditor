@@ -11,7 +11,7 @@
 /*! \class SearcherAndReplacer
     \brief Find and Replace functionality.
 
-    This class is responsible for searching the document and highlighting/replace words search for.
+    This class is responsible for searching the document for user queries.
  */
 class SearcherAndReplacer : public QWidget
 {
@@ -33,62 +33,72 @@ public:
      */
     void populateAllExpressionMatchesAndMoveToFirst(QTextEdit* currentTextEdit, const QString& text);
 
-    //! Constructor
+    //! Travel to first regex match
     /*!
-      This constructor will call the \a readKeywordFileAndPopulateList function.
+      This function takes in a matching regular expression to look for and will move to the first occurence in the document.
+      \param match The regular expression to match the document against
      */
     void moveToFirstOccurence(QRegularExpressionMatch& match);
 
-    //! Constructor
+    //! Next Match
     /*!
-      This constructor will call the \a readKeywordFileAndPopulateList function.
+      Will move the cursor and select the next occurence of the current regular expression matching criteria.
      */
     void moveToNextOccurence();
 
-    //! Constructor
+    //! Previous Match
     /*!
-      This constructor will call the \a readKeywordFileAndPopulateList function.
+      Will move the cursor and select the previous occurence from the current selection using the criteria from search regular expression.
      */
     void moveBackOneOccurence();
 
-    //! Constructor
+    //! Replace Once
     /*!
-      This constructor will call the \a readKeywordFileAndPopulateList function.
+      Will replace the currently selected item using the replacement text.
+      \param findText What to search for
+      \param replacementText What to replace the found text with
      */
     void replaceCurrent(const QString &findText, const QString &replacementText);
 
-    //! Constructor
+    //! Replace All
     /*!
-      This constructor will call the \a readKeywordFileAndPopulateList function.
+      Will replace every single occurence of the searching text with the new text.
+      \param findText What to search for
+      \param replacementText What to replace the found text with
      */
     void replaceAll(const QString &findText, const QString& replacementText);
 
-    //! Constructor
+    //! Number of Matches
     /*!
-      This constructor will call the \a readKeywordFileAndPopulateList function.
+      Displays the number of matches to a UI showing how many results were found.
      */
     int getNumberOfMatches();
 
-    //! Constructor
+    //! Current Match Index
     /*!
-      This constructor will call the \a readKeywordFileAndPopulateList function.
+      Shows the user what match they are currently at.
      */
     int getCurrentIndex();
 
-    //! Constructor
+    //! Results Text
     /*!
-      This constructor will call the \a readKeywordFileAndPopulateList function.
+      Sets the UI text to set the results of the search. E.g No results found, 1 of 5, etc...
      */
     void setResultsText();
 private:
+    //! Move Cursor
+    /*!
+      Moves the cursor and selects the match supplied.
+      \param match The regular expression match which contains the start and length of match to use to move cursor
+     */
     void moveCursorToOccurence(QRegularExpressionMatch& match);
 
-    int currentIndex;
-    QTextEdit* textEdit;
-    QLabel* resultsLabel;
+    int currentIndex; /*!< Current index of the user when searching through results. */
+    QTextEdit* textEdit; /*!< Supplied for searching through its contents. */
+    QLabel* resultsLabel; /*!< UI Label to give feedback to the user on results from query. */
 
-    QRegularExpression pattern;
-    QVector<QRegularExpressionMatch> textMatches;
+    QRegularExpression pattern; /*!< Pattern generated when user supplies text to query. */
+    QVector<QRegularExpressionMatch> textMatches; /*!< Stores all the matches made from the user query. */
 };
 
 #endif // SEARCHERANDREPLACER_H

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['updatekeywordcolor_113',['updateKeywordColor',['../class_code_syntax_highlighter.html#adc0b2323570867faa9f42fee86e2ba63',1,'CodeSyntaxHighlighter']]]
+  ['tabclicked_291',['tabClicked',['../class_custom_tab_widget.html#a070fce24e2342697444bec5ea66ea2bc',1,'CustomTabWidget']]],
+  ['tabcloserequest_292',['tabCloseRequest',['../class_custom_tab_widget.html#ab047df5edf541ff8518748e7bb471e0b',1,'CustomTabWidget']]]
 ];

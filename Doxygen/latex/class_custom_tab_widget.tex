@@ -28,10 +28,9 @@ void \mbox{\hyperlink{class_custom_tab_widget_a80eeae2a9ad3eb878bce886a2c3b074a}
 \mbox{\hyperlink{class_text_tab_widget}{Text\+Tab\+Widget}} $\ast$ \mbox{\hyperlink{class_custom_tab_widget_a30a285f721103527e638173a2eb9c9c1}{get\+Current\+Tab\+Widget}} ()
 \begin{DoxyCompactList}\small\item\em Getter. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{class_custom_tab_widget_ab047df5edf541ff8518748e7bb471e0b}{tab\+Close\+Request}} (int index)
-\begin{DoxyCompactList}\small\item\em Whenever something in the current file is changed. \end{DoxyCompactList}\item 
-\mbox{\Hypertarget{class_custom_tab_widget_a070fce24e2342697444bec5ea66ea2bc}\label{class_custom_tab_widget_a070fce24e2342697444bec5ea66ea2bc}} 
-void {\bfseries tab\+Clicked} (int index)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em tab\+Close\+Request \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_custom_tab_widget_a070fce24e2342697444bec5ea66ea2bc}{tab\+Clicked}} (int index)
+\begin{DoxyCompactList}\small\item\em tab\+Clicked \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -89,7 +88,17 @@ This will get the \mbox{\hyperlink{class_text_tab_widget}{Text\+Tab\+Widget}} th
 
 Mouse Event. 
 
-This handles the mouse press event. It is responsible for showing the tab move with the cursor if the user decides to move the tab to another widget. \mbox{\Hypertarget{class_custom_tab_widget_ab047df5edf541ff8518748e7bb471e0b}\label{class_custom_tab_widget_ab047df5edf541ff8518748e7bb471e0b}} 
+This handles the mouse press event. It is responsible for showing the tab move with the cursor if the user decides to move the tab to another widget. \mbox{\Hypertarget{class_custom_tab_widget_a070fce24e2342697444bec5ea66ea2bc}\label{class_custom_tab_widget_a070fce24e2342697444bec5ea66ea2bc}} 
+\index{CustomTabWidget@{CustomTabWidget}!tabClicked@{tabClicked}}
+\index{tabClicked@{tabClicked}!CustomTabWidget@{CustomTabWidget}}
+\doxysubsubsection{\texorpdfstring{tabClicked()}{tabClicked()}}
+{\footnotesize\ttfamily void Custom\+Tab\+Widget\+::tab\+Clicked (\begin{DoxyParamCaption}\item[{int}]{index }\end{DoxyParamCaption})}
+
+
+
+tab\+Clicked 
+
+Whenever this tab is clicked (focused on). \mbox{\Hypertarget{class_custom_tab_widget_ab047df5edf541ff8518748e7bb471e0b}\label{class_custom_tab_widget_ab047df5edf541ff8518748e7bb471e0b}} 
 \index{CustomTabWidget@{CustomTabWidget}!tabCloseRequest@{tabCloseRequest}}
 \index{tabCloseRequest@{tabCloseRequest}!CustomTabWidget@{CustomTabWidget}}
 \doxysubsubsection{\texorpdfstring{tabCloseRequest()}{tabCloseRequest()}}
@@ -97,9 +106,9 @@ This handles the mouse press event. It is responsible for showing the tab move w
 
 
 
-Whenever something in the current file is changed. 
+tab\+Close\+Request 
 
-Adds an asterisk into the tab name so that the user knows that the file is changed. 
+If the tab is closed this is responsible for allowing the user to save before it is closed or stop the close event. 
 
 \doxysubsection{Member Data Documentation}
 \mbox{\Hypertarget{class_custom_tab_widget_a32ff033070f9ba3eb54c388d1ba1e37d}\label{class_custom_tab_widget_a32ff033070f9ba3eb54c388d1ba1e37d}} 

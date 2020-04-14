@@ -228,6 +228,8 @@
    <addaction name="separator"/>
    <addaction name="actionPaste_5"/>
    <addaction name="actionCut"/>
+   <addaction name="actionCopy"/>
+   <addaction name="separator"/>
    <addaction name="actionPrint"/>
    <addaction name="separator"/>
    <addaction name="actionAlign_Left"/>

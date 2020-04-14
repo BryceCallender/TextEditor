@@ -48,7 +48,6 @@ void CustomTabBar::dropEvent(QDropEvent *event)
     int indexToInsert = count() - 1;
     parent->insertTab(indexToInsert, newTab, "New Tab");
     setTabText(indexToInsert, testTabData.tabName);
-    newTab->setSyntaxHighlighter(testTabData.highlighter);
     newTab->setTabsFileName(testTabData.filePath);
     setCurrentIndex(indexToInsert);
 

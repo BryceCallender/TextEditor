@@ -1,7 +1,7 @@
 <map id="CodeSyntaxHighlighter" name="CodeSyntaxHighlighter">
 <area shape="rect" id="node1" title="A syntax highlighter for class specific keywords." alt="" coords="263,131,496,384"/>
 <area shape="rect" id="node3" href="$class_c_p_p_syntax_highlighter.html" title="A syntax highlighter for the language of C++." alt="" coords="5,432,239,524"/>
-<area shape="rect" id="node4" href="$class_java_syntax_highlighter.html" title=" " alt="" coords="263,432,496,524"/>
-<area shape="rect" id="node5" href="$class_python_syntax_highlighter.html" title=" " alt="" coords="520,432,753,524"/>
+<area shape="rect" id="node4" href="$class_java_syntax_highlighter.html" title="A syntax highlighter for the language of Java." alt="" coords="263,432,496,524"/>
+<area shape="rect" id="node5" href="$class_python_syntax_highlighter.html" title="A syntax highlighter for the language of Python." alt="" coords="520,432,753,524"/>
 <area shape="rect" id="node2" title=" " alt="" coords="312,5,447,83"/>
 </map>

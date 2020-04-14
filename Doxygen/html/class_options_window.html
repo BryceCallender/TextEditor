@@ -63,18 +63,25 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-slots">Private Slots</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_options_window-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">OptionsWindow Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Settings Window for the Editor.  
+ <a href="class_options_window.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="optionswindow_8h_source.html">optionswindow.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for OptionsWindow:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_options_window__inherit__graph.png" border="0" usemap="#_options_window_inherit__map" alt="Inheritance graph"/></div>
 <map name="_options_window_inherit__map" id="_options_window_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,131,147,223"/>
-<area shape="rect" title=" " alt="" coords="42,5,110,83"/>
+<area shape="rect" title="Settings Window for the Editor." alt="" coords="5,131,208,399"/>
+<area shape="rect" title=" " alt="" coords="73,5,141,83"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -86,8 +93,46 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a034c885fe8bb4416e732a9571d14a6b4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#a034c885fe8bb4416e732a9571d14a6b4">~OptionsWindow</a> ()</td></tr>
 <tr class="memdesc:a034c885fe8bb4416e732a9571d14a6b4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="class_options_window.html#a034c885fe8bb4416e732a9571d14a6b4">More...</a><br /></td></tr>
 <tr class="separator:a034c885fe8bb4416e732a9571d14a6b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-slots"></a>
+Private Slots</h2></td></tr>
+<tr class="memitem:a14272795b191d49f26ee5a08e69fdcca"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#a14272795b191d49f26ee5a08e69fdcca">on_treeWidget_itemClicked</a> (QTreeWidgetItem *item, int column)</td></tr>
+<tr class="memdesc:a14272795b191d49f26ee5a08e69fdcca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Item Clicked Slot.  <a href="class_options_window.html#a14272795b191d49f26ee5a08e69fdcca">More...</a><br /></td></tr>
+<tr class="separator:a14272795b191d49f26ee5a08e69fdcca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa99079baa497b3d41bd0d91e79398c4a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#aa99079baa497b3d41bd0d91e79398c4a">on_OptionsWindow_rejected</a> ()</td></tr>
+<tr class="memdesc:aa99079baa497b3d41bd0d91e79398c4a"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_options_window.html" title="Settings Window for the Editor.">OptionsWindow</a> Closed slot.  <a href="class_options_window.html#aa99079baa497b3d41bd0d91e79398c4a">More...</a><br /></td></tr>
+<tr class="separator:aa99079baa497b3d41bd0d91e79398c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a8347442d5b3b670e8fff0c4102db1f88"><td class="memItemLeft" align="right" valign="top"><a id="a8347442d5b3b670e8fff0c4102db1f88"></a>
+<a class="el" href="class_ui_1_1_options_window.html">Ui::OptionsWindow</a> *&#160;</td><td class="memItemRight" valign="bottom"><b>ui</b></td></tr>
+<tr class="separator:a8347442d5b3b670e8fff0c4102db1f88"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeb989c911edb4f484ca1d4c748d2450"><td class="memItemLeft" align="right" valign="top">QVBoxLayout *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#adeb989c911edb4f484ca1d4c748d2450">textSettingsLayout</a></td></tr>
+<tr class="separator:adeb989c911edb4f484ca1d4c748d2450"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1ed209c8e6c7ce0a07c01c9de3ca84ac"><td class="memItemLeft" align="right" valign="top">QVBoxLayout *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#a1ed209c8e6c7ce0a07c01c9de3ca84ac">codeSettingsLayout</a></td></tr>
+<tr class="separator:a1ed209c8e6c7ce0a07c01c9de3ca84ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38f3d6fc23e9832778516dc2d4fb4c72"><td class="memItemLeft" align="right" valign="top">QFontComboBox *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#a38f3d6fc23e9832778516dc2d4fb4c72">fontFamilyComboBox</a></td></tr>
+<tr class="separator:a38f3d6fc23e9832778516dc2d4fb4c72"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2dd9790c2e6b38d449260651899d3e3"><td class="memItemLeft" align="right" valign="top">QSpinBox *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#aa2dd9790c2e6b38d449260651899d3e3">fontSizeSpinbox</a></td></tr>
+<tr class="separator:aa2dd9790c2e6b38d449260651899d3e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae4efd530c057916cd857fdbf82a85168"><td class="memItemLeft" align="right" valign="top">QSpinBox *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#ae4efd530c057916cd857fdbf82a85168">textTabLengthSpinbox</a></td></tr>
+<tr class="separator:ae4efd530c057916cd857fdbf82a85168"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a493150644edde53b4f7c0dee5f58363e"><td class="memItemLeft" align="right" valign="top">QColorDialog *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#a493150644edde53b4f7c0dee5f58363e">javaColorPicker</a></td></tr>
+<tr class="separator:a493150644edde53b4f7c0dee5f58363e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab3416937002937feba83d0ead6dce8cb"><td class="memItemLeft" align="right" valign="top">QColorDialog *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#ab3416937002937feba83d0ead6dce8cb">cppColorPicker</a></td></tr>
+<tr class="separator:ab3416937002937feba83d0ead6dce8cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac74e7fc1df0f0c89f098deaf0830d782"><td class="memItemLeft" align="right" valign="top">QColorDialog *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#ac74e7fc1df0f0c89f098deaf0830d782">pythonColorPicker</a></td></tr>
+<tr class="separator:ac74e7fc1df0f0c89f098deaf0830d782"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60a73a14694f95e8f4211237753b6ec8"><td class="memItemLeft" align="right" valign="top">QSpinBox *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#a60a73a14694f95e8f4211237753b6ec8">codeTabLengthSpinBox</a></td></tr>
+<tr class="separator:a60a73a14694f95e8f4211237753b6ec8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a916d20a6154feee640e0e2c070c4c186"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_settings_manager.html">SettingsManager</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_options_window.html#a916d20a6154feee640e0e2c070c4c186">settings</a></td></tr>
+<tr class="separator:a916d20a6154feee640e0e2c070c4c186"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Settings Window for the Editor. </p>
+<p>This is where the user can set things such as default font size, or the coloring of the syntax highlighters. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a449c0121a7519c281796d5bea8c965c3"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a449c0121a7519c281796d5bea8c965c3">&#9670;&nbsp;</a></span>OptionsWindow()</h2>
 
@@ -134,6 +179,305 @@ Public Member Functions</h2></td></tr>
 
 <p>Destructor. </p>
 <p>The destructor will save the settings that the window has in each spot and then free up the resources that need to be freed. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a id="aa99079baa497b3d41bd0d91e79398c4a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa99079baa497b3d41bd0d91e79398c4a">&#9670;&nbsp;</a></span>on_OptionsWindow_rejected</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OptionsWindow::on_OptionsWindow_rejected </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p><a class="el" href="class_options_window.html" title="Settings Window for the Editor.">OptionsWindow</a> Closed slot. </p>
+<p>The window has been requested to close. This will update Code Specific settings such as updating language specific keywords to the new colors. </p>
+
+</div>
+</div>
+<a id="a14272795b191d49f26ee5a08e69fdcca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a14272795b191d49f26ee5a08e69fdcca">&#9670;&nbsp;</a></span>on_treeWidget_itemClicked</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OptionsWindow::on_treeWidget_itemClicked </td>
+          <td>(</td>
+          <td class="paramtype">QTreeWidgetItem *&#160;</td>
+          <td class="paramname"><em>item</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>column</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span><span class="mlabel">slot</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Item Clicked Slot. </p>
+<p>This will fire when a user clicks on the tree view items. It will auto focus and show the option if it iis out of view. </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="a1ed209c8e6c7ce0a07c01c9de3ca84ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1ed209c8e6c7ce0a07c01c9de3ca84ac">&#9670;&nbsp;</a></span>codeSettingsLayout</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVBoxLayout* OptionsWindow::codeSettingsLayout</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vertical Layout of the Code Editor settings. </p>
+
+</div>
+</div>
+<a id="a60a73a14694f95e8f4211237753b6ec8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60a73a14694f95e8f4211237753b6ec8">&#9670;&nbsp;</a></span>codeTabLengthSpinBox</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QSpinBox* OptionsWindow::codeTabLengthSpinBox</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default length of a tab when writing code. </p>
+
+</div>
+</div>
+<a id="ab3416937002937feba83d0ead6dce8cb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab3416937002937feba83d0ead6dce8cb">&#9670;&nbsp;</a></span>cppColorPicker</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QColorDialog* OptionsWindow::cppColorPicker</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default color for C++ keywords. </p>
+
+</div>
+</div>
+<a id="a38f3d6fc23e9832778516dc2d4fb4c72"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38f3d6fc23e9832778516dc2d4fb4c72">&#9670;&nbsp;</a></span>fontFamilyComboBox</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QFontComboBox* OptionsWindow::fontFamilyComboBox</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default font family when writing text documents. </p>
+
+</div>
+</div>
+<a id="aa2dd9790c2e6b38d449260651899d3e3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa2dd9790c2e6b38d449260651899d3e3">&#9670;&nbsp;</a></span>fontSizeSpinbox</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QSpinBox* OptionsWindow::fontSizeSpinbox</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default Font size when writing text documents. </p>
+
+</div>
+</div>
+<a id="a493150644edde53b4f7c0dee5f58363e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a493150644edde53b4f7c0dee5f58363e">&#9670;&nbsp;</a></span>javaColorPicker</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QColorDialog* OptionsWindow::javaColorPicker</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default color for Java keywords. </p>
+
+</div>
+</div>
+<a id="ac74e7fc1df0f0c89f098deaf0830d782"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac74e7fc1df0f0c89f098deaf0830d782">&#9670;&nbsp;</a></span>pythonColorPicker</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QColorDialog* OptionsWindow::pythonColorPicker</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default color for Python keywords. </p>
+
+</div>
+</div>
+<a id="a916d20a6154feee640e0e2c070c4c186"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a916d20a6154feee640e0e2c070c4c186">&#9670;&nbsp;</a></span>settings</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_settings_manager.html">SettingsManager</a>* OptionsWindow::settings</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Reference to the <a class="el" href="class_settings_manager.html" title="Manages user settings for this application.">SettingsManager</a> singleton class. </p>
+
+</div>
+</div>
+<a id="adeb989c911edb4f484ca1d4c748d2450"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeb989c911edb4f484ca1d4c748d2450">&#9670;&nbsp;</a></span>textSettingsLayout</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QVBoxLayout* OptionsWindow::textSettingsLayout</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Vertical Layout of the Text Editor settings. </p>
+
+</div>
+</div>
+<a id="ae4efd530c057916cd857fdbf82a85168"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae4efd530c057916cd857fdbf82a85168">&#9670;&nbsp;</a></span>textTabLengthSpinbox</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">QSpinBox* OptionsWindow::textTabLengthSpinbox</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Default length of a tab when writing text documents. </p>
 
 </div>
 </div>

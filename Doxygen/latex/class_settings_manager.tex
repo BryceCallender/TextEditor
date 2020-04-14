@@ -1,27 +1,112 @@
 \hypertarget{class_settings_manager}{}\doxysection{Settings\+Manager Class Reference}
 \label{class_settings_manager}\index{SettingsManager@{SettingsManager}}
+
+
+Manages user settings for this application.  
+
+
+
+
+{\ttfamily \#include $<$settingsmanager.\+h$>$}
+
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_settings_manager_ac666cd35e1136facad31de99a6c44bd3}\label{class_settings_manager_ac666cd35e1136facad31de99a6c44bd3}} 
-void {\bfseries load\+Settings} ()
-\item 
-\mbox{\Hypertarget{class_settings_manager_ab58d13c6d172b64182706bc353b58ec7}\label{class_settings_manager_ab58d13c6d172b64182706bc353b58ec7}} 
-void {\bfseries save\+Settings} ()
-\item 
-\mbox{\Hypertarget{class_settings_manager_a15df182754a70e0e4e2e96979b26639c}\label{class_settings_manager_a15df182754a70e0e4e2e96979b26639c}} 
-Q\+Variant {\bfseries get\+Value} (const Q\+String \&key)
-\item 
-\mbox{\Hypertarget{class_settings_manager_a52e05231d48e1373795009a4ff6f2852}\label{class_settings_manager_a52e05231d48e1373795009a4ff6f2852}} 
-void {\bfseries save\+Value} (const Q\+String \&group\+Name, const Q\+String \&name, Q\+Variant data)
-\end{DoxyCompactItemize}
+Q\+Variant \mbox{\hyperlink{class_settings_manager_a15df182754a70e0e4e2e96979b26639c}{get\+Value}} (const Q\+String \&key)
+\begin{DoxyCompactList}\small\item\em Saved Value Retrieval. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_settings_manager_a52e05231d48e1373795009a4ff6f2852}{save\+Value}} (const Q\+String \&group\+Name, const Q\+String \&name, Q\+Variant data)
+\begin{DoxyCompactList}\small\item\em Save. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Static Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{class_settings_manager_abb1d691e7fade2222b01d0bd65fbfd99}\label{class_settings_manager_abb1d691e7fade2222b01d0bd65fbfd99}} 
-static \mbox{\hyperlink{class_settings_manager}{Settings\+Manager}} $\ast$ {\bfseries get\+Instance} ()
+static \mbox{\hyperlink{class_settings_manager}{Settings\+Manager}} $\ast$ \mbox{\hyperlink{class_settings_manager_abb1d691e7fade2222b01d0bd65fbfd99}{get\+Instance}} ()
+\begin{DoxyCompactList}\small\item\em Singleton Instance. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+Q\+Settings $\ast$ \mbox{\hyperlink{class_settings_manager_af309d26a887a9c9463effadc056d1083}{settings}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static bool \mbox{\hyperlink{class_settings_manager_a39a193c5632ff0ae372ef87c79cb91fc}{created}} = false
+\item 
+static \mbox{\hyperlink{class_settings_manager}{Settings\+Manager}} $\ast$ \mbox{\hyperlink{class_settings_manager_a70fb547f91d329638ad9b122b9d7d818}{instance}} = nullptr
 \end{DoxyCompactItemize}
 
+
+\doxysubsection{Detailed Description}
+Manages user settings for this application. 
+
+This class is responsible for displaying and saving the users preferences. It is a singleton class structure 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_settings_manager_abb1d691e7fade2222b01d0bd65fbfd99}\label{class_settings_manager_abb1d691e7fade2222b01d0bd65fbfd99}} 
+\index{SettingsManager@{SettingsManager}!getInstance@{getInstance}}
+\index{getInstance@{getInstance}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{getInstance()}{getInstance()}}
+{\footnotesize\ttfamily static \mbox{\hyperlink{class_settings_manager}{Settings\+Manager}}$\ast$ Settings\+Manager\+::get\+Instance (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+Singleton Instance. 
+
+Manages creating and grabbing of the singleton instance \mbox{\Hypertarget{class_settings_manager_a15df182754a70e0e4e2e96979b26639c}\label{class_settings_manager_a15df182754a70e0e4e2e96979b26639c}} 
+\index{SettingsManager@{SettingsManager}!getValue@{getValue}}
+\index{getValue@{getValue}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{getValue()}{getValue()}}
+{\footnotesize\ttfamily Q\+Variant Settings\+Manager\+::get\+Value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{key }\end{DoxyParamCaption})}
+
+
+
+Saved Value Retrieval. 
+
+Retrieves the value associated with the key 
+\begin{DoxyParams}{Parameters}
+{\em key} & the key to search for and return its value as a Q\+Variant \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{class_settings_manager_a52e05231d48e1373795009a4ff6f2852}\label{class_settings_manager_a52e05231d48e1373795009a4ff6f2852}} 
+\index{SettingsManager@{SettingsManager}!saveValue@{saveValue}}
+\index{saveValue@{saveValue}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{saveValue()}{saveValue()}}
+{\footnotesize\ttfamily void Settings\+Manager\+::save\+Value (\begin{DoxyParamCaption}\item[{const Q\+String \&}]{group\+Name,  }\item[{const Q\+String \&}]{name,  }\item[{Q\+Variant}]{data }\end{DoxyParamCaption})}
+
+
+
+Save. 
+
+Saves the specified data in the group and under the key 
+\begin{DoxyParams}{Parameters}
+{\em group\+Name} & The grouping name like /code or /text \\
+\hline
+{\em name} & The name of the key \\
+\hline
+{\em data} & The data to save at the specified group and key \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_settings_manager_a39a193c5632ff0ae372ef87c79cb91fc}\label{class_settings_manager_a39a193c5632ff0ae372ef87c79cb91fc}} 
+\index{SettingsManager@{SettingsManager}!created@{created}}
+\index{created@{created}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{created}{created}}
+{\footnotesize\ttfamily bool Settings\+Manager\+::created = false\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+If we have created an instance of this class yet. \mbox{\Hypertarget{class_settings_manager_a70fb547f91d329638ad9b122b9d7d818}\label{class_settings_manager_a70fb547f91d329638ad9b122b9d7d818}} 
+\index{SettingsManager@{SettingsManager}!instance@{instance}}
+\index{instance@{instance}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{instance}{instance}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_settings_manager}{Settings\+Manager}} $\ast$ Settings\+Manager\+::instance = nullptr\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+Singleton instance to allow querying the class. \mbox{\Hypertarget{class_settings_manager_af309d26a887a9c9463effadc056d1083}\label{class_settings_manager_af309d26a887a9c9463effadc056d1083}} 
+\index{SettingsManager@{SettingsManager}!settings@{settings}}
+\index{settings@{settings}!SettingsManager@{SettingsManager}}
+\doxysubsubsection{\texorpdfstring{settings}{settings}}
+{\footnotesize\ttfamily Q\+Settings$\ast$ Settings\+Manager\+::settings\hspace{0.3cm}{\ttfamily [private]}}
+
+Q\+Settings is how we do crossplatform saving. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

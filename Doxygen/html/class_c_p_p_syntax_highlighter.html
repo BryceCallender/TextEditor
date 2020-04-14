@@ -63,7 +63,7 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#friends">Friends</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_c_p_p_syntax_highlighter-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">CPPSyntaxHighlighter Class Reference</div>  </div>
@@ -104,14 +104,10 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a2841d9a147d45978504e1fb1f496beac inherit pub_methods_class_code_syntax_highlighter"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the amount of rules for this highlighter.  <a href="class_code_syntax_highlighter.html#a2841d9a147d45978504e1fb1f496beac">More...</a><br /></td></tr>
 <tr class="separator:a2841d9a147d45978504e1fb1f496beac inherit pub_methods_class_code_syntax_highlighter"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
-Friends</h2></td></tr>
-<tr class="memitem:a91f8bb75cc49a825e4fa5deb41f198bb"><td class="memItemLeft" align="right" valign="top">QDataStream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_p_p_syntax_highlighter.html#a91f8bb75cc49a825e4fa5deb41f198bb">operator&gt;&gt;</a> (QDataStream &amp;in, <a class="el" href="class_c_p_p_syntax_highlighter.html">CPPSyntaxHighlighter</a> &amp;highlighterData)</td></tr>
-<tr class="memdesc:a91f8bb75cc49a825e4fa5deb41f198bb"><td class="mdescLeft">&#160;</td><td class="mdescRight">DataStream extractor for mimedata retrieval of the class <a class="el" href="class_code_syntax_highlighter.html" title="A syntax highlighter for class specific keywords.">CodeSyntaxHighlighter</a>.  <a href="class_c_p_p_syntax_highlighter.html#a91f8bb75cc49a825e4fa5deb41f198bb">More...</a><br /></td></tr>
-<tr class="separator:a91f8bb75cc49a825e4fa5deb41f198bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06d8d05c2c4a9237f49992675fab197b"><td class="memItemLeft" align="right" valign="top">QDataStream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_p_p_syntax_highlighter.html#a06d8d05c2c4a9237f49992675fab197b">operator&lt;&lt;</a> (QDataStream &amp;out, <a class="el" href="class_c_p_p_syntax_highlighter.html">CPPSyntaxHighlighter</a> &amp;highlighterData)</td></tr>
-<tr class="memdesc:a06d8d05c2c4a9237f49992675fab197b"><td class="mdescLeft">&#160;</td><td class="mdescRight">DataStream insert for mimedata storage of the class <a class="el" href="class_code_syntax_highlighter.html" title="A syntax highlighter for class specific keywords.">CodeSyntaxHighlighter</a>.  <a href="class_c_p_p_syntax_highlighter.html#a06d8d05c2c4a9237f49992675fab197b">More...</a><br /></td></tr>
-<tr class="separator:a06d8d05c2c4a9237f49992675fab197b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:abc08537709fd3505b81ea771d8e68442"><td class="memItemLeft" align="right" valign="top">QTextCharFormat&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_c_p_p_syntax_highlighter.html#abc08537709fd3505b81ea771d8e68442">newAndDeleteFormat</a></td></tr>
+<tr class="separator:abc08537709fd3505b81ea771d8e68442"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
@@ -141,11 +137,7 @@ Additional Inherited Members</h2></td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>A syntax highlighter for the language of C++. </p>
-<p>A syntax highlighter for the language of Python.</p>
-<p>A syntax highlighter for the language of Java.</p>
-<p>This is a concrete implementation of the <a class="el" href="class_code_syntax_highlighter.html" title="A syntax highlighter for class specific keywords.">CodeSyntaxHighlighter</a> class for the language of C++.</p>
-<p>This is a concrete implementation of the <a class="el" href="class_code_syntax_highlighter.html" title="A syntax highlighter for class specific keywords.">CodeSyntaxHighlighter</a> class for the language of Java.</p>
-<p>This is a concrete implementation of the <a class="el" href="class_code_syntax_highlighter.html" title="A syntax highlighter for class specific keywords.">CodeSyntaxHighlighter</a> class for the language of Python. </p>
+<p>This is a concrete implementation of the <a class="el" href="class_code_syntax_highlighter.html" title="A syntax highlighter for class specific keywords.">CodeSyntaxHighlighter</a> class for the language of C++. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a144417245e66634ec47f547366a41272"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a144417245e66634ec47f547366a41272">&#9670;&nbsp;</a></span>CPPSyntaxHighlighter()</h2>
@@ -207,9 +199,9 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<h2 class="groupheader">Friends And Related Function Documentation</h2>
-<a id="a06d8d05c2c4a9237f49992675fab197b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06d8d05c2c4a9237f49992675fab197b">&#9670;&nbsp;</a></span>operator&lt;&lt;</h2>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a id="abc08537709fd3505b81ea771d8e68442"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc08537709fd3505b81ea771d8e68442">&#9670;&nbsp;</a></span>newAndDeleteFormat</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -218,83 +210,16 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">QDataStream&amp; operator&lt;&lt; </td>
-          <td>(</td>
-          <td class="paramtype">QDataStream &amp;&#160;</td>
-          <td class="paramname"><em>out</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_c_p_p_syntax_highlighter.html">CPPSyntaxHighlighter</a> &amp;&#160;</td>
-          <td class="paramname"><em>highlighterData</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
+          <td class="memname">QTextCharFormat CPPSyntaxHighlighter::newAndDeleteFormat</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-
-<p>DataStream insert for mimedata storage of the class <a class="el" href="class_code_syntax_highlighter.html" title="A syntax highlighter for class specific keywords.">CodeSyntaxHighlighter</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">in</td><td>data stream that will be reading in the data. </td></tr>
-    <tr><td class="paramname">highlighterData</td><td>the syntax highlighter data that will be written to the stream in bytes. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a id="a91f8bb75cc49a825e4fa5deb41f198bb"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a91f8bb75cc49a825e4fa5deb41f198bb">&#9670;&nbsp;</a></span>operator&gt;&gt;</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">QDataStream&amp; operator&gt;&gt; </td>
-          <td>(</td>
-          <td class="paramtype">QDataStream &amp;&#160;</td>
-          <td class="paramname"><em>in</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype"><a class="el" href="class_c_p_p_syntax_highlighter.html">CPPSyntaxHighlighter</a> &amp;&#160;</td>
-          <td class="paramname"><em>highlighterData</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>DataStream extractor for mimedata retrieval of the class <a class="el" href="class_code_syntax_highlighter.html" title="A syntax highlighter for class specific keywords.">CodeSyntaxHighlighter</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">in</td><td>data stream that will be reading in the data. </td></tr>
-    <tr><td class="paramname">highlighterData</td><td>the syntax highlighter that will be populated with the stream data. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>The formatting for when the keyword 'new' or 'delete' is found. </p>
 
 </div>
 </div>
