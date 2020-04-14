@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['singlelinecommentformat_149',['singleLineCommentFormat',['../class_code_syntax_highlighter.html#a227d614b1c2dddfbf5950785a8b4f988',1,'CodeSyntaxHighlighter']]]
+  ['multilinecommentformat_239',['multiLineCommentFormat',['../class_code_syntax_highlighter.html#a3dfa60803275d12e4fcc44f535d38c49',1,'CodeSyntaxHighlighter']]]
 ];

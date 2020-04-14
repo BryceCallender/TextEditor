@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['multilinecommentformat_147',['multiLineCommentFormat',['../class_code_syntax_highlighter.html#a3dfa60803275d12e4fcc44f535d38c49',1,'CodeSyntaxHighlighter']]]
+  ['javacolorpicker_237',['javaColorPicker',['../class_options_window.html#a493150644edde53b4f7c0dee5f58363e',1,'OptionsWindow']]]
 ];

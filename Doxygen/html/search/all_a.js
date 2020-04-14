@@ -1,13 +1,8 @@
 var searchData=
 [
-  ['qt_5fmeta_5fstringdata_5fcodesyntaxhighligher_5ft_35',['qt_meta_stringdata_CodeSyntaxHighligher_t',['../structqt__meta__stringdata___code_syntax_highligher__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fcodesyntaxhighlighter_5ft_36',['qt_meta_stringdata_CodeSyntaxHighlighter_t',['../structqt__meta__stringdata___code_syntax_highlighter__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fmainwindow_5ft_37',['qt_meta_stringdata_MainWindow_t',['../structqt__meta__stringdata___main_window__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5foptionswindow_5ft_38',['qt_meta_stringdata_OptionsWindow_t',['../structqt__meta__stringdata___options_window__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fsearcherandreplacer_5ft_39',['qt_meta_stringdata_SearcherAndReplacer_t',['../structqt__meta__stringdata___searcher_and_replacer__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fsearchhighlighter_5ft_40',['qt_meta_stringdata_SearchHighlighter_t',['../structqt__meta__stringdata___search_highlighter__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fspecialcontextmenu_5ft_41',['qt_meta_stringdata_SpecialContextMenu_t',['../structqt__meta__stringdata___special_context_menu__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5fspeciallineedit_5ft_42',['qt_meta_stringdata_SpecialLineEdit_t',['../structqt__meta__stringdata___special_line_edit__t.html',1,'']]],
-  ['qt_5fmeta_5fstringdata_5ftexttabwidget_5ft_43',['qt_meta_stringdata_TextTabWidget_t',['../structqt__meta__stringdata___text_tab_widget__t.html',1,'']]],
-  ['quotationformat_44',['quotationFormat',['../class_code_syntax_highlighter.html#abed1a2e9896db53116f583276f289e8d',1,'CodeSyntaxHighlighter']]]
+  ['parent_74',['parent',['../class_custom_tab_bar.html#a0d3dc9b7291c90224a619d148673494f',1,'CustomTabBar']]],
+  ['pastemenu_75',['pasteMenu',['../class_main_window.html#a12cd053eee9760d581caa3e68a7f0a74',1,'MainWindow']]],
+  ['populateallexpressionmatchesandmovetofirst_76',['populateAllExpressionMatchesAndMoveToFirst',['../class_searcher_and_replacer.html#ac2da8912b4691ec518d393ef675e1b8f',1,'SearcherAndReplacer']]],
+  ['pythoncolorpicker_77',['pythonColorPicker',['../class_options_window.html#ac74e7fc1df0f0c89f098deaf0830d782',1,'OptionsWindow']]],
+  ['pythonsyntaxhighlighter_78',['PythonSyntaxHighlighter',['../class_python_syntax_highlighter.html',1,'PythonSyntaxHighlighter'],['../class_python_syntax_highlighter.html#af59fcdfb563aa925a8c8e3fc24b60cc1',1,'PythonSyntaxHighlighter::PythonSyntaxHighlighter()']]]
 ];

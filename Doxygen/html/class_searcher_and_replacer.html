@@ -63,6 +63,8 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_searcher_and_replacer-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">SearcherAndReplacer Class Reference</div>  </div>
@@ -78,7 +80,7 @@ Inheritance diagram for SearcherAndReplacer:</div>
 <div class="dyncontent">
 <div class="center"><img src="class_searcher_and_replacer__inherit__graph.png" border="0" usemap="#_searcher_and_replacer_inherit__map" alt="Inheritance graph"/></div>
 <map name="_searcher_and_replacer_inherit__map" id="_searcher_and_replacer_inherit__map">
-<area shape="rect" title="Find and Replace functionality." alt="" coords="5,131,219,355"/>
+<area shape="rect" title="Find and Replace functionality." alt="" coords="5,131,219,428"/>
 <area shape="rect" title=" " alt="" coords="75,5,149,83"/>
 </map>
 </div>
@@ -115,6 +117,30 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4676505ef9d316f5039735a71f8fd2d0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_searcher_and_replacer.html#a4676505ef9d316f5039735a71f8fd2d0">setResultsText</a> ()</td></tr>
 <tr class="memdesc:a4676505ef9d316f5039735a71f8fd2d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor.  <a href="class_searcher_and_replacer.html#a4676505ef9d316f5039735a71f8fd2d0">More...</a><br /></td></tr>
 <tr class="separator:a4676505ef9d316f5039735a71f8fd2d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:abca343e436a9433e995270b66df6fa07"><td class="memItemLeft" align="right" valign="top"><a id="abca343e436a9433e995270b66df6fa07"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>moveCursorToOccurence</b> (QRegularExpressionMatch &amp;match)</td></tr>
+<tr class="separator:abca343e436a9433e995270b66df6fa07"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ad530fb06491f03a924abf6f4d2be83ea"><td class="memItemLeft" align="right" valign="top"><a id="ad530fb06491f03a924abf6f4d2be83ea"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><b>currentIndex</b></td></tr>
+<tr class="separator:ad530fb06491f03a924abf6f4d2be83ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7b5cabe6efb9f2f3a3508e4fdaa12b03"><td class="memItemLeft" align="right" valign="top"><a id="a7b5cabe6efb9f2f3a3508e4fdaa12b03"></a>
+QTextEdit *&#160;</td><td class="memItemRight" valign="bottom"><b>textEdit</b></td></tr>
+<tr class="separator:a7b5cabe6efb9f2f3a3508e4fdaa12b03"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8115e710022088b89d43fa0b6e38f827"><td class="memItemLeft" align="right" valign="top"><a id="a8115e710022088b89d43fa0b6e38f827"></a>
+QLabel *&#160;</td><td class="memItemRight" valign="bottom"><b>resultsLabel</b></td></tr>
+<tr class="separator:a8115e710022088b89d43fa0b6e38f827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a533358c30a041416b4b4261ffd13721d"><td class="memItemLeft" align="right" valign="top"><a id="a533358c30a041416b4b4261ffd13721d"></a>
+QRegularExpression&#160;</td><td class="memItemRight" valign="bottom"><b>pattern</b></td></tr>
+<tr class="separator:a533358c30a041416b4b4261ffd13721d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a452d8c94ab0d0a34069ae2251bc23853"><td class="memItemLeft" align="right" valign="top"><a id="a452d8c94ab0d0a34069ae2251bc23853"></a>
+QVector&lt; QRegularExpressionMatch &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>textMatches</b></td></tr>
+<tr class="separator:a452d8c94ab0d0a34069ae2251bc23853"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Find and Replace functionality. </p>

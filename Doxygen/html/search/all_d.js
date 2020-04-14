@@ -1,11 +1,15 @@
 var searchData=
 [
-  ['tabclicked_59',['tabClicked',['../class_custom_tab_widget.html#a070fce24e2342697444bec5ea66ea2bc',1,'CustomTabWidget']]],
-  ['tabcloserequest_60',['tabCloseRequest',['../class_custom_tab_widget.html#ab047df5edf541ff8518748e7bb471e0b',1,'CustomTabWidget']]],
-  ['tabindex_61',['tabIndex',['../class_custom_tab_widget.html#afa68bc7dd5e8705960f0e67e980ef7b0',1,'CustomTabWidget']]],
-  ['tabparent_62',['tabParent',['../class_custom_tab_widget.html#a04abe786a0231330923b2cba70459cc1',1,'CustomTabWidget']]],
-  ['tabremoving_63',['tabRemoving',['../class_custom_tab_widget.html#abf53960945eee52f3e623945a959578f',1,'CustomTabWidget']]],
-  ['tabtransferdata_64',['TabTransferData',['../struct_tab_transfer_data.html',1,'']]],
-  ['tabwidgetindex_65',['tabWidgetIndex',['../class_custom_tab_widget.html#adef5a047b4cea79cf495d8b252ee66c4',1,'CustomTabWidget']]],
-  ['texttabwidget_66',['TextTabWidget',['../class_text_tab_widget.html',1,'']]]
+  ['save_94',['save',['../class_main_window.html#a3ba1a371fb10e731ae0926ae85efeb4f',1,'MainWindow']]],
+  ['savedcopy_95',['savedCopy',['../class_main_window.html#a021e47800f98119b6de35d1939a39bb8',1,'MainWindow']]],
+  ['searcherandreplacer_96',['SearcherAndReplacer',['../class_searcher_and_replacer.html',1,'SearcherAndReplacer'],['../class_searcher_and_replacer.html#a70eeac13f442d8b8d5dd47d45363d38d',1,'SearcherAndReplacer::SearcherAndReplacer()']]],
+  ['searchhighlighter_97',['SearchHighlighter',['../class_search_highlighter.html',1,'']]],
+  ['setresultstext_98',['setResultsText',['../class_searcher_and_replacer.html#a4676505ef9d316f5039735a71f8fd2d0',1,'SearcherAndReplacer']]],
+  ['settings_99',['settings',['../class_main_window.html#a59aea5e2683cfbb1654d436c8e780aa0',1,'MainWindow::settings()'],['../class_options_window.html#a916d20a6154feee640e0e2c070c4c186',1,'OptionsWindow::settings()']]],
+  ['settingsmanager_100',['SettingsManager',['../class_settings_manager.html',1,'']]],
+  ['showcontextmenu_101',['showContextMenu',['../class_main_window.html#a7bc0e7a64ef40d62990f389f462848b3',1,'MainWindow']]],
+  ['showcontextpastemenu_102',['showContextPasteMenu',['../class_main_window.html#a4826f4f133f0b238849ccd44251f0faa',1,'MainWindow']]],
+  ['singlelinecommentformat_103',['singleLineCommentFormat',['../class_code_syntax_highlighter.html#a227d614b1c2dddfbf5950785a8b4f988',1,'CodeSyntaxHighlighter']]],
+  ['speciallineedit_104',['SpecialLineEdit',['../class_special_line_edit.html',1,'']]],
+  ['specialtextedit_105',['SpecialTextEdit',['../class_special_text_edit.html',1,'']]]
 ];

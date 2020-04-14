@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['optionswindow_32',['OptionsWindow',['../class_ui_1_1_options_window.html',1,'Ui::OptionsWindow'],['../class_options_window.html',1,'OptionsWindow'],['../class_options_window.html#a449c0121a7519c281796d5bea8c965c3',1,'OptionsWindow::OptionsWindow()']]]
+  ['newanddeleteformat_41',['newAndDeleteFormat',['../class_c_p_p_syntax_highlighter.html#abc08537709fd3505b81ea771d8e68442',1,'CPPSyntaxHighlighter']]],
+  ['numcopies_42',['numCopies',['../class_main_window.html#ad00ad954ca0add640f48cc3aad2e3de4',1,'MainWindow']]]
 ];

@@ -6,7 +6,7 @@ Inheritance diagram for Options\+Window\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=186pt]{class_options_window__inherit__graph}
+\includegraphics[width=232pt]{class_options_window__inherit__graph}
 \end{center}
 \end{figure}
 \doxysubsection*{Public Member Functions}
@@ -16,6 +16,39 @@ Inheritance diagram for Options\+Window\+:\nopagebreak
 \begin{DoxyCompactList}\small\item\em Constructor. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{class_options_window_a034c885fe8bb4416e732a9571d14a6b4}{$\sim$\+Options\+Window}} ()
 \begin{DoxyCompactList}\small\item\em Destructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Slots}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_options_window_a14272795b191d49f26ee5a08e69fdcca}{on\+\_\+tree\+Widget\+\_\+item\+Clicked}} (Q\+Tree\+Widget\+Item $\ast$item, int column)
+\begin{DoxyCompactList}\small\item\em Item Clicked Slot. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_options_window_aa99079baa497b3d41bd0d91e79398c4a}{on\+\_\+\+Options\+Window\+\_\+rejected}} ()
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_options_window}{Options\+Window}} Closed slot. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_options_window_a8347442d5b3b670e8fff0c4102db1f88}\label{class_options_window_a8347442d5b3b670e8fff0c4102db1f88}} 
+\mbox{\hyperlink{class_ui_1_1_options_window}{Ui\+::\+Options\+Window}} $\ast$ {\bfseries ui}
+\item 
+Q\+V\+Box\+Layout $\ast$ \mbox{\hyperlink{class_options_window_adeb989c911edb4f484ca1d4c748d2450}{text\+Settings\+Layout}}
+\item 
+Q\+V\+Box\+Layout $\ast$ \mbox{\hyperlink{class_options_window_a1ed209c8e6c7ce0a07c01c9de3ca84ac}{code\+Settings\+Layout}}
+\item 
+Q\+Font\+Combo\+Box $\ast$ \mbox{\hyperlink{class_options_window_a38f3d6fc23e9832778516dc2d4fb4c72}{font\+Family\+Combo\+Box}}
+\item 
+Q\+Spin\+Box $\ast$ \mbox{\hyperlink{class_options_window_aa2dd9790c2e6b38d449260651899d3e3}{font\+Size\+Spinbox}}
+\item 
+Q\+Spin\+Box $\ast$ \mbox{\hyperlink{class_options_window_ae4efd530c057916cd857fdbf82a85168}{text\+Tab\+Length\+Spinbox}}
+\item 
+Q\+Color\+Dialog $\ast$ \mbox{\hyperlink{class_options_window_a493150644edde53b4f7c0dee5f58363e}{java\+Color\+Picker}}
+\item 
+Q\+Color\+Dialog $\ast$ \mbox{\hyperlink{class_options_window_ab3416937002937feba83d0ead6dce8cb}{cpp\+Color\+Picker}}
+\item 
+Q\+Color\+Dialog $\ast$ \mbox{\hyperlink{class_options_window_ac74e7fc1df0f0c89f098deaf0830d782}{python\+Color\+Picker}}
+\item 
+Q\+Spin\+Box $\ast$ \mbox{\hyperlink{class_options_window_a60a73a14694f95e8f4211237753b6ec8}{code\+Tab\+Length\+Spin\+Box}}
+\item 
+\mbox{\hyperlink{class_settings_manager}{Settings\+Manager}} $\ast$ \mbox{\hyperlink{class_options_window_a916d20a6154feee640e0e2c070c4c186}{settings}}
+\end{DoxyCompactItemize}
 
 
 \doxysubsection{Constructor \& Destructor Documentation}
@@ -40,6 +73,92 @@ This constructor will construct the window and show the user the option window. 
 Destructor. 
 
 The destructor will save the settings that the window has in each spot and then free up the resources that need to be freed. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_options_window_aa99079baa497b3d41bd0d91e79398c4a}\label{class_options_window_aa99079baa497b3d41bd0d91e79398c4a}} 
+\index{OptionsWindow@{OptionsWindow}!on\_OptionsWindow\_rejected@{on\_OptionsWindow\_rejected}}
+\index{on\_OptionsWindow\_rejected@{on\_OptionsWindow\_rejected}!OptionsWindow@{OptionsWindow}}
+\doxysubsubsection{\texorpdfstring{on\_OptionsWindow\_rejected}{on\_OptionsWindow\_rejected}}
+{\footnotesize\ttfamily void Options\+Window\+::on\+\_\+\+Options\+Window\+\_\+rejected (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+\mbox{\hyperlink{class_options_window}{Options\+Window}} Closed slot. 
+
+The window has been requested to close. This will update Code Specific settings such as updating language specific keywords to the new colors. \mbox{\Hypertarget{class_options_window_a14272795b191d49f26ee5a08e69fdcca}\label{class_options_window_a14272795b191d49f26ee5a08e69fdcca}} 
+\index{OptionsWindow@{OptionsWindow}!on\_treeWidget\_itemClicked@{on\_treeWidget\_itemClicked}}
+\index{on\_treeWidget\_itemClicked@{on\_treeWidget\_itemClicked}!OptionsWindow@{OptionsWindow}}
+\doxysubsubsection{\texorpdfstring{on\_treeWidget\_itemClicked}{on\_treeWidget\_itemClicked}}
+{\footnotesize\ttfamily void Options\+Window\+::on\+\_\+tree\+Widget\+\_\+item\+Clicked (\begin{DoxyParamCaption}\item[{Q\+Tree\+Widget\+Item $\ast$}]{item,  }\item[{int}]{column }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}, {\ttfamily [slot]}}
+
+
+
+Item Clicked Slot. 
+
+This will fire when a user clicks on the tree view items. It will auto focus and show the option if it iis out of view. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_options_window_a1ed209c8e6c7ce0a07c01c9de3ca84ac}\label{class_options_window_a1ed209c8e6c7ce0a07c01c9de3ca84ac}} 
+\index{OptionsWindow@{OptionsWindow}!codeSettingsLayout@{codeSettingsLayout}}
+\index{codeSettingsLayout@{codeSettingsLayout}!OptionsWindow@{OptionsWindow}}
+\doxysubsubsection{\texorpdfstring{codeSettingsLayout}{codeSettingsLayout}}
+{\footnotesize\ttfamily Q\+V\+Box\+Layout$\ast$ Options\+Window\+::code\+Settings\+Layout\hspace{0.3cm}{\ttfamily [private]}}
+
+Vertical Layout of the Code Editor settings. \mbox{\Hypertarget{class_options_window_a60a73a14694f95e8f4211237753b6ec8}\label{class_options_window_a60a73a14694f95e8f4211237753b6ec8}} 
+\index{OptionsWindow@{OptionsWindow}!codeTabLengthSpinBox@{codeTabLengthSpinBox}}
+\index{codeTabLengthSpinBox@{codeTabLengthSpinBox}!OptionsWindow@{OptionsWindow}}
+\doxysubsubsection{\texorpdfstring{codeTabLengthSpinBox}{codeTabLengthSpinBox}}
+{\footnotesize\ttfamily Q\+Spin\+Box$\ast$ Options\+Window\+::code\+Tab\+Length\+Spin\+Box\hspace{0.3cm}{\ttfamily [private]}}
+
+Default length of a tab when writing code. \mbox{\Hypertarget{class_options_window_ab3416937002937feba83d0ead6dce8cb}\label{class_options_window_ab3416937002937feba83d0ead6dce8cb}} 
+\index{OptionsWindow@{OptionsWindow}!cppColorPicker@{cppColorPicker}}
+\index{cppColorPicker@{cppColorPicker}!OptionsWindow@{OptionsWindow}}
+\doxysubsubsection{\texorpdfstring{cppColorPicker}{cppColorPicker}}
+{\footnotesize\ttfamily Q\+Color\+Dialog$\ast$ Options\+Window\+::cpp\+Color\+Picker\hspace{0.3cm}{\ttfamily [private]}}
+
+Default color for C++ keywords. \mbox{\Hypertarget{class_options_window_a38f3d6fc23e9832778516dc2d4fb4c72}\label{class_options_window_a38f3d6fc23e9832778516dc2d4fb4c72}} 
+\index{OptionsWindow@{OptionsWindow}!fontFamilyComboBox@{fontFamilyComboBox}}
+\index{fontFamilyComboBox@{fontFamilyComboBox}!OptionsWindow@{OptionsWindow}}
+\doxysubsubsection{\texorpdfstring{fontFamilyComboBox}{fontFamilyComboBox}}
+{\footnotesize\ttfamily Q\+Font\+Combo\+Box$\ast$ Options\+Window\+::font\+Family\+Combo\+Box\hspace{0.3cm}{\ttfamily [private]}}
+
+Default font family when writing text documents. \mbox{\Hypertarget{class_options_window_aa2dd9790c2e6b38d449260651899d3e3}\label{class_options_window_aa2dd9790c2e6b38d449260651899d3e3}} 
+\index{OptionsWindow@{OptionsWindow}!fontSizeSpinbox@{fontSizeSpinbox}}
+\index{fontSizeSpinbox@{fontSizeSpinbox}!OptionsWindow@{OptionsWindow}}
+\doxysubsubsection{\texorpdfstring{fontSizeSpinbox}{fontSizeSpinbox}}
+{\footnotesize\ttfamily Q\+Spin\+Box$\ast$ Options\+Window\+::font\+Size\+Spinbox\hspace{0.3cm}{\ttfamily [private]}}
+
+Default Font size when writing text documents. \mbox{\Hypertarget{class_options_window_a493150644edde53b4f7c0dee5f58363e}\label{class_options_window_a493150644edde53b4f7c0dee5f58363e}} 
+\index{OptionsWindow@{OptionsWindow}!javaColorPicker@{javaColorPicker}}
+\index{javaColorPicker@{javaColorPicker}!OptionsWindow@{OptionsWindow}}
+\doxysubsubsection{\texorpdfstring{javaColorPicker}{javaColorPicker}}
+{\footnotesize\ttfamily Q\+Color\+Dialog$\ast$ Options\+Window\+::java\+Color\+Picker\hspace{0.3cm}{\ttfamily [private]}}
+
+Default color for Java keywords. \mbox{\Hypertarget{class_options_window_ac74e7fc1df0f0c89f098deaf0830d782}\label{class_options_window_ac74e7fc1df0f0c89f098deaf0830d782}} 
+\index{OptionsWindow@{OptionsWindow}!pythonColorPicker@{pythonColorPicker}}
+\index{pythonColorPicker@{pythonColorPicker}!OptionsWindow@{OptionsWindow}}
+\doxysubsubsection{\texorpdfstring{pythonColorPicker}{pythonColorPicker}}
+{\footnotesize\ttfamily Q\+Color\+Dialog$\ast$ Options\+Window\+::python\+Color\+Picker\hspace{0.3cm}{\ttfamily [private]}}
+
+Default color for Python keywords. \mbox{\Hypertarget{class_options_window_a916d20a6154feee640e0e2c070c4c186}\label{class_options_window_a916d20a6154feee640e0e2c070c4c186}} 
+\index{OptionsWindow@{OptionsWindow}!settings@{settings}}
+\index{settings@{settings}!OptionsWindow@{OptionsWindow}}
+\doxysubsubsection{\texorpdfstring{settings}{settings}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_settings_manager}{Settings\+Manager}}$\ast$ Options\+Window\+::settings\hspace{0.3cm}{\ttfamily [private]}}
+
+Reference to the \mbox{\hyperlink{class_settings_manager}{Settings\+Manager}} singleton class. \mbox{\Hypertarget{class_options_window_adeb989c911edb4f484ca1d4c748d2450}\label{class_options_window_adeb989c911edb4f484ca1d4c748d2450}} 
+\index{OptionsWindow@{OptionsWindow}!textSettingsLayout@{textSettingsLayout}}
+\index{textSettingsLayout@{textSettingsLayout}!OptionsWindow@{OptionsWindow}}
+\doxysubsubsection{\texorpdfstring{textSettingsLayout}{textSettingsLayout}}
+{\footnotesize\ttfamily Q\+V\+Box\+Layout$\ast$ Options\+Window\+::text\+Settings\+Layout\hspace{0.3cm}{\ttfamily [private]}}
+
+Vertical Layout of the Text Editor settings. \mbox{\Hypertarget{class_options_window_ae4efd530c057916cd857fdbf82a85168}\label{class_options_window_ae4efd530c057916cd857fdbf82a85168}} 
+\index{OptionsWindow@{OptionsWindow}!textTabLengthSpinbox@{textTabLengthSpinbox}}
+\index{textTabLengthSpinbox@{textTabLengthSpinbox}!OptionsWindow@{OptionsWindow}}
+\doxysubsubsection{\texorpdfstring{textTabLengthSpinbox}{textTabLengthSpinbox}}
+{\footnotesize\ttfamily Q\+Spin\+Box$\ast$ Options\+Window\+::text\+Tab\+Length\+Spinbox\hspace{0.3cm}{\ttfamily [private]}}
+
+Default length of a tab when writing text documents. 
 
 The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
 \item 

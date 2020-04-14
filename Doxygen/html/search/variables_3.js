@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['keywordformat_146',['keywordFormat',['../class_code_syntax_highlighter.html#adf106d53ed0643e38cda97dd04cb2c40',1,'CodeSyntaxHighlighter']]]
+  ['highlightingrules_236',['highlightingRules',['../class_code_syntax_highlighter.html#afb1b1b47dacaa339067889550ea4d444',1,'CodeSyntaxHighlighter']]]
 ];
