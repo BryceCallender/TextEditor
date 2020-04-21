@@ -13,6 +13,8 @@ void CustomDockWidget::closeEvent(QCloseEvent *event)
     QVector<CustomTabWidget*> tabWidget = mainWindow->getTabWidgets();
     int tabIndex = findChild<CustomTabWidget*>()->tabWidgetIndex;
 
+    CustomTabWidget::currentSelectedTabIndex = 0;
+
     int count = 0;
     for(int i = 0; i < tabWidget.at(tabIndex)->count(); i++)
     {
