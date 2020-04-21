@@ -862,8 +862,12 @@ void MainWindow::closeEvent(QCloseEvent *event)
 
     for(int j = 0; j < tabWidgets->size(); j++)
     {
+        CustomTabWidget::currentSelectedTabIndex = j;
+        qDebug() << CustomTabWidget::currentSelectedTabIndex;
         for(int i = 0; i < tabWidgets->at(j)->count(); i++)
         {
+            tabWidgets->at(j)->setCurrentIndex(i);
+            tabWidgets->at(j)->getCurrentTabWidget()->getTextEdit()->setFocus();
             if(tabWidgets->at(j)->tabText(i).back() == '*')
             {
                 QString message, temp;
