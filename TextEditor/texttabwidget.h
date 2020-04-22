@@ -24,6 +24,7 @@
 #include "pythonsyntaxhighlighter.h"
 #include "speciallineedit.h"
 #include "specialtextedit.h"
+#include <QDebug>
 
 
 /*! \class TextTabWidget

@@ -80,8 +80,8 @@ TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
     //Add this layout to the group so that we have a line edit and 2 buttons in this layout
     groupBoxLayout->addLayout(replaceLayout);
 
-    replaceText->hide();
-    replaceCurrentButton->hide();
+    //replaceText->hide();
+    //replaceCurrentButton->hide();
     replaceAllButton->hide();
     regexExplainer->hide();
 
@@ -110,7 +110,7 @@ TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
     QFont currentFont = textEditArea->font();
     currentFont.setFamily(SettingsManager::getInstance()->getValue("text/fontFamily").toString());
     currentFont.setPointSize(SettingsManager::getInstance()->getValue("text/fontSize").toInt());
-    textEditArea->setFont(currentFont);
+    //textEditArea->setFont(currentFont);
 
     //Sets tab length based on the current settings and applies it as well.
     setTabStopDistance(SettingsManager::getInstance()->getValue("text/tabLength").toInt());
@@ -374,7 +374,7 @@ void TextTabWidget::formatChanged(const QTextCharFormat &format)
     {
         QFont font;
         font.setPointSize(mainWindow->get_UI().fontSizeComboBox->currentText().toInt());
-        font.setFamily(textEditArea->fontFamily());
+        //font.setFamily(mainWindow->get_UI().fontComboBox->currentText());
 
         if(mainWindow->get_UI().actionBold->isChecked())
             font.setBold(QFont::Bold);
@@ -388,9 +388,20 @@ void TextTabWidget::formatChanged(const QTextCharFormat &format)
 
     if(format.fontFamily() != NULL)
     {
+        QStringList fontSettings = format.fontFamily().split(",");
+        qDebug() << fontSettings[0];
         if(format.fontFamily() != mainWindow->get_UI().fontComboBox->currentText())
         {
-            int index = mainWindow->get_UI().fontComboBox->findText(format.fontFamily());
+            int index;
+            if(getTabFileName().contains(".txt"))
+            {
+                index = mainWindow->get_UI().fontComboBox->findText(fontSettings[0]);
+            }
+            else
+            {
+                index = mainWindow->get_UI().fontComboBox->findText(format.font().family());
+            }
+
             mainWindow->get_UI().fontComboBox->setCurrentIndex(index);
         }
 

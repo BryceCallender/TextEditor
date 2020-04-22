@@ -28,7 +28,7 @@ OptionsWindow::OptionsWindow(QWidget *parent) :
             this,
             [=](const QFont& value)
             {
-                SettingsManager::getInstance()->saveValue("text", "fontSize", value);
+                SettingsManager::getInstance()->saveValue("text", "fontFamily", value);
             }
     );
 
