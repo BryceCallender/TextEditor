@@ -202,6 +202,7 @@ void CustomTabWidget::tabClicked(int index)
         getCurrentTabWidget()->getTextEdit()->setFocus();
 
     }
+
     QObject::connect(getCurrentTabWidget()->getTextEdit(), &QTextEdit::textChanged, dynamic_cast<MainWindow*>(parentWidget()->parentWidget()), &MainWindow::fileChanged);
 
     qDebug() << "Current tab widget:" << CustomTabWidget::currentSelectedTabIndex;

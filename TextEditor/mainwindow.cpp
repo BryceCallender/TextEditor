@@ -80,8 +80,8 @@ MainWindow::MainWindow(QWidget *parent)
     setGeometry(settings->getValue("ui/geometry").toRect());
 
     //Sets values to the saved settings
-    ui->fontComboBox->setCurrentFont(settings->getValue("text/fontFamily").value<QFont>());
-    ui->fontSizeComboBox->setCurrentText(settings->getValue("text/fontSize").toString());
+//    ui->fontComboBox->setCurrentFont(settings->getValue("text/fontFamily").value<QFont>());
+//    ui->fontSizeComboBox->setCurrentText(settings->getValue("text/fontSize").toString());
 
     // create shortcut
     QShortcut *saveShortcut = new QShortcut(QKeySequence::Save, this);
@@ -170,6 +170,13 @@ void MainWindow::on_actionOpen_triggered()
             textTabWidget->getTextEdit()->setText(text);
         }
 
+        if(textTabWidget->getSyntaxHighlighter() != nullptr)
+        {
+            QFont font = settings->getValue("text/fontFamily").value<QFont>();
+            font.setPointSize(settings->getValue("text/fontSize").toInt());
+            textTabWidget->getTextEdit()->setFont(font);
+        }
+
         QFileInfo fileInfo(fileName);
         currentWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
 
@@ -232,20 +239,6 @@ void MainWindow::on_actionPrint_triggered()
 void MainWindow::printPreview(QPrinter *printer)
 {
     getCurrentTabWidget()->getTextEdit()->print(printer);
-}
-
-QFont MainWindow::getFontInformation()
-{
-    QFont fontInfo;
-
-    fontInfo.setBold(ui->actionBold->isChecked());
-    fontInfo.setItalic(ui->actionItalic->isChecked());
-    fontInfo.setUnderline(ui->actionUnderline->isChecked());
-
-    fontInfo.setPointSize(ui->fontSizeComboBox->currentText().toInt());
-    fontInfo.setFamily(ui->fontComboBox->currentFont().family());
-
-    return fontInfo;
 }
 
 void MainWindow::on_actionExit_triggered()
@@ -472,8 +465,6 @@ void MainWindow::on_actionZoom_in_triggered()
     cursor.select(QTextCursor::Document);
     cursor.mergeCharFormat(format);
     cursor.clearSelection();
-
-
 }
 
 void MainWindow::on_actionZoom_Out_triggered()
@@ -662,7 +653,6 @@ void MainWindow::on_actionBold_triggered()
         getCurrentTabWidget()->getTextEdit()->setFontWeight(QFont::Bold);
     else
         getCurrentTabWidget()->getTextEdit()->setFontWeight(QFont::Normal);
-
 }
 
 void MainWindow::on_actionItalic_triggered()

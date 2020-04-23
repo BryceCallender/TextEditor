@@ -79,12 +79,6 @@ public:
      */
     void printPreview(QPrinter *printer);
 
-    //! Font Information from tab
-    /*!
-        Gets font information when a tab is being transferred like status of menu bar.
-     */
-    QFont getFontInformation();
-
     //! When Window is closed completely
     /*!
         \param event The event where teh user pressed the X button to close the window.

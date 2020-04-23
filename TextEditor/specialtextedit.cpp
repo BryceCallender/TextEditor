@@ -10,6 +10,8 @@ SpecialTextEdit::SpecialTextEdit(QWidget *parent): QTextEdit(parent)
 
 void SpecialTextEdit::focusInEvent(QFocusEvent *e)
 {
+    qDebug() << "Focus event check";
+
     CustomTabWidget::currentSelectedTabIndex = parentTabWidget->tabWidgetIndex;
 
     MainWindow* mainWindow;
@@ -24,6 +26,8 @@ void SpecialTextEdit::focusInEvent(QFocusEvent *e)
         mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget());
     }
 
+     qDebug() << mainWindow;
+
     if(parentTabWidget->getCurrentTabWidget()->getSyntaxHighlighter() != nullptr)
     {
         mainWindow->get_UI().actionBold->setEnabled(false);
@@ -33,7 +37,6 @@ void SpecialTextEdit::focusInEvent(QFocusEvent *e)
         mainWindow->get_UI().actionAlign_Left->setEnabled(false);
         mainWindow->get_UI().actionCenter->setEnabled(false);
         mainWindow->get_UI().actionAlign_Right->setEnabled(false);
-
 
         mainWindow->get_UI().actionBullets->setEnabled(false);
         mainWindow->get_UI().actionNumbering->setEnabled(false);
@@ -46,6 +49,7 @@ void SpecialTextEdit::focusInEvent(QFocusEvent *e)
         mainWindow->get_UI().actionBold->setEnabled(true);
         mainWindow->get_UI().actionItalic->setEnabled(true);
         mainWindow->get_UI().actionUnderline->setEnabled(true);
+
 
         mainWindow->get_UI().actionAlign_Left->setEnabled(true);
         mainWindow->get_UI().actionCenter->setEnabled(true);

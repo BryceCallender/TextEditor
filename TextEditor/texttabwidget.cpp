@@ -216,6 +216,13 @@ void TextTabWidget::setTabsFileName(const QString& name)
         codeHighlighter = new PythonSyntaxHighlighter(textEditArea->document());
     }
 
+    if(getSyntaxHighlighter() != nullptr)
+    {
+        QFont font = SettingsManager::getInstance()->getValue("text/fontFamily").value<QFont>();
+        font.setPointSize(SettingsManager::getInstance()->getValue("text/fontSize").toInt());
+        getTextEdit()->setFont(font);
+    }
+
     fileName = name;
 }
 
