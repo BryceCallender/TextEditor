@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['javacolorpicker_315',['javaColorPicker',['../class_options_window.html#a493150644edde53b4f7c0dee5f58363e',1,'OptionsWindow']]]
+  ['groupbox_979',['groupBox',['../class_text_tab_widget.html#a18ae189f9e560e42c0c5e75ceb6daa1f',1,'TextTabWidget']]]
 ];

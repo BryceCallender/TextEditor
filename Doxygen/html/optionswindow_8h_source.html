@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TextEditor: TextEditor/optionswindow.h Source File</title>
+<title>JAE: TextEditor/optionswindow.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">TextEditor
+   <div id="projectname">JAE
    </div>
   </td>
  </tr>
@@ -69,7 +69,7 @@ $(function() {
 <div class="title">optionswindow.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef OPTIONSWINDOW_H</span></div>
+<a href="optionswindow_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef OPTIONSWINDOW_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define OPTIONSWINDOW_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QDialog&gt;</span></div>
@@ -82,10 +82,10 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;QSpinBox&gt;</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;QFontComboBox&gt;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;settingsmanager.h&quot;</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;texttabwidget.h&quot;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="settingsmanager_8h.html">settingsmanager.h</a>&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="texttabwidget_8h.html">texttabwidget.h</a>&quot;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span>Ui {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">namespace </span><a class="code" href="namespace_ui.html">Ui</a> {</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">class </span><a class="code" href="class_options_window.html">OptionsWindow</a>;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;}</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
@@ -108,7 +108,7 @@ $(function() {
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_options_window.html#aa99079baa497b3d41bd0d91e79398c4a">on_OptionsWindow_rejected</a>();</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="class_ui_1_1_options_window.html">Ui::OptionsWindow</a> *ui;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_options_window.html#a8347442d5b3b670e8fff0c4102db1f88">   57</a></span>&#160;    <a class="code" href="class_ui_1_1_options_window.html">Ui::OptionsWindow</a> *<a class="code" href="class_options_window.html#a8347442d5b3b670e8fff0c4102db1f88">ui</a>;</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
 <div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_options_window.html#adeb989c911edb4f484ca1d4c748d2450">   59</a></span>&#160;    QVBoxLayout* <a class="code" href="class_options_window.html#adeb989c911edb4f484ca1d4c748d2450">textSettingsLayout</a>; </div>
 <div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="class_options_window.html#a1ed209c8e6c7ce0a07c01c9de3ca84ac">   60</a></span>&#160;    QVBoxLayout* <a class="code" href="class_options_window.html#a1ed209c8e6c7ce0a07c01c9de3ca84ac">codeSettingsLayout</a>; </div>
@@ -125,6 +125,8 @@ $(function() {
 <div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif // OPTIONSWINDOW_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclass_options_window_html_a449c0121a7519c281796d5bea8c965c3"><div class="ttname"><a href="class_options_window.html#a449c0121a7519c281796d5bea8c965c3">OptionsWindow::OptionsWindow</a></div><div class="ttdeci">OptionsWindow(QWidget *parent=nullptr)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> optionswindow.cpp:5</div></div>
+<div class="ttc" id="atexttabwidget_8h_html"><div class="ttname"><a href="texttabwidget_8h.html">texttabwidget.h</a></div></div>
+<div class="ttc" id="aclass_options_window_html_a8347442d5b3b670e8fff0c4102db1f88"><div class="ttname"><a href="class_options_window.html#a8347442d5b3b670e8fff0c4102db1f88">OptionsWindow::ui</a></div><div class="ttdeci">Ui::OptionsWindow * ui</div><div class="ttdef"><b>Definition:</b> optionswindow.h:57</div></div>
 <div class="ttc" id="aclass_options_window_html_a493150644edde53b4f7c0dee5f58363e"><div class="ttname"><a href="class_options_window.html#a493150644edde53b4f7c0dee5f58363e">OptionsWindow::javaColorPicker</a></div><div class="ttdeci">QColorDialog * javaColorPicker</div><div class="ttdef"><b>Definition:</b> optionswindow.h:66</div></div>
 <div class="ttc" id="aclass_options_window_html_adeb989c911edb4f484ca1d4c748d2450"><div class="ttname"><a href="class_options_window.html#adeb989c911edb4f484ca1d4c748d2450">OptionsWindow::textSettingsLayout</a></div><div class="ttdeci">QVBoxLayout * textSettingsLayout</div><div class="ttdef"><b>Definition:</b> optionswindow.h:59</div></div>
 <div class="ttc" id="aclass_options_window_html_a916d20a6154feee640e0e2c070c4c186"><div class="ttname"><a href="class_options_window.html#a916d20a6154feee640e0e2c070c4c186">OptionsWindow::settings</a></div><div class="ttdeci">SettingsManager * settings</div><div class="ttdef"><b>Definition:</b> optionswindow.h:72</div></div>
@@ -134,6 +136,8 @@ $(function() {
 <div class="ttc" id="aclass_options_window_html_ab3416937002937feba83d0ead6dce8cb"><div class="ttname"><a href="class_options_window.html#ab3416937002937feba83d0ead6dce8cb">OptionsWindow::cppColorPicker</a></div><div class="ttdeci">QColorDialog * cppColorPicker</div><div class="ttdef"><b>Definition:</b> optionswindow.h:67</div></div>
 <div class="ttc" id="aclass_options_window_html_a034c885fe8bb4416e732a9571d14a6b4"><div class="ttname"><a href="class_options_window.html#a034c885fe8bb4416e732a9571d14a6b4">OptionsWindow::~OptionsWindow</a></div><div class="ttdeci">~OptionsWindow()</div><div class="ttdoc">Destructor.</div><div class="ttdef"><b>Definition:</b> optionswindow.cpp:150</div></div>
 <div class="ttc" id="aclass_options_window_html_a1ed209c8e6c7ce0a07c01c9de3ca84ac"><div class="ttname"><a href="class_options_window.html#a1ed209c8e6c7ce0a07c01c9de3ca84ac">OptionsWindow::codeSettingsLayout</a></div><div class="ttdeci">QVBoxLayout * codeSettingsLayout</div><div class="ttdef"><b>Definition:</b> optionswindow.h:60</div></div>
+<div class="ttc" id="asettingsmanager_8h_html"><div class="ttname"><a href="settingsmanager_8h.html">settingsmanager.h</a></div></div>
+<div class="ttc" id="anamespace_ui_html"><div class="ttname"><a href="namespace_ui.html">Ui</a></div><div class="ttdef"><b>Definition:</b> mainwindow.h:33</div></div>
 <div class="ttc" id="aclass_options_window_html_aa99079baa497b3d41bd0d91e79398c4a"><div class="ttname"><a href="class_options_window.html#aa99079baa497b3d41bd0d91e79398c4a">OptionsWindow::on_OptionsWindow_rejected</a></div><div class="ttdeci">void on_OptionsWindow_rejected()</div><div class="ttdoc">OptionsWindow Closed slot.</div><div class="ttdef"><b>Definition:</b> optionswindow.cpp:199</div></div>
 <div class="ttc" id="aclass_settings_manager_html"><div class="ttname"><a href="class_settings_manager.html">SettingsManager</a></div><div class="ttdoc">Manages user settings for this application.</div><div class="ttdef"><b>Definition:</b> settingsmanager.h:15</div></div>
 <div class="ttc" id="aclass_options_window_html_a38f3d6fc23e9832778516dc2d4fb4c72"><div class="ttname"><a href="class_options_window.html#a38f3d6fc23e9832778516dc2d4fb4c72">OptionsWindow::fontFamilyComboBox</a></div><div class="ttdeci">QFontComboBox * fontFamilyComboBox</div><div class="ttdef"><b>Definition:</b> optionswindow.h:62</div></div>

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['zoom_1082',['zoom',['../class_main_window.html#ae2d5e314921b22574d414a6452fa8e69',1,'MainWindow']]]
+  ['widget_1060',['widget',['../class_ui___options_window.html#a894680a5a3b7f81696e667c4dbed2182',1,'Ui_OptionsWindow']]]
 ];

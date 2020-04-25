@@ -1,6 +1,4 @@
 var searchData=
 [
-  ['python_5fkeywords_2etxt_786',['python_keywords.txt',['../python__keywords_8txt.html',1,'']]],
-  ['pythonsyntaxhighlighter_2ecpp_787',['pythonsyntaxhighlighter.cpp',['../pythonsyntaxhighlighter_8cpp.html',1,'']]],
-  ['pythonsyntaxhighlighter_2eh_788',['pythonsyntaxhighlighter.h',['../pythonsyntaxhighlighter_8h.html',1,'']]]
+  ['qrc_5fresources_2ecpp_778',['qrc_resources.cpp',['../debug_2qrc__resources_8cpp.html',1,'(Global Namespace)'],['../release_2qrc__resources_8cpp.html',1,'(Global Namespace)']]]
 ];

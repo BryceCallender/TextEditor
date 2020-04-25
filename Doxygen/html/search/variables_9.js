@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['newanddeleteformat_318',['newAndDeleteFormat',['../class_c_p_p_syntax_highlighter.html#abc08537709fd3505b81ea771d8e68442',1,'CPPSyntaxHighlighter']]],
-  ['numcopies_319',['numCopies',['../class_main_window.html#ad00ad954ca0add640f48cc3aad2e3de4',1,'MainWindow']]]
+  ['javacolorpicker_985',['javaColorPicker',['../class_options_window.html#a493150644edde53b4f7c0dee5f58363e',1,'OptionsWindow']]]
 ];

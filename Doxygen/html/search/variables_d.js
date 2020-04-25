@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['replacer_326',['replacer',['../class_text_tab_widget.html#abdb29c441223550a077e762de0858bc3',1,'TextTabWidget']]],
-  ['resultslabel_327',['resultsLabel',['../class_searcher_and_replacer.html#a8115e710022088b89d43fa0b6e38f827',1,'SearcherAndReplacer']]]
+  ['newanddeleteformat_998',['newAndDeleteFormat',['../class_c_p_p_syntax_highlighter.html#abc08537709fd3505b81ea771d8e68442',1,'CPPSyntaxHighlighter']]],
+  ['numcopies_999',['numCopies',['../class_main_window.html#ad00ad954ca0add640f48cc3aad2e3de4',1,'MainWindow']]]
 ];

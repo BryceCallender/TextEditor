@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>TextEditor: TextEditor/codesyntaxhighlighter.h Source File</title>
+<title>JAE: TextEditor/codesyntaxhighlighter.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">TextEditor
+   <div id="projectname">JAE
    </div>
   </td>
  </tr>
@@ -69,7 +69,7 @@ $(function() {
 <div class="title">codesyntaxhighlighter.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef CODESYNTAXHIGHLIGHER_H</span></div>
+<a href="codesyntaxhighlighter_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef CODESYNTAXHIGHLIGHER_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor">#define CODESYNTAXHIGHLIGHER_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;QSyntaxHighlighter&gt;</span></div>
@@ -78,7 +78,7 @@ $(function() {
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;QStringLiteral&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;QDebug&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;settingsmanager.h&quot;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="settingsmanager_8h.html">settingsmanager.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_code_syntax_highlighter.html">   17</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a> : <span class="keyword">public</span> QSyntaxHighlighter</div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
@@ -101,8 +101,8 @@ $(function() {
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="struct_code_syntax_highlighter_1_1_highlighting_rule.html">   56</a></span>&#160;    <span class="keyword">struct </span><a class="code" href="struct_code_syntax_highlighter_1_1_highlighting_rule.html">HighlightingRule</a></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        QRegularExpression pattern;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        QTextCharFormat format;</div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="struct_code_syntax_highlighter_1_1_highlighting_rule.html#a671cfb1514e0807a5749c936836dbcfd">   58</a></span>&#160;        QRegularExpression <a class="code" href="struct_code_syntax_highlighter_1_1_highlighting_rule.html#a671cfb1514e0807a5749c936836dbcfd">pattern</a>;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="struct_code_syntax_highlighter_1_1_highlighting_rule.html#a3946f996d8f8425e02fa9d3546e27202">   59</a></span>&#160;        QTextCharFormat <a class="code" href="struct_code_syntax_highlighter_1_1_highlighting_rule.html#a3946f996d8f8425e02fa9d3546e27202">format</a>;</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    };</div>
 <div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
 <div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_code_syntax_highlighter.html#afb1b1b47dacaa339067889550ea4d444">   62</a></span>&#160;    QVector&lt;HighlightingRule&gt; <a class="code" href="class_code_syntax_highlighter.html#afb1b1b47dacaa339067889550ea4d444">highlightingRules</a>; </div>
@@ -121,13 +121,16 @@ $(function() {
 <div class="ttc" id="aclass_code_syntax_highlighter_html_adf106d53ed0643e38cda97dd04cb2c40"><div class="ttname"><a href="class_code_syntax_highlighter.html#adf106d53ed0643e38cda97dd04cb2c40">CodeSyntaxHighlighter::keywordFormat</a></div><div class="ttdeci">QTextCharFormat keywordFormat</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:67</div></div>
 <div class="ttc" id="aclass_code_syntax_highlighter_html"><div class="ttname"><a href="class_code_syntax_highlighter.html">CodeSyntaxHighlighter</a></div><div class="ttdoc">A syntax highlighter for class specific keywords.</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:17</div></div>
 <div class="ttc" id="aclass_code_syntax_highlighter_html_a2e9fc0541c75202a19b91c78367755c7"><div class="ttname"><a href="class_code_syntax_highlighter.html#a2e9fc0541c75202a19b91c78367755c7">CodeSyntaxHighlighter::commentEndExpression</a></div><div class="ttdeci">QRegularExpression commentEndExpression</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:65</div></div>
+<div class="ttc" id="astruct_code_syntax_highlighter_1_1_highlighting_rule_html_a3946f996d8f8425e02fa9d3546e27202"><div class="ttname"><a href="struct_code_syntax_highlighter_1_1_highlighting_rule.html#a3946f996d8f8425e02fa9d3546e27202">CodeSyntaxHighlighter::HighlightingRule::format</a></div><div class="ttdeci">QTextCharFormat format</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:59</div></div>
 <div class="ttc" id="aclass_code_syntax_highlighter_html_afb1b1b47dacaa339067889550ea4d444"><div class="ttname"><a href="class_code_syntax_highlighter.html#afb1b1b47dacaa339067889550ea4d444">CodeSyntaxHighlighter::highlightingRules</a></div><div class="ttdeci">QVector&lt; HighlightingRule &gt; highlightingRules</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:62</div></div>
 <div class="ttc" id="aclass_code_syntax_highlighter_html_abed1a2e9896db53116f583276f289e8d"><div class="ttname"><a href="class_code_syntax_highlighter.html#abed1a2e9896db53116f583276f289e8d">CodeSyntaxHighlighter::quotationFormat</a></div><div class="ttdeci">QTextCharFormat quotationFormat</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:71</div></div>
 <div class="ttc" id="astruct_code_syntax_highlighter_1_1_highlighting_rule_html"><div class="ttname"><a href="struct_code_syntax_highlighter_1_1_highlighting_rule.html">CodeSyntaxHighlighter::HighlightingRule</a></div><div class="ttdoc">A container to hold the pattern and the word formatting.</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:56</div></div>
 <div class="ttc" id="aclass_code_syntax_highlighter_html_ac9b552aab9cf508492447d13aef6156d"><div class="ttname"><a href="class_code_syntax_highlighter.html#ac9b552aab9cf508492447d13aef6156d">CodeSyntaxHighlighter::CodeSyntaxHighlighter</a></div><div class="ttdeci">CodeSyntaxHighlighter(QTextDocument *parent)</div><div class="ttdoc">Constructor.</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.cpp:4</div></div>
 <div class="ttc" id="aclass_code_syntax_highlighter_html_a53fbd01fd935dd5f63d4f9185960ff5a"><div class="ttname"><a href="class_code_syntax_highlighter.html#a53fbd01fd935dd5f63d4f9185960ff5a">CodeSyntaxHighlighter::readKeywordFileAndPopulateList</a></div><div class="ttdeci">virtual void readKeywordFileAndPopulateList()=0</div><div class="ttdoc">Pure Virtual member.</div></div>
 <div class="ttc" id="aclass_code_syntax_highlighter_html_a2841d9a147d45978504e1fb1f496beac"><div class="ttname"><a href="class_code_syntax_highlighter.html#a2841d9a147d45978504e1fb1f496beac">CodeSyntaxHighlighter::getRuleCount</a></div><div class="ttdeci">int getRuleCount()</div><div class="ttdoc">Gets the amount of rules for this highlighter.</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.cpp:29</div></div>
+<div class="ttc" id="asettingsmanager_8h_html"><div class="ttname"><a href="settingsmanager_8h.html">settingsmanager.h</a></div></div>
 <div class="ttc" id="aclass_code_syntax_highlighter_html_a3dfa60803275d12e4fcc44f535d38c49"><div class="ttname"><a href="class_code_syntax_highlighter.html#a3dfa60803275d12e4fcc44f535d38c49">CodeSyntaxHighlighter::multiLineCommentFormat</a></div><div class="ttdeci">QTextCharFormat multiLineCommentFormat</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:70</div></div>
+<div class="ttc" id="astruct_code_syntax_highlighter_1_1_highlighting_rule_html_a671cfb1514e0807a5749c936836dbcfd"><div class="ttname"><a href="struct_code_syntax_highlighter_1_1_highlighting_rule.html#a671cfb1514e0807a5749c936836dbcfd">CodeSyntaxHighlighter::HighlightingRule::pattern</a></div><div class="ttdeci">QRegularExpression pattern</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:58</div></div>
 <div class="ttc" id="aclass_code_syntax_highlighter_html_a2056204d04cdb83386e08441a798731f"><div class="ttname"><a href="class_code_syntax_highlighter.html#a2056204d04cdb83386e08441a798731f">CodeSyntaxHighlighter::commentStartExpression</a></div><div class="ttdeci">QRegularExpression commentStartExpression</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:64</div></div>
 <div class="ttc" id="aclass_code_syntax_highlighter_html_a2253015bb4d616cdf718a09a9eac197e"><div class="ttname"><a href="class_code_syntax_highlighter.html#a2253015bb4d616cdf718a09a9eac197e">CodeSyntaxHighlighter::functionFormat</a></div><div class="ttdeci">QTextCharFormat functionFormat</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:72</div></div>
 <div class="ttc" id="aclass_code_syntax_highlighter_html_a5e74343c8930f67201a093aebe12b569"><div class="ttname"><a href="class_code_syntax_highlighter.html#a5e74343c8930f67201a093aebe12b569">CodeSyntaxHighlighter::classFormat</a></div><div class="ttdeci">QTextCharFormat classFormat</div><div class="ttdef"><b>Definition:</b> codesyntaxhighlighter.h:68</div></div>
