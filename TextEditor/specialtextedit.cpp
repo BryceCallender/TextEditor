@@ -26,8 +26,6 @@ void SpecialTextEdit::focusInEvent(QFocusEvent *e)
         mainWindow = reinterpret_cast<MainWindow*>(parentWidget()->parentWidget()->parentWidget()->parentWidget()->parentWidget());
     }
 
-     qDebug() << mainWindow;
-
     if(parentTabWidget->getCurrentTabWidget()->getSyntaxHighlighter() != nullptr)
     {
         mainWindow->get_UI().actionBold->setEnabled(false);

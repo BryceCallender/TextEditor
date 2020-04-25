@@ -162,6 +162,10 @@ void CustomTabWidget::tabCloseRequest(int index)
         removeTab(index);
     }
 
+    setCurrentIndex(count() - 2);
+
+    qDebug() << "Current index" << currentIndex();
+
     //If we close last tab get rid of the docking widget
     if(dynamic_cast<QDockWidget*>(parentWidget()) != nullptr)
     {

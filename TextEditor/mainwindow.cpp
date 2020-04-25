@@ -42,7 +42,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     clipboard_changed();
 
-    zoom = 8;
+    settings = SettingsManager::getInstance();
+    zoom = settings->getValue("text/fontSize").toInt();
     QObject::connect(textTabWidget->getTextEdit(), &QTextEdit::textChanged, this, &MainWindow::fileChanged);
 
     QObject::connect(QApplication::clipboard(), &QClipboard::dataChanged, this, &MainWindow::clipboard_changed);
@@ -76,12 +77,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->toolBar->setStyleSheet("QToolBar{spacing:3px;}");
     ui->toolBar->addWidget(fontFamily);
 
-    settings = SettingsManager::getInstance();
     setGeometry(settings->getValue("ui/geometry").toRect());
-
-    //Sets values to the saved settings
-//    ui->fontComboBox->setCurrentFont(settings->getValue("text/fontFamily").value<QFont>());
-//    ui->fontSizeComboBox->setCurrentText(settings->getValue("text/fontSize").toString());
 
     // create shortcut
     QShortcut *saveShortcut = new QShortcut(QKeySequence::Save, this);
@@ -147,6 +143,8 @@ void MainWindow::on_actionOpen_triggered()
         TextTabWidget* textTabWidget = getCurrentTabWidget();
         CustomTabWidget* currentWidget = tabWidgets->at(CustomTabWidget::currentSelectedTabIndex);
         int tabIndex = currentWidget->currentIndex();
+
+        qDebug() << tabIndex;
 
         //Current Tab is occupied so make a new tab, set its name, and then then carry on with setting the text
         if(textTabWidget->getTabFileName() != "New File.txt" || currentWidget->count() == 1)
@@ -261,18 +259,6 @@ void MainWindow::save()
 void MainWindow::on_actionCopy_triggered()
 {
     TextTabWidget* textTabWidget = getCurrentTabWidget();
-/*
-    if(textTabWidget->getTextEdit()->textCursor().hasSelection())
-    {
-        QString text = textTabWidget->getTextEdit()->textCursor().selectedText();
-
-        savedCopy[track] = text;
-        if(track >= 2)
-            track = 0;
-        else
-            track++;
-
-   }*/
 
    textTabWidget->getTextEdit()->copy();
 }
@@ -280,19 +266,6 @@ void MainWindow::on_actionCopy_triggered()
 void MainWindow::on_actionCut_triggered()
 {
     TextTabWidget* textTabWidget = getCurrentTabWidget();
-/*
-    if(textTabWidget->getTextEdit()->textCursor().hasSelection())
-    {
-        QString text = textTabWidget->getTextEdit()->textCursor().selectedText();
-
-        savedCopy[track] = text;
-        if(track >= 2)
-            track = 0;
-        else
-            track++;
-
-   }
-*/
    textTabWidget->getTextEdit()->cut();
 }
 
@@ -455,7 +428,17 @@ void MainWindow::on_actionZoom_in_triggered()
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
     QTextCharFormat format;
 
-    font.setPointSize(font.pointSize() + 1);
+    int index;
+    if(ui->fontSizeComboBox->currentIndex() + 1 > ui->fontSizeComboBox->count())
+    {
+        index = ui->fontSizeComboBox->count() - 1;
+    }
+    else
+    {
+        index = ui->fontSizeComboBox->currentIndex() + 1;
+    }
+
+    font.setPointSize(ui->fontSizeComboBox->itemText(index).toInt());
     font.setFamily(getCurrentTabWidget()->getTextEdit()->fontFamily());
     format.setFont(font);
     QTextDocumentFragment selection = cursor.selection();
@@ -465,6 +448,8 @@ void MainWindow::on_actionZoom_in_triggered()
     cursor.select(QTextCursor::Document);
     cursor.mergeCharFormat(format);
     cursor.clearSelection();
+
+    getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
 }
 
 void MainWindow::on_actionZoom_Out_triggered()
@@ -474,7 +459,17 @@ void MainWindow::on_actionZoom_Out_triggered()
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
     QTextCharFormat format;
 
-    font.setPointSize(font.pointSize() - 1);
+    int index;
+    if(ui->fontSizeComboBox->currentIndex() - 1 < 0)
+    {
+        index = 0;
+    }
+    else
+    {
+        index = ui->fontSizeComboBox->currentIndex() - 1;
+    }
+
+    font.setPointSize(ui->fontSizeComboBox->itemText(index).toInt());
     font.setFamily(getCurrentTabWidget()->getTextEdit()->fontFamily());
     format.setFont(font);
     QTextDocumentFragment selection = cursor.selection();
@@ -485,6 +480,7 @@ void MainWindow::on_actionZoom_Out_triggered()
     cursor.mergeCharFormat(format);
     cursor.clearSelection();
 
+    getCurrentTabWidget()->getTextEdit()->setTextCursor(cursor);
 }
 
 void MainWindow::on_actionZoom_Standard_triggered()
@@ -504,44 +500,12 @@ void MainWindow::on_actionZoom_Standard_triggered()
     cursor.select(QTextCursor::Document);
     cursor.mergeCharFormat(format);
     cursor.clearSelection();
+
+
 }
-
-//void MainWindow::on_tabWidget_tabCloseRequested(int index)
-//{
-//    if(ui->tabWidget->tabText(index).back() == '*')
-//    {
-//        int clicked = QMessageBox::warning(this, "Save?", "Would you like to save the file?", QMessageBox::Ok, QMessageBox::Cancel, QMessageBox::No);
-//        if(clicked == QMessageBox::Ok)
-//        {
-//            on_actionSave_triggered();
-//            qDebug() << "Closing " + QString::number(index);
-//            ui->tabWidget->removeTab(index);
-//        }
-//        else if(clicked == QMessageBox::No)
-//        {
-//            qDebug() << "Closing " + QString::number(index);
-//            ui->tabWidget->removeTab(index);
-//        }
-//    }
-//    else
-//    {
-//        qDebug() << "Closing " + QString::number(index);
-//        ui->tabWidget->removeTab(index);
-//    }
-
-//    ui->tabWidget->setCurrentIndex(index - 1);
-//}
-
 
 void MainWindow::on_tabWidget_tabBarClicked(int index)
 {
-    //This will make sure to insert where the last tab is and they cannot move it or itll make a new tab
-//    if(index == ui->tabWidget->count() - 1)
-//    {
-//        ui->tabWidget->insertTab(index, new TextTabWidget(), "New Tab");
-//        ui->tabWidget->setCurrentIndex(index);
-//    }
-
     getCurrentTabWidget()->getTextEdit()->setContextMenuPolicy(Qt::CustomContextMenu);
 
     connect(getCurrentTabWidget()->getTextEdit(), SIGNAL(customContextMenuRequested(const QPoint&)),
@@ -600,13 +564,13 @@ void MainWindow::markTextTabAsClean(const QString &newPath)
         fileWatcher->addPath(newPath);
     if(currentWidget->tabText(index).back() == '*')
         currentWidget->setTabText(index, currentWidget->tabText(index).left(currentWidget->tabText(index).size() - 1));
-    qDebug() << "file changed"; //file saved take away the * showing it saved
+    //qDebug() << "file changed"; //file saved take away the * showing it saved
 
 }
 
 void MainWindow::setWindowToFileName(int index)
 {
-    qDebug() << "Clicked on tab " + QString::number(index);
+    //qDebug() << "Clicked on tab " + QString::number(index);
 
     setWindowTitle(getCurrentTabWidget()->getTabFileName());
 }
@@ -797,7 +761,7 @@ void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
 
 TextTabWidget* MainWindow::getCurrentTabWidget()
 {
-    qDebug() << "Getting TextEdit for tab index" << CustomTabWidget::currentSelectedTabIndex;
+    //qDebug() << "Getting TextEdit for tab index" << CustomTabWidget::currentSelectedTabIndex;
     CustomTabWidget* customTabWidget = tabWidgets->at(CustomTabWidget::currentSelectedTabIndex);
     TextTabWidget* textTabWidget = (TextTabWidget*) customTabWidget->widget(customTabWidget->currentIndex());
 
@@ -846,14 +810,14 @@ void MainWindow::on_actionAlign_Right_triggered()
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    qDebug() << "Saved window geometry";
+    //qDebug() << "Saved window geometry";
 
     settings->saveValue("ui", "geometry", this->geometry());
 
     for(int j = 0; j < tabWidgets->size(); j++)
     {
         CustomTabWidget::currentSelectedTabIndex = j;
-        qDebug() << CustomTabWidget::currentSelectedTabIndex;
+        //qDebug() << CustomTabWidget::currentSelectedTabIndex;
         for(int i = 0; i < tabWidgets->at(j)->count(); i++)
         {
             tabWidgets->at(j)->setCurrentIndex(i);
@@ -875,11 +839,11 @@ void MainWindow::closeEvent(QCloseEvent *event)
                 if(clicked == QMessageBox::Ok)
                 {
                     on_actionSave_triggered();
-                    qDebug() << "Closing " + QString::number(i);
+                    //qDebug() << "Closing " + QString::number(i);
                 }
                 else if(clicked == QMessageBox::No)
                 {
-                    qDebug() << "Closing " + QString::number(i);
+                    //qDebug() << "Closing " + QString::number(i);
                 }
             }
         }
@@ -891,6 +855,8 @@ void MainWindow::closeEvent(QCloseEvent *event)
 void MainWindow::removeTabFromWidget(int widgetIndex, int tabIndex)
 {
     tabWidgets->at(widgetIndex)->removeTab(tabIndex);
+
+    tabWidgets->at(widgetIndex)->setCurrentIndex(tabWidgets->at(widgetIndex)->count() - 2 < 0 ? 0 : tabWidgets->at(widgetIndex)->count() - 2);
 
     if(widgetIndex > 0 && tabWidgets->at(widgetIndex)->count() == 1)
     {
@@ -923,7 +889,7 @@ void MainWindow::dragEnterEvent(QDragEnterEvent *event)
 
 void MainWindow::dropEvent(QDropEvent *event)
 {
-    qDebug() << "Main window drop event detected";
+    //qDebug() << "Main window drop event detected";
 
     //Get the current docking widgets in the mainwindow
     QList<QDockWidget*> dockWidgets = findChildren<QDockWidget*>();
@@ -939,6 +905,8 @@ void MainWindow::dropEvent(QDropEvent *event)
     TabTransferData testTabData;
 
     ds >> testTabData;
+
+    //tabWidgets->at(CustomTabWidget::tabParent)->setCurrentIndex(tabWidgets->at(CustomTabWidget::tabParent)->count() - 2 < 0? 0 : tabWidgets->at(CustomTabWidget::tabParent)->count() - 2);
 
     //This highlighter was allocated, however this shouldnt be the case as it has no rules so we must
     //explicitly assign it back to nullptr to avoid errors in other modules.
@@ -1062,7 +1030,7 @@ void MainWindow::dropEvent(QDropEvent *event)
     }
 
     CustomTabWidget::currentSelectedTabIndex = tabWidgets->size() - 1;
-    qDebug() << "Current tab widget:" << CustomTabWidget::currentSelectedTabIndex;
+    //qDebug() << "Current tab widget:" << CustomTabWidget::currentSelectedTabIndex;
 }
 
 void MainWindow::on_actionFind_triggered()
