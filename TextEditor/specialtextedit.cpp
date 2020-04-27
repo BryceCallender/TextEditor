@@ -56,8 +56,9 @@ void SpecialTextEdit::focusInEvent(QFocusEvent *e)
         mainWindow->get_UI().actionBullets->setEnabled(true);
         mainWindow->get_UI().actionNumbering->setEnabled(true);
 
-        mainWindow->get_UI().fontComboBox->setCurrentFont(SettingsManager::getInstance()->getValue("text/fontFamily").value<QFont>());
-        mainWindow->get_UI().fontSizeComboBox->setCurrentText(SettingsManager::getInstance()->getValue("text/fontSize").toString());
+        //qDebug() << SettingsManager::getInstance()->getValue("text/fontFamily")
+        //mainWindow->get_UI().fontComboBox->setCurrentFont(SettingsManager::getInstance()->getValue("text/fontFamily").value<QFont>());
+        //mainWindow->get_UI().fontSizeComboBox->setCurrentText(SettingsManager::getInstance()->getValue("text/fontSize").toString());
 
         mainWindow->get_UI().fontComboBox->setEnabled(true);
         mainWindow->get_UI().fontSizeComboBox->setEnabled(true);
