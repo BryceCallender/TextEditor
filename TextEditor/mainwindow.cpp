@@ -224,6 +224,9 @@ void MainWindow::on_actionSave_as_triggered()
     if(fileName.contains(".txt"))
     {
         QString text = textTabWidget->getTextEdit()->toHtml();
+        int index = text.indexOf("<body");
+        QString defaultTextBody = "<body style=\" font-family:'" + settings->getValue("text/fontFamily").value<QFont>().family() + "'; font-size:" + QString::number(settings->getValue("text/fontSize").toInt()) + "; \">";
+        text.replace(index, 99, defaultTextBody);
         out << text;
     }
     else
@@ -338,7 +341,6 @@ void MainWindow::showContextPasteMenu(const QPoint& pos)
     pasteMenu->setToolTipsVisible(true);
 
     pasteMenu->exec(globalPos);
-
 }
 
 void MainWindow::on_actionPaste_triggered()
@@ -435,7 +437,6 @@ void MainWindow::showContextMenu(const QPoint& pos)
     rightClick->addAction(QString("Zoom Standard"), this, SLOT(on_actionZoom_Standard_triggered()));
 
     rightClick->exec(globalPos);
-
 }
 
 void MainWindow::on_actionZoom_in_triggered()
@@ -517,8 +518,6 @@ void MainWindow::on_actionZoom_Standard_triggered()
     cursor.select(QTextCursor::Document);
     cursor.mergeCharFormat(format);
     cursor.clearSelection();
-
-
 }
 
 void MainWindow::on_tabWidget_tabBarClicked(int index)
@@ -549,6 +548,9 @@ void MainWindow::on_actionSave_triggered()
             if(textTabWidget->getTabFileName().contains(".txt"))
             {
                 QString text = textTabWidget->getTextEdit()->toHtml();
+                int index = text.indexOf("<body");
+                QString defaultTextBody = "<body style=\" font-family: '" + settings->getValue("text/fontFamily").value<QFont>().family() + "'; font-size: " + QString::number(settings->getValue("text/fontSize").toInt()) + "; \">";
+                text.replace(index, 99, defaultTextBody);
                 out << text;
             }
             else
@@ -666,13 +668,14 @@ void MainWindow::on_actionBullets_triggered()
     if(!cursor.hasSelection())
     {
         QTextListFormat listFormat = QTextListFormat();
-        if (cursor.currentList()) {
+        if (cursor.currentList())
+        {
             listFormat = cursor.currentList()->format();
             listFormat.setIndent(listFormat.indent() + 1);
-         }
+        }
 
-         listFormat.setStyle(QTextListFormat::Style::ListDisc);
-         cursor.insertList(listFormat);
+        listFormat.setStyle(QTextListFormat::Style::ListDisc);
+        cursor.insertList(listFormat);
     }
     else
     {
@@ -688,13 +691,14 @@ void MainWindow::on_actionNumbering_triggered()
     if(!cursor.hasSelection())
     {
         QTextListFormat listFormat = QTextListFormat();
-        if (cursor.currentList()) {
+        if (cursor.currentList())
+        {
             listFormat = cursor.currentList()->format();
             listFormat.setIndent(listFormat.indent() + 1);
-         }
+        }
 
-         listFormat.setStyle(QTextListFormat::Style::ListDecimal);
-         cursor.insertList(listFormat);
+        listFormat.setStyle(QTextListFormat::Style::ListDecimal);
+        cursor.insertList(listFormat);
     }
     else
     {
@@ -708,7 +712,6 @@ void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
     qDebug() << "Font changed";
 
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
-
 
     if(cursor.hasSelection())
     {
@@ -749,8 +752,6 @@ void MainWindow::on_fontSizeComboBox_activated(const QString &arg1)
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
 
     getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
-
-
 }
 
 void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
