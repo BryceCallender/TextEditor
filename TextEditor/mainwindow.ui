@@ -104,6 +104,9 @@
       </item>
       <item>
        <widget class="QFontComboBox" name="fontComboBox">
+        <property name="editable">
+         <bool>false</bool>
+        </property>
         <property name="currentIndex">
          <number>220</number>
         </property>

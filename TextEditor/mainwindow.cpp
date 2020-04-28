@@ -162,21 +162,38 @@ void MainWindow::on_actionOpen_triggered()
         if(fileName.contains(".txt"))
         {
             textTabWidget->getTextEdit()->setHtml(text);
+
+            //This lines below will be for checking if there is immediate text with a different format to avoid issues.
+            QTextCursor cursor = textTabWidget->getTextEdit()->textCursor();
+
+            //Get to the beginning of the text
+            cursor.movePosition(QTextCursor::Start);
+
+            //Move one over to check if the text has a different format to start of with than 12, Times New Roman (default font size, font family)
+            cursor.movePosition(QTextCursor::Right, QTextCursor::MoveAnchor, 1);
+
+            //Go back to beginning
+            cursor.movePosition(QTextCursor::Start);
+
+            //Give cursor information back to the text edit
+            textTabWidget->getTextEdit()->setTextCursor(cursor);
         }
         else
         {
             textTabWidget->getTextEdit()->setText(text);
         }
 
-//        if(textTabWidget->getSyntaxHighlighter() != nullptr)
-//        {
-//            QFont font = settings->getValue("text/fontFamily").value<QFont>();
-//            font.setPointSize(settings->getValue("text/fontSize").toInt());
-//            textTabWidget->getTextEdit()->setFont(font);
-//        }
+        if(textTabWidget->getSyntaxHighlighter() != nullptr)
+        {
+            QFont font = settings->getValue("text/fontFamily").value<QFont>();
+            font.setPointSize(settings->getValue("text/fontSize").toInt());
+            textTabWidget->getTextEdit()->setFont(font);
+        }
 
         QFileInfo fileInfo(fileName);
         currentWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
+
+        textTabWidget->getTextEdit()->setFocus();
 
         file.close();
     }

@@ -216,12 +216,12 @@ void TextTabWidget::setTabsFileName(const QString& name)
         codeHighlighter = new PythonSyntaxHighlighter(textEditArea->document());
     }
 
-//    if(getSyntaxHighlighter() != nullptr)
-//    {
-//        QFont font = SettingsManager::getInstance()->getValue("text/fontFamily").value<QFont>();
-//        font.setPointSize(SettingsManager::getInstance()->getValue("text/fontSize").toInt());
-//        getTextEdit()->setFont(font);
-//    }
+    if(getSyntaxHighlighter() != nullptr)
+    {
+        QFont font = SettingsManager::getInstance()->getValue("text/fontFamily").value<QFont>();
+        font.setPointSize(SettingsManager::getInstance()->getValue("text/fontSize").toInt());
+        getTextEdit()->setFont(font);
+    }
 
     fileName = name;
 }
@@ -326,7 +326,7 @@ QTextEdit* TextTabWidget::getTextEdit()
 }
 
 void TextTabWidget::formatChanged(const QTextCharFormat &format)
-{
+{ 
     MainWindow* mainWindow;
 
     //If this has no dock widget take this route
@@ -409,6 +409,12 @@ void TextTabWidget::formatChanged(const QTextCharFormat &format)
                 index = mainWindow->get_UI().fontComboBox->findText(format.font().family());
             }
 
+            //Will make it so the cursor has no selection anymore
+            //this causes issues when current index is changed the function on_fontComboBox_currentFontChanged
+            //in mainwindow is invoked and would change font style on highlight. This still allows the UI to be updated
+            //to reflect the format changes to the user
+            cursor.clearSelection();
+            textEditArea->setTextCursor(cursor);
             mainWindow->get_UI().fontComboBox->setCurrentIndex(index);
         }
 
