@@ -168,12 +168,12 @@ void MainWindow::on_actionOpen_triggered()
             textTabWidget->getTextEdit()->setText(text);
         }
 
-        if(textTabWidget->getSyntaxHighlighter() != nullptr)
-        {
-            QFont font = settings->getValue("text/fontFamily").value<QFont>();
-            font.setPointSize(settings->getValue("text/fontSize").toInt());
-            textTabWidget->getTextEdit()->setFont(font);
-        }
+//        if(textTabWidget->getSyntaxHighlighter() != nullptr)
+//        {
+//            QFont font = settings->getValue("text/fontFamily").value<QFont>();
+//            font.setPointSize(settings->getValue("text/fontSize").toInt());
+//            textTabWidget->getTextEdit()->setFont(font);
+//        }
 
         QFileInfo fileInfo(fileName);
         currentWidget->setTabText(tabIndex, fileInfo.fileName()); //calls setTabText(index of tab => int, name of file => QString);
@@ -688,13 +688,14 @@ void MainWindow::on_actionNumbering_triggered()
 
 void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
 {
-    //QFont font = ui->fontComboBox->currentFont();
+    qDebug() << "Font changed";
 
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
 
 
     if(cursor.hasSelection())
     {
+        qDebug() << "selection";
         QTextCharFormat format = cursor.charFormat();
         format.setFontFamily(f.family());
         cursor.mergeCharFormat(format);//Change font-family
@@ -761,7 +762,6 @@ void MainWindow::on_fontSizeComboBox_currentIndexChanged(int index)
 
 TextTabWidget* MainWindow::getCurrentTabWidget()
 {
-    //qDebug() << "Getting TextEdit for tab index" << CustomTabWidget::currentSelectedTabIndex;
     CustomTabWidget* customTabWidget = tabWidgets->at(CustomTabWidget::currentSelectedTabIndex);
     TextTabWidget* textTabWidget = (TextTabWidget*) customTabWidget->widget(customTabWidget->currentIndex());
 

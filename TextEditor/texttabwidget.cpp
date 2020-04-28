@@ -108,8 +108,8 @@ TextTabWidget::TextTabWidget(QWidget *parent): QWidget(parent)
 
     //Sets the font based on the current settings and applies it.
     QFont currentFont = textEditArea->font();
-    currentFont.setFamily(SettingsManager::getInstance()->getValue("text/fontFamily").toString());
-    currentFont.setPointSize(SettingsManager::getInstance()->getValue("text/fontSize").toInt());
+    //currentFont.setFamily(SettingsManager::getInstance()->getValue("text/fontFamily").toString());
+    //currentFont.setPointSize(SettingsManager::getInstance()->getValue("text/fontSize").toInt());
     //textEditArea->setFont(currentFont);
 
     //Sets tab length based on the current settings and applies it as well.
@@ -216,12 +216,12 @@ void TextTabWidget::setTabsFileName(const QString& name)
         codeHighlighter = new PythonSyntaxHighlighter(textEditArea->document());
     }
 
-    if(getSyntaxHighlighter() != nullptr)
-    {
-        QFont font = SettingsManager::getInstance()->getValue("text/fontFamily").value<QFont>();
-        font.setPointSize(SettingsManager::getInstance()->getValue("text/fontSize").toInt());
-        getTextEdit()->setFont(font);
-    }
+//    if(getSyntaxHighlighter() != nullptr)
+//    {
+//        QFont font = SettingsManager::getInstance()->getValue("text/fontFamily").value<QFont>();
+//        font.setPointSize(SettingsManager::getInstance()->getValue("text/fontSize").toInt());
+//        getTextEdit()->setFont(font);
+//    }
 
     fileName = name;
 }

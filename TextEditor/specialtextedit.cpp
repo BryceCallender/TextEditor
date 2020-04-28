@@ -48,17 +48,12 @@ void SpecialTextEdit::focusInEvent(QFocusEvent *e)
         mainWindow->get_UI().actionItalic->setEnabled(true);
         mainWindow->get_UI().actionUnderline->setEnabled(true);
 
-
         mainWindow->get_UI().actionAlign_Left->setEnabled(true);
         mainWindow->get_UI().actionCenter->setEnabled(true);
         mainWindow->get_UI().actionAlign_Right->setEnabled(true);
 
         mainWindow->get_UI().actionBullets->setEnabled(true);
         mainWindow->get_UI().actionNumbering->setEnabled(true);
-
-        //qDebug() << SettingsManager::getInstance()->getValue("text/fontFamily")
-        //mainWindow->get_UI().fontComboBox->setCurrentFont(SettingsManager::getInstance()->getValue("text/fontFamily").value<QFont>());
-        //mainWindow->get_UI().fontSizeComboBox->setCurrentText(SettingsManager::getInstance()->getValue("text/fontSize").toString());
 
         mainWindow->get_UI().fontComboBox->setEnabled(true);
         mainWindow->get_UI().fontSizeComboBox->setEnabled(true);

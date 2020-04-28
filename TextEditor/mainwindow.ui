@@ -22,6 +22,9 @@
      <layout class="QHBoxLayout" name="fontOptions">
       <item>
        <widget class="QComboBox" name="fontSizeComboBox">
+        <property name="currentText">
+         <string>12</string>
+        </property>
         <item>
          <property name="text">
           <string>8</string>
@@ -100,7 +103,17 @@
        </widget>
       </item>
       <item>
-       <widget class="QFontComboBox" name="fontComboBox"/>
+       <widget class="QFontComboBox" name="fontComboBox">
+        <property name="currentIndex">
+         <number>220</number>
+        </property>
+        <property name="currentFont">
+         <font>
+          <family>Times New Roman</family>
+          <pointsize>12</pointsize>
+         </font>
+        </property>
+       </widget>
       </item>
      </layout>
     </item>
@@ -131,7 +144,7 @@
      <x>0</x>
      <y>0</y>
      <width>885</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
