@@ -709,19 +709,29 @@ void MainWindow::on_actionNumbering_triggered()
 
 void MainWindow::on_fontComboBox_currentFontChanged(const QFont &f)
 {
-    qDebug() << "Font changed";
 
     QTextCursor cursor = getCurrentTabWidget()->getTextEdit()->textCursor();
 
+    //getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
     if(cursor.hasSelection())
     {
-        qDebug() << "selection";
-        QTextCharFormat format = cursor.charFormat();
-        format.setFontFamily(f.family());
-        cursor.mergeCharFormat(format);//Change font-family
+        QFont font;
+        font.setPointSize(ui->fontSizeComboBox->currentText().toInt());
+        font.setFamily(f.family());
+
+        if(ui->actionBold->isChecked())
+            font.setBold(QFont::Bold);
+        if(ui->actionItalic->isChecked())
+            font.setItalic(true);
+        if(ui->actionUnderline->isChecked())
+            font.setUnderline(true);
+
+        getCurrentTabWidget()->getTextEdit()->setCurrentFont(font);
+
     }
     else
     {
+
         QString size = ui->fontSizeComboBox->currentText();
         QTextCharFormat format;
         format.setFont(f);

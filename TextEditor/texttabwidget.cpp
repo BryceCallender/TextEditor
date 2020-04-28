@@ -393,7 +393,7 @@ void TextTabWidget::formatChanged(const QTextCharFormat &format)
         textEditArea->setCurrentFont(font);
     }
 
-    if(format.fontFamily() != NULL)
+    if(format.fontFamily() != NULL && !cursor.hasSelection())
     {
         QStringList fontSettings = format.fontFamily().split(",");
         qDebug() << fontSettings[0];
@@ -413,7 +413,7 @@ void TextTabWidget::formatChanged(const QTextCharFormat &format)
             //this causes issues when current index is changed the function on_fontComboBox_currentFontChanged
             //in mainwindow is invoked and would change font style on highlight. This still allows the UI to be updated
             //to reflect the format changes to the user
-            cursor.clearSelection();
+            //cursor.clearSelection();
             textEditArea->setTextCursor(cursor);
             mainWindow->get_UI().fontComboBox->setCurrentIndex(index);
         }
